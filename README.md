@@ -1,4 +1,4 @@
-# @mxstbr's Karabiner Elements configuration
+# @asonkiya's Karabiner Elements configuration
 
 This repo is a fork of @mxstbr's config, fine tuned for my own needs
 
