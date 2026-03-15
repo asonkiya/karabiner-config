@@ -5,9 +5,6 @@
   "profiles": [
     {
       "name": "Default",
-      "virtual_hid_keyboard": {
-        "keyboard_type_v2": "ansi"
-      },
       "complex_modifications": {
         "rules": [
           {
@@ -915,6 +912,54 @@
                 "type": "basic",
                 "from": {
                   "key_code": "k",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_w",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Window: Left Arrow",
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_w",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "description": "Window: Right Arrow",
+                "to": [
+                  {
+                    "key_code": "right_arrow"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "l",
                   "modifiers": {
                     "optional": [
                       "any"
