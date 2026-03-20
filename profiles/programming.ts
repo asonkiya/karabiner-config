@@ -90,6 +90,20 @@ const rules: KarabinerRules[] = [
                         m: { description: "Shift+Tab", to: [{ key_code: "tab", modifiers: ["left_shift"] }] },
                 },
 
+                // g = "Git" commands
+                g: {
+                        s: { description: "Git: status", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git status" & return'` }] },
+                        a: { description: "Git: add all", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git add ." & return'` }] },
+                        c: { description: "Git: commit", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git commit -m \\\"\\\"" ' && osascript -e 'tell application "System Events" to key code 123'` }] },
+                        p: { description: "Git: push", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git push" & return'` }] },
+                        l: { description: "Git: log", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git log --oneline" & return'` }] },
+                        d: { description: "Git: diff", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git diff" & return'` }] },
+                        b: { description: "Git: branch", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git branch" & return'` }] },
+                        u: { description: "Git: pull", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git pull" & return'` }] },
+                        z: { description: "Git: stash", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git stash" & return'` }] },
+                        r: { description: "Git: stash pop", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git stash pop" & return'` }] },
+                },
+
                 // s = "Session" tmux window switching (hjkl -> windows 1-4)
                 // Sends Ctrl+B (prefix) then the window number
                 s: {

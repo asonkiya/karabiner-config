@@ -629,7 +629,7 @@
                                     "key_code": "t",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'iTerm.app' && \"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Programming Mode\"" }],
+                                "to": [{ "shell_command": "open -a 'iTerm.app' && \"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Programming Mode\" && osascript -e 'display notification \"Programming Mode\" with title \"Profile Switched\"'" }],
                                 "type": "basic"
                             },
                             {
@@ -1674,7 +1674,6 @@
                 ]
             },
             "name": "Normal Mode",
-            "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
@@ -1821,6 +1820,11 @@
                         "manipulators": [
                             {
                                 "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
                                     {
                                         "name": "hyper_sublayer_s",
                                         "type": "variable_if",
@@ -2012,12 +2016,228 @@
                         ]
                     },
                     {
+                        "description": "Hyper Key sublayer \"g\"",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_l",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_s",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_v",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Toggle Hyper sublayer g",
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "hyper_sublayer_g",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "hyper_sublayer_g",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: status",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git status\" & return'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: add all",
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git add .\" & return'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: commit",
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git commit -m \\\"\\\"\" ' && osascript -e 'tell application \"System Events\" to key code 123'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: push",
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git push\" & return'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: log",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git log --oneline\" & return'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: diff",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git diff\" & return'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: branch",
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git branch\" & return'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: pull",
+                                "from": {
+                                    "key_code": "u",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git pull\" & return'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: stash",
+                                "from": {
+                                    "key_code": "z",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git stash\" & return'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_g",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Git: stash pop",
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git stash pop\" & return'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Hyper Key sublayer \"s\"",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "name": "hyper_sublayer_l",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_g",
                                         "type": "variable_if",
                                         "value": 0
                                     },
@@ -2190,6 +2410,11 @@
                                 "conditions": [
                                     {
                                         "name": "hyper_sublayer_l",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_g",
                                         "type": "variable_if",
                                         "value": 0
                                     },
@@ -2527,6 +2752,7 @@
                 ]
             },
             "name": "Programming Mode",
+            "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]

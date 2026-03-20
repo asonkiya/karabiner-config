@@ -331,7 +331,7 @@ export function openAndSwitch(what: string, profileName: string): LayerCommand {
         return {
                 to: [
                         {
-                                shell_command: `open ${what} && "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "${profileName}"`,
+                                shell_command: `open ${what} && "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "${profileName}" && osascript -e 'display notification "${profileName}" with title "Profile Switched"'`,
                         },
                 ],
                 description: `Open ${what} & switch to profile: ${profileName}`,
