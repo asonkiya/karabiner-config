@@ -1,8 +1,11 @@
 import { KarabinerRules, Profile } from "../types";
-import { doubleTap, open } from "../utils";
+import { doubleTap, open, createHyperSubLayers, switchProfile } from "../utils";
 
 const rules: KarabinerRules[] = [
   doubleTap("t", open("https://youtube.com")),
+  ...createHyperSubLayers({
+    m: switchProfile("Normal Mode"),
+  }),
 ];
 
 export const testProfile: Profile = {

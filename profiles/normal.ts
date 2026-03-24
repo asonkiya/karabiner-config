@@ -87,11 +87,6 @@ const rules: KarabinerRules[] = [
                         },
                 ],
         },
-        // Double tap tab in iTerm2 to switch to Programming Mode
-        doubleTap("escape", switchProfile("Programming Mode"), 300, [
-                { type: "frontmost_application_if", bundle_identifiers: ["^com\\.googlecode\\.iterm2$"] },
-        ]),
-
         ...createHyperSubLayers({
                 semicolon: open("raycast://extensions/the-browser-company/arc/search-space-tabs"),
                 spacebar: app("Raycast"),
@@ -107,7 +102,7 @@ const rules: KarabinerRules[] = [
                         n: open("http://localhost:8080/"),
                         s: open("https://twitch.tv"),
                         c: open("https://canvas.unc.edu"),
-                        g: open("raycast://extensions/the-browser-company/arc/new-incognito-window")
+                        g: open("raycast://extensions/the-browser-company/arc/new-incognito-window"),
 
                 },
                 // o = "Open" applications
@@ -116,13 +111,14 @@ const rules: KarabinerRules[] = [
                         e: app("Microsoft Outlook"),
                         d: app("Discord"),
                         n: app("Obsidian"),
-                        t: appAndSwitch("iTerm", "Programming Mode"),
+                        t: appAndSwitch("iTerm", "Programming"),
                         z: app("zoom.us"),
                         r: app("Rstudio"),
                         f: app("Finder"),
                         m: app("Messages"),
                         p: app("iPhone Mirroring"),
-                        c: app("ChatGPT"),
+                        c: app("Screenshot"),
+                        a: app("ChatGPT"),
                         v: app("Surfshark"),
                         // I will never understand why WhatsApp doesn't have a proper Mac app, but this is the best we can do for now
                         w: open("/Applications/WhatsApp.localized/WhatsApp.app"),
@@ -163,7 +159,6 @@ const rules: KarabinerRules[] = [
                                         },
                                 ],
                         },
-
                         k: {
                                 description: "Window: Ctrl + Right Arrow",
                                 to: [
@@ -173,24 +168,6 @@ const rules: KarabinerRules[] = [
                                         },
                                 ],
                         },
-
-                        //                         h: {
-                        //                                 description: "Window: Left Arrow",
-                        //                                 to: [
-                        //                                         {
-                        //                                                 key_code: "left_arrow",
-                        //                                         },
-                        //                                 ],
-                        //                         },
-                        //
-                        //                         l: {
-                        //                                 description: "Window: Right Arrow",
-                        //                                 to: [
-                        //                                         {
-                        //                                                 key_code: "right_arrow",
-                        //                                         },
-                        //                                 ],
-                        //                         },
                         m: window("maximize"),
                         f: {
                                 description: "Window: Fullscreen",
@@ -202,7 +179,7 @@ const rules: KarabinerRules[] = [
                                 ],
                         },
                         // Zoom using u and i for shift plus and minus for better ergonomics
-                        u: {
+                        i: {
                                 description: "Window: Zoom In",
                                 to: [
                                         {
@@ -211,7 +188,7 @@ const rules: KarabinerRules[] = [
                                         },
                                 ],
                         },
-                        i: {
+                        o: {
                                 description: "Window: Zoom Out",
                                 to: [
                                         {
@@ -266,13 +243,6 @@ const rules: KarabinerRules[] = [
                                         },
                                 ],
                         },
-                        semicolon: {
-                                to: [
-                                        {
-                                                key_code: "fastforward",
-                                        },
-                                ],
-                        },
                         // "D"o not disturb toggle
                         c: open("raycast://extensions/raycast/system/open-camera"),
                         // "H"earbuds control via Raycast's Airpods Noise Control extension
@@ -316,19 +286,23 @@ const rules: KarabinerRules[] = [
                         d: {
                                 to: [{ key_code: "d", modifiers: ["right_shift", "right_command"] }],
                         },
-                        u: {
+                        i: {
                                 to: [{ key_code: "page_down" }],
                         },
-                        i: {
+                        o: {
                                 to: [{ key_code: "page_up" }],
                         },
                 },
 
-                // p = "Profiles"
-                p: {
-                        c: switchProfile("Programming Mode"),
-                        t: switchProfile("Test"),
+                // m = "Modes" profile switching
+                m: {
+                        c: switchProfile("Programming"),
+                        r: switchProfile("Reading"),
                 },
+
+                // y/p = copy/paste (vim-style)
+                y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["left_command"] }] },
+                p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["left_command"] }] },
 
                 // r = "Raycast"
                 r: {
@@ -340,6 +314,11 @@ const rules: KarabinerRules[] = [
                                 "raycast://extensions/raycast/clipboard-history/clipboard-history"
                         ),
                 },
+
+                // Quick window actions
+                q: { description: "Cmd+Q (Quit)", to: [{ key_code: "q", modifiers: ["left_command"] }] },
+                d: { description: "Cmd+W (Close)", to: [{ key_code: "w", modifiers: ["left_command"] }] },
+                t: { description: "Cmd+T (New Tab)", to: [{ key_code: "t", modifiers: ["left_command"] }] },
         }),
         //        {
         //                description: "Change Backspace to Spacebar when Minecraft is focused",
@@ -368,7 +347,7 @@ const rules: KarabinerRules[] = [
 ];
 
 export const normalProfile: Profile = {
-        name: "Normal Mode",
+        name: "Normal",
         virtual_hid_keyboard: {
                 keyboard_type_v2: "ansi",
         },

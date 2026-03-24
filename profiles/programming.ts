@@ -32,9 +32,7 @@ const rules: KarabinerRules[] = [
                                         },
                                 ],
                                 to_if_alone: [
-                                        {
-                                                key_code: "escape",
-                                        },
+                                        { key_code: "escape" },
                                 ],
                         },
                 ],
@@ -63,13 +61,8 @@ const rules: KarabinerRules[] = [
                 ],
         },
 
-        // Double tap escape to return to Normal Mode
-        // Extra condition prevents caps_lock's to_if_alone escape from triggering this
-        doubleTap("escape", switchProfile("Normal Mode"), 300, [
-                { type: "variable_unless", name: "hyper", value: 1 },
-        ]),
-
         ...createHyperSubLayers({
+                m: switchProfile("Normal"),
                 // l = Claude "L"LM commands
                 l: {
                         r: {
@@ -179,6 +172,6 @@ const rules: KarabinerRules[] = [
 ];
 
 export const programmingProfile: Profile = {
-        name: "Programming Mode",
+        name: "Programming",
         complex_modifications: { rules },
 };

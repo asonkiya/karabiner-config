@@ -17,6 +17,7 @@ export function profilesToConfig(profiles: Profile[]): string {
 export interface LayerCommand {
         to: To[];
         description?: string;
+        conditions?: Manipulator["conditions"];
 }
 
 type HyperKeySublayer = {
@@ -146,6 +147,7 @@ export function createHyperSubLayers(subLayers: {
                                                                 name: subLayerVariable,
                                                                 value: 0,
                                                         })),
+                                                        ...(value.conditions ?? []),
                                                 ],
                                         },
                                 ],
@@ -166,12 +168,11 @@ function generateSubLayerVariableName(key: KeyCode) {
 }
 
 /**
- * Sends a vim command — escapes to normal mode first, then types :<command><enter>
+ * Types a vim command :<command><enter> — assumes already in normal mode
  */
 export function vimCmd(command: string): LayerCommand {
         return {
                 to: [
-                        { key_code: "escape" },
                         { key_code: "semicolon", modifiers: ["left_shift"] }, // :
                         ...command.split("").map((char) => {
                                 if (char === "!") return { key_code: "1", modifiers: ["left_shift"] } as const;
