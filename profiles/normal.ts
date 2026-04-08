@@ -1,5 +1,6 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, shell, switchProfile, appAndSwitch, doubleTap } from "../utils";
+import { createHyperSubLayers, app, open, window, shell, switchProfile, appAndSwitch, doubleTap, cmdSublayer } from "../utils";
+import { vimMode, vimModeRules } from "./vim-mode";
 
 const rules: KarabinerRules[] = [
         // Define the Hyper key itself
@@ -96,13 +97,13 @@ const rules: KarabinerRules[] = [
                 // l = "L"ookup
                 l: {
                         i: open("https://www.instagram.com/direct/t/5082114295174947/"),
-                        d: open("https://doordash.com"),
+                        d: open("https://doordash.com/"),
                         y: open("https://youtube.com"),
                         t: open("https://mychtransit.org/map"),
                         n: open("http://localhost:8080/"),
                         s: open("https://twitch.tv"),
                         c: open("https://canvas.unc.edu"),
-                        g: open("raycast://extensions/the-browser-company/arc/new-incognito-window"),
+                        g: open("https://github.com"),
 
                 },
                 // o = "Open" applications
@@ -257,6 +258,7 @@ const rules: KarabinerRules[] = [
                                         },
                                 ],
                         },
+
                 },
 
                 // v = "moVe" which isn't "m" because we want it to be on the left hand
@@ -286,13 +288,21 @@ const rules: KarabinerRules[] = [
                         d: {
                                 to: [{ key_code: "d", modifiers: ["right_shift", "right_command"] }],
                         },
-                        i: {
+                        w: { description: "Move word forward", to: [{ shell_command: `osascript -e 'tell application "System Events" to key code 124 using option down'` }] },
+                        b: { description: "Move word backward", to: [{ shell_command: `osascript -e 'tell application "System Events" to key code 123 using option down'` }] },
+                        close_bracket: {
                                 to: [{ key_code: "page_down" }],
                         },
-                        o: {
+                        open_bracket: {
                                 to: [{ key_code: "page_up" }],
                         },
                 },
+
+                // WhatsApp: Hyper+hjk; -> Cmd+1234 (chat switching)
+                // Note: l is taken by the lookup sublayer, so ; is used for Cmd+4
+                h: { to: [{ key_code: "1", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
+                j: { to: [{ key_code: "2", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
+                k: { to: [{ key_code: "3", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
 
                 // m = "Modes" profile switching
                 m: {
@@ -300,9 +310,15 @@ const rules: KarabinerRules[] = [
                         r: switchProfile("Reading"),
                 },
 
-                // y/p = copy/paste (vim-style)
+                return_or_enter: vimMode.enable(),
+
+                // c = Cmd + key passthrough
+                c: cmdSublayer(),
+
+                // y/p/u = copy/paste/undo (vim-style)
                 y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["left_command"] }] },
                 p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["left_command"] }] },
+                u: { description: "Undo (Cmd+Z)", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "z" using command down'` }] },
 
                 // r = "Raycast"
                 r: {
@@ -315,10 +331,12 @@ const rules: KarabinerRules[] = [
                         ),
                 },
 
+                slash: { description: "Find (Cmd+F)", to: [{ key_code: "f", modifiers: ["left_command"] }] },
+
                 // Quick window actions
                 q: { description: "Cmd+Q (Quit)", to: [{ key_code: "q", modifiers: ["left_command"] }] },
                 d: { description: "Cmd+W (Close)", to: [{ key_code: "w", modifiers: ["left_command"] }] },
-                t: { description: "Cmd+T (New Tab)", to: [{ key_code: "t", modifiers: ["left_command"] }] },
+                n: { description: "Cmd+T (New Tab)", to: [{ key_code: "t", modifiers: ["left_command"] }] },
         }),
         //        {
         //                description: "Change Backspace to Spacebar when Minecraft is focused",
@@ -344,6 +362,9 @@ const rules: KarabinerRules[] = [
         //                        },
         //                ],
         //        },
+
+        // Vim mode (Hyper+Enter to enter, I or Escape to exit)
+        ...vimModeRules,
 ];
 
 export const normalProfile: Profile = {

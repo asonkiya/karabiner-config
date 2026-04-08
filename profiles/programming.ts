@@ -1,5 +1,6 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, shell, doubleTap, switchProfile, claudeCmd, vimCmd } from "../utils";
+import { createHyperSubLayers, app, open, window, shell, doubleTap, switchProfile, claudeCmd, vimCmd, cmdSublayer } from "../utils";
+import { vimMode, vimModeRules } from "./vim-mode";
 
 const rules: KarabinerRules[] = [
         // Define the Hyper key itself
@@ -63,6 +64,23 @@ const rules: KarabinerRules[] = [
 
         ...createHyperSubLayers({
                 m: switchProfile("Normal"),
+                return_or_enter: vimMode.enable(),
+
+                // Godot workspace switching (Ctrl+Cmd+1-5) when Godot is focused
+                1: { to: [{ key_code: "1", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                2: { to: [{ key_code: "2", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                3: { to: [{ key_code: "3", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                4: { to: [{ key_code: "4", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                5: { to: [{ key_code: "5", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                r: { to: [{ key_code: "b", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                b: { to: [{ key_code: "r", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                // y/p = copy/paste (vim-style)
+                y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["left_command"] }] },
+                p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["left_command"] }] },
+
+                // c = Cmd + key passthrough
+                c: cmdSublayer(),
+
                 // l = Claude "L"LM commands
                 l: {
                         r: {
@@ -80,7 +98,14 @@ const rules: KarabinerRules[] = [
                         p: claudeCmd("/plan"),
                         k: claudeCmd("/commit"),
                         x: claudeCmd("exit"),
+                        o: claudeCmd("claude"),
                         m: { description: "Shift+Tab", to: [{ key_code: "tab", modifiers: ["left_shift"] }] },
+                },
+
+                // o = "Open" apps
+                o: {
+                        g: app("Godot"),
+                        t: app("iTerm"),
                 },
 
                 // g = "Git" commands
@@ -104,6 +129,8 @@ const rules: KarabinerRules[] = [
                         k: { description: "Tmux: window 1", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "1" }] },
                         l: { description: "Tmux: window 2", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "2" }] },
                         semicolon: { description: "Tmux: window 3", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "3" }] },
+                        n: { description: "Tmux: new window", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "c" }] },
+                        x: { description: "Tmux: kill window", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "7", modifiers: ["left_shift"] }] },
                         hyphen: {
                                 description: "Tmux: kill session",
                                 to: [
@@ -156,8 +183,11 @@ const rules: KarabinerRules[] = [
                         i: {
                                 to: [{ key_code: "page_up" }],
                         },
+                        // Word movement
+                        w: { description: "Move word forward", to: [{ shell_command: `osascript -e 'tell application "System Events" to key code 124 using option down'` }] },
+                        b: { description: "Move word backward", to: [{ shell_command: `osascript -e 'tell application "System Events" to key code 123 using option down'` }] },
                         // Vim commands
-                        w: vimCmd("w"),        // save
+                        semicolon: vimCmd("w"),  // save (remapped from w)
                         q: vimCmd("q"),        // quit
                         x: vimCmd("wq"),       // save & quit
                         n: vimCmd("q!"),       // force quit (no save)
@@ -169,6 +199,9 @@ const rules: KarabinerRules[] = [
                         },
                 },
         }),
+
+        // Vim mode (Hyper+Enter to enter, I or Escape to exit)
+        ...vimModeRules,
 ];
 
 export const programmingProfile: Profile = {

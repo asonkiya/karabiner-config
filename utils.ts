@@ -235,11 +235,60 @@ export function shell(
         };
 }
 
+/**
+ * Creates a persistent mode that can be toggled on/off via variable.
+ * Switching is instantaneous (no IPC overhead like profile switching).
+ *
+ * Usage:
+ *   const textEditing = createMode("text_editing");
+ *
+ *   // In sublayer m: toggle on/off
+ *   m: { t: textEditing.enable(), n: textEditing.disable() }
+ *
+ *   // Wrap rules so they only fire in this mode
+ *   ...textEditing.apply([
+ *     { description: "...", manipulators: [...] }
+ *   ])
+ *
+ *   // Or add the condition manually to a LayerCommand
+ *   { to: [...], conditions: [textEditing.condition] }
+ */
+export function createMode(name: string) {
+        const condition = { type: "variable_if" as const, name, value: 1 };
+        const flag = `/tmp/karabiner_mode_${name}`;
+        return {
+                condition,
+                enable: (): LayerCommand => ({
+                        to: [
+                                { set_variable: { name, value: 1 } },
+                                { shell_command: `touch ${flag}` },
+                        ],
+                        description: `Enable ${name} mode`,
+                }),
+                disable: (): LayerCommand => ({
+                        to: [
+                                { set_variable: { name, value: 0 } },
+                                { shell_command: `rm -f ${flag}` },
+                        ],
+                        description: `Disable ${name} mode`,
+                }),
+                /** Inject the mode condition into every manipulator in the given rules */
+                apply: (rules: KarabinerRules[]): KarabinerRules[] =>
+                        rules.map((rule) => ({
+                                ...rule,
+                                manipulators: rule.manipulators.map((m) => ({
+                                        ...m,
+                                        conditions: [...(m.conditions ?? []), condition],
+                                })),
+                        })),
+        };
+}
+
 export function switchProfile(profileName: string): LayerCommand {
         return {
                 to: [
                         {
-                                shell_command: `"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "${profileName}" && osascript -e 'display notification "${profileName}" with title "Profile Switched"'`,
+                                shell_command: `"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "${profileName}"`,
                         },
                 ],
                 description: `Switch to profile: ${profileName}`,
@@ -321,6 +370,26 @@ export function doubleTap(
 /**
  * Shortcut for opening something and switching to a profile
  */
+/**
+ * Generates a sublayer where every key fires Cmd + that key.
+ * Use as: c: cmdSublayer() to make Hyper + C + key = Cmd + key.
+ */
+export function cmdSublayer(): { [key_code in KeyCode]?: LayerCommand } {
+        const keys = [
+                ..."abcdefghijklmnopqrstuvwxyz",
+                ..."1234567890",
+        ] as KeyCode[];
+        return Object.fromEntries(
+                keys.map((k) => [
+                        k,
+                        {
+                                description: `Cmd+${k.toUpperCase()}`,
+                                to: [{ key_code: k, modifiers: ["left_command"] as const }],
+                        },
+                ])
+        );
+}
+
 export function appAndSwitch(name: string, profileName: string): LayerCommand {
         return openAndSwitch(`-a '${name}.app'`, profileName);
 }
@@ -332,7 +401,7 @@ export function openAndSwitch(what: string, profileName: string): LayerCommand {
         return {
                 to: [
                         {
-                                shell_command: `open ${what} && "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "${profileName}" && osascript -e 'display notification "${profileName}" with title "Profile Switched"'`,
+                                shell_command: `open ${what} && "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "${profileName}"`,
                         },
                 ],
                 description: `Open ${what} & switch to profile: ${profileName}`,
