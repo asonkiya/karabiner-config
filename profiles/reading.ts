@@ -29,7 +29,7 @@ const rules: KarabinerRules[] = [
                 // s = Screenshot (area selection, saves to Desktop)
                 s: {
                         description: "Screenshot: app selection",
-                        to: [{ key_code: "5", modifiers: ["left_command", "left_shift"] }],
+                        to: [{ key_code: "5", modifiers: ["right_command", "left_shift"] }],
                 },
 
                 // a = open Arc
@@ -39,6 +39,14 @@ const rules: KarabinerRules[] = [
                 t: {
                         description: "Screenshot → Google Translate",
                         to: [{ shell_command: `bash "${TRANSLATE_SCRIPT}"` }],
+                },
+
+                // c = type cereal aisle question
+                c: {
+                        description: "Type cereal aisle question",
+                        to: [{ shell_command: `python3 -c "import time,subprocess;msg='Whats the interactions in the cereal aisle been like'
+for c in msg:
+ subprocess.run(['osascript','-e','tell application \"System Events\" to keystroke \"'+c+'\"']);time.sleep(0.02)"` }],
                 },
         }),
 ];

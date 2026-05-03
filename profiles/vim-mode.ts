@@ -23,15 +23,15 @@ export const vimModeRules: KarabinerRules[] = vimMode.apply([
         {
                 description: "Vim Mode: 0/e line start/end",
                 manipulators: [
-                        { type: "basic", from: { key_code: "0" }, to: [{ key_code: "left_arrow", modifiers: ["left_command"] }] },
-                        { type: "basic", from: { key_code: "e" }, to: [{ key_code: "right_arrow", modifiers: ["left_command"] }] },
+                        { type: "basic", from: { key_code: "0" }, to: [{ key_code: "left_arrow", modifiers: ["right_command"] }] },
+                        { type: "basic", from: { key_code: "e" }, to: [{ key_code: "right_arrow", modifiers: ["right_command"] }] },
                 ],
         },
         {
                 description: "Vim Mode: [ / ] document start/end",
                 manipulators: [
-                        { type: "basic", from: { key_code: "open_bracket" }, to: [{ key_code: "up_arrow", modifiers: ["left_command"] }] },
-                        { type: "basic", from: { key_code: "close_bracket" }, to: [{ key_code: "down_arrow", modifiers: ["left_command"] }] },
+                        { type: "basic", from: { key_code: "open_bracket" }, to: [{ key_code: "up_arrow", modifiers: ["right_command"] }] },
+                        { type: "basic", from: { key_code: "close_bracket" }, to: [{ key_code: "down_arrow", modifiers: ["right_command"] }] },
                 ],
         },
         {
@@ -39,20 +39,20 @@ export const vimModeRules: KarabinerRules[] = vimMode.apply([
                 manipulators: [
                         { type: "basic", from: { key_code: "x" }, to: [{ key_code: "delete_forward" }] },
                         { type: "basic", from: { key_code: "d" }, to: [{ key_code: "delete_or_backspace" }] },
-                        { type: "basic", from: { key_code: "u" }, to: [{ key_code: "z", modifiers: ["left_command"] }] },
-                        { type: "basic", from: { key_code: "y" }, to: [{ key_code: "c", modifiers: ["left_command"] }] },
-                        { type: "basic", from: { key_code: "p" }, to: [{ key_code: "v", modifiers: ["left_command"] }] },
+                        { type: "basic", from: { key_code: "u" }, to: [{ key_code: "z", modifiers: ["right_command"] }] },
+                        { type: "basic", from: { key_code: "y" }, to: [{ key_code: "c", modifiers: ["right_command"] }] },
+                        { type: "basic", from: { key_code: "p" }, to: [{ key_code: "v", modifiers: ["right_command"] }] },
                         // Y = yank + paste (duplicate line)
                         {
                                 type: "basic",
                                 from: { key_code: "y", modifiers: { mandatory: ["left_shift"] } },
                                 to: [
-                                        { key_code: "left_arrow", modifiers: ["left_command"] },          // beginning of line
-                                        { key_code: "right_arrow", modifiers: ["left_command", "left_shift"] }, // select to end
-                                        { key_code: "c", modifiers: ["left_command"] },                   // copy
-                                        { key_code: "right_arrow", modifiers: ["left_command"] },         // end of line
+                                        { key_code: "left_arrow", modifiers: ["right_command"] },          // beginning of line
+                                        { key_code: "right_arrow", modifiers: ["right_command", "left_shift"] }, // select to end
+                                        { key_code: "c", modifiers: ["right_command"] },                   // copy
+                                        { key_code: "right_arrow", modifiers: ["right_command"] },         // end of line
                                         { key_code: "return_or_enter" },                                  // new line
-                                        { key_code: "v", modifiers: ["left_command"] },                   // paste
+                                        { key_code: "v", modifiers: ["right_command"] },                   // paste
                                 ],
                         },
                 ],
@@ -61,7 +61,7 @@ export const vimModeRules: KarabinerRules[] = vimMode.apply([
                 description: "Vim Mode: s select word, v select line",
                 manipulators: [
                         { type: "basic", from: { key_code: "s" }, to: [{ key_code: "right_arrow", modifiers: ["left_option", "left_shift"] }] },
-                        { type: "basic", from: { key_code: "v" }, to: [{ key_code: "left_arrow", modifiers: ["left_command"] }, { key_code: "right_arrow", modifiers: ["left_command", "left_shift"] }] },
+                        { type: "basic", from: { key_code: "v" }, to: [{ key_code: "left_arrow", modifiers: ["right_command"] }, { key_code: "right_arrow", modifiers: ["right_command", "left_shift"] }] },
                 ],
         },
         {
@@ -72,7 +72,7 @@ export const vimModeRules: KarabinerRules[] = vimMode.apply([
                                 type: "basic",
                                 from: { key_code: "o", modifiers: { mandatory: ["left_shift"] } },
                                 to: [
-                                        { key_code: "left_arrow", modifiers: ["left_command"] }, // beginning of line
+                                        { key_code: "left_arrow", modifiers: ["right_command"] }, // beginning of line
                                         { key_code: "return_or_enter" },                          // push line down
                                         { key_code: "up_arrow" },                                 // move up to new line
                                         ...vimMode.disable().to,
@@ -82,7 +82,7 @@ export const vimModeRules: KarabinerRules[] = vimMode.apply([
                                 type: "basic",
                                 from: { key_code: "o" },
                                 to: [
-                                        { key_code: "right_arrow", modifiers: ["left_command"] }, // end of line
+                                        { key_code: "right_arrow", modifiers: ["right_command"] }, // end of line
                                         { key_code: "return_or_enter" },                           // new line below
                                         ...vimMode.disable().to,
                                 ],

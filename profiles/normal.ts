@@ -44,7 +44,7 @@ const rules: KarabinerRules[] = [
                         //        from: {
                         //          key_code: "tab",
                         //          modifiers: {
-                        //            mandatory: ["left_command"],
+                        //            mandatory: ["right_command"],
                         //          },
                         //        },
                         //        to: [
@@ -99,6 +99,7 @@ const rules: KarabinerRules[] = [
                         i: open("https://www.instagram.com/direct/t/5082114295174947/"),
                         d: open("https://doordash.com/"),
                         y: open("https://youtube.com"),
+                        m: open("https://music.youtube.com"),
                         t: open("https://mychtransit.org/map"),
                         n: open("http://localhost:8080/"),
                         s: open("https://twitch.tv"),
@@ -119,7 +120,6 @@ const rules: KarabinerRules[] = [
                         m: app("Messages"),
                         p: app("iPhone Mirroring"),
                         c: app("Screenshot"),
-                        a: app("ChatGPT"),
                         v: app("Surfshark"),
                         // I will never understand why WhatsApp doesn't have a proper Mac app, but this is the best we can do for now
                         w: open("/Applications/WhatsApp.localized/WhatsApp.app"),
@@ -300,9 +300,15 @@ const rules: KarabinerRules[] = [
 
                 // WhatsApp: Hyper+hjk; -> Cmd+1234 (chat switching)
                 // Note: l is taken by the lookup sublayer, so ; is used for Cmd+4
-                h: { to: [{ key_code: "1", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
-                j: { to: [{ key_code: "2", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
-                k: { to: [{ key_code: "3", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
+                h: { to: [{ key_code: "1", modifiers: ["right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
+                j: { to: [{ key_code: "2", modifiers: ["right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
+                k: { to: [{ key_code: "3", modifiers: ["right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^net\\.whatsapp\\.WhatsApp$"] }] },
+
+                // a = "AI" tools
+                a: {
+                        c: app("Claude"),
+                        g: app("ChatGPT"),
+                },
 
                 // m = "Modes" profile switching
                 m: {
@@ -316,8 +322,8 @@ const rules: KarabinerRules[] = [
                 c: cmdSublayer(),
 
                 // y/p/u = copy/paste/undo (vim-style)
-                y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["left_command"] }] },
-                p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["left_command"] }] },
+                y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["right_command"] }] },
+                p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["right_command"] }] },
                 u: { description: "Undo (Cmd+Z)", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "z" using command down'` }] },
 
                 // r = "Raycast"
@@ -331,12 +337,12 @@ const rules: KarabinerRules[] = [
                         ),
                 },
 
-                slash: { description: "Find (Cmd+F)", to: [{ key_code: "f", modifiers: ["left_command"] }] },
+                slash: { description: "Find (Cmd+F)", to: [{ key_code: "f", modifiers: ["right_command"] }] },
 
                 // Quick window actions
-                q: { description: "Cmd+Q (Quit)", to: [{ key_code: "q", modifiers: ["left_command"] }] },
-                d: { description: "Cmd+W (Close)", to: [{ key_code: "w", modifiers: ["left_command"] }] },
-                n: { description: "Cmd+T (New Tab)", to: [{ key_code: "t", modifiers: ["left_command"] }] },
+                q: { description: "Cmd+Q (Quit)", to: [{ key_code: "q", modifiers: ["right_command"] }] },
+                d: { description: "Cmd+W (Close)", to: [{ key_code: "w", modifiers: ["right_command"] }] },
+                n: { description: "Cmd+T (New Tab)", to: [{ key_code: "t", modifiers: ["right_command"] }] },
         }),
         //        {
         //                description: "Change Backspace to Spacebar when Minecraft is focused",

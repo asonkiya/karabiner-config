@@ -67,16 +67,16 @@ const rules: KarabinerRules[] = [
                 return_or_enter: vimMode.enable(),
 
                 // Godot workspace switching (Ctrl+Cmd+1-5) when Godot is focused
-                1: { to: [{ key_code: "1", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
-                2: { to: [{ key_code: "2", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
-                3: { to: [{ key_code: "3", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
-                4: { to: [{ key_code: "4", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
-                5: { to: [{ key_code: "5", modifiers: ["left_control", "left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
-                r: { to: [{ key_code: "b", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
-                b: { to: [{ key_code: "r", modifiers: ["left_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                1: { to: [{ key_code: "1", modifiers: ["left_control", "right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                2: { to: [{ key_code: "2", modifiers: ["left_control", "right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                3: { to: [{ key_code: "3", modifiers: ["left_control", "right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                4: { to: [{ key_code: "4", modifiers: ["left_control", "right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                5: { to: [{ key_code: "5", modifiers: ["left_control", "right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                r: { to: [{ key_code: "b", modifiers: ["right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
+                b: { to: [{ key_code: "r", modifiers: ["right_command"] }], conditions: [{ type: "frontmost_application_if", bundle_identifiers: ["^org\\.godotengine\\.godot$"] }] },
                 // y/p = copy/paste (vim-style)
-                y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["left_command"] }] },
-                p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["left_command"] }] },
+                y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["right_command"] }] },
+                p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["right_command"] }] },
 
                 // c = Cmd + key passthrough
                 c: cmdSublayer(),
@@ -125,10 +125,10 @@ const rules: KarabinerRules[] = [
                 // s = "Session" tmux window switching (hjkl -> windows 1-4)
                 // Sends Ctrl+B (prefix) then the window number
                 s: {
-                        j: { description: "Tmux: window 0", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "0" }] },
-                        k: { description: "Tmux: window 1", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "1" }] },
-                        l: { description: "Tmux: window 2", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "2" }] },
-                        semicolon: { description: "Tmux: window 3", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "3" }] },
+                        h: { description: "Tmux: window 0", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "0" }] },
+                        j: { description: "Tmux: window 1", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "1" }] },
+                        k: { description: "Tmux: window 2", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "2" }] },
+                        l: { description: "Tmux: window 3", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "3" }] },
                         n: { description: "Tmux: new window", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "c" }] },
                         x: { description: "Tmux: kill window", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "7", modifiers: ["left_shift"] }] },
                         hyphen: {

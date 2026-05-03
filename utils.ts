@@ -384,7 +384,7 @@ export function cmdSublayer(): { [key_code in KeyCode]?: LayerCommand } {
                         k,
                         {
                                 description: `Cmd+${k.toUpperCase()}`,
-                                to: [{ key_code: k, modifiers: ["left_command"] as const }],
+                                to: [{ key_code: k, modifiers: ["right_command"] as const }],
                         },
                 ])
         );
