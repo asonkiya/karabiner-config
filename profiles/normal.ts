@@ -314,6 +314,7 @@ const rules: KarabinerRules[] = [
                 m: {
                         c: switchProfile("Programming"),
                         r: switchProfile("Reading"),
+                        t: switchProfile("Trivia"),
                 },
 
                 return_or_enter: vimMode.enable(),

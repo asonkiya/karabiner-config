@@ -3107,6 +3107,30 @@
                     "value": 1
                   }
                 ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "\"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Trivia\""
+                  }
+                ],
+                "description": "Switch to profile: Trivia",
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 1
+                  }
+                ]
               }
             ]
           },
@@ -11149,36 +11173,19 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_m",
                     "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_a",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_t",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 0
                   }
                 ]
               }
             ]
           },
           {
-            "description": "Hyper Key + s",
+            "description": "Reading: 1 = Screenshot + Enter",
             "manipulators": [
               {
-                "description": "Screenshot: app selection",
+                "type": "basic",
+                "from": {
+                  "key_code": "1"
+                },
                 "to": [
                   {
                     "key_code": "5",
@@ -11186,65 +11193,127 @@
                       "right_command",
                       "left_shift"
                     ]
+                  },
+                  {
+                    "shell_command": "sleep 0.5 && osascript -e 'tell application \"System Events\" to key code 36'"
                   }
                 ],
-                "type": "basic",
-                "from": {
-                  "key_code": "s",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_a",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_t",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 0
-                  }
-                ]
+                "description": "Screenshot + Enter"
               }
             ]
           },
           {
-            "description": "Hyper Key + a",
+            "description": "Reading: 2 = Open Arc",
             "manipulators": [
               {
+                "type": "basic",
+                "from": {
+                  "key_code": "2"
+                },
                 "to": [
                   {
                     "shell_command": "open -a 'Arc.app'"
                   }
                 ],
-                "description": "Open -a 'Arc.app'",
+                "description": "Open Arc"
+              }
+            ]
+          },
+          {
+            "description": "Reading: 3 = Drag preview to translate",
+            "manipulators": [
+              {
                 "type": "basic",
                 "from": {
-                  "key_code": "a",
+                  "key_code": "3"
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
+                  }
+                ],
+                "description": "Drag screenshot to translate"
+              }
+            ]
+          },
+          {
+            "description": "Reading: 4 = Next chapter + remove old + screenshot + drag to translate",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "right_arrow"
+                },
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/cliclick c:974,681 && sleep 0.1 && /opt/homebrew/bin/cliclick c:1547,77 && sleep 0.05 && osascript -e 'tell application \"System Events\" to key code 126 using {command down}' && sleep 0.2 && osascript -e 'tell application \"System Events\" to keystroke \"f\"' && sleep 0.1 && osascript -e 'tell application \"System Events\" to keystroke \"w\"' && /opt/homebrew/bin/cliclick kd:cmd,shift t:5 ku:cmd,shift && sleep 0.1 && osascript -e 'tell application \"System Events\" to key code 36' && sleep 0.7 && /opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
+                  }
+                ],
+                "description": "Full translate cycle"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "virtual_hid_keyboard": {
+        "keyboard_type_v2": "ansi"
+      },
+      "name": "Trivia",
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "Hyper Key (⌃⌥⇧⌘)",
+            "manipulators": [
+              {
+                "description": "Caps Lock -> Hyper Key",
+                "type": "basic",
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "hyper",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "hyper",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyper Key + m",
+            "manipulators": [
+              {
+                "to": [
+                  {
+                    "shell_command": "\"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Normal\""
+                  }
+                ],
+                "description": "Switch to profile: Normal",
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -11260,26 +11329,6 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_a",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_t",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
                     "value": 0
                   }
                 ]
@@ -11287,108 +11336,179 @@
             ]
           },
           {
-            "description": "Hyper Key + t",
+            "description": "Trivia: x = Close tab",
             "manipulators": [
               {
-                "description": "Screenshot → Google Translate",
-                "to": [
-                  {
-                    "shell_command": "bash \"/Users/aryaman/github/karabiner-config/scripts/screenshot-translate.sh\""
-                  }
-                ],
                 "type": "basic",
                 "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
+                  "key_code": "x"
                 },
-                "conditions": [
+                "to": [
                   {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_a",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_t",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 0
+                    "key_code": "w",
+                    "modifiers": [
+                      "right_command"
+                    ]
                   }
                 ]
               }
             ]
           },
           {
-            "description": "Hyper Key + c",
+            "description": "Trivia: 1 = Catfishing",
             "manipulators": [
               {
-                "description": "Type cereal aisle question",
-                "to": [
-                  {
-                    "shell_command": "python3 -c \"import time,subprocess;msg='Whats the interactions in the cereal aisle been like'\nfor c in msg:\n subprocess.run(['osascript','-e','tell application \"System Events\" to keystroke \"'+c+'\"']);time.sleep(0.02)\""
-                  }
-                ],
                 "type": "basic",
                 "from": {
-                  "key_code": "c",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
+                  "key_code": "1"
                 },
-                "conditions": [
+                "to": [
                   {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  },
+                    "shell_command": "open https://catfishing.net"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 2 = Thrice",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "2"
+                },
+                "to": [
                   {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
+                    "shell_command": "open https://thrice.geekswhodrink.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 3 = Wordle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "3"
+                },
+                "to": [
                   {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
+                    "shell_command": "open https://www.nytimes.com/games/wordle"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 4 = Connections",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "4"
+                },
+                "to": [
                   {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_a",
-                    "value": 0
-                  },
+                    "shell_command": "open https://www.nytimes.com/games/connections"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 5 = Strands",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "5"
+                },
+                "to": [
                   {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_t",
-                    "value": 0
-                  },
+                    "shell_command": "open https://www.nytimes.com/games/strands"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 6 = FoodGuessr",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "6"
+                },
+                "to": [
                   {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 0
+                    "shell_command": "open https://www.foodguessr.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 7 = TimeGuessr",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "7"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://timeguessr.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 8 = Mini Crossword",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "8"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://www.nytimes.com/crosswords/game/mini"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 9 = Spelling Bee",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "9"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://www.nytimes.com/puzzles/spelling-bee"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 0 = Globle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "0"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://globle-game.com"
                   }
                 ]
               }

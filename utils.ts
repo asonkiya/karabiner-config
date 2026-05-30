@@ -390,6 +390,132 @@ export function cmdSublayer(): { [key_code in KeyCode]?: LayerCommand } {
         );
 }
 
+/**
+ * Chain a series of actions into a single shell command with delays.
+ * Each step is one of:
+ *   - key("5", ["command", "shift"])  — keystroke via osascript
+ *   - click(x, y)                     — click at coordinates
+ *   - drag(x1, y1, x2, y2)           — drag from one point to another
+ *   - scroll(direction, clicks)       — scroll up/down/left/right
+ *   - delay(ms)                       — pause in seconds
+ *   - run("shell command")            — arbitrary shell command
+ *   - type("text")                    — type text via osascript
+ *   - keyCode(code)                   — press a key code (e.g. 36 for return)
+ *
+ * Usage:
+ *   chain("Take screenshot and translate", [
+ *     key("5", ["command", "shift"]),
+ *     delay(500),
+ *     keyCode(36),
+ *     delay(1500),
+ *     drag(1970, 1248, 1449, 617),
+ *     run("open -a 'Arc.app'"),
+ *   ])
+ */
+const CLICLICK = "/opt/homebrew/bin/cliclick";
+
+type ChainStep =
+        | { type: "key"; key: string; modifiers?: string[] }
+        | { type: "keyCode"; code: number; modifiers?: string[] }
+        | { type: "click"; x: number; y: number }
+        | { type: "drag"; x1: number; y1: number; x2: number; y2: number }
+        | { type: "scroll"; direction: "up" | "down" | "left" | "right"; clicks?: number }
+        | { type: "delay"; ms: number }
+        | { type: "run"; command: string }
+        | { type: "type"; text: string }
+        | { type: "nativeKey"; key_code: KeyCode; modifiers?: string[] };
+
+export function key(k: string, modifiers?: string[]): ChainStep {
+        return { type: "key", key: k, modifiers };
+}
+export function keyCode(code: number, modifiers?: string[]): ChainStep {
+        return { type: "keyCode", code, modifiers };
+}
+export function click(x: number, y: number): ChainStep {
+        return { type: "click", x, y };
+}
+export function drag(x1: number, y1: number, x2: number, y2: number): ChainStep {
+        return { type: "drag", x1, y1, x2, y2 };
+}
+export function scroll(direction: "up" | "down" | "left" | "right", clicks: number = 3): ChainStep {
+        return { type: "scroll", direction, clicks };
+}
+export function delay(ms: number): ChainStep {
+        return { type: "delay", ms };
+}
+export function run(command: string): ChainStep {
+        return { type: "run", command };
+}
+export function type(text: string): ChainStep {
+        return { type: "type", text };
+}
+export function nativeKey(key_code: KeyCode, modifiers?: string[]): ChainStep {
+        return { type: "nativeKey", key_code, modifiers };
+}
+
+function stepToShell(step: ChainStep): string {
+        switch (step.type) {
+                case "key": {
+                        const mods = step.modifiers?.map((m) => `${m} down`).join(", ") ?? "";
+                        const using = mods ? ` using {${mods}}` : "";
+                        return `osascript -e 'tell application "System Events" to keystroke "${step.key}"${using}'`;
+                }
+                case "keyCode": {
+                        const mods = step.modifiers?.map((m) => `${m} down`).join(", ") ?? "";
+                        const using = mods ? ` using {${mods}}` : "";
+                        return `osascript -e 'tell application "System Events" to key code ${step.code}${using}'`;
+                }
+                case "click":
+                        return `${CLICLICK} c:${step.x},${step.y}`;
+                case "drag":
+                        return `${CLICLICK} dd:${step.x1},${step.y1} dm:${step.x2},${step.y2} du:${step.x2},${step.y2}`;
+                case "scroll": {
+                        const dir = step.direction;
+                        const n = step.clicks ?? 3;
+                        const scrollCmd = dir === "up" ? `key code 126` : dir === "down" ? `key code 125` : dir === "left" ? `key code 123` : `key code 124`;
+                        return Array(n).fill(`osascript -e 'tell application "System Events" to ${scrollCmd}'`).join(" && ");
+                }
+                case "delay":
+                        return `sleep ${step.ms / 1000}`;
+                case "run":
+                        return step.command;
+                case "type":
+                        return `osascript -e 'tell application "System Events" to keystroke "${step.text}"'`;
+        }
+}
+
+export function chain(description: string, steps: ChainStep[]): LayerCommand {
+        // Split into leading native key events (fired by Karabiner directly)
+        // and the rest (bundled into a single shell command).
+        // Once we hit a delay or non-native step, everything from there goes to shell.
+        const toEvents: To[] = [];
+        let shellStart = 0;
+
+        for (let i = 0; i < steps.length; i++) {
+                if (steps[i].type === "nativeKey") {
+                        const s = steps[i] as { type: "nativeKey"; key_code: KeyCode; modifiers?: string[] };
+                        toEvents.push({
+                                key_code: s.key_code,
+                                ...(s.modifiers ? { modifiers: s.modifiers } : {}),
+                        } as To);
+                        shellStart = i + 1;
+                } else {
+                        break;
+                }
+        }
+
+        const shellSteps = steps.slice(shellStart);
+        if (shellSteps.length > 0) {
+                const cmd = shellSteps.map(stepToShell).join(" && ");
+                toEvents.push({ shell_command: cmd });
+        }
+
+        return {
+                to: toEvents,
+                description,
+        };
+}
+
 export function appAndSwitch(name: string, profileName: string): LayerCommand {
         return openAndSwitch(`-a '${name}.app'`, profileName);
 }

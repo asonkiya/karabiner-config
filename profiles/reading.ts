@@ -1,7 +1,5 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, switchProfile } from "../utils";
-
-const TRANSLATE_SCRIPT = `${process.env.HOME}/github/karabiner-config/scripts/screenshot-translate.sh`;
+import { createHyperSubLayers, app, open, switchProfile, chain, key, keyCode, click, drag, scroll, delay, run, nativeKey } from "../utils";
 
 const rules: KarabinerRules[] = [
         // Define the Hyper key itself
@@ -25,30 +23,72 @@ const rules: KarabinerRules[] = [
         ...createHyperSubLayers({
                 // m = switch back to Normal Mode
                 m: switchProfile("Normal"),
-
-                // s = Screenshot (area selection, saves to Desktop)
-                s: {
-                        description: "Screenshot: app selection",
-                        to: [{ key_code: "5", modifiers: ["right_command", "left_shift"] }],
-                },
-
-                // a = open Arc
-                a: app("Arc"),
-
-                // t = screenshot → Google Translate image translation
-                t: {
-                        description: "Screenshot → Google Translate",
-                        to: [{ shell_command: `bash "${TRANSLATE_SCRIPT}"` }],
-                },
-
-                // c = type cereal aisle question
-                c: {
-                        description: "Type cereal aisle question",
-                        to: [{ shell_command: `python3 -c "import time,subprocess;msg='Whats the interactions in the cereal aisle been like'
-for c in msg:
- subprocess.run(['osascript','-e','tell application \"System Events\" to keystroke \"'+c+'\"']);time.sleep(0.02)"` }],
-                },
         }),
+
+        // Reading mode direct keys (no Hyper needed)
+        // Individual steps for now — combine once coordinates are dialed in
+        {
+                description: "Reading: 1 = Screenshot + Enter",
+                manipulators: [{
+                        type: "basic",
+                        from: { key_code: "1" },
+                        ...chain("Screenshot + Enter", [
+                                nativeKey("5" as any, ["right_command", "left_shift"]),
+                                delay(500),
+                                keyCode(36),
+                        ]),
+                }],
+        },
+        {
+                description: "Reading: 2 = Open Arc",
+                manipulators: [{
+                        type: "basic",
+                        from: { key_code: "2" },
+                        ...chain("Open Arc", [
+                                run("open -a 'Arc.app'"),
+                        ]),
+                }],
+        },
+        {
+                description: "Reading: 3 = Drag preview to translate",
+                manipulators: [{
+                        type: "basic",
+                        from: { key_code: "3" },
+                        ...chain("Drag screenshot to translate", [
+                                run("/opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"),
+                        ]),
+                }],
+        },
+        {
+                description: "Reading: 4 = Next chapter + remove old + screenshot + drag to translate",
+                manipulators: [{
+                        type: "basic",
+                        from: { key_code: "right_arrow" },
+                        ...chain("Full translate cycle", [
+                                // Click next chapter
+                                click(974, 681),
+                                delay(100),
+                                // Click translate tab area
+                                click(1547, 77),
+                                delay(50),
+                                // Scroll to top (Cmd+Up)
+                                keyCode(126, ["command"]),
+                                delay(200),
+                                // Vimium: f then w to remove old chapter
+                                key("f"),
+                                delay(100),
+                                key("w"),
+                                // Take screenshot via cliclick key press
+                                run("/opt/homebrew/bin/cliclick kd:cmd,shift t:5 ku:cmd,shift"),
+                                delay(100),
+                                // Press enter to capture
+                                keyCode(36),
+                                delay(700),
+                                // Drag preview to translate
+                                run("/opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"),
+                        ]),
+                }],
+        },
 ];
 
 export const readingProfile: Profile = {
