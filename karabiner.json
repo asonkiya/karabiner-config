@@ -11499,7 +11499,7 @@
             ]
           },
           {
-            "description": "Trivia: 0 = Globle",
+            "description": "Trivia: 0 = GeoGuessr",
             "manipulators": [
               {
                 "type": "basic",
@@ -11508,7 +11508,151 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open https://globle-game.com"
+                    "shell_command": "open https://www.geoguessr.com/daily-challenge"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: a = Bandle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "a"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://bandle.app"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: s = Costcodle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "s"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://costcodle.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: d = Tradle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "d"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://oec.world/en/tradle"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: f = Heardle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "f"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://www.heardle.app"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: g = Framed",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "g"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://framed.wtf"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: q = Pokedoku",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "q"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://pokedoku.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: w = Contexto",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "w"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://contexto.me"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: e = Redactle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "e"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://www.redactle.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: r = Worldle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "r"
+                },
+                "to": [
+                  {
+                    "shell_command": "open https://worldle.teuteuf.fr"
                   }
                 ]
               }
