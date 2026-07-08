@@ -9,6 +9,7 @@ export interface GlobalConfig {
 
 export interface Profile {
         name: string;
+        selected?: boolean;
         virtual_hid_keyboard?: VirtualHidKeyboard;
         complex_modifications?: ComplexModifications;
 }

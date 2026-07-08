@@ -1,7 +1,9 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, shell, switchProfile, appAndSwitch, doubleTap, cmdSublayer } from "../utils";
-// Text-editing vim is now handled system-wide by SketchyVim (brew svim), not Karabiner.
-// The old Hyper+Enter vim-mode lives in ./vim-mode.ts if you ever want it back.
+import { createHyperSubLayers, app, open, window, shell, doubleTap, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode } from "../utils";
+import { vimMode, vimModeRules } from "./vim-mode";
+import { programmingRules } from "./programming";
+import { readingRules } from "./reading";
+import { triviaRules } from "./trivia";
 
 const rules: KarabinerRules[] = [
         // Define the Hyper key itself
@@ -95,36 +97,9 @@ const rules: KarabinerRules[] = [
                 //                escape: shell`
                 //                                "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "test"
                 //                             `,
-                // l = "L"ookup
-                l: {
-                        i: open("https://www.instagram.com/direct/t/5082114295174947/"),
-                        d: app("Photo Booth"),
-                        y: open("https://youtube.com"),
-                        m: open("https://music.youtube.com"),
-                        t: open("https://mychtransit.org/map"),
-                        n: open("http://localhost:8080/"),
-                        s: open("https://twitch.tv"),
-                        c: open("https://canvas.unc.edu"),
-                        g: open("https://github.com"),
-
-                },
-                // o = "Open" applications
-                o: {
-                        g: app("/Applications/Arc"),
-                        e: app("Microsoft Outlook"),
-                        d: app("Discord"),
-                        n: app("ZenNotes"),
-                        t: appAndSwitch("iTerm", "Programming"),
-                        z: app("zoom.us"),
-                        r: app("Rstudio"),
-                        f: app("Finder"),
-                        m: app("Messages"),
-                        p: app("iPhone Mirroring"),
-                        c: app("Screenshot"),
-                        v: app("Surfshark"),
-                        // I will never understand why WhatsApp doesn't have a proper Mac app, but this is the best we can do for now
-                        w: open("/Applications/WhatsApp.localized/WhatsApp.app"),
-                },
+                // l (lookup), o (open apps) and w (window) are now GLOBAL — see
+                // globalNavLayers below, spread after the mode fragments so they
+                // work in every mode (and mode overrides can win where needed).
 
                 // TODO: This doesn't quite work yet.
                 // l = "Layouts" via Raycast's custom window management
@@ -140,66 +115,6 @@ const rules: KarabinerRules[] = [
                 //     open -g "raycast://customWindowManagementCommand?position=topRight&relativeWidth=0.5"
                 //   `,
                 // },
-
-                // w = "Window"
-                w: {
-                        semicolon: {
-                                description: "Window: Hide",
-                                to: [
-                                        {
-                                                key_code: "h",
-                                                modifiers: ["right_command"],
-                                        },
-                                ],
-                        },
-                        j: {
-                                description: "Window: Ctrl + Left Arrow",
-                                to: [
-                                        {
-                                                key_code: "left_arrow",
-                                                modifiers: ["control"],
-                                        },
-                                ],
-                        },
-                        k: {
-                                description: "Window: Ctrl + Right Arrow",
-                                to: [
-                                        {
-                                                key_code: "right_arrow",
-                                                modifiers: ["control"],
-                                        },
-                                ],
-                        },
-                        m: window("maximize"),
-                        f: {
-                                description: "Window: Fullscreen",
-                                to: [
-                                        {
-                                                key_code: "f",
-                                                modifiers: ["right_control", "right_command"],
-                                        },
-                                ],
-                        },
-                        // Zoom using u and i for shift plus and minus for better ergonomics
-                        i: {
-                                description: "Window: Zoom In",
-                                to: [
-                                        {
-                                                key_code: "equal_sign",
-                                                modifiers: ["right_shift", "right_command"],
-                                        },
-                                ],
-                        },
-                        o: {
-                                description: "Window: Zoom Out",
-                                to: [
-                                        {
-                                                key_code: "hyphen",
-                                                modifiers: ["right_shift", "right_command"],
-                                        },
-                                ],
-                        },
-                },
 
                 // s = "System"
                 s: {
@@ -314,11 +229,12 @@ const rules: KarabinerRules[] = [
                 // i = "Ideas" quick capture via Raycast
                 i: open("raycast://extensions/asonkiya/idea-capture/capture"),
 
-                // m = "Modes" profile switching
+                // m = "Modes" — enter a mode from Normal. (From within a mode,
+                // bare Hyper+M jumps back to Normal; see the escape hatches below.)
                 m: {
-                        c: switchProfile("Programming"),
-                        r: switchProfile("Reading"),
-                        t: switchProfile("Trivia"),
+                        c: switchMode("programming"),
+                        r: switchMode("reading"),
+                        t: switchMode("trivia"),
                 },
 
                 // c = Cmd + key passthrough
@@ -349,6 +265,69 @@ const rules: KarabinerRules[] = [
                 q: { description: "Cmd+Q (Quit)", to: [{ key_code: "q", modifiers: ["right_command"] }] },
                 d: { description: "Cmd+W (Close)", to: [{ key_code: "w", modifiers: ["right_command"] }] },
                 n: { description: "Cmd+T (New Tab)", to: [{ key_code: "t", modifiers: ["right_command"] }] },
+        }, whenNormal),
+
+        // Escape hatch: from within ANY mode, bare Hyper+M jumps back to Normal
+        // (one per mode since Karabiner conditions can't OR). Gated to each mode
+        // so in Normal, Hyper+M is the mode-enter sublayer above instead.
+        ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("programming")),
+        ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("reading")),
+        ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("trivia")),
+
+        // Vim mode toggle — available in every mode (Hyper+Enter to enter,
+        // i or Escape to exit; see vimModeRules).
+        ...createHyperSubLayers({ return_or_enter: vimMode.enable() }),
+
+        // Mode-specific rules, each gated behind its own mode variable.
+        ...programmingRules,
+        ...readingRules,
+        ...triviaRules,
+
+        // Global navigation: lookup (l), open apps (o), window (w) — available
+        // in EVERY mode so you can always jump to another app / manage windows.
+        // Spread AFTER the mode fragments so a mode's per-key override (e.g.
+        // Programming's O+G = Godot) wins over the global default here.
+        ...createHyperSubLayers({
+                // l = "L"ookup
+                l: {
+                        i: open("https://www.instagram.com/direct/t/5082114295174947/"),
+                        d: app("Photo Booth"),
+                        y: open("https://youtube.com"),
+                        m: open("https://music.youtube.com"),
+                        t: open("https://mychtransit.org/map"),
+                        n: open("http://localhost:8080/"),
+                        s: open("https://twitch.tv"),
+                        c: open("https://canvas.unc.edu"),
+                        g: open("https://github.com"),
+                },
+                // o = "Open" applications
+                o: {
+                        g: app("/Applications/Arc"),
+                        e: app("Microsoft Outlook"),
+                        d: app("Discord"),
+                        n: app("ZenNotes"),
+                        t: appAndSwitchMode("iTerm", "programming"),
+                        z: app("zoom.us"),
+                        r: app("Rstudio"),
+                        f: app("Finder"),
+                        m: app("Messages"),
+                        p: app("iPhone Mirroring"),
+                        c: app("Screenshot"),
+                        v: app("Surfshark"),
+                        // I will never understand why WhatsApp doesn't have a proper Mac app, but this is the best we can do for now
+                        w: open("/Applications/WhatsApp.localized/WhatsApp.app"),
+                },
+                // w = "Window"
+                w: {
+                        semicolon: { description: "Window: Hide", to: [{ key_code: "h", modifiers: ["right_command"] }] },
+                        j: { description: "Window: Ctrl + Left Arrow", to: [{ key_code: "left_arrow", modifiers: ["control"] }] },
+                        k: { description: "Window: Ctrl + Right Arrow", to: [{ key_code: "right_arrow", modifiers: ["control"] }] },
+                        m: window("maximize"),
+                        f: { description: "Window: Fullscreen", to: [{ key_code: "f", modifiers: ["right_control", "right_command"] }] },
+                        // Zoom using u and i for shift plus and minus for better ergonomics
+                        i: { description: "Window: Zoom In", to: [{ key_code: "equal_sign", modifiers: ["right_shift", "right_command"] }] },
+                        o: { description: "Window: Zoom Out", to: [{ key_code: "hyphen", modifiers: ["right_shift", "right_command"] }] },
+                },
         }),
         //        {
         //                description: "Change Backspace to Spacebar when Minecraft is focused",
@@ -374,6 +353,9 @@ const rules: KarabinerRules[] = [
         //                        },
         //                ],
         //        },
+
+        // Vim mode (Hyper+Enter to enter, I or Escape to exit)
+        ...vimModeRules,
 ];
 
 export const normalProfile: Profile = {

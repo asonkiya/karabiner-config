@@ -1,24 +1,27 @@
 -- apps.lua
--- Declarative app → profile/mode mappings.
+-- Declarative app → mode mappings.
 -- Mirrors the structure of the karabiner-config TypeScript files.
 --
 -- Fields per entry:
---   name     (string)   - exact app name as reported by macOS
---   profile  (string?)  - Karabiner profile to switch to on activation
+--   name     (string)    - exact app name as reported by macOS
 --   modes    (string[]?) - karabiner mode variables to enable on activation
 --
--- On deactivation: profile reverts to defaultProfile, modes are disabled.
+-- Modes are mutually exclusive: activating an app's modes clears every other
+-- mode in `allModes` (so focusing a terminal in Trivia mode doesn't leave the
+-- bare-key game bindings hijacking your typing). On deactivation, the app's
+-- modes are disabled (back to Normal).
 
 return {
-    defaultProfile = "Normal",
+    -- All mutually-exclusive modes. Activating one clears the others.
+    allModes = { "programming", "reading", "trivia" },
 
     apps = {
         -- Programming
-        { name = "iTerm2",   profile = "Programming" },
-        { name = "Godot",    profile = "Programming" },
+        -- iTerm no longer auto-switches; use Hyper+O+T or Hyper+M+C instead.
+        { name = "Godot",    modes = { "programming" } },
 
         -- Reading
-        -- { name = "Kindle",   profile = "Reading" },
+        -- { name = "Kindle",   modes = { "reading" } },
 
         -- Vim mode (auto-enter on activation, exit on deactivation)
         -- { name = "Obsidian", modes = { "vim_mode" } },
