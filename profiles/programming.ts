@@ -20,8 +20,9 @@ export const programmingRules: KarabinerRules[] = createHyperSubLayers({
         // c = Cmd + key passthrough
         c: cmdSublayer(),
 
-        // l = Claude "L"LM commands
-        l: {
+        // k = Claude commands (moved off l so the global lookup sublayer works
+        // in Programming mode too)
+        k: {
                 r: {
                         description: "Claude: /resume",
                         to: [

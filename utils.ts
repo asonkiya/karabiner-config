@@ -362,7 +362,9 @@ export function switchMode(target: ModeName | "normal"): LayerCommand {
                         : `rm -f /tmp/karabiner_mode_${m}`
         ).join("; ");
         const label = MODE_LABELS[target];
-        const shell = `${flags}; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification "${label} Mode" with title "Karabiner"'`;
+        // No banner notification — the SwiftBar menubar + tmux status (both fed
+        // by the /tmp flag files + tmux refresh) are the mode indicators.
+        const shell = `${flags}; tmux refresh-client -S 2>/dev/null`;
         return {
                 to: [...setVars, { shell_command: shell }],
                 description: `Switch to ${label} mode`,
