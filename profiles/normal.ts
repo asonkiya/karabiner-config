@@ -1,6 +1,7 @@
 import { KarabinerRules, Profile } from "../types";
 import { createHyperSubLayers, app, open, window, shell, switchProfile, appAndSwitch, doubleTap, cmdSublayer } from "../utils";
-import { vimMode, vimModeRules } from "./vim-mode";
+// Text-editing vim is now handled system-wide by SketchyVim (brew svim), not Karabiner.
+// The old Hyper+Enter vim-mode lives in ./vim-mode.ts if you ever want it back.
 
 const rules: KarabinerRules[] = [
         // Define the Hyper key itself
@@ -97,7 +98,7 @@ const rules: KarabinerRules[] = [
                 // l = "L"ookup
                 l: {
                         i: open("https://www.instagram.com/direct/t/5082114295174947/"),
-                        d: open("https://doordash.com/"),
+                        d: app("Photo Booth"),
                         y: open("https://youtube.com"),
                         m: open("https://music.youtube.com"),
                         t: open("https://mychtransit.org/map"),
@@ -112,7 +113,7 @@ const rules: KarabinerRules[] = [
                         g: app("/Applications/Arc"),
                         e: app("Microsoft Outlook"),
                         d: app("Discord"),
-                        n: app("Obsidian"),
+                        n: app("ZenNotes"),
                         t: appAndSwitch("iTerm", "Programming"),
                         z: app("zoom.us"),
                         r: app("Rstudio"),
@@ -310,14 +311,15 @@ const rules: KarabinerRules[] = [
                         g: app("ChatGPT"),
                 },
 
+                // i = "Ideas" quick capture via Raycast
+                i: open("raycast://extensions/asonkiya/idea-capture/capture"),
+
                 // m = "Modes" profile switching
                 m: {
                         c: switchProfile("Programming"),
                         r: switchProfile("Reading"),
                         t: switchProfile("Trivia"),
                 },
-
-                return_or_enter: vimMode.enable(),
 
                 // c = Cmd + key passthrough
                 c: cmdSublayer(),
@@ -339,6 +341,9 @@ const rules: KarabinerRules[] = [
                 },
 
                 slash: { description: "Find (Cmd+F)", to: [{ key_code: "f", modifiers: ["right_command"] }] },
+
+                // f -> Cmd+L
+                f: { description: "Cmd+L", to: [{ key_code: "l", modifiers: ["left_command"] }] },
 
                 // Quick window actions
                 q: { description: "Cmd+Q (Quit)", to: [{ key_code: "q", modifiers: ["right_command"] }] },
@@ -369,9 +374,6 @@ const rules: KarabinerRules[] = [
         //                        },
         //                ],
         //        },
-
-        // Vim mode (Hyper+Enter to enter, I or Escape to exit)
-        ...vimModeRules,
 ];
 
 export const normalProfile: Profile = {

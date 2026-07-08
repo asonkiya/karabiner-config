@@ -168,12 +168,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -204,6 +204,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -307,12 +312,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -343,6 +348,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -447,12 +457,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -483,6 +493,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -534,10 +549,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open https://doordash.com/"
+                    "shell_command": "open -a 'Photo Booth.app'"
                   }
                 ],
-                "description": "Open https://doordash.com/",
+                "description": "Open -a 'Photo Booth.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "d",
@@ -808,12 +823,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -844,6 +859,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -943,10 +963,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Obsidian.app'"
+                    "shell_command": "open -a 'ZenNotes.app'"
                   }
                 ],
-                "description": "Open -a 'Obsidian.app'",
+                "description": "Open -a 'ZenNotes.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "n",
@@ -1265,12 +1285,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -1301,6 +1321,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -1599,12 +1624,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -1635,6 +1660,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -1956,12 +1986,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -1992,6 +2022,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -2358,12 +2393,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -2394,6 +2429,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -2505,12 +2545,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -2541,6 +2581,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -2652,12 +2697,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -2688,6 +2733,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -2807,12 +2857,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -2843,6 +2893,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -2912,6 +2967,150 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_a",
                     "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyper Key + i",
+            "manipulators": [
+              {
+                "to": [
+                  {
+                    "shell_command": "open raycast://extensions/asonkiya/idea-capture/capture"
+                  }
+                ],
+                "description": "Open raycast://extensions/asonkiya/idea-capture/capture",
+                "type": "basic",
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_semicolon",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_spacebar",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_l",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_w",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_s",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_v",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_h",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_j",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_k",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_a",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_y",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_p",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_u",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_r",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_q",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_d",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_n",
+                    "value": 0
                   }
                 ]
               }
@@ -3005,7 +3204,7 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
@@ -3036,6 +3235,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -3135,151 +3339,6 @@
             ]
           },
           {
-            "description": "Hyper Key + return_or_enter",
-            "manipulators": [
-              {
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "vim_mode",
-                      "value": 1
-                    }
-                  },
-                  {
-                    "shell_command": "touch /tmp/karabiner_mode_vim_mode"
-                  }
-                ],
-                "description": "Enable vim_mode mode",
-                "type": "basic",
-                "from": {
-                  "key_code": "return_or_enter",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_semicolon",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_spacebar",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_l",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_w",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_v",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_h",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_j",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_k",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_a",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_y",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_p",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_u",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_r",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_slash",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_q",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_d",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_n",
-                    "value": 0
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "description": "Hyper Key sublayer \"c\"",
             "manipulators": [
               {
@@ -3367,12 +3426,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -3398,6 +3457,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -4481,12 +4545,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -4517,6 +4581,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -4623,12 +4692,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -4659,6 +4728,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -4762,12 +4836,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -4798,6 +4872,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -4907,12 +4986,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -4938,6 +5017,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -5121,12 +5205,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -5157,6 +5241,158 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_q",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_d",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_n",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyper Key + f",
+            "manipulators": [
+              {
+                "description": "Cmd+L",
+                "to": [
+                  {
+                    "key_code": "l",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_semicolon",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_spacebar",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_l",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_w",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_s",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_v",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_h",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_j",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_k",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_a",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_y",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_p",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_u",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_r",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -5263,12 +5499,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -5299,6 +5535,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -5405,12 +5646,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -5441,6 +5682,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
                     "value": 0
                   },
                   {
@@ -5547,12 +5793,12 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
+                    "name": "hyper_sublayer_i",
                     "value": 0
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -5587,6 +5833,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_f",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_q",
                     "value": 0
                   },
@@ -5599,572 +5850,6 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
                     "value": 0
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Vim Mode: hjkl movement",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "h"
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "j"
-                },
-                "to": [
-                  {
-                    "key_code": "down_arrow"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "k"
-                },
-                "to": [
-                  {
-                    "key_code": "up_arrow"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "l"
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Vim Mode: w/b word movement",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "w"
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": [
-                      "left_option"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "b"
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": [
-                      "left_option"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Vim Mode: 0/e line start/end",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "0"
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "e"
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Vim Mode: [ / ] document start/end",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "open_bracket"
-                },
-                "to": [
-                  {
-                    "key_code": "up_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "close_bracket"
-                },
-                "to": [
-                  {
-                    "key_code": "down_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Vim Mode: x delete forward, d delete backward, u undo",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "x"
-                },
-                "to": [
-                  {
-                    "key_code": "delete_forward"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "d"
-                },
-                "to": [
-                  {
-                    "key_code": "delete_or_backspace"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "u"
-                },
-                "to": [
-                  {
-                    "key_code": "z",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "y"
-                },
-                "to": [
-                  {
-                    "key_code": "c",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "p"
-                },
-                "to": [
-                  {
-                    "key_code": "v",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "y",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_shift"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  },
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": [
-                      "right_command",
-                      "left_shift"
-                    ]
-                  },
-                  {
-                    "key_code": "c",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  },
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  },
-                  {
-                    "key_code": "return_or_enter"
-                  },
-                  {
-                    "key_code": "v",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Vim Mode: s select word, v select line",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "s"
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": [
-                      "left_option",
-                      "left_shift"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "v"
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  },
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": [
-                      "right_command",
-                      "left_shift"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Vim Mode: o / O open line below / above",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "o",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_shift"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  },
-                  {
-                    "key_code": "return_or_enter"
-                  },
-                  {
-                    "key_code": "up_arrow"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "vim_mode",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "shell_command": "rm -f /tmp/karabiner_mode_vim_mode"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "o"
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  },
-                  {
-                    "key_code": "return_or_enter"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "vim_mode",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "shell_command": "rm -f /tmp/karabiner_mode_vim_mode"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Vim Mode: i / escape exits to insert mode",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "i"
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "vim_mode",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "shell_command": "rm -f /tmp/karabiner_mode_vim_mode"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "escape"
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "vim_mode",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "shell_command": "rm -f /tmp/karabiner_mode_vim_mode"
-                  },
-                  {
-                    "key_code": "escape"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "vim_mode",
-                    "value": 1
                   }
                 ]
               }
