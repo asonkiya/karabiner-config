@@ -1,5 +1,5 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, shell, doubleTap, cmdSublayer, switchMode, appAndSwitchMode, whenNormal } from "../utils";
+import { createHyperSubLayers, app, open, window, shell, doubleTap, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode } from "../utils";
 import { vimMode, vimModeRules } from "./vim-mode";
 import { programmingRules } from "./programming";
 import { readingRules } from "./reading";
@@ -316,6 +316,14 @@ const rules: KarabinerRules[] = [
                 // i = "Ideas" quick capture via Raycast
                 i: open("raycast://extensions/asonkiya/idea-capture/capture"),
 
+                // m = "Modes" — enter a mode from Normal. (From within a mode,
+                // bare Hyper+M jumps back to Normal; see the escape hatches below.)
+                m: {
+                        c: switchMode("programming"),
+                        r: switchMode("reading"),
+                        t: switchMode("trivia"),
+                },
+
                 // c = Cmd + key passthrough
                 c: cmdSublayer(),
 
@@ -346,20 +354,16 @@ const rules: KarabinerRules[] = [
                 n: { description: "Cmd+T (New Tab)", to: [{ key_code: "t", modifiers: ["right_command"] }] },
         }, whenNormal),
 
-        // m = "Modes" — instant, variable-based switching. Available in every
-        // mode (ungated) so you can always hop between modes / back to Normal.
-        //   Hyper+M+C = Programming, +R = Reading, +T = Trivia, +N = Normal
-        ...createHyperSubLayers({
-                m: {
-                        c: switchMode("programming"),
-                        r: switchMode("reading"),
-                        t: switchMode("trivia"),
-                        n: switchMode("normal"),
-                },
-                // Vim mode toggle — available in every mode (Hyper+Enter to enter,
-                // i or Escape to exit; see vimModeRules).
-                return_or_enter: vimMode.enable(),
-        }),
+        // Escape hatch: from within ANY mode, bare Hyper+M jumps back to Normal
+        // (one per mode since Karabiner conditions can't OR). Gated to each mode
+        // so in Normal, Hyper+M is the mode-enter sublayer above instead.
+        ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("programming")),
+        ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("reading")),
+        ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("trivia")),
+
+        // Vim mode toggle — available in every mode (Hyper+Enter to enter,
+        // i or Escape to exit; see vimModeRules).
+        ...createHyperSubLayers({ return_or_enter: vimMode.enable() }),
 
         // Mode-specific rules, each gated behind its own mode variable.
         ...programmingRules,

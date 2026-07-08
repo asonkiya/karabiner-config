@@ -174,6 +174,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -324,6 +329,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -479,6 +489,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -990,6 +1005,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -1682,6 +1702,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -2132,6 +2157,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -2639,6 +2669,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -3225,6 +3260,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -3387,6 +3427,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -3545,6 +3590,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -3715,6 +3765,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -3956,6 +4011,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -4003,6 +4063,342 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
                     "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyper Key sublayer \"m\"",
+            "manipulators": [
+              {
+                "description": "Toggle Hyper sublayer m",
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "hyper_sublayer_m",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "hyper_sublayer_m",
+                      "value": 1
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_semicolon",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_spacebar",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_l",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_w",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_s",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_v",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_h",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_j",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_k",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_a",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_y",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_p",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_u",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_r",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_q",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_d",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "touch /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Programming Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Programming mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "c",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "rm -f /tmp/karabiner_mode_programming; touch /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Reading Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Reading mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "shell_command": "rm -f /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; touch /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Trivia Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Trivia mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 1
                   },
                   {
                     "type": "variable_if",
@@ -4112,6 +4508,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -5785,6 +6186,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -5942,6 +6348,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -6092,6 +6503,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -6252,6 +6668,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -6530,6 +6951,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -6683,6 +7109,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -6844,6 +7275,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -6997,6 +7433,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
                     "value": 0
                   },
                   {
@@ -7158,6 +7599,11 @@
                   },
                   {
                     "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -7226,174 +7672,8 @@
             ]
           },
           {
-            "description": "Hyper Key sublayer \"m\"",
+            "description": "Hyper Key + m",
             "manipulators": [
-              {
-                "description": "Toggle Hyper sublayer m",
-                "type": "basic",
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to_after_key_up": [
-                  {
-                    "set_variable": {
-                      "name": "hyper_sublayer_m",
-                      "value": 0
-                    }
-                  }
-                ],
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "hyper_sublayer_m",
-                      "value": 1
-                    }
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "programming",
-                      "value": 1
-                    }
-                  },
-                  {
-                    "set_variable": {
-                      "name": "reading",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "set_variable": {
-                      "name": "trivia",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "shell_command": "touch /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Programming Mode\" with title \"Karabiner\"'"
-                  }
-                ],
-                "description": "Switch to Programming mode",
-                "type": "basic",
-                "from": {
-                  "key_code": "c",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "programming",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "set_variable": {
-                      "name": "reading",
-                      "value": 1
-                    }
-                  },
-                  {
-                    "set_variable": {
-                      "name": "trivia",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "shell_command": "rm -f /tmp/karabiner_mode_programming; touch /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Reading Mode\" with title \"Karabiner\"'"
-                  }
-                ],
-                "description": "Switch to Reading mode",
-                "type": "basic",
-                "from": {
-                  "key_code": "r",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "programming",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "set_variable": {
-                      "name": "reading",
-                      "value": 0
-                    }
-                  },
-                  {
-                    "set_variable": {
-                      "name": "trivia",
-                      "value": 1
-                    }
-                  },
-                  {
-                    "shell_command": "rm -f /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; touch /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Trivia Mode\" with title \"Karabiner\"'"
-                  }
-                ],
-                "description": "Switch to Trivia mode",
-                "type": "basic",
-                "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 1
-                  }
-                ]
-              },
               {
                 "to": [
                   {
@@ -7421,7 +7701,7 @@
                 "description": "Switch to Normal mode",
                 "type": "basic",
                 "from": {
-                  "key_code": "n",
+                  "key_code": "m",
                   "modifiers": {
                     "optional": [
                       "any"
@@ -7431,7 +7711,131 @@
                 "conditions": [
                   {
                     "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
                     "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyper Key + m",
+            "manipulators": [
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "rm -f /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Normal Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Normal mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyper Key + m",
+            "manipulators": [
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "rm -f /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Normal Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Normal mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 1
                   }
                 ]
@@ -7468,11 +7872,6 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
                   },
                   {
                     "type": "variable_if",
