@@ -232,7 +232,7 @@ const rules: KarabinerRules[] = [
                 // m = "Modes" — enter a mode from Normal. (From within a mode,
                 // bare Hyper+M jumps back to Normal; see the escape hatches below.)
                 m: {
-                        c: switchMode("programming"),
+                        p: switchMode("programming"),
                         r: switchMode("reading"),
                         t: switchMode("trivia"),
                 },

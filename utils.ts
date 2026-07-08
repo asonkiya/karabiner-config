@@ -128,9 +128,13 @@ export function createHyperSubLayers(
         // an entire sublayer set behind a mode variable (e.g. programming == 1).
         extraConditions: NonNullable<Manipulator["conditions"]> = []
 ): KarabinerRules[] {
-        const allSubLayerVariables = (
-                Object.keys(subLayers) as (keyof typeof subLayers)[]
-        ).map((sublayer_key) => generateSubLayerVariableName(sublayer_key));
+        // Exclusion is over the GLOBAL key set, not just this call's keys, so that
+        // sublayers split across multiple createHyperSubLayers calls (e.g. the
+        // global o/l/w nav layer) still suppress each other. Keys that aren't
+        // actually sublayers have a variable that's always 0, so this is harmless.
+        const allSubLayerVariables = ALL_HYPER_SUBLAYER_KEYS.map(
+                generateSubLayerVariableName
+        );
 
         return Object.entries(subLayers).map(([key, value]) =>
                 "to" in value
@@ -178,6 +182,16 @@ export function createHyperSubLayers(
 function generateSubLayerVariableName(key: KeyCode) {
         return `hyper_sublayer_${key}`;
 }
+
+// Every key that is (or could be) a Hyper sublayer/command key anywhere in the
+// profile. All createHyperSubLayers calls share this as their exclusion set so
+// that while any sublayer is held, bindings from other calls are suppressed.
+const ALL_HYPER_SUBLAYER_KEYS: KeyCode[] = [
+        ..."abcdefghijklmnopqrstuvwxyz".split(""),
+        ..."0123456789".split(""),
+        "semicolon", "spacebar", "slash", "return_or_enter",
+        "hyphen", "open_bracket", "close_bracket", "comma", "period", "quote",
+] as KeyCode[];
 
 /**
  * Types a vim command :<command><enter> — assumes already in normal mode
