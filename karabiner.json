@@ -1243,9 +1243,6 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'iTerm.app'"
-                  },
-                  {
                     "set_variable": {
                       "name": "programming",
                       "value": 1
@@ -1264,7 +1261,7 @@
                     }
                   },
                   {
-                    "shell_command": "touch /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Programming Mode\" with title \"Karabiner\"'"
+                    "shell_command": "open -a 'iTerm.app'; touch /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Programming Mode\" with title \"Karabiner\"'"
                   }
                 ],
                 "description": "Open iTerm & switch to programming mode",

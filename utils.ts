@@ -369,13 +369,20 @@ export function switchMode(target: ModeName | "normal"): LayerCommand {
         };
 }
 
-/** Open an app and instantly switch into a mode. */
+/**
+ * Open an app and instantly switch into a mode. Structurally mirrors
+ * switchMode (set_variables first, then a single shell_command) so it fires
+ * reliably on the first press — a leading standalone `open` event before the
+ * set_variables is flaky in Karabiner and needs a double press.
+ */
 export function appAndSwitchMode(name: string, mode: ModeName): LayerCommand {
+        const base = switchMode(mode);
         return {
-                to: [
-                        { shell_command: `open -a '${name}.app'` },
-                        ...switchMode(mode).to,
-                ],
+                to: base.to.map((event) =>
+                        "shell_command" in event && event.shell_command
+                                ? { shell_command: `open -a '${name}.app'; ${event.shell_command}` }
+                                : event
+                ),
                 description: `Open ${name} & switch to ${mode} mode`,
         };
 }

@@ -17,7 +17,7 @@ return {
 
     apps = {
         -- Programming
-        { name = "iTerm2",   modes = { "programming" } },
+        -- iTerm no longer auto-switches; use Hyper+O+T or Hyper+M+C instead.
         { name = "Godot",    modes = { "programming" } },
 
         -- Reading
