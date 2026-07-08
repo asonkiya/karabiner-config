@@ -7,6 +7,7 @@
       "virtual_hid_keyboard": {
         "keyboard_type_v2": "ansi"
       },
+      "selected": true,
       "name": "Normal",
       "complex_modifications": {
         "rules": [
@@ -173,11 +174,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -224,6 +220,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -317,11 +328,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -368,6 +374,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -462,11 +483,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -519,6 +535,21 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -543,6 +574,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -567,6 +613,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -591,6 +652,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -615,6 +691,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -639,6 +730,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -663,6 +769,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -687,6 +808,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -711,6 +847,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -735,6 +886,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -828,11 +994,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -885,6 +1046,21 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -909,6 +1085,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -933,6 +1124,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -957,6 +1163,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -981,16 +1202,52 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'iTerm.app' && \"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Programming\""
+                    "shell_command": "open -a 'iTerm.app'"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "touch /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Programming Mode\" with title \"Karabiner\"'"
                   }
                 ],
-                "description": "Open -a 'iTerm.app' & switch to profile: Programming",
+                "description": "Open iTerm & switch to programming mode",
                 "type": "basic",
                 "from": {
                   "key_code": "t",
@@ -1005,6 +1262,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1029,6 +1301,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1053,6 +1340,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1077,6 +1379,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1101,6 +1418,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1125,6 +1457,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1149,6 +1496,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1173,6 +1535,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1197,6 +1574,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -1290,11 +1682,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -1347,6 +1734,21 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1374,6 +1776,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_w",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1401,6 +1818,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_w",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1428,6 +1860,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_w",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1452,6 +1899,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_w",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1480,6 +1942,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_w",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1508,6 +1985,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_w",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1536,6 +2028,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_w",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -1629,11 +2136,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -1686,6 +2188,21 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1709,6 +2226,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1732,6 +2264,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1755,6 +2302,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1778,6 +2340,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1801,6 +2378,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1824,6 +2416,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1848,6 +2455,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1872,6 +2494,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -1898,6 +2535,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -1991,11 +2643,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -2048,6 +2695,21 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2071,6 +2733,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2094,6 +2771,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2117,6 +2809,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2140,6 +2847,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2166,6 +2888,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2192,6 +2929,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2219,6 +2971,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2243,6 +3010,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2267,6 +3049,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2290,6 +3087,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2313,6 +3125,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -2398,11 +3225,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -2456,6 +3278,21 @@
                     "bundle_identifiers": [
                       "^net\\.whatsapp\\.WhatsApp$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ],
                 "type": "basic",
@@ -2550,11 +3387,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -2608,6 +3440,21 @@
                     "bundle_identifiers": [
                       "^net\\.whatsapp\\.WhatsApp$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ],
                 "type": "basic",
@@ -2702,11 +3549,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -2760,6 +3602,21 @@
                     "bundle_identifiers": [
                       "^net\\.whatsapp\\.WhatsApp$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ],
                 "type": "basic",
@@ -2862,11 +3719,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -2919,6 +3771,21 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2943,6 +3810,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_a",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -2967,6 +3849,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_a",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -3059,156 +3956,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_y",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_p",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_u",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_r",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_slash",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_f",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_q",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_d",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_n",
-                    "value": 0
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Hyper Key sublayer \"m\"",
-            "manipulators": [
-              {
-                "description": "Toggle Hyper sublayer m",
-                "type": "basic",
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to_after_key_up": [
-                  {
-                    "set_variable": {
-                      "name": "hyper_sublayer_m",
-                      "value": 0
-                    }
-                  }
-                ],
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "hyper_sublayer_m",
-                      "value": 1
-                    }
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_semicolon",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_spacebar",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_l",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_w",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_v",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_h",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_j",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_k",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_a",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_i",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -3259,80 +4006,18 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "\"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Programming\""
-                  }
-                ],
-                "description": "Switch to profile: Programming",
-                "type": "basic",
-                "from": {
-                  "key_code": "c",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
+                    "name": "programming",
+                    "value": 0
+                  },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "\"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Reading\""
-                  }
-                ],
-                "description": "Switch to profile: Reading",
-                "type": "basic",
-                "from": {
-                  "key_code": "r",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
+                    "name": "reading",
+                    "value": 0
+                  },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "\"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Trivia\""
-                  }
-                ],
-                "description": "Switch to profile: Trivia",
-                "type": "basic",
-                "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 1
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -3431,11 +4116,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_y",
                     "value": 0
                   },
@@ -3483,6 +4163,21 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3510,6 +4205,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3537,6 +4247,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3564,6 +4289,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3591,6 +4331,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3618,6 +4373,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3645,6 +4415,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3672,6 +4457,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3699,6 +4499,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3726,6 +4541,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3753,6 +4583,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3780,6 +4625,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3807,6 +4667,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3834,6 +4709,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3861,6 +4751,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3888,6 +4793,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3915,6 +4835,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3942,6 +4877,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3969,6 +4919,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -3996,6 +4961,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4023,6 +5003,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4050,6 +5045,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4077,6 +5087,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4104,6 +5129,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4131,6 +5171,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4158,6 +5213,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4185,6 +5255,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4212,6 +5297,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4239,6 +5339,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4266,6 +5381,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4293,6 +5423,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4320,6 +5465,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4347,6 +5507,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4374,6 +5549,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4401,6 +5591,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4428,6 +5633,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -4455,6 +5675,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -4550,11 +5785,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -4601,6 +5831,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -4697,11 +5942,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -4748,6 +5988,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -4841,11 +6096,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -4892,6 +6142,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -4991,11 +6256,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -5043,6 +6303,21 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -5067,6 +6342,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -5091,6 +6381,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               },
@@ -5115,6 +6420,21 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
@@ -5210,11 +6530,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -5261,6 +6576,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -5357,11 +6687,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -5408,6 +6733,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -5504,11 +6844,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -5555,6 +6890,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -5651,11 +7001,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -5702,6 +7047,21 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
                     "value": 0
                   }
                 ]
@@ -5798,11 +7158,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 0
                   },
@@ -5850,80 +7205,264 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_n",
                     "value": 0
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "virtual_hid_keyboard": {
-        "keyboard_type_v2": "ansi"
-      },
-      "name": "Programming",
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "Hyper Key (⌃⌥⇧⌘)",
-            "manipulators": [
-              {
-                "description": "Caps Lock -> Hyper Key",
-                "type": "basic",
-                "from": {
-                  "key_code": "caps_lock",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
+                  },
                   {
-                    "set_variable": {
-                      "name": "hyper",
-                      "value": 1
-                    }
-                  }
-                ],
-                "to_after_key_up": [
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  },
                   {
-                    "set_variable": {
-                      "name": "hyper",
-                      "value": 0
-                    }
-                  }
-                ],
-                "to_if_alone": [
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 0
+                  },
                   {
-                    "key_code": "escape"
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 0
                   }
                 ]
               }
             ]
           },
           {
-            "description": "iTerm2: Hyper + B -> Tmux Prefix (Ctrl+B)",
+            "description": "Hyper Key sublayer \"m\"",
             "manipulators": [
               {
+                "description": "Toggle Hyper sublayer m",
                 "type": "basic",
                 "from": {
-                  "key_code": "b",
+                  "key_code": "m",
                   "modifiers": {
                     "optional": [
                       "any"
                     ]
                   }
                 },
-                "to": [
+                "to_after_key_up": [
                   {
-                    "key_code": "b",
-                    "modifiers": [
-                      "left_control"
-                    ]
+                    "set_variable": {
+                      "name": "hyper_sublayer_m",
+                      "value": 0
+                    }
                   }
                 ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "hyper_sublayer_m",
+                      "value": 1
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_return_or_enter",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "touch /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Programming Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Programming mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "c",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "rm -f /tmp/karabiner_mode_programming; touch /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Reading Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Reading mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "shell_command": "rm -f /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; touch /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Trivia Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Trivia mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "programming",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "reading",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_variable": {
+                      "name": "trivia",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "rm -f /tmp/karabiner_mode_programming; rm -f /tmp/karabiner_mode_reading; rm -f /tmp/karabiner_mode_trivia; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification \"Normal Mode\" with title \"Karabiner\"'"
+                  }
+                ],
+                "description": "Switch to Normal mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyper Key + return_or_enter",
+            "manipulators": [
+              {
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "vim_mode",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "shell_command": "touch /tmp/karabiner_mode_vim_mode"
+                  }
+                ],
+                "description": "Enable vim_mode mode",
+                "type": "basic",
+                "from": {
+                  "key_code": "return_or_enter",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
                 "conditions": [
                   {
                     "type": "variable_if",
@@ -5931,11 +7470,14 @@
                     "value": 1
                   },
                   {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^com\\.googlecode\\.iterm2$"
-                    ],
-                    "description": "iTerm2"
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_return_or_enter",
+                    "value": 0
                   }
                 ]
               }
@@ -5983,16 +7525,6 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_5",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
                     "value": 0
                   },
                   {
@@ -6050,6 +7582,11 @@
                     "bundle_identifiers": [
                       "^org\\.godotengine\\.godot$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ],
                 "type": "basic",
@@ -6110,16 +7647,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -6173,6 +7700,11 @@
                     "bundle_identifiers": [
                       "^org\\.godotengine\\.godot$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ],
                 "type": "basic",
@@ -6233,16 +7765,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -6296,6 +7818,11 @@
                     "bundle_identifiers": [
                       "^org\\.godotengine\\.godot$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ],
                 "type": "basic",
@@ -6356,16 +7883,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -6419,6 +7936,11 @@
                     "bundle_identifiers": [
                       "^org\\.godotengine\\.godot$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ],
                 "type": "basic",
@@ -6479,16 +8001,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -6542,6 +8054,11 @@
                     "bundle_identifiers": [
                       "^org\\.godotengine\\.godot$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ],
                 "type": "basic",
@@ -6553,240 +8070,6 @@
                     ]
                   }
                 }
-              }
-            ]
-          },
-          {
-            "description": "Hyper Key + m",
-            "manipulators": [
-              {
-                "to": [
-                  {
-                    "shell_command": "\"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Normal\""
-                  }
-                ],
-                "description": "Switch to profile: Normal",
-                "type": "basic",
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_1",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_2",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_3",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_4",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_5",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_r",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_b",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_y",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_p",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_l",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_g",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_v",
-                    "value": 0
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Hyper Key + return_or_enter",
-            "manipulators": [
-              {
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "vim_mode",
-                      "value": 1
-                    }
-                  },
-                  {
-                    "shell_command": "touch /tmp/karabiner_mode_vim_mode"
-                  }
-                ],
-                "description": "Enable vim_mode mode",
-                "type": "basic",
-                "from": {
-                  "key_code": "return_or_enter",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_1",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_2",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_3",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_4",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_5",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_r",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_b",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_y",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_p",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_c",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_l",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_g",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_s",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_v",
-                    "value": 0
-                  }
-                ]
               }
             ]
           },
@@ -6835,16 +8118,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -6898,6 +8171,11 @@
                     "bundle_identifiers": [
                       "^org\\.godotengine\\.godot$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ],
                 "type": "basic",
@@ -6957,16 +8235,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -7020,6 +8288,11 @@
                     "bundle_identifiers": [
                       "^org\\.godotengine\\.godot$"
                     ]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ],
                 "type": "basic",
@@ -7089,16 +8362,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -7146,6 +8409,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               }
@@ -7206,16 +8474,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -7263,6 +8521,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               }
@@ -7326,16 +8589,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -7383,6 +8636,11 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7409,6 +8667,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7437,6 +8700,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7463,6 +8731,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7491,6 +8764,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7517,6 +8795,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7545,6 +8828,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7571,6 +8859,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7599,6 +8892,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7625,6 +8923,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7653,6 +8956,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7679,6 +8987,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7707,6 +9020,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7733,6 +9051,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7761,6 +9084,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7787,6 +9115,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7815,6 +9148,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7841,6 +9179,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7869,6 +9212,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7895,6 +9243,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7923,6 +9276,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -7949,6 +9307,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -7977,6 +9340,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8003,6 +9371,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8031,6 +9404,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8057,6 +9435,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8085,6 +9468,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8111,6 +9499,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8139,6 +9532,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8165,6 +9563,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8193,6 +9596,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8219,6 +9627,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8247,6 +9660,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8273,6 +9691,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8301,6 +9724,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8328,6 +9756,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8354,6 +9787,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_c",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8418,16 +9856,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -8475,6 +9903,11 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8498,6 +9931,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8523,6 +9961,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8546,6 +9989,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8571,6 +10019,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8594,6 +10047,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8619,6 +10077,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8642,6 +10105,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8667,6 +10135,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8690,6 +10163,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8717,6 +10195,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_l",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8781,16 +10264,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -8838,6 +10311,11 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8862,6 +10340,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -8885,6 +10368,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_o",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -8949,16 +10437,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -9006,6 +10484,11 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9029,6 +10512,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9054,6 +10542,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9077,6 +10570,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9102,6 +10600,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9125,6 +10628,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9150,6 +10658,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9173,6 +10686,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9198,6 +10716,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9222,6 +10745,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9245,6 +10773,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9309,16 +10842,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -9366,6 +10889,11 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9395,6 +10923,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9426,6 +10959,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9455,6 +10993,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9486,6 +11029,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9515,6 +11063,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9548,6 +11101,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9621,6 +11179,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_s",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               }
@@ -9684,16 +11247,6 @@
                   },
                   {
                     "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_return_or_enter",
-                    "value": 0
-                  },
-                  {
-                    "type": "variable_if",
                     "name": "hyper_sublayer_r",
                     "value": 0
                   },
@@ -9741,6 +11294,11 @@
                     "type": "variable_if",
                     "name": "hyper",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9763,6 +11321,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9787,6 +11350,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9810,6 +11378,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9832,6 +11405,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9859,6 +11437,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9884,6 +11467,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9912,6 +11500,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9935,6 +11528,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -9957,6 +11555,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -9982,6 +11585,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -10005,6 +11613,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -10039,6 +11652,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -10071,6 +11689,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -10107,6 +11730,11 @@
                   {
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
                     "value": 1
                   }
                 ]
@@ -10147,6 +11775,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -10186,6 +11819,11 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
                   }
                 ]
               },
@@ -10210,6 +11848,697 @@
                     "type": "variable_if",
                     "name": "hyper_sublayer_v",
                     "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Reading: 1 = Screenshot + Enter",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "1"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "key_code": "5",
+                    "modifiers": [
+                      "right_command",
+                      "left_shift"
+                    ]
+                  },
+                  {
+                    "shell_command": "sleep 0.5 && osascript -e 'tell application \"System Events\" to key code 36'"
+                  }
+                ],
+                "description": "Screenshot + Enter"
+              }
+            ]
+          },
+          {
+            "description": "Reading: 2 = Open Arc",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "2"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open -a 'Arc.app'"
+                  }
+                ],
+                "description": "Open Arc"
+              }
+            ]
+          },
+          {
+            "description": "Reading: 3 = Drag preview to translate",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "3"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
+                  }
+                ],
+                "description": "Drag screenshot to translate"
+              }
+            ]
+          },
+          {
+            "description": "Reading: right arrow = Next chapter + remove old + screenshot + drag to translate",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "right_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "/opt/homebrew/bin/cliclick c:974,681 && sleep 0.1 && /opt/homebrew/bin/cliclick c:1547,77 && sleep 0.05 && osascript -e 'tell application \"System Events\" to key code 126 using {command down}' && sleep 0.2 && osascript -e 'tell application \"System Events\" to keystroke \"f\"' && sleep 0.1 && osascript -e 'tell application \"System Events\" to keystroke \"w\"' && /opt/homebrew/bin/cliclick kd:cmd,shift t:5 ku:cmd,shift && sleep 0.1 && osascript -e 'tell application \"System Events\" to key code 36' && sleep 0.7 && /opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
+                  }
+                ],
+                "description": "Full translate cycle"
+              }
+            ]
+          },
+          {
+            "description": "Trivia: x = Close tab",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "x"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "key_code": "w",
+                    "modifiers": [
+                      "right_command"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 1 = Catfishing",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "1"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://catfishing.net"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 2 = Thrice",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "2"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://thrice.geekswhodrink.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 3 = Wordle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "3"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.nytimes.com/games/wordle"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 4 = Connections",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "4"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.nytimes.com/games/connections"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 5 = Strands",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "5"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.nytimes.com/games/strands"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 6 = FoodGuessr",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "6"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.foodguessr.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 7 = TimeGuessr",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "7"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://timeguessr.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 8 = Mini Crossword",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "8"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.nytimes.com/crosswords/game/mini"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 9 = Spelling Bee",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "9"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.nytimes.com/puzzles/spelling-bee"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: 0 = GeoGuessr",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "0"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.geoguessr.com/daily-challenge"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: a = Bandle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "a"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://bandle.app"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: s = Costcodle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "s"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://costcodle.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: d = Tradle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "d"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://oec.world/en/tradle"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: f = Heardle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "f"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.heardle.app"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: g = Framed",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "g"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://framed.wtf"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: q = Pokedoku",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "q"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://pokedoku.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: w = Contexto",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "w"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://contexto.me"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: e = Redactle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "e"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://www.redactle.com"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: r = Worldle",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "r"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "open https://worldle.teuteuf.fr"
                   }
                 ]
               }
@@ -10776,568 +13105,6 @@
                     "type": "variable_if",
                     "name": "vim_mode",
                     "value": 1
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "virtual_hid_keyboard": {
-        "keyboard_type_v2": "ansi"
-      },
-      "name": "Reading",
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "Hyper Key (⌃⌥⇧⌘)",
-            "manipulators": [
-              {
-                "description": "Caps Lock -> Hyper Key",
-                "type": "basic",
-                "from": {
-                  "key_code": "caps_lock",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "hyper",
-                      "value": 1
-                    }
-                  }
-                ],
-                "to_after_key_up": [
-                  {
-                    "set_variable": {
-                      "name": "hyper",
-                      "value": 0
-                    }
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "escape"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Hyper Key + m",
-            "manipulators": [
-              {
-                "to": [
-                  {
-                    "shell_command": "\"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Normal\""
-                  }
-                ],
-                "description": "Switch to profile: Normal",
-                "type": "basic",
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Reading: 1 = Screenshot + Enter",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "1"
-                },
-                "to": [
-                  {
-                    "key_code": "5",
-                    "modifiers": [
-                      "right_command",
-                      "left_shift"
-                    ]
-                  },
-                  {
-                    "shell_command": "sleep 0.5 && osascript -e 'tell application \"System Events\" to key code 36'"
-                  }
-                ],
-                "description": "Screenshot + Enter"
-              }
-            ]
-          },
-          {
-            "description": "Reading: 2 = Open Arc",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "2"
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Arc.app'"
-                  }
-                ],
-                "description": "Open Arc"
-              }
-            ]
-          },
-          {
-            "description": "Reading: 3 = Drag preview to translate",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "3"
-                },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
-                  }
-                ],
-                "description": "Drag screenshot to translate"
-              }
-            ]
-          },
-          {
-            "description": "Reading: 4 = Next chapter + remove old + screenshot + drag to translate",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "right_arrow"
-                },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/cliclick c:974,681 && sleep 0.1 && /opt/homebrew/bin/cliclick c:1547,77 && sleep 0.05 && osascript -e 'tell application \"System Events\" to key code 126 using {command down}' && sleep 0.2 && osascript -e 'tell application \"System Events\" to keystroke \"f\"' && sleep 0.1 && osascript -e 'tell application \"System Events\" to keystroke \"w\"' && /opt/homebrew/bin/cliclick kd:cmd,shift t:5 ku:cmd,shift && sleep 0.1 && osascript -e 'tell application \"System Events\" to key code 36' && sleep 0.7 && /opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
-                  }
-                ],
-                "description": "Full translate cycle"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "virtual_hid_keyboard": {
-        "keyboard_type_v2": "ansi"
-      },
-      "name": "Trivia",
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "Hyper Key (⌃⌥⇧⌘)",
-            "manipulators": [
-              {
-                "description": "Caps Lock -> Hyper Key",
-                "type": "basic",
-                "from": {
-                  "key_code": "caps_lock",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "hyper",
-                      "value": 1
-                    }
-                  }
-                ],
-                "to_after_key_up": [
-                  {
-                    "set_variable": {
-                      "name": "hyper",
-                      "value": 0
-                    }
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "escape"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Hyper Key + m",
-            "manipulators": [
-              {
-                "to": [
-                  {
-                    "shell_command": "\"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli\" --select-profile \"Normal\""
-                  }
-                ],
-                "description": "Switch to profile: Normal",
-                "type": "basic",
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 1
-                  },
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_m",
-                    "value": 0
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: x = Close tab",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "x"
-                },
-                "to": [
-                  {
-                    "key_code": "w",
-                    "modifiers": [
-                      "right_command"
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 1 = Catfishing",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "1"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://catfishing.net"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 2 = Thrice",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "2"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://thrice.geekswhodrink.com"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 3 = Wordle",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "3"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.nytimes.com/games/wordle"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 4 = Connections",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "4"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.nytimes.com/games/connections"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 5 = Strands",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "5"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.nytimes.com/games/strands"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 6 = FoodGuessr",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "6"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.foodguessr.com"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 7 = TimeGuessr",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "7"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://timeguessr.com"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 8 = Mini Crossword",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "8"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.nytimes.com/crosswords/game/mini"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 9 = Spelling Bee",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "9"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.nytimes.com/puzzles/spelling-bee"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: 0 = GeoGuessr",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "0"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.geoguessr.com/daily-challenge"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: a = Bandle",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "a"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://bandle.app"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: s = Costcodle",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "s"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://costcodle.com"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: d = Tradle",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "d"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://oec.world/en/tradle"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: f = Heardle",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "f"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.heardle.app"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: g = Framed",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "g"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://framed.wtf"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: q = Pokedoku",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "q"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://pokedoku.com"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: w = Contexto",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "w"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://contexto.me"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: e = Redactle",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "e"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://www.redactle.com"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Trivia: r = Worldle",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "r"
-                },
-                "to": [
-                  {
-                    "shell_command": "open https://worldle.teuteuf.fr"
                   }
                 ]
               }

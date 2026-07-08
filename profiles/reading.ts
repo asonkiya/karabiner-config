@@ -1,37 +1,19 @@
-import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, switchProfile, chain, key, keyCode, click, drag, scroll, delay, run, nativeKey } from "../utils";
+import { KarabinerRules } from "../types";
+import { chain, key, keyCode, click, delay, run, nativeKey, whenMode, hyperNotHeld } from "../utils";
 
-const rules: KarabinerRules[] = [
-        // Define the Hyper key itself
-        {
-                description: "Hyper Key (⌃⌥⇧⌘)",
-                manipulators: [
-                        {
-                                description: "Caps Lock -> Hyper Key",
-                                type: "basic",
-                                from: {
-                                        key_code: "caps_lock",
-                                        modifiers: { optional: ["any"] },
-                                },
-                                to: [{ set_variable: { name: "hyper", value: 1 } }],
-                                to_after_key_up: [{ set_variable: { name: "hyper", value: 0 } }],
-                                to_if_alone: [{ key_code: "escape" }],
-                        },
-                ],
-        },
+// Reading mode: active while the `reading` variable is 1.
+// Bare keys (no Hyper) drive a screenshot-translate workflow. Gated so they
+// only remap while in reading mode and Hyper isn't held (so Hyper chords still
+// work). Assembled into the single unified profile in normal.ts.
+const readingConds = [...whenMode("reading"), hyperNotHeld];
 
-        ...createHyperSubLayers({
-                // m = switch back to Normal Mode
-                m: switchProfile("Normal"),
-        }),
-
-        // Reading mode direct keys (no Hyper needed)
-        // Individual steps for now — combine once coordinates are dialed in
+export const readingRules: KarabinerRules[] = [
         {
                 description: "Reading: 1 = Screenshot + Enter",
                 manipulators: [{
                         type: "basic",
                         from: { key_code: "1" },
+                        conditions: readingConds,
                         ...chain("Screenshot + Enter", [
                                 nativeKey("5" as any, ["right_command", "left_shift"]),
                                 delay(500),
@@ -44,6 +26,7 @@ const rules: KarabinerRules[] = [
                 manipulators: [{
                         type: "basic",
                         from: { key_code: "2" },
+                        conditions: readingConds,
                         ...chain("Open Arc", [
                                 run("open -a 'Arc.app'"),
                         ]),
@@ -54,16 +37,18 @@ const rules: KarabinerRules[] = [
                 manipulators: [{
                         type: "basic",
                         from: { key_code: "3" },
+                        conditions: readingConds,
                         ...chain("Drag screenshot to translate", [
                                 run("/opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"),
                         ]),
                 }],
         },
         {
-                description: "Reading: 4 = Next chapter + remove old + screenshot + drag to translate",
+                description: "Reading: right arrow = Next chapter + remove old + screenshot + drag to translate",
                 manipulators: [{
                         type: "basic",
                         from: { key_code: "right_arrow" },
+                        conditions: readingConds,
                         ...chain("Full translate cycle", [
                                 // Click next chapter
                                 click(974, 681),
@@ -90,8 +75,3 @@ const rules: KarabinerRules[] = [
                 }],
         },
 ];
-
-export const readingProfile: Profile = {
-        name: "Reading",
-        complex_modifications: { rules },
-};

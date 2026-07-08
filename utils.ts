@@ -3,8 +3,10 @@ import { To, KeyCode, Manipulator, KarabinerRules, Profile, KarabinerConfig } fr
 export function profilesToConfig(profiles: Profile[]): string {
         const config: KarabinerConfig = {
                 global: { show_in_menu_bar: false },
-                profiles: profiles.map((p) => ({
+                profiles: profiles.map((p, i) => ({
                         virtual_hid_keyboard: { keyboard_type_v2: "ansi" },
+                        // Karabiner needs exactly one selected profile; mark the first.
+                        selected: i === 0,
                         ...p,
                 })),
         };
@@ -33,7 +35,8 @@ type HyperKeySublayer = {
 export function createHyperSubLayer(
         sublayer_key: KeyCode,
         commands: HyperKeySublayer,
-        allSubLayerVariables: string[]
+        allSubLayerVariables: string[],
+        extraConditions: NonNullable<Manipulator["conditions"]> = []
 ): Manipulator[] {
         const subLayerVariableName = generateSubLayerVariableName(sublayer_key);
 
@@ -84,6 +87,7 @@ export function createHyperSubLayer(
                                         name: "hyper",
                                         value: 1,
                                 },
+                                ...extraConditions,
                         ],
                 },
                 // Define the individual commands that are meant to trigger in the sublayer
@@ -104,6 +108,7 @@ export function createHyperSubLayer(
                                                 name: subLayerVariableName,
                                                 value: 1,
                                         },
+                                        ...extraConditions,
                                 ],
                         })
                 ),
@@ -115,9 +120,14 @@ export function createHyperSubLayer(
  * have all the hyper variable names in order to filter them and make sure only one
  * activates at a time
  */
-export function createHyperSubLayers(subLayers: {
-        [key_code in KeyCode]?: HyperKeySublayer | LayerCommand;
-}): KarabinerRules[] {
+export function createHyperSubLayers(
+        subLayers: {
+                [key_code in KeyCode]?: HyperKeySublayer | LayerCommand;
+        },
+        // Extra conditions injected into every generated manipulator. Used to gate
+        // an entire sublayer set behind a mode variable (e.g. programming == 1).
+        extraConditions: NonNullable<Manipulator["conditions"]> = []
+): KarabinerRules[] {
         const allSubLayerVariables = (
                 Object.keys(subLayers) as (keyof typeof subLayers)[]
         ).map((sublayer_key) => generateSubLayerVariableName(sublayer_key));
@@ -148,6 +158,7 @@ export function createHyperSubLayers(subLayers: {
                                                                 value: 0,
                                                         })),
                                                         ...(value.conditions ?? []),
+                                                        ...extraConditions,
                                                 ],
                                         },
                                 ],
@@ -157,7 +168,8 @@ export function createHyperSubLayers(subLayers: {
                                 manipulators: createHyperSubLayer(
                                         key as KeyCode,
                                         value,
-                                        allSubLayerVariables
+                                        allSubLayerVariables,
+                                        extraConditions
                                 ),
                         }
         );
@@ -292,6 +304,79 @@ export function switchProfile(profileName: string): LayerCommand {
                         },
                 ],
                 description: `Switch to profile: ${profileName}`,
+        };
+}
+
+// ---------------------------------------------------------------------------
+// Instant modes
+//
+// Replaces slow profile switching (karabiner_cli --select-profile, which
+// reloads the whole config) with variable flips inside the grabber, which are
+// instantaneous. Every mode-specific rule is gated behind a `variable_if`
+// condition, so one unified profile behaves like several.
+//
+// Each mode writes a /tmp/karabiner_mode_<name> flag so external indicators
+// (SwiftBar menubar plugin, tmux status bar) can show the active mode.
+// ---------------------------------------------------------------------------
+
+export const MODE_NAMES = ["programming", "reading", "trivia"] as const;
+export type ModeName = (typeof MODE_NAMES)[number];
+
+const MODE_LABELS: Record<ModeName | "normal", string> = {
+        programming: "Programming",
+        reading: "Reading",
+        trivia: "Trivia",
+        normal: "Normal",
+};
+
+/** Conditions that hold only in Normal (i.e. no mode active). */
+export const whenNormal: NonNullable<Manipulator["conditions"]> = MODE_NAMES.map(
+        (m) => ({ type: "variable_if" as const, name: m, value: 0 })
+);
+
+/** Conditions that hold only while the given mode is active. */
+export function whenMode(mode: ModeName): NonNullable<Manipulator["conditions"]> {
+        return [{ type: "variable_if" as const, name: mode, value: 1 }];
+}
+
+/** Condition: the Hyper key is not held. Gates bare-key mode remaps so they
+ *  don't fire while a Hyper sublayer chord is in progress. */
+export const hyperNotHeld = {
+        type: "variable_if" as const,
+        name: "hyper",
+        value: 0,
+};
+
+/**
+ * Instantly switch modes: set the target mode variable to 1 and all others to
+ * 0 (mutual exclusion), update the /tmp flag files for indicators, refresh the
+ * tmux status bar, and fire a macOS notification. No config reload — instant.
+ */
+export function switchMode(target: ModeName | "normal"): LayerCommand {
+        const setVars: To[] = MODE_NAMES.map((m) => ({
+                set_variable: { name: m, value: m === target ? 1 : 0 },
+        }));
+        const flags = MODE_NAMES.map((m) =>
+                m === target
+                        ? `touch /tmp/karabiner_mode_${m}`
+                        : `rm -f /tmp/karabiner_mode_${m}`
+        ).join("; ");
+        const label = MODE_LABELS[target];
+        const shell = `${flags}; tmux refresh-client -S 2>/dev/null; osascript -e 'display notification "${label} Mode" with title "Karabiner"'`;
+        return {
+                to: [...setVars, { shell_command: shell }],
+                description: `Switch to ${label} mode`,
+        };
+}
+
+/** Open an app and instantly switch into a mode. */
+export function appAndSwitchMode(name: string, mode: ModeName): LayerCommand {
+        return {
+                to: [
+                        { shell_command: `open -a '${name}.app'` },
+                        ...switchMode(mode).to,
+                ],
+                description: `Open ${name} & switch to ${mode} mode`,
         };
 }
 

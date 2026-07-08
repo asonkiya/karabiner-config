@@ -1,5 +1,11 @@
-import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, switchProfile } from "../utils";
+import { KarabinerRules } from "../types";
+import { whenMode, hyperNotHeld } from "../utils";
+
+// Trivia mode: active while the `trivia` variable is 1.
+// Bare keys open a daily game; x closes the tab. Gated so they only remap
+// while in trivia mode and Hyper isn't held. Assembled into the single unified
+// profile in normal.ts.
+const triviaConds = [...whenMode("trivia"), hyperNotHeld];
 
 const games: [string, string, string][] = [
         // Number keys
@@ -30,49 +36,22 @@ const gameRules: KarabinerRules[] = games.map(([key, name, url]) => ({
         manipulators: [{
                 type: "basic" as const,
                 from: { key_code: key as any },
+                conditions: triviaConds,
                 to: [{ shell_command: `open ${url}` }],
         }],
 }));
 
-const rules: KarabinerRules[] = [
-        // Define the Hyper key itself
-        {
-                description: "Hyper Key (⌃⌥⇧⌘)",
-                manipulators: [
-                        {
-                                description: "Caps Lock -> Hyper Key",
-                                type: "basic",
-                                from: {
-                                        key_code: "caps_lock",
-                                        modifiers: { optional: ["any"] },
-                                },
-                                to: [{ set_variable: { name: "hyper", value: 1 } }],
-                                to_after_key_up: [{ set_variable: { name: "hyper", value: 0 } }],
-                                to_if_alone: [{ key_code: "escape" }],
-                        },
-                ],
-        },
-
-        ...createHyperSubLayers({
-                // m = switch back to Normal Mode
-                m: switchProfile("Normal"),
-        }),
-
+export const triviaRules: KarabinerRules[] = [
         // x = close tab (Cmd+W)
         {
                 description: "Trivia: x = Close tab",
                 manipulators: [{
                         type: "basic",
                         from: { key_code: "x" },
+                        conditions: triviaConds,
                         to: [{ key_code: "w", modifiers: ["right_command"] }],
                 }],
         },
-
         // Direct key bindings for each game
         ...gameRules,
 ];
-
-export const triviaProfile: Profile = {
-        name: "Trivia",
-        complex_modifications: { rules },
-};

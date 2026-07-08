@@ -1,7 +1,9 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, shell, switchProfile, appAndSwitch, doubleTap, cmdSublayer } from "../utils";
-// Text-editing vim is now handled system-wide by SketchyVim (brew svim), not Karabiner.
-// The old Hyper+Enter vim-mode lives in ./vim-mode.ts if you ever want it back.
+import { createHyperSubLayers, app, open, window, shell, doubleTap, cmdSublayer, switchMode, appAndSwitchMode, whenNormal } from "../utils";
+import { vimMode, vimModeRules } from "./vim-mode";
+import { programmingRules } from "./programming";
+import { readingRules } from "./reading";
+import { triviaRules } from "./trivia";
 
 const rules: KarabinerRules[] = [
         // Define the Hyper key itself
@@ -114,7 +116,7 @@ const rules: KarabinerRules[] = [
                         e: app("Microsoft Outlook"),
                         d: app("Discord"),
                         n: app("ZenNotes"),
-                        t: appAndSwitch("iTerm", "Programming"),
+                        t: appAndSwitchMode("iTerm", "programming"),
                         z: app("zoom.us"),
                         r: app("Rstudio"),
                         f: app("Finder"),
@@ -314,13 +316,6 @@ const rules: KarabinerRules[] = [
                 // i = "Ideas" quick capture via Raycast
                 i: open("raycast://extensions/asonkiya/idea-capture/capture"),
 
-                // m = "Modes" profile switching
-                m: {
-                        c: switchProfile("Programming"),
-                        r: switchProfile("Reading"),
-                        t: switchProfile("Trivia"),
-                },
-
                 // c = Cmd + key passthrough
                 c: cmdSublayer(),
 
@@ -349,7 +344,27 @@ const rules: KarabinerRules[] = [
                 q: { description: "Cmd+Q (Quit)", to: [{ key_code: "q", modifiers: ["right_command"] }] },
                 d: { description: "Cmd+W (Close)", to: [{ key_code: "w", modifiers: ["right_command"] }] },
                 n: { description: "Cmd+T (New Tab)", to: [{ key_code: "t", modifiers: ["right_command"] }] },
+        }, whenNormal),
+
+        // m = "Modes" — instant, variable-based switching. Available in every
+        // mode (ungated) so you can always hop between modes / back to Normal.
+        //   Hyper+M+C = Programming, +R = Reading, +T = Trivia, +N = Normal
+        ...createHyperSubLayers({
+                m: {
+                        c: switchMode("programming"),
+                        r: switchMode("reading"),
+                        t: switchMode("trivia"),
+                        n: switchMode("normal"),
+                },
+                // Vim mode toggle — available in every mode (Hyper+Enter to enter,
+                // i or Escape to exit; see vimModeRules).
+                return_or_enter: vimMode.enable(),
         }),
+
+        // Mode-specific rules, each gated behind its own mode variable.
+        ...programmingRules,
+        ...readingRules,
+        ...triviaRules,
         //        {
         //                description: "Change Backspace to Spacebar when Minecraft is focused",
         //                manipulators: [
@@ -374,6 +389,9 @@ const rules: KarabinerRules[] = [
         //                        },
         //                ],
         //        },
+
+        // Vim mode (Hyper+Enter to enter, I or Escape to exit)
+        ...vimModeRules,
 ];
 
 export const normalProfile: Profile = {
