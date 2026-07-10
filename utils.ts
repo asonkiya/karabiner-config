@@ -200,8 +200,8 @@ export function vimCmd(command: string): LayerCommand {
         return {
                 to: [
                         { key_code: "semicolon", modifiers: ["left_shift"] }, // :
-                        ...command.split("").map((char) => {
-                                if (char === "!") return { key_code: "1", modifiers: ["left_shift"] } as const;
+                        ...command.split("").map((char): To => {
+                                if (char === "!") return { key_code: "1", modifiers: ["left_shift"] };
                                 return { key_code: char as KeyCode };
                         }),
                         { key_code: "return_or_enter" },
