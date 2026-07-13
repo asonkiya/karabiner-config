@@ -334,6 +334,27 @@ const rules: KarabinerRules[] = [
                         l: { description: "App Switcher (Cmd+Tab)", to: [{ key_code: "tab", modifiers: ["right_command"] }] },
                 },
         }),
+
+        // App Switcher (browse mode): a dual-role Hyper+T.
+        //   • Tap Hyper+T   -> Cmd+Tab (quick switch to previous app)
+        //   • Hold Hyper+T  -> holds Cmd down; while held, tap Tab / Shift+Tab
+        //     to cycle through the switcher, then release to pick the highlight.
+        // Placed after the sublayers so Hyper+O+T (iTerm) etc. still win while a
+        // sublayer is held; here `t` only fires the switcher when no sublayer is
+        // active (their vars are 0, so those rules above don't match first).
+        {
+                description: "App Switcher: tap Hyper+T = switch, hold = browse (Cmd held)",
+                manipulators: [
+                        {
+                                type: "basic",
+                                from: { key_code: "t", modifiers: { optional: ["any"] } },
+                                to_if_alone: [{ key_code: "tab", modifiers: ["left_command"] }],
+                                to_if_held_down: [{ key_code: "left_command" }],
+                                parameters: { "basic.to_if_held_down_threshold_milliseconds": 150 },
+                                conditions: [{ type: "variable_if", name: "hyper", value: 1 }],
+                        },
+                ],
+        },
         //        {
         //                description: "Change Backspace to Spacebar when Minecraft is focused",
         //                manipulators: [
