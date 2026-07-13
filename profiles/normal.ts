@@ -118,14 +118,14 @@ const rules: KarabinerRules[] = [
 
                 // s = "System"
                 s: {
-                        u: {
+                        i: {
                                 to: [
                                         {
                                                 key_code: "volume_increment",
                                         },
                                 ],
                         },
-                        j: {
+                        k: {
                                 to: [
                                         {
                                                 key_code: "volume_decrement",
@@ -139,14 +139,14 @@ const rules: KarabinerRules[] = [
                                         },
                                 ],
                         },
-                        i: {
+                        u: {
                                 to: [
                                         {
                                                 key_code: "display_brightness_increment",
                                         },
                                 ],
                         },
-                        k: {
+                        j: {
                                 to: [
                                         {
                                                 key_code: "display_brightness_decrement",
@@ -327,6 +327,11 @@ const rules: KarabinerRules[] = [
                         // Zoom using u and i for shift plus and minus for better ergonomics
                         i: { description: "Window: Zoom In", to: [{ key_code: "equal_sign", modifiers: ["right_shift", "right_command"] }] },
                         o: { description: "Window: Zoom Out", to: [{ key_code: "hyphen", modifiers: ["right_shift", "right_command"] }] },
+                        // u = Mission Control (3-finger swipe up), n = App Exposé (3-finger down)
+                        u: { description: "Mission Control", to: [{ key_code: "mission_control" }] },
+                        n: { description: "App Exposé", to: [{ key_code: "down_arrow", modifiers: ["control"] }] },
+                        // t = Cmd+Tab app switcher
+                        t: { description: "App Switcher (Cmd+Tab)", to: [{ key_code: "tab", modifiers: ["right_command"] }] },
                 },
         }),
         //        {
