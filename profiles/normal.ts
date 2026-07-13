@@ -330,8 +330,8 @@ const rules: KarabinerRules[] = [
                         // u = Mission Control (3-finger swipe up), n = App Exposé (3-finger down)
                         u: { description: "Mission Control", to: [{ key_code: "mission_control" }] },
                         n: { description: "App Exposé", to: [{ key_code: "down_arrow", modifiers: ["control"] }] },
-                        // t = Cmd+Tab app switcher
-                        t: { description: "App Switcher (Cmd+Tab)", to: [{ key_code: "tab", modifiers: ["right_command"] }] },
+                        // l = Cmd+Tab app switcher
+                        l: { description: "App Switcher (Cmd+Tab)", to: [{ key_code: "tab", modifiers: ["right_command"] }] },
                 },
         }),
         //        {

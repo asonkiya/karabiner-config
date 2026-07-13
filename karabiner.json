@@ -18391,7 +18391,7 @@
                 ],
                 "type": "basic",
                 "from": {
-                  "key_code": "t",
+                  "key_code": "l",
                   "modifiers": {
                     "optional": [
                       "any"
