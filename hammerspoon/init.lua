@@ -98,17 +98,31 @@ _G.karabinerMode.pathWatcher:start()
 -- the find comes up empty, which is harmless. (A window-filter can't do this
 -- reliably: the title only becomes "Scratchpad" after nvim starts, racing the
 -- filter's creation events.)
-function scratchCenter()
+function hotkeyCenter(title)
     hs.timer.doAfter(0.35, function()
-        local w = hs.window.find("Scratchpad")
+        -- Scope the title match to iTerm2 windows: a bare hs.window.find()
+        -- could hit e.g. an Obsidian window titled "Ideas".
+        local w
+        local app = hs.application.get("iTerm2")
+        for _, win in ipairs(app and app:allWindows() or {}) do
+            if (win:title() or ""):find(title, 1, true) then
+                w = win
+                break
+            end
+        end
         if w then
             w:centerOnScreen(hs.mouse.getCurrentScreen(), true)
             local f = w:frame()
-            _G.karabinerMode.lastScratch = string.format("centered @ %.0f,%.0f", f.x, f.y)
+            _G.karabinerMode.lastScratch = string.format("%s centered @ %.0f,%.0f", title, f.x, f.y)
         else
-            _G.karabinerMode.lastScratch = "hidden (or summon failed)"
+            _G.karabinerMode.lastScratch = title .. ": hidden (or summon failed)"
         end
     end)
+end
+
+-- Kept as a wrapper: the committed karabiner.json calls scratchCenter().
+function scratchCenter()
+    hotkeyCenter("Scratchpad")
 end
 
 -- Establish a known-good baseline immediately, then again after a delay:

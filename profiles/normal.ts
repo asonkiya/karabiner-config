@@ -226,8 +226,8 @@ const rules: KarabinerRules[] = [
                         g: app("ChatGPT"),
                 },
 
-                // i = "Ideas" quick capture via Raycast
-                i: open("raycast://extensions/asonkiya/idea-capture/capture"),
+                // i = "Ideas" quick capture — moved to the global block below
+                // (floating nvim window, was the Raycast idea-capture extension)
 
                 // m = "Modes" — enter a mode from Normal. (From within a mode,
                 // bare Hyper+M jumps back to Normal; see the escape hatches below.)
@@ -298,6 +298,17 @@ const rules: KarabinerRules[] = [
                         to: [
                                 { key_code: "f18" },
                                 { shell_command: `/opt/homebrew/bin/hs -c "scratchCenter()"` },
+                        ],
+                },
+                // i = "Ideas" capture. Sends F19 (summoning the iTerm "Ideas"
+                // hotkey window — iterm/ideas.json): a fresh timestamped
+                // idea file in the Obsidian vault each time, committed to disk
+                // when the window loses focus. See iterm/ideas.lua.
+                i: {
+                        description: "Idea capture (floating nvim, centered)",
+                        to: [
+                                { key_code: "f19" },
+                                { shell_command: `/opt/homebrew/bin/hs -c "hotkeyCenter('Ideas')"` },
                         ],
                 },
                 // l = "L"ookup
