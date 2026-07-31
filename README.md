@@ -52,8 +52,8 @@ cd karabiner-config
 ./setup.sh
 ```
 
-`setup.sh` is idempotent and backs up anything it replaces
-(`*.backup.<timestamp>`). It:
+`setup.sh` is idempotent and backs up anything it replaces to
+`~/.karabiner-config-backups/<timestamp>/`. It:
 
 1. Checks dependencies and installs node modules
 2. Rewrites the author's hardcoded paths (repo location, Homebrew prefix) for

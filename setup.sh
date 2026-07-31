@@ -42,14 +42,20 @@ if [ "$REPO" != "$OLD_REPO" ] || [ "$BREW_PREFIX" != "$OLD_BREW" ]; then
 fi
 
 # --- symlinks (with backups) ------------------------------------------------
+# Backups go to a dedicated folder, NOT next to the original: some link
+# destinations are watched directories (e.g. SwiftBar's plugin folder, which
+# executes every executable file in it — a sibling backup would show up as a
+# duplicate menubar item).
+BACKUP_DIR="$HOME/.karabiner-config-backups/$TS"
 link() {
         local target="$1" linkpath="$2"
         if [ -L "$linkpath" ] && [ "$(readlink "$linkpath")" = "$target" ]; then
                 return # already correct
         fi
         if [ -e "$linkpath" ] || [ -L "$linkpath" ]; then
-                mv "$linkpath" "$linkpath.backup.$TS"
-                warn "existing $(basename "$linkpath") moved to $linkpath.backup.$TS"
+                mkdir -p "$BACKUP_DIR"
+                mv "$linkpath" "$BACKUP_DIR/$(basename "$linkpath")"
+                warn "existing $(basename "$linkpath") moved to $BACKUP_DIR/"
         fi
         ln -s "$target" "$linkpath"
         say "Linked $linkpath -> $target"
