@@ -283,11 +283,23 @@ const rules: KarabinerRules[] = [
         ...readingRules,
         ...triviaRules,
 
-        // Global navigation: lookup (l), open apps (o), window (w) — available
-        // in EVERY mode so you can always jump to another app / manage windows.
+        // Global navigation: scratchpad (e), lookup (l), open apps (o),
+        // window (w) — available in EVERY mode so you can always jump to
+        // another app / manage windows.
         // Spread AFTER the mode fragments so a mode's per-key override (e.g.
         // Programming's O+G = Godot) wins over the global default here.
         ...createHyperSubLayers({
+                // e = floating nvim scratchpad. Sends F18 (summoning the iTerm
+                // "Scratchpad" hotkey window — iterm/scratchpad.json, symlinked
+                // into iTerm's DynamicProfiles), then has Hammerspoon center it
+                // on the mouse's screen. Same key toggles it away.
+                e: {
+                        description: "Scratchpad (floating nvim, centered)",
+                        to: [
+                                { key_code: "f18" },
+                                { shell_command: `/opt/homebrew/bin/hs -c "scratchCenter()"` },
+                        ],
+                },
                 // l = "L"ookup
                 l: {
                         i: open("https://www.instagram.com/direct/t/5082114295174947/"),
