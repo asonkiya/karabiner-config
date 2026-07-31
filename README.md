@@ -1,160 +1,120 @@
-# @asonkiya's Karabiner Elements configuration
+# karabiner-config
 
-This repo is a fork of @mxstbr's config, fine tuned for my own needs.
+One unified [Karabiner-Elements](https://karabiner-elements.pqrs.org/) profile,
+generated from TypeScript. Caps Lock becomes a **Hyper key** (⌃⌥⇧⌘) that opens
+declarative sublayers; "modes" (Programming / Reading / Trivia) are instant
+variable flips instead of slow profile switches; and two floating nvim windows
+give one-keystroke scratch space and idea capture from anywhere — including
+over fullscreen apps.
 
-## Installation
+Forked from [@mxstbr's config](https://github.com/mxstbr/karabiner) and heavily
+restructured.
 
-1. Install & start [Karabiner Elements](https://karabiner-elements.pqrs.org/)
-1. Clone this repository
-1. Delete the default `~/.config/karabiner` folder
-1. Create a symlink with `ln -s ~/github/asonkiya/karabiner-config ~/.config/karabiner` (adjust path to where you cloned it)
-1. [Restart karabiner_console_user_server](https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/) with `` launchctl kickstart -k gui/`id -u`/org.pqrs.karabiner.karabiner_console_user_server ``
+## Highlights
 
-## Development
+- **Hyper sublayers** — hold Caps Lock, tap a sublayer key, tap a command key.
+  Declared as plain TypeScript maps in `profiles/`. Tap Caps Lock alone = Escape.
+- **Instant modes** — one profile, mode-gated rules behind `variable_if`
+  conditions. Switching (`Hyper+M, P/R/T/N`) is a variable flip: no config
+  reload, no dropped keystrokes. Hammerspoon auto-switches modes per app;
+  SwiftBar and tmux show the active mode.
+- **`Hyper+E` — scratchpad**: a small floating nvim window (iTerm hotkey
+  window), centered on your screen, self-clearing after 5 idle minutes. Real
+  vim, not an emulation.
+- **`Hyper+I` — idea capture**: same floating treatment; every summon starts a
+  fresh timestamped markdown note that lands in an Obsidian vault folder when
+  the window loses focus. Empty summons write nothing.
+- **`Hyper+T`** — dual-role app switcher: tap = Cmd+Tab, hold = browse the
+  switcher with Cmd held for you.
+- **Vim mode** (`Hyper+Enter`) — vim-style navigation/editing anywhere.
 
+The full keymap lives in the source — `profiles/normal.ts` is the assembler
+and the place to look first. The tables in code are the source of truth;
+nothing here will drift out of date.
+
+## Requirements
+
+- macOS
+- [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
+- Node.js + yarn (build tooling)
+- Optional but recommended:
+  - [Hammerspoon](https://www.hammerspoon.org/) — per-app mode auto-switching,
+    scratchpad centering
+  - [iTerm2](https://iterm2.com/) + [Neovim](https://neovim.io/) — the
+    scratchpad / idea-capture floating windows
+  - [SwiftBar](https://swiftbar.app/) and/or tmux — mode indicators
+
+## Install
+
+```sh
+git clone https://github.com/asonkiya/karabiner-config.git
+cd karabiner-config
+./setup.sh
 ```
-yarn install
+
+`setup.sh` is idempotent and backs up anything it replaces
+(`*.backup.<timestamp>`). It:
+
+1. Checks dependencies and installs node modules
+2. Rewrites the author's hardcoded paths (repo location, Homebrew prefix) for
+   your machine
+3. Symlinks `~/.config/karabiner` → the repo and `~/.hammerspoon` →
+   `hammerspoon/`
+4. Symlinks the iTerm dynamic profiles (`iterm/*.json`) into
+   `~/Library/Application Support/iTerm2/DynamicProfiles/`
+5. Installs the SwiftBar indicator if SwiftBar is present
+6. Installs a LaunchAgent that rebuilds `karabiner.json` at login (so a
+   `git pull` never leaves Karabiner on a stale config)
+7. Runs the initial build
+
+Then follow the printed manual steps (permission grants, optional Login
+Items). The ideas vault path is personal — edit `VAULT` in `iterm/ideas.lua`.
+
+## Customizing
+
+```sh
+yarn watch   # rebuilds karabiner.json on every save
 ```
 
-Install dependencies (one-time only).
-
-```
-yarn run build
-```
-
-Builds `karabiner.json` from the TypeScript source.
-
-```
-yarn run watch
-```
-
-Watches TypeScript files and rebuilds on change.
+- **Keybindings**: `profiles/normal.ts` (everyday bindings + global
+  sublayers), `profiles/programming.ts` / `reading.ts` / `trivia.ts`
+  (mode-gated fragments).
+- **Adding a mode**: add it to `MODE_NAMES` in `utils.ts`, create a gated
+  fragment in `profiles/`, spread it in `normal.ts`, map an app in
+  `hammerspoon/apps.lua`, add it to the indicators. (Step-by-step in
+  `AGENTS.md`.)
+- **Floating windows**: size/behavior in `iterm/*.json` (rows, columns,
+  hotkey); nvim-side behavior in `iterm/*.lua`. After editing a profile JSON,
+  reload it with `touch -h` on its symlink in `DynamicProfiles/` — deleting
+  and recreating the symlink makes iTerm silently drop the hotkey.
+- **Indicators**: `indicators/karabiner-profile.2s.sh` (SwiftBar),
+  `indicators/tmux-status.conf` (append to `~/.tmux.conf`).
 
 ## Architecture
 
-Profiles live in `profiles/`. Each profile exports a `Profile` object and is registered in `rules.ts`. Shared helpers (`createHyperSubLayers`, `doubleTap`, `switchProfile`, etc.) live in `utils.ts`.
+`yarn build` runs `rules.ts` via `tsm`, which writes `karabiner.json`. Since
+`~/.config/karabiner` is a symlink to the repo, Karabiner hot-reloads on every
+build.
 
-## Profiles
+Why one profile instead of several: `karabiner_cli --select-profile` reloads
+the whole config (~1–2 s, drops keystrokes). Modes here are just variables
+gated with `variable_if` conditions — switching is instantaneous, and
+mode-specific bare keys (e.g. Reading's arrow remaps) simply don't apply
+outside their mode. Mode state is mirrored to `/tmp/karabiner_mode_*` flag
+files, which the indicators read.
 
-### Normal Mode (default)
-
-The main everyday profile. Caps Lock is remapped to the **Hyper key** (⌃⌥⇧⌘). Tapping Caps Lock alone sends `Escape`. Double-tapping `Tab` in iTerm2 switches to **Programming Mode**.
-
-#### Hyper sublayers
-
-| Sublayer | Key | Action |
-|----------|-----|--------|
-| **L** — Links | `i` | Instagram DMs |
-| | `d` | DoorDash |
-| | `y` | YouTube |
-| | `t` | CHT Transit map |
-| | `n` | localhost:8080(personal project, remove for personal configurations) |
-| | `s` | Twitch |
-| | `c` | Canvas |
-| | `g` | Arc incognito window |
-| **O** — Open apps | `g` | Arc |
-| | `e` | Microsoft Outlook |
-| | `d` | Discord |
-| | `n` | Obsidian |
-| | `t` | iTerm2 → switches to Programming Mode |
-| | `z` | Zoom |
-| | `r` | RStudio |
-| | `f` | Finder |
-| | `m` | Messages |
-| | `p` | iPhone Mirroring |
-| | `c` | ChatGPT |
-| | `v` | Surfshark |
-| | `w` | WhatsApp |
-| **W** — Window | `m` | Maximize |
-| | `f` | Fullscreen |
-| | `j` | Mission Control left |
-| | `k` | Mission Control right |
-| | `u` | Zoom in |
-| | `i` | Zoom out |
-| | `;` | Hide window |
-| **S** — System | `u` | Volume up |
-| | `j` | Volume down |
-| | `m` | Mute |
-| | `i` | Brightness up |
-| | `k` | Brightness down |
-| | `p` | Play/pause |
-| | `;` | Fast forward |
-| | `c` | Open camera |
-| | `h` | AirPods noise control |
-| | `v` | Push to talk |
-| **V** — Vim motions | `h/j/k/l` | Arrow keys |
-| | `m` | Homerow MagicMove |
-| | `s` | Homerow scroll mode |
-| | `u` | Page down |
-| | `i` | Page up |
-| **P** — Profiles | `p` | Switch to Programming Mode |
-| | `t` | Switch to Test |
-| **R** — Raycast | `e` | Emoji picker |
-| | `p` | Confetti |
-| | `h` | Clipboard history |
-
----
-
-### Programming Mode
-
-Activated from Normal Mode via `Hyper + O + T` (opens iTerm2) or double-tapping `Tab` in iTerm2. Double-tapping `Escape` returns to Normal Mode. A macOS notification fires on every profile switch.
-
-Caps Lock → Hyper key (same as Normal Mode). `Hyper + B` in iTerm2 sends the tmux prefix (`Ctrl+B`).
-
-#### Hyper sublayers
-
-| Sublayer | Key | Action |
-|----------|-----|--------|
-| **L** — Claude Code | `r` | `/resume` + Enter×2 |
-| | `i` | `/init` |
-| | `c` | `/clear` |
-| | `h` | `/help` |
-| | `b` | `/bug` |
-| | `p` | `/plan` |
-| | `k` | `/commit` |
-| | `x` | `exit` |
-| | `m` | Shift+Tab (navigate Claude suggestions) |
-| **G** — Git | `s` | `git status` |
-| | `a` | `git add .` |
-| | `c` | `git commit -m ""` (cursor inside quotes) |
-| | `p` | `git push` |
-| | `u` | `git pull` |
-| | `l` | `git log --oneline` |
-| | `d` | `git diff` |
-| | `b` | `git branch` |
-| | `z` | `git stash` |
-| | `r` | `git stash pop` |
-| **S** — tmux Sessions | `j` | Switch to window 0 |
-| | `k` | Switch to window 1 |
-| | `l` | Switch to window 2 |
-| | `;` | Switch to window 3 |
-| | `-` | Kill current session |
-| **V** — Vim motions + commands | `h/j/k/l` | Arrow keys |
-| | `m` | Homerow MagicMove |
-| | `s` | Homerow scroll mode |
-| | `u` | Page down |
-| | `i` | Page up |
-| | `w` | `:w` — save |
-| | `q` | `:q` — quit |
-| | `x` | `:wq` — save & quit |
-| | `n` | `:q!` — force quit |
-| | `e` | `:e!` — reload / discard changes |
-| | `o` | Type `nvim .` + Enter |
-
----
-
-### Test
-
-A sample profile. Double-tapping `T` opens YouTube.
-
-## Key utilities
-
-- **`doubleTap(key, command, delayMs?, extraConditions?)`** — fires a command only when a key is pressed twice within the delay window. Supports extra conditions (e.g. restrict to a specific app).
-- **`switchProfile(name)`** — switches the active Karabiner profile and shows a macOS notification.
-- **`appAndSwitch(appName, profileName)`** — opens an app and switches profile simultaneously.
-- **`claudeCmd(command)`** — types a Claude Code slash command into the focused terminal and hits Enter.
-- **`vimCmd(command)`** — escapes to Vim normal mode and runs a `:command`.
+| Path | Role |
+|---|---|
+| `rules.ts` | entry point — emits the single profile |
+| `profiles/` | `normal.ts` assembles everything; other files are mode-gated fragments |
+| `utils.ts` | sublayer generator, mode machinery, command helpers |
+| `types.ts` | Karabiner JSON schema types |
+| `hammerspoon/` | per-app mode auto-switching, floating-window centering, boot resilience |
+| `iterm/` | dynamic profiles + nvim overlays for the scratchpad and idea-capture windows |
+| `indicators/` | SwiftBar plugin + tmux status snippet |
+| `setup.sh` | idempotent installer |
 
 ## License
 
-Copyright (c) 2022 Maximilian Stoiber, licensed under the [MIT license](./LICENSE.md).
+Copyright (c) 2022 Maximilian Stoiber, licensed under the
+[MIT license](./LICENSE.md).
