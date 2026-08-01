@@ -11,7 +11,8 @@
     "tsm": "^2.2.2"
   },
   "scripts": {
-    "build": "tsm rules.ts",
-    "watch": "nodemon --exec yarn build -e ts"
+    "build": "tsm rules.ts && tsm cheatsheet.ts",
+    "watch": "nodemon --exec yarn build -e ts",
+    "cheatsheet": "tsm cheatsheet.ts"
   }
 }

@@ -32,6 +32,10 @@ The full keymap lives in the source — `profiles/normal.ts` is the assembler
 and the place to look first. The tables in code are the source of truth;
 nothing here will drift out of date.
 
+**[📋 CHEATSHEET.md](./CHEATSHEET.md)** is a rendered reference of every
+binding, grouped by mode. It's auto-generated from the source by
+`yarn cheatsheet` (and on every `yarn build`), so it can't go stale.
+
 ## Requirements
 
 - macOS
@@ -112,6 +116,7 @@ files, which the indicators read.
 | `hammerspoon/` | per-app mode auto-switching, floating-window centering, boot resilience |
 | `iterm/` | dynamic profiles + nvim overlays for the scratchpad and idea-capture windows |
 | `indicators/` | SwiftBar plugin + tmux status snippet |
+| `cheatsheet.ts` | walks the assembled profile to generate `CHEATSHEET.md` |
 | `setup.sh` | idempotent installer |
 
 ## License

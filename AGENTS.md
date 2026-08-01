@@ -4,8 +4,9 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 ## Commands
 
-- **Build** (compile TypeScript and write `karabiner.json`): `yarn build`
+- **Build** (compile TypeScript, write `karabiner.json`, regenerate `CHEATSHEET.md`): `yarn build`
 - **Watch** (auto-rebuild on file changes): `yarn watch` — this is always running during development, no need to manually build
+- **Cheatsheet** (regenerate `CHEATSHEET.md` only): `yarn cheatsheet` — also runs as part of `yarn build`
 
 ## Architecture
 
@@ -31,6 +32,7 @@ This repo generates `karabiner.json` for [Karabiner-Elements](https://karabiner-
   - `vimCmd(command)` — escapes to Vim normal mode then runs `:command` + Enter
   - `profilesToConfig(profiles)` — wraps profiles in a `KarabinerConfig`, applies `keyboard_type_v2: "ansi"` and marks the first profile `selected`
 - **`types.ts`** — TypeScript interfaces mirroring the Karabiner JSON schema (`KarabinerConfig`, `Profile`, `KarabinerRules`, `Manipulator`, `KeyCode`, etc.)
+- **`cheatsheet.ts`** — walks the assembled `normalProfile` (conditions + descriptions) and renders `CHEATSHEET.md`, grouping bindings by mode. Run via `yarn cheatsheet` or automatically on `yarn build`. `CHEATSHEET.md` is generated output — never edit it by hand.
 - **`iterm/`** — floating nvim windows, implemented as iTerm dynamic profiles (symlinked into `~/Library/Application Support/iTerm2/DynamicProfiles/` by `setup.sh`) plus per-window nvim overlay lua:
   - `scratchpad.json`/`scratchpad.lua` — `Hyper+E`: self-clearing scratch buffer on `~/scratch.md` (wipes on open + after 5 idle minutes), diagnostics/spell/lint disabled, autosave on focus loss
   - `ideas.json`/`ideas.lua` — `Hyper+I`: fresh timestamped idea per summon, committed to the Obsidian vault Ideas folder on focus loss; untouched buffers are never written
