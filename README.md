@@ -29,6 +29,10 @@ restructured.
   never cleared, picks up external edits on re-summon.
 - **`Hyper+X`** — dual-role app switcher: tap = Cmd+Tab, hold = browse the
   switcher with Cmd held for you.
+- **`Hyper+=` / `Hyper+-` — pinch-to-zoom**: synthesizes a real trackpad
+  magnify gesture (via Hammerspoon), so it zooms apps that only respond to
+  pinch (Preview, Safari, Maps, Photos). Falls back to ⌘=/⌘− for gesture-blind
+  apps (Chromium/Electron).
 - **Vim mode** (`Hyper+Enter`) — vim-style navigation/editing anywhere.
 
 The full keymap lives in the source — `profiles/normal.ts` is the assembler

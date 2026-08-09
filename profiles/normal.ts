@@ -321,6 +321,18 @@ const rules: KarabinerRules[] = [
                                 { shell_command: `/opt/homebrew/bin/hs -c "hotkeyCenter('Todo')"` },
                         ],
                 },
+                // = / - = pinch-to-zoom via synthetic magnify gestures (real
+                // trackpad gesture, not a keystroke). Hammerspoon's zoom() posts
+                // the gesture, falling back to ⌘=/⌘− for gesture-blind apps
+                // (Chromium/Electron). See hammerspoon/init.lua.
+                equal_sign: {
+                        description: "Zoom in (pinch gesture)",
+                        to: [{ shell_command: `/opt/homebrew/bin/hs -c "zoom('in')"` }],
+                },
+                hyphen: {
+                        description: "Zoom out (pinch gesture)",
+                        to: [{ shell_command: `/opt/homebrew/bin/hs -c "zoom('out')"` }],
+                },
                 // l = "L"ookup
                 l: {
                         i: open("https://www.instagram.com/direct/t/5082114295174947/"),

@@ -125,6 +125,46 @@ function scratchCenter()
     hotkeyCenter("Scratchpad")
 end
 
+-- ---------------------------------------------------------------------------
+-- Pinch-to-zoom via synthetic magnify gestures.
+--
+-- macOS has no public API to inject trackpad gestures, but Hammerspoon's
+-- newGesture() builds the private type-29 magnify CGEvent. Delivered to the
+-- frontmost app; apps that implement pinch (Preview, Safari, Maps, Photos)
+-- zoom, apps that don't silently ignore it. Recipe is begin(0) then
+-- end(amount): +zooms in, − zooms out. The unit is undocumented — tune
+-- ZOOM_STEP to taste.
+-- ---------------------------------------------------------------------------
+local ZOOM_STEP = 0.3
+
+-- Apps that ignore synthetic magnify gestures (Chromium/Electron/some pro
+-- apps). For these, fall back to the app's own zoom keystroke (⌘=/⌘−), which
+-- is far more reliable than gesture or scroll synthesis. Extend as needed.
+local GESTURE_BLIND = {
+    ["Google Chrome"] = true, ["Brave Browser"] = true, ["Microsoft Edge"] = true,
+    ["Arc"] = true, ["Code"] = true, ["Visual Studio Code"] = true,
+    ["Slack"] = true, ["Discord"] = true, ["Spotify"] = true,
+    ["Obsidian"] = true, ["Notion"] = true, ["Figma"] = true,
+}
+
+local function postMagnify(amount)
+    hs.eventtap.event.newGesture("beginMagnify", 0):post()
+    hs.eventtap.event.newGesture("endMagnify", amount):post()
+end
+
+-- dir = "in" | "out". Real pinch gesture for gesture-aware apps; ⌘=/⌘−
+-- keystroke fallback for gesture-blind ones. Called from Karabiner via
+-- `hs -c "zoom('in')"`.
+function zoom(dir)
+    local front = hs.application.frontmostApplication()
+    local name = front and front:name() or ""
+    if GESTURE_BLIND[name] then
+        hs.eventtap.keyStroke({ "cmd" }, dir == "out" and "-" or "=", 0)
+    else
+        postMagnify(dir == "out" and -ZOOM_STEP or ZOOM_STEP)
+    end
+end
+
 -- Establish a known-good baseline immediately, then again after a delay:
 -- at login Karabiner's server may not be up yet when Hammerspoon loads, so the
 -- first --set-variables call can no-op. Re-syncing a few seconds later catches

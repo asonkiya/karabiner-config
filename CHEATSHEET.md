@@ -15,6 +15,8 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `Hyper E` | Scratchpad (floating nvim, centered) |
 | `Hyper I` | Idea capture (floating nvim, centered) |
 | `Hyper T` | Todo list (floating nvim, centered) |
+| `Hyper =` | Zoom in (pinch gesture) |
+| `Hyper -` | Zoom out (pinch gesture) |
 | `Hyper X` | tap → ⌘⇥, hold → ⌘ |
 
 ### `Hyper O` — Open apps
