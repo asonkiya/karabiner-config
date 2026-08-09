@@ -311,6 +311,16 @@ const rules: KarabinerRules[] = [
                                 { shell_command: `/opt/homebrew/bin/hs -c "hotkeyCenter('Ideas')"` },
                         ],
                 },
+                // t = "Todo" list. Sends F20 (summoning the iTerm "Todo" hotkey
+                // window — iterm/todo.json): a single persistent todo file in
+                // the Obsidian vault, autosaved on focus loss. See iterm/todo.lua.
+                t: {
+                        description: "Todo list (floating nvim, centered)",
+                        to: [
+                                { key_code: "f20" },
+                                { shell_command: `/opt/homebrew/bin/hs -c "hotkeyCenter('Todo')"` },
+                        ],
+                },
                 // l = "L"ookup
                 l: {
                         i: open("https://www.instagram.com/direct/t/5082114295174947/"),
@@ -358,19 +368,20 @@ const rules: KarabinerRules[] = [
                 },
         }),
 
-        // App Switcher (browse mode): a dual-role Hyper+T.
-        //   • Tap Hyper+T   -> Cmd+Tab (quick switch to previous app)
-        //   • Hold Hyper+T  -> holds Cmd down; while held, tap Tab / Shift+Tab
+        // App Switcher (browse mode): a dual-role Hyper+X. (X because Hyper+T is
+        // now the Todo list; X is free in every mode.)
+        //   • Tap Hyper+X   -> Cmd+Tab (quick switch to previous app)
+        //   • Hold Hyper+X  -> holds Cmd down; while held, tap Tab / Shift+Tab
         //     to cycle through the switcher, then release to pick the highlight.
-        // Placed after the sublayers so Hyper+O+T (iTerm) etc. still win while a
-        // sublayer is held; here `t` only fires the switcher when no sublayer is
+        // Placed after the sublayers so sublayer chords still win while a
+        // sublayer is held; here `x` only fires the switcher when no sublayer is
         // active (their vars are 0, so those rules above don't match first).
         {
-                description: "App Switcher: tap Hyper+T = switch, hold = browse (Cmd held)",
+                description: "App Switcher: tap Hyper+X = switch, hold = browse (Cmd held)",
                 manipulators: [
                         {
                                 type: "basic",
-                                from: { key_code: "t", modifiers: { optional: ["any"] } },
+                                from: { key_code: "x", modifiers: { optional: ["any"] } },
                                 to_if_alone: [{ key_code: "tab", modifiers: ["left_command"] }],
                                 to_if_held_down: [{ key_code: "left_command" }],
                                 parameters: { "basic.to_if_held_down_threshold_milliseconds": 150 },

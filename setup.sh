@@ -137,8 +137,9 @@ Done. Remaining manual steps:
   2. Open Hammerspoon, grant Accessibility, and enable "Launch at login".
   3. Optional: add iTerm to Login Items so Hyper+E / Hyper+I work right
      after boot (their hotkeys live in iTerm).
-  4. Ideas capture (Hyper+I) writes to "~/Documents/Obsidian Vault/Ideas" —
-     edit VAULT in iterm/ideas.lua if yours lives elsewhere.
+  4. Ideas capture (Hyper+I) writes to "~/Documents/Obsidian Vault/Ideas"
+     and the todo list (Hyper+T) to "~/Documents/Obsidian Vault/todo.md" —
+     edit VAULT in iterm/ideas.lua / TODO in iterm/todo.lua if yours differ.
   5. tmux users: append indicators/tmux-status.conf to your ~/.tmux.conf
      for the mode readout.
 

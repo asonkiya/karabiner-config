@@ -24,7 +24,10 @@ restructured.
 - **`Hyper+I` — idea capture**: same floating treatment; every summon starts a
   fresh timestamped markdown note that lands in an Obsidian vault folder when
   the window loses focus. Empty summons write nothing.
-- **`Hyper+T`** — dual-role app switcher: tap = Cmd+Tab, hold = browse the
+- **`Hyper+T` — todo list**: same floating treatment on a single persistent
+  `todo.md` in the Obsidian vault (so it syncs); autosaves on focus loss,
+  never cleared, picks up external edits on re-summon.
+- **`Hyper+X`** — dual-role app switcher: tap = Cmd+Tab, hold = browse the
   switcher with Cmd held for you.
 - **Vim mode** (`Hyper+Enter`) — vim-style navigation/editing anywhere.
 

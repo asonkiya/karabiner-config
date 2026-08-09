@@ -36,7 +36,8 @@ This repo generates `karabiner.json` for [Karabiner-Elements](https://karabiner-
 - **`iterm/`** — floating nvim windows, implemented as iTerm dynamic profiles (symlinked into `~/Library/Application Support/iTerm2/DynamicProfiles/` by `setup.sh`) plus per-window nvim overlay lua:
   - `scratchpad.json`/`scratchpad.lua` — `Hyper+E`: self-clearing scratch buffer on `~/scratch.md` (wipes on open + after 5 idle minutes), diagnostics/spell/lint disabled, autosave on focus loss
   - `ideas.json`/`ideas.lua` — `Hyper+I`: fresh timestamped idea per summon, committed to the Obsidian vault Ideas folder on focus loss; untouched buffers are never written
-  - Karabiner sends F18/F19 to summon; Hammerspoon's `hotkeyCenter(title)` centers the window. **Reload after editing a profile JSON with `touch -h` on its DynamicProfiles symlink** — deleting/recreating the symlink makes iTerm silently drop the hotkey registration.
+  - `todo.json`/`todo.lua` — `Hyper+T`: single persistent `todo.md` in the Obsidian vault root, autosaved on focus loss, reloaded from disk on re-summon so Obsidian edits sync in. Not cleared, not per-summon.
+  - Karabiner sends F18/F19/F20 to summon; Hammerspoon's `hotkeyCenter(title)` centers the window. **Reload after editing a profile JSON with `touch -h` on its DynamicProfiles symlink** — deleting/recreating the symlink makes iTerm silently drop the hotkey registration.
 - **`indicators/`** — mode indicators: `karabiner-profile.2s.sh` (SwiftBar plugin, symlinked by `setup.sh`) and `tmux-status.conf` (snippet to append to `~/.tmux.conf`)
 - **`setup.sh`** — idempotent installer: dependency checks, path personalization (repo location + brew prefix), all symlinks (with backups), login-build LaunchAgent (`com.karabiner-config.build`), initial build
 
