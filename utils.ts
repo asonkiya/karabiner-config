@@ -1,4 +1,4 @@
-import { To, KeyCode, Manipulator, KarabinerRules, Profile, KarabinerConfig, DeviceSetting } from "./types";
+import { To, KeyCode, Manipulator, KarabinerRules, Profile, KarabinerConfig } from "./types";
 
 export function profilesToConfig(profiles: Profile[]): string {
         const config: KarabinerConfig = {
@@ -362,17 +362,6 @@ export function createMode(name: string) {
         };
 }
 
-export function switchProfile(profileName: string): LayerCommand {
-        return {
-                to: [
-                        {
-                                shell_command: `"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "${profileName}"`,
-                        },
-                ],
-                description: `Switch to profile: ${profileName}`,
-        };
-}
-
 // ---------------------------------------------------------------------------
 // Instant modes
 //
@@ -474,79 +463,6 @@ export function window(name: string): LayerCommand {
  */
 export function app(name: string): LayerCommand {
         return open(`-a '${name}.app'`);
-}
-
-/**
- * Razer Naga thumb-grid support.
- *
- * The Naga's numbered thumb buttons are emitted as plain keyboard number keys
- * (usage page 7 — key_code "1".."0"), indistinguishable from the number row
- * except by which device they came from. Gate remaps on the Naga's HID
- * identifiers (`device_if`) so the buttons do their own thing while the real
- * number row is left completely alone.
- *
- * Matched on Razer's vendor id (1678) ALONE, deliberately: the product id
- * differs by connection mode ("Razer Naga V2 HyperSpeed" over the 2.4GHz
- * dongle = one id; "Naga V2 HS" over Bluetooth LE = product 181), and vendor
- * id is stable across both. Razer is the only vendor-1678 device here.
- *
- * IMPORTANT: this only fires if Karabiner actually *grabs* the device. Over
- * Bluetooth LE the Naga enumerates as a pointing device (usage 2), which
- * Karabiner does not grab by default, so its keypad keys bypass Karabiner and
- * these remaps never run. Either connect via the HyperSpeed USB dongle (it
- * enumerates with a keyboard interface and is grabbed automatically) or enable
- * "Modify events" for the Naga in Karabiner Settings -> Devices.
- */
-export const NAGA_IDENTIFIERS: { vendor_id?: number; product_id?: number }[] = [
-        { vendor_id: 1678 },
-];
-
-/**
- * Device settings that force Karabiner to grab the Naga so the deviceLayer
- * above can act on its buttons. Over Bluetooth the Naga presents as a pointing
- * device (Karabiner ignores those by default), so we must set ignore:false.
- *
- * Karabiner matches device settings on the full (vendor, product,
- * is_keyboard, is_pointing_device) tuple — vendor id alone does NOT match (an
- * earlier vendor-only attempt failed to grab; adding product_id 181 with the
- * keyboard/pointing flags is what made Karabiner grab it). We keep every
- * plausible product-181 combination; Karabiner applies whichever matches the
- * real device and ignores the rest. Declared in code so `yarn build` doesn't
- * wipe the GUI's "Modify events" toggle.
- */
-export const NAGA_DEVICE_SETTINGS: DeviceSetting[] = [
-        { identifiers: { vendor_id: 1678, product_id: 181, is_pointing_device: true, is_keyboard: false }, ignore: false },
-        { identifiers: { vendor_id: 1678, product_id: 181, is_keyboard: true, is_pointing_device: false }, ignore: false },
-        { identifiers: { vendor_id: 1678, product_id: 181, is_keyboard: true, is_pointing_device: true }, ignore: false },
-];
-
-/**
- * Bare-key remaps gated to a specific input device. Only fire when the key
- * comes from a matching device, so the same physical key on other keyboards is
- * untouched. `modifiers: optional any` so the buttons work regardless of held
- * modifiers.
- */
-export function deviceLayer(
-        identifiers: { vendor_id?: number; product_id?: number }[],
-        bindings: { [key_code in KeyCode]?: LayerCommand }
-): KarabinerRules {
-        return {
-                description: `Device layer (${identifiers
-                        .map((i) => `${i.vendor_id}:${i.product_id}`)
-                        .join(", ")})`,
-                manipulators: (Object.keys(bindings) as KeyCode[]).map((key) => {
-                        const cmd = bindings[key]!;
-                        return {
-                                ...cmd,
-                                type: "basic" as const,
-                                from: { key_code: key, modifiers: { optional: ["any"] } },
-                                conditions: [
-                                        { type: "device_if" as const, identifiers },
-                                        ...(cmd.conditions ?? []),
-                                ],
-                        };
-                }),
-        };
 }
 
 /**

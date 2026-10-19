@@ -168,10 +168,6 @@ Done. Remaining manual steps:
      edit VAULT in iterm/ideas.lua / TODO in iterm/todo.lua if yours differ.
   5. tmux users: append indicators/tmux-status.conf to your ~/.tmux.conf
      for the mode readout.
-  6. The thumb-grid mouse layer targets a Razer Naga (vendor 1678, product
-     181); other devices are untouched. For a different mouse, read its ids
-     from Karabiner-EventViewer and edit NAGA_IDENTIFIERS /
-     NAGA_DEVICE_SETTINGS in utils.ts.
 
 Customize keybindings in profiles/*.ts, then `yarn watch` while iterating.
 EOF

@@ -1,5 +1,5 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, shell, doubleTap, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, deviceLayer, NAGA_IDENTIFIERS, NAGA_DEVICE_SETTINGS, hsEvent } from "../utils";
+import { createHyperSubLayers, app, open, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hsEvent } from "../utils";
 import { vimMode, vimModeRules } from "./vim-mode";
 import { programmingRules } from "./programming";
 import { readingRules } from "./reading";
@@ -48,46 +48,8 @@ const rules: KarabinerRules[] = [
                                 ],
                                 type: "basic",
                         },
-                        //      {
-                        //        type: "basic",
-                        //        description: "Disable CMD + Tab to force Hyper Key usage",
-                        //        from: {
-                        //          key_code: "tab",
-                        //          modifiers: {
-                        //            mandatory: ["right_command"],
-                        //          },
-                        //        },
-                        //        to: [
-                        //          {
-                        //            key_code: "tab",
-                        //          },
-                        //        ],
-                        //      },
                 ],
         },
-        // Razer Naga thumb-grid: the 12 buttons come in as plain number keys
-        // (1 2 3 4 5 6 7 8 9 0 - =), but device-gated to the Naga (vendor 1678 /
-        // product 181) so they drive clipboard/editing + app launching instead
-        // of typing digits. Real number row is untouched. Placed early so it
-        // wins over the number-key bindings in cmdSublayer. Physical 3x4 grid:
-        //     1  2  3   -> copy / paste / cut
-        //     4  5  6   -> undo / redo / clipboard history
-        //     7  8  9   -> Arc / iTerm / Discord
-        //     0  -  =   -> Messages / WhatsApp / Claude
-        deviceLayer(NAGA_IDENTIFIERS, {
-                "1": { description: "Naga: Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["right_command"] }] },
-                "2": { description: "Naga: Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["right_command"] }] },
-                "3": { description: "Naga: Cut (Cmd+X)", to: [{ key_code: "x", modifiers: ["right_command"] }] },
-                "4": { description: "Naga: Undo (Cmd+Z)", to: [{ key_code: "z", modifiers: ["right_command"] }] },
-                "5": { description: "Naga: Redo (Cmd+Shift+Z)", to: [{ key_code: "z", modifiers: ["right_command", "right_shift"] }] },
-                "6": open("raycast://extensions/raycast/clipboard-history/clipboard-history"),
-                "7": app("/Applications/Arc"),
-                "8": app("iTerm"),
-                "9": app("Discord"),
-                "0": app("Messages"),
-                "hyphen": open("/Applications/WhatsApp.localized/WhatsApp.app"),
-                "equal_sign": app("Claude"),
-        }),
         // iTerm2: Hyper + B -> Ctrl+B (tmux prefix)
         {
                 description: "iTerm2: Hyper + B -> Tmux Prefix (Ctrl+B)",
@@ -124,27 +86,9 @@ const rules: KarabinerRules[] = [
         ...createHyperSubLayers({
                 semicolon: open("raycast://extensions/the-browser-company/arc/search-space-tabs"),
                 spacebar: app("Raycast"),
-                //                escape: shell`
-                //                                "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "test"
-                //                             `,
-                // l (lookup), o (open apps) and w (window) are now GLOBAL — see
-                // globalNavLayers below, spread after the mode fragments so they
-                // work in every mode (and mode overrides can win where needed).
-
-                // TODO: This doesn't quite work yet.
-                // l = "Layouts" via Raycast's custom window management
-                // l: {
-                //   // Coding layout
-                //   c: shell`
-                //     open -a "Visual Studio Code.app"
-                //     sleep 0.2
-                //     open -g "raycast://customWindowManagementCommand?position=topLeft&relativeWidth=0.5"
-
-                //     open -a "Terminal.app"
-                //     sleep 0.2
-                //     open -g "raycast://customWindowManagementCommand?position=topRight&relativeWidth=0.5"
-                //   `,
-                // },
+                // l (lookup), o (open apps) and w (window) are GLOBAL — see the
+                // block below, spread after the mode fragments so they work in
+                // every mode (and mode overrides can win where needed).
 
                 // s = "System"
                 s: {
@@ -256,9 +200,6 @@ const rules: KarabinerRules[] = [
                         c: app("Claude"),
                         g: app("ChatGPT"),
                 },
-
-                // i = "Ideas" quick capture — moved to the global block below
-                // (floating nvim window, was the Raycast idea-capture extension)
 
                 // m = "Modes" — enter a mode from Normal. (From within a mode,
                 // bare Hyper+M jumps back to Normal; see the escape hatches below.)
@@ -432,30 +373,6 @@ const rules: KarabinerRules[] = [
                         },
                 ],
         },
-        //        {
-        //                description: "Change Backspace to Spacebar when Minecraft is focused",
-        //                manipulators: [
-        //                        {
-        //                                type: "basic",
-        //                                from: {
-        //                                        key_code: "delete_or_backspace",
-        //                                },
-        //                                to: [
-        //                                        {
-        //                                                key_code: "spacebar",
-        //                                        },
-        //                                ],
-        //                                conditions: [
-        //                                        {
-        //                                                type: "frontmost_application_if",
-        //                                                file_paths: [
-        //                                                        "^/Users/mxstbr/Library/Application Support/minecraft/runtime/java-runtime-gamma/mac-os-arm64/java-runtime-gamma/jre.bundle/Contents/Home/bin/java$",
-        //                                                ],
-        //                                        },
-        //                                ],
-        //                        },
-        //                ],
-        //        },
 
         // Vim mode (Hyper+Enter to enter, I or Escape to exit)
         ...vimModeRules,
@@ -466,10 +383,6 @@ export const normalProfile: Profile = {
         virtual_hid_keyboard: {
                 keyboard_type_v2: "ansi",
         },
-        // Force Karabiner to grab the Naga (a pointing-class device over
-        // Bluetooth, ignored by default) so the deviceLayer above can remap its
-        // buttons. See NAGA_DEVICE_SETTINGS.
-        devices: NAGA_DEVICE_SETTINGS,
         complex_modifications: {
                 rules,
         },

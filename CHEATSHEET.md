@@ -6,23 +6,6 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 
 ## All modes
 
-### Bare keys
-
-| Key | Action |
-| --- | --- |
-| `0` | Open Messages |
-| `1` | Naga: Copy (Cmd+C) |
-| `2` | Naga: Paste (Cmd+V) |
-| `3` | Naga: Cut (Cmd+X) |
-| `4` | Naga: Undo (Cmd+Z) |
-| `5` | Naga: Redo (Cmd+Shift+Z) |
-| `6` | Raycast: clipboard history · clipboard history |
-| `7` | Open Arc |
-| `8` | Open iTerm |
-| `9` | Open Discord |
-| `-` | Open WhatsApp |
-| `=` | Open Claude |
-
 ### Direct (`Hyper` + key)
 
 | Key | Action |

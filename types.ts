@@ -12,22 +12,6 @@ export interface Profile {
         selected?: boolean;
         virtual_hid_keyboard?: VirtualHidKeyboard;
         complex_modifications?: ComplexModifications;
-        devices?: DeviceSetting[];
-}
-
-/**
- * Per-device settings — mirrors an entry in Karabiner's Settings -> Devices
- * tab. The main knob is `ignore`: false = "Modify events" ON (Karabiner grabs
- * the device so complex_modifications can act on it). Pointing devices default
- * to ignore:true, so a mouse-class device (like the Naga over Bluetooth) must
- * be listed here with ignore:false for its keys to be remappable.
- */
-export interface DeviceSetting {
-        identifiers: Identifiers;
-        ignore?: boolean;
-        manipulate_caps_lock_led?: boolean;
-        disable_built_in_keyboard_if_exists?: boolean;
-        treat_as_built_in_keyboard?: boolean;
 }
 
 export interface VirtualHidKeyboard {

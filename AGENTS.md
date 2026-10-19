@@ -27,7 +27,6 @@ This repo generates `karabiner.json` for [Karabiner-Elements](https://karabiner-
     - `whenNormal` — conditions that hold only in Normal (all mode vars 0); gates the Normal sublayers
     - `hyperNotHeld` — condition to gate bare-key mode remaps so they don't fire mid Hyper-chord
     - `appAndSwitchMode(appName, mode)` — opens an app and instantly switches into a mode
-  - `switchProfile(name)` — legacy profile switch via `karabiner_cli` (slow reload; kept but unused)
   - `doubleTap(key, command, delayMs?, extraConditions?)` — fires a command on double-tap of a key
   - `claudeCmd(command)` — types a Codex slash command into the focused terminal + Enter
   - `vimCmd(command)` — escapes to Vim normal mode then runs `:command` + Enter

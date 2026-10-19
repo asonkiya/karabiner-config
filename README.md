@@ -10,6 +10,12 @@ over fullscreen apps.
 Forked from [@mxstbr's config](https://github.com/mxstbr/karabiner) and heavily
 restructured.
 
+![Which-key HUD: hold Caps Lock and the whole Hyper layer appears as a weapon wheel](docs/hud.jpg)
+
+*Hold Caps Lock for 400ms and the Hyper layer appears as a wheel: sublayers on
+the inner ring, direct commands on the outer. Hold a sublayer key and you get
+that sublayer's wheel instead.*
+
 ## Highlights
 
 - **Hyper sublayers** — hold Caps Lock, tap a sublayer key, tap a command key.
@@ -40,11 +46,6 @@ restructured.
   bindings only show inside their app, and held-and-repeated layers (`v` for
   movement) opt out with `hud: false`.
 - **Vim mode** (`Hyper+Enter`) — vim-style navigation/editing anywhere.
-- **Mouse thumb grid** — the 12 side buttons of a Razer Naga (which report as
-  `1`…`0`, `-`, `=`) become copy/paste/undo/redo, clipboard history and app
-  launchers, gated to that device so the keyboard's number row is untouched.
-  Works over Bluetooth: the build also tells Karabiner to grab the mouse,
-  which it ignores by default.
 
 The full keymap lives in the source — `profiles/normal.ts` is the assembler
 and the place to look first. The tables in code are the source of truth;
@@ -98,14 +99,8 @@ cd karabiner-config
    `hammerspoon/sublayers.json`) and reloads Karabiner and Hammerspoon
 
 Then follow the printed manual steps (permission grants, optional Login
-Items). Two things are personal and worth checking:
-
-- The ideas/todo vault paths — `VAULT` in `iterm/ideas.lua`, `TODO` in
-  `iterm/todo.lua`.
-- The mouse thumb grid targets a Razer Naga (vendor `1678`, product `181`).
-  Any other mouse is left alone; to use yours, read its ids from
-  Karabiner-EventViewer and change `NAGA_IDENTIFIERS` /
-  `NAGA_DEVICE_SETTINGS` in `utils.ts`.
+Items). The ideas/todo vault paths are personal — `VAULT` in
+`iterm/ideas.lua`, `TODO` in `iterm/todo.lua`.
 
 ## Customizing
 
@@ -130,8 +125,6 @@ yarn watch   # rebuilds karabiner.json on every save
   `hammerspoon/init.lua` — `HUD_DELAY` (hold time before it appears, 400ms),
   `HUD_SIZE`, ring proportions, dim, colours, font sizes. Add `hud: false` to
   a sublayer map to keep it off the wheel.
-- **Mouse layer**: the bindings in the `deviceLayer(...)` block in
-  `profiles/normal.ts`; device ids in `utils.ts`.
 
 ## Architecture
 
@@ -150,7 +143,7 @@ files, which the indicators read.
 |---|---|
 | `rules.ts` | entry point — emits the single profile |
 | `profiles/` | `normal.ts` assembles everything; other files are mode-gated fragments |
-| `utils.ts` | sublayer generator, mode machinery, command helpers, device-gated mouse layer + device settings |
+| `utils.ts` | sublayer generator, mode machinery, command helpers |
 | `types.ts` | Karabiner JSON schema types |
 | `hammerspoon/` | per-app mode auto-switching, floating-window centering, weapon-wheel which-key HUD, boot resilience |
 | `iterm/` | dynamic profiles + nvim overlays for the scratchpad and idea-capture windows |
