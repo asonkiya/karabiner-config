@@ -9,6 +9,12 @@ import { Manipulator, To, KarabinerRules } from "./types";
 // renders CHEATSHEET.md: every Hyper sublayer, direct Hyper binding, and
 // bare-key mode remap, grouped by mode. The TypeScript source stays the single
 // source of truth — run `yarn cheatsheet` after changing keybindings.
+//
+// It ALSO emits hammerspoon/sublayers.json: for each runtime mode (normal /
+// programming / reading / trivia) the *effective* contents of every sublayer
+// plus a `_top` map of the Hyper layer itself. Hammerspoon's radial which-key
+// HUD (hudShow in hammerspoon/init.lua) renders that, so the on-screen menu
+// can never drift from the real bindings.
 // ---------------------------------------------------------------------------
 
 type Mode = "All modes" | "Normal" | "Programming" | "Reading" | "Trivia" | "Vim Mode";
@@ -61,7 +67,7 @@ const KEY_SYMBOL: Record<string, string> = {
         volume_increment: "Vol +", volume_decrement: "Vol −", mute: "Mute",
         display_brightness_increment: "Bright +", display_brightness_decrement: "Bright −",
         play_or_pause: "Play/Pause", mission_control: "Mission Control",
-        f18: "F18", f19: "F19",
+        f18: "F18", f19: "F19", f20: "F20",
         left_command: "⌘", right_command: "⌘",
         left_control: "⌃", right_control: "⌃",
         left_option: "⌥", right_option: "⌥",
@@ -240,16 +246,32 @@ function detectMode(conds: Cond[] | undefined): Mode {
         return "All modes";
 }
 
-function appNote(conds: Cond[] | undefined): string {
-        const c = conds?.find((c) => (c as any).type === "frontmost_application_if") as any;
+// The frontmost_application_if condition on a manipulator, if any.
+function appCond(conds: Cond[] | undefined): any {
+        return conds?.find((c) => (c as any).type === "frontmost_application_if");
+}
+
+// Name of the app a manipulator is gated to (frontmost_application_if), or "".
+function appName(conds: Cond[] | undefined): string {
+        const c = appCond(conds);
         if (!c) return "";
-        if (c.description) return ` _(${c.description} only)_`;
+        if (c.description) return c.description;
         const bundle = c.bundle_identifiers?.[0] as string | undefined;
-        if (bundle) {
-                const name = bundle.replace(/[\\^$]/g, "").split(".").pop() ?? bundle;
-                return ` _(${name} only)_`;
-        }
+        if (bundle) return bundle.replace(/[\\^$]/g, "").split(".").pop() ?? bundle;
         return "";
+}
+
+// The raw bundle-id regexes a manipulator is gated to, for the HUD to match
+// against the frontmost app at draw time (so WhatsApp's ⌘1-3 only show up in
+// WhatsApp). Undefined when the binding isn't app-gated.
+function appBundles(conds: Cond[] | undefined): string[] | undefined {
+        const ids = appCond(conds)?.bundle_identifiers as string[] | undefined;
+        return ids && ids.length > 0 ? ids : undefined;
+}
+
+function appNote(conds: Cond[] | undefined): string {
+        const name = appName(conds);
+        return name ? ` _(${name} only)_` : "";
 }
 
 // ---- walk the profile -----------------------------------------------------
@@ -272,6 +294,18 @@ function modeData(m: Mode): ModeData {
 
 let hyperNote = "";
 
+// Flat, rule-ordered record of every Hyper binding, used to build the HUD
+// JSON. Rule order == Karabiner precedence (first match wins), so resolving
+// per-mode "effective" bindings is just a first-seen-per-key walk.
+interface Entry {
+        mode: Mode;
+        sublayer: string | null; // raw sublayer key_code, or null for direct
+        key: string; // humanized from-key (e.g. "G", "⇧Y", "⏎")
+        label: string; // plain-text action (no markdown)
+        app?: string[]; // bundle-id regexes when gated with frontmost_application_if
+}
+const entries: Entry[] = [];
+
 for (const rule of normalProfile.complex_modifications!.rules) {
         for (const m of rule.manipulators ?? []) {
                 const conds = m.conditions;
@@ -287,7 +321,11 @@ for (const rule of normalProfile.complex_modifications!.rules) {
 
                 const mode = detectMode(conds);
                 const sublayer = hasSublayer(conds);
-                const action = actionLabel(rule, m) + appNote(conds);
+                const plainAction = actionLabel(rule, m);
+                const app = appName(conds);
+                const action = plainAction + appNote(conds);
+                const label = app ? `${plainAction} (${app})` : plainAction;
+                const bundles = appBundles(conds);
                 const fromKey = m.from?.key_code;
                 const fromLabel = keyForManip(m);
 
@@ -297,10 +335,12 @@ for (const rule of normalProfile.complex_modifications!.rules) {
                         const data = modeData(mode);
                         if (!data.sublayers.has(sublayer)) data.sublayers.set(sublayer, []);
                         data.sublayers.get(sublayer)!.push({ key: fromLabel, action });
+                        entries.push({ mode, sublayer, key: fromLabel, label, app: bundles });
                 } else if (varCond(conds, "hyper") === 1) {
                         // Direct Hyper + key.
                         if (!fromKey) continue;
                         modeData(mode).direct.push({ key: fromLabel, action });
+                        entries.push({ mode, sublayer: null, key: fromLabel, label, app: bundles });
                 } else if (fromKey) {
                         // Bare-key remap (mode-gated: reading, trivia, vim).
                         modeData(mode).bare.push({ key: fromLabel, action });
@@ -381,3 +421,89 @@ const total = [...modes.values()].reduce(
 
 fs.writeFileSync("CHEATSHEET.md", lines.join("\n"));
 console.log(`Wrote CHEATSHEET.md (${total} bindings)`);
+
+// ---- emit the HUD menu data (hammerspoon/sublayers.json) -------------------
+//
+// For each runtime mode Hammerspoon can be in, resolve what every sublayer
+// actually contains right then: mode-specific rules win over the global
+// ("All modes") ones because they're spread earlier in normal.ts, and Normal
+// adds its own sublayers on top. `_top` is the Hyper layer itself — the
+// sublayer keys (flagged `group`, so the HUD can put them on the inner ring)
+// followed by the direct Hyper+key commands.
+
+type RuntimeMode = "normal" | "programming" | "reading" | "trivia";
+const RUNTIME_MODES: RuntimeMode[] = ["normal", "programming", "reading", "trivia"];
+const MODE_OF: Record<RuntimeMode, Mode> = {
+        normal: "Normal",
+        programming: "Programming",
+        reading: "Reading",
+        trivia: "Trivia",
+};
+
+interface HudItem {
+        key: string;
+        label: string;
+        group?: boolean;
+        app?: string[]; // only shown while the frontmost app's bundle id matches one of these
+}
+interface HudMenu {
+        title: string;
+        items: HudItem[];
+}
+
+function appliesTo(entryMode: Mode, rt: RuntimeMode): boolean {
+        return entryMode === "All modes" || entryMode === MODE_OF[rt];
+}
+
+const hud: Record<RuntimeMode, Record<string, HudMenu>> = {} as any;
+for (const rt of RUNTIME_MODES) {
+        // key -> candidate items in rule order. An un-gated binding settles the
+        // key (nothing after it can ever fire), but app-gated ones only win in
+        // their app, so later candidates stay — Hammerspoon picks the first whose
+        // app matches the frontmost one at draw time (`visibleItems` in init.lua),
+        // which is exactly Karabiner's first-match resolution.
+        type Candidates = Map<string, HudItem[]>;
+        const subs = new Map<string, Candidates>(); // sublayer -> key -> items
+        const direct: Candidates = new Map();
+        const add = (m: Candidates, e: Entry) => {
+                const list = m.get(e.key) ?? [];
+                if (list.some((it) => !it.app)) return; // already settled
+                list.push(e.app ? { key: e.key, label: e.label, app: e.app } : { key: e.key, label: e.label });
+                m.set(e.key, list);
+        };
+        for (const e of entries) {
+                if (!appliesTo(e.mode, rt)) continue;
+                if (e.sublayer) {
+                        let m = subs.get(e.sublayer);
+                        if (!m) {
+                                m = new Map();
+                                subs.set(e.sublayer, m);
+                        }
+                        add(m, e);
+                } else {
+                        add(direct, e);
+                }
+        }
+        const flat = (m: Candidates): HudItem[] => [...m.values()].flat();
+
+        const menus: Record<string, HudMenu> = {};
+        const subKeys = sortSublayers([...subs.keys()]);
+        for (const s of subKeys) {
+                menus[s] = {
+                        title: sublayerLabel(MODE_OF[rt], s) || keyLabel(s),
+                        items: flat(subs.get(s)!),
+                };
+        }
+        menus._top = {
+                title: "Hyper",
+                items: [
+                        ...subKeys.map((s) => ({ key: keyLabel(s), label: menus[s].title, group: true })),
+                        ...flat(direct),
+                ],
+        };
+        hud[rt] = menus;
+}
+
+fs.writeFileSync("hammerspoon/sublayers.json", JSON.stringify(hud, null, 2) + "\n");
+const menuCount = RUNTIME_MODES.reduce((n, rt) => n + Object.keys(hud[rt]).length, 0);
+console.log(`Wrote hammerspoon/sublayers.json (${menuCount} menus across ${RUNTIME_MODES.length} modes)`);

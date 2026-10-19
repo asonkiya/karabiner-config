@@ -18,8 +18,11 @@ command -v node >/dev/null || die "node not found — install Node.js (brew inst
 command -v yarn >/dev/null || die "yarn not found — corepack enable, or npm install -g yarn."
 [ -d "/Applications/Karabiner-Elements.app" ] \
         || warn "Karabiner-Elements.app not found — install from https://karabiner-elements.pqrs.org/"
-[ -d "/Applications/Hammerspoon.app" ] \
-        || warn "Hammerspoon.app not found (mode auto-switching + window centering) — brew install --cask hammerspoon"
+HAVE_HS=false
+[ -d "/Applications/Hammerspoon.app" ] && HAVE_HS=true
+$HAVE_HS || warn "Hammerspoon.app not found (which-key HUD, pinch-zoom, mode auto-switching, window centering) — brew install --cask hammerspoon"
+command -v cliclick >/dev/null \
+        || warn "cliclick not found (Reading-mode screenshot-drag macros) — brew install cliclick"
 HAVE_ITERM=false
 [ -d "/Applications/iTerm.app" ] && HAVE_ITERM=true
 $HAVE_ITERM || warn "iTerm.app not found — the floating scratchpad (Hyper+E) and idea capture (Hyper+I) need it."
@@ -36,7 +39,7 @@ OLD_BREW="/opt/homebrew"
 BREW_PREFIX="$({ command -v brew >/dev/null && brew --prefix; } || echo /opt/homebrew)"
 if [ "$REPO" != "$OLD_REPO" ] || [ "$BREW_PREFIX" != "$OLD_BREW" ]; then
         say "Personalizing paths (repo: $REPO, brew: $BREW_PREFIX)"
-        for f in "$REPO"/iterm/*.json "$REPO"/iterm/*.lua "$REPO"/profiles/normal.ts; do
+        for f in "$REPO"/iterm/*.json "$REPO"/iterm/*.lua "$REPO"/profiles/*.ts "$REPO"/utils.ts; do
                 sed -i '' -e "s|$OLD_REPO|$REPO|g" -e "s|$OLD_BREW/bin|$BREW_PREFIX/bin|g" "$f"
         done
 fi
@@ -65,6 +68,21 @@ say "Linking configs"
 mkdir -p "$HOME/.config"
 link "$REPO" "$HOME/.config/karabiner"
 link "$REPO/hammerspoon" "$HOME/.hammerspoon"
+
+# The `hs` CLI: Karabiner's one-off chords (zoom, floating-window centering)
+# call it over hs.ipc. Hammerspoon ships the binary inside the app bundle and
+# normally symlinks it via hs.ipc.cliInstall(); do the same thing here so a
+# fresh machine doesn't need a manual step in the Hammerspoon console.
+if $HAVE_HS; then
+        HS_BIN="/Applications/Hammerspoon.app/Contents/Frameworks/hs/hs"
+        if [ -x "$HS_BIN" ] && [ ! -x "$BREW_PREFIX/bin/hs" ]; then
+                if mkdir -p "$BREW_PREFIX/bin" 2>/dev/null && [ -w "$BREW_PREFIX/bin" ]; then
+                        link "$HS_BIN" "$BREW_PREFIX/bin/hs"
+                else
+                        warn "$BREW_PREFIX/bin not writable — install the hs CLI from the Hammerspoon console: hs.ipc.cliInstall(\"$BREW_PREFIX\")"
+                fi
+        fi
+fi
 
 if $HAVE_ITERM; then
         DYN="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
@@ -129,12 +147,20 @@ say "Building karabiner.json"
 # Nudge Karabiner to reload if it's running
 launchctl kickstart -k "gui/$(id -u)/org.pqrs.karabiner.karabiner_console_user_server" 2>/dev/null || true
 
+# Reload Hammerspoon if it's already running so it picks up the linked config
+# (its pathwatcher only fires on .lua edits, not on a new symlink).
+if $HAVE_HS && pgrep -xq Hammerspoon && [ -x "$BREW_PREFIX/bin/hs" ]; then
+        "$BREW_PREFIX/bin/hs" -t 3 -c "hs.reload()" </dev/null >/dev/null 2>&1 || true
+fi
+
 cat <<'EOF'
 
 Done. Remaining manual steps:
   1. Open Karabiner-Elements once and approve its system extension + input
      monitoring prompts (System Settings > Privacy & Security).
   2. Open Hammerspoon, grant Accessibility, and enable "Launch at login".
+     It must be running for the which-key HUD (hold Caps Lock or a sublayer
+     key ~400ms), pinch-zoom and per-app mode switching.
   3. Optional: add iTerm to Login Items so Hyper+E / Hyper+I work right
      after boot (their hotkeys live in iTerm).
   4. Ideas capture (Hyper+I) writes to "~/Documents/Obsidian Vault/Ideas"
@@ -142,6 +168,10 @@ Done. Remaining manual steps:
      edit VAULT in iterm/ideas.lua / TODO in iterm/todo.lua if yours differ.
   5. tmux users: append indicators/tmux-status.conf to your ~/.tmux.conf
      for the mode readout.
+  6. The thumb-grid mouse layer targets a Razer Naga (vendor 1678, product
+     181); other devices are untouched. For a different mouse, read its ids
+     from Karabiner-EventViewer and edit NAGA_IDENTIFIERS /
+     NAGA_DEVICE_SETTINGS in utils.ts.
 
 Customize keybindings in profiles/*.ts, then `yarn watch` while iterating.
 EOF

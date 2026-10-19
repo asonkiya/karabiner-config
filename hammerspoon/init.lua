@@ -165,6 +165,291 @@ function zoom(dir)
     end
 end
 
+-- ---------------------------------------------------------------------------
+-- Radial "which-key" HUD for the Hyper layer.
+--
+-- Hold a sublayer key (Hyper+O) and a weapon-wheel of its commands appears
+-- around the screen centre: a thick ring cut into one wedge per command, key
+-- letter big, label under it, menu title in the hub. Hold Hyper alone and
+-- you get the whole layer (sublayers on the inner ring, direct commands on
+-- the outer). Karabiner drives it: every sublayer toggle opens
+-- `hammerspoon://hud?show=<key>` on press and `?hide=1` on release (see
+-- createHyperSubLayer in utils.ts; the Caps Lock manipulator does the same
+-- with '_top').
+--
+-- Menu contents come from sublayers.json, emitted by cheatsheet.ts on every
+-- `yarn build` from the assembled profile — so the HUD can't drift from the
+-- real bindings. It's re-read on every show (tiny file) because the
+-- pathwatcher only reloads on .lua changes.
+--
+-- Feel: a HUD_DELAY hold before anything appears, so fast chords never flash
+-- it; but if a wheel is already up, switching to a sublayer is instant.
+-- ---------------------------------------------------------------------------
+local HUD_DELAY = 0.40
+local HUD_FILE = hs.configdir .. "/sublayers.json"
+
+_G.karabinerMode.hud = _G.karabinerMode.hud or {}
+local hud = _G.karabinerMode.hud
+
+local HUD_INK = { red = 0.08, green = 0.08, blue = 0.10 }
+local HUD_ACCENT = { red = 1.0, green = 0.62, blue = 0.20 }
+local HUD_FONT = ".AppleSystemUIFont"
+local HUD_FONT_BOLD = ".AppleSystemUIFontBold"
+
+local function withAlpha(c, a)
+    return { red = c.red, green = c.green, blue = c.blue, alpha = a }
+end
+
+-- Which Karabiner mode is active, from the same flag files the indicators use.
+local function currentMode()
+    for _, m in ipairs({ "programming", "reading", "trivia" }) do
+        if hs.fs.attributes("/tmp/karabiner_mode_" .. m) then return m end
+    end
+    return "normal"
+end
+
+local function hudClear()
+    if hud.timer then
+        hud.timer:stop()
+        hud.timer = nil
+    end
+    if hud.canvas then
+        hud.canvas:delete()
+        hud.canvas = nil
+    end
+end
+
+-- Geometry (GTA weapon-wheel proportions). Everything is a fraction of R,
+-- the wheel's outer radius, which is HUD_SIZE of the shorter half-screen.
+local HUD_SIZE = 0.84          -- outer radius as a fraction of min(cx, cy)
+local HUD_HUB = 0.20           -- hub radius / R
+local HUD_RING1 = 0.36         -- single ring: inner edge / R (outer edge = R)
+local HUD_RING2 = { 0.28, 0.64 } -- two rings: inner ring spans [1]..[2], outer [2]+gap..1
+local HUD_RING_GAP = 8         -- px between the two rings
+local HUD_WEDGE_GAP = 7        -- px between neighbouring wedges
+local HUD_DIM = 0.35           -- full-screen darkening behind the wheel
+local HUD_FILL = { white = 0.12, alpha = 0.86 }
+local HUD_GROUP_FILL = { red = 0.30, green = 0.22, blue = 0.14, alpha = 0.88 } -- sublayer wedges, warm tint
+local HUD_EDGE = { white = 1, alpha = 0.22 }
+local HUD_KEY_SIZE = 28
+local HUD_LABEL_SIZE = 14
+
+-- Split items into rings. <=10 fits one ring; beyond that, two. For the
+-- top-level map the sublayers (group=true) take the inner ring and direct
+-- commands the outer; otherwise just split evenly.
+local function rings(items)
+    if #items <= 10 then return { items } end
+    local inner, outer = {}, {}
+    local hasGroups = false
+    for _, it in ipairs(items) do
+        if it.group then hasGroups = true end
+    end
+    if hasGroups then
+        for _, it in ipairs(items) do
+            table.insert(it.group and inner or outer, it)
+        end
+    else
+        local half = math.ceil(#items / 2)
+        for i, it in ipairs(items) do
+            table.insert(i <= half and inner or outer, it)
+        end
+    end
+    return { inner, outer }
+end
+
+-- Polygon for an annular sector (outer arc a1->a2, inner arc back), as
+-- `segments` coordinates. Done by hand so the result doesn't depend on
+-- hs.canvas's arc angle conventions. Angles in radians, y-down screen space
+-- (so -pi/2 is straight up and angles grow clockwise).
+local function wedge(cx, cy, r0, r1, a1, a2)
+    local pts = {}
+    local n = math.max(2, math.ceil((a2 - a1) / math.rad(2)))
+    for i = 0, n do
+        local a = a1 + (a2 - a1) * i / n
+        pts[#pts + 1] = { x = cx + r1 * math.cos(a), y = cy + r1 * math.sin(a) }
+    end
+    for i = n, 0, -1 do
+        local a = a1 + (a2 - a1) * i / n
+        pts[#pts + 1] = { x = cx + r0 * math.cos(a), y = cy + r0 * math.sin(a) }
+    end
+    return pts
+end
+
+-- One ring of wedges between radii r0..r1, first wedge centred at 12 o'clock,
+-- then clockwise. Each wedge gets its key letter (big, accent) over its label.
+local function drawRing(c, cx, cy, r0, r1, items)
+    local n = #items
+    local step = 2 * math.pi / n
+    local rm = (r0 + r1) / 2
+    local thick = r1 - r0
+    local arc = rm * step - HUD_WEDGE_GAP -- arc length available per wedge at mid radius
+    for i, it in ipairs(items) do
+        local a = -math.pi / 2 + (i - 1) * step
+        local half = step / 2 - (HUD_WEDGE_GAP / 2) / rm
+        c[#c + 1] = {
+            type = "segments", closed = true,
+            coordinates = wedge(cx, cy, r0, r1, a - half, a + half),
+            action = "strokeAndFill",
+            fillColor = it.group and HUD_GROUP_FILL or HUD_FILL,
+            strokeColor = HUD_EDGE, strokeWidth = 1,
+        }
+
+        -- Horizontal room for text inside this wedge: the arc width when the
+        -- wedge points up/down, the ring thickness when it points sideways.
+        local x, y = cx + rm * math.cos(a), cy + rm * math.sin(a)
+        local w = 0.9 * (math.abs(math.sin(a)) * arc + math.abs(math.cos(a)) * thick)
+        w = math.max(90, math.min(260, w))
+        local label = it.label or ""
+        if utf8.len(label) > 30 then
+            label = label:sub(1, utf8.offset(label, 31) - 1) .. "…"
+        end
+        local st = hs.styledtext.new(it.key .. "\n" .. label, {
+            font = { name = HUD_FONT, size = HUD_LABEL_SIZE },
+            color = { white = 1, alpha = 0.92 },
+            paragraphStyle = { alignment = "center", lineBreak = "wordWrap" },
+        }):setStyle({
+            font = { name = HUD_FONT_BOLD, size = HUD_KEY_SIZE },
+            color = HUD_ACCENT,
+        }, 1, utf8.len(it.key))
+        c[#c + 1] = {
+            type = "text", text = st,
+            frame = { x = x - w / 2, y = y - 38, w = w, h = 80 },
+        }
+    end
+end
+
+-- Karabiner gates some bindings on the frontmost app (frontmost_application_if,
+-- a list of bundle-id regexes). sublayers.json carries those regexes as
+-- `app`; drop the item unless the frontmost app matches one. The regexes in
+-- this repo are plain anchored literals (`^net\.whatsapp\.WhatsApp$`), so
+-- turning JS escapes (`\.`) into Lua ones (`%.`) is all the translation needed.
+local function jsRegexToLua(re)
+    return (re:gsub("\\(%p)", "%%%1"))
+end
+
+-- Items that apply to the frontmost app, first match per key — the same
+-- resolution Karabiner does (an app-gated rule shadows a later un-gated one
+-- only inside its app). cheatsheet.ts keeps every candidate for a key, in
+-- rule order, for exactly this reason.
+local function visibleItems(items)
+    local front = hs.application.frontmostApplication()
+    local bid = front and front:bundleID() or ""
+    local out, seen = {}, {}
+    for _, it in ipairs(items) do
+        local ok = not seen[it.key]
+        if ok and it.app then
+            ok = false
+            for _, re in ipairs(it.app) do
+                if bid:find(jsRegexToLua(re)) then ok = true; break end
+            end
+        end
+        if ok then
+            out[#out + 1] = it
+            seen[it.key] = true
+        end
+    end
+    return out
+end
+
+local function draw(key)
+    local data = hs.json.read(HUD_FILE)
+    local menus = data and data[currentMode()]
+    local menu = menus and menus[key]
+    if not menu or not menu.items then return end
+    menu.items = visibleItems(menu.items)
+    if #menu.items == 0 then return end
+
+    local screen = hs.mouse.getCurrentScreen() or hs.screen.mainScreen()
+    local f = screen:frame()
+    local cx, cy = f.w / 2, f.h / 2
+
+    local c = hs.canvas.new(f)
+    c:level(hs.canvas.windowLevels.overlay)
+    c:behaviorAsLabels({ "canJoinAllSpaces", "stationary" })
+    c:clickActivating(false)
+
+    local R = math.min(cx, cy) * HUD_SIZE
+
+    -- Dim the screen behind the wheel so it reads against anything.
+    c[#c + 1] = {
+        type = "rectangle", frame = { x = 0, y = 0, w = f.w, h = f.h },
+        action = "fill", fillColor = { black = 1, alpha = HUD_DIM },
+    }
+
+    -- Rings of wedges.
+    local groups = rings(menu.items)
+    if #groups == 1 then
+        drawRing(c, cx, cy, R * HUD_RING1, R, groups[1])
+    else
+        drawRing(c, cx, cy, R * HUD_RING2[1], R * HUD_RING2[2], groups[1])
+        drawRing(c, cx, cy, R * HUD_RING2[2] + HUD_RING_GAP, R, groups[2])
+    end
+
+    -- Hub: menu title, current mode underneath.
+    local rHub = R * HUD_HUB
+    c[#c + 1] = {
+        type = "circle", center = { x = cx, y = cy }, radius = rHub,
+        action = "strokeAndFill",
+        fillColor = withAlpha(HUD_INK, 0.90),
+        strokeColor = { white = 1, alpha = 0.25 }, strokeWidth = 2,
+    }
+    c[#c + 1] = {
+        type = "text", frame = { x = cx - rHub, y = cy - 24, w = rHub * 2, h = 30 },
+        text = hs.styledtext.new(menu.title, {
+            font = { name = HUD_FONT_BOLD, size = 22 },
+            color = { white = 1 },
+            paragraphStyle = { alignment = "center" },
+        }),
+    }
+    local mode = currentMode()
+    c[#c + 1] = {
+        type = "text", frame = { x = cx - rHub, y = cy + 6, w = rHub * 2, h = 20 },
+        text = hs.styledtext.new(mode:sub(1, 1):upper() .. mode:sub(2), {
+            font = { name = HUD_FONT, size = 13 },
+            color = withAlpha(HUD_ACCENT, 0.9),
+            paragraphStyle = { alignment = "center" },
+        }),
+    }
+
+    hud.canvas = c
+    c:show()
+end
+
+-- Called from Karabiner on sublayer / Hyper press. `key` is the raw sublayer
+-- key_code ('o', 'w', ...) or '_top' for the Hyper layer itself.
+function hudShow(key)
+    local wasVisible = hud.canvas ~= nil
+    hudClear()
+    if wasVisible then
+        draw(key)
+    else
+        hud.timer = hs.timer.doAfter(HUD_DELAY, function()
+            hud.timer = nil
+            draw(key)
+        end)
+    end
+end
+
+-- Called from Karabiner on release. Safe to call when nothing is showing.
+function hudHide()
+    hudClear()
+end
+
+-- Karabiner reaches the HUD through URL events, not `hs -c`:
+--   open -g "hammerspoon://hud?show=<key>"   (sublayer / Hyper press)
+--   open -g "hammerspoon://hud?hide=1"       (release)
+-- `open -g` is fire-and-forget, so a keystroke never waits on this process.
+-- (`hs -c` is a blocking IPC round-trip — fine for one-off chords like
+-- zoom(), but the Hyper hook fires on every Escape tap, and clients stuck
+-- behind a busy or reloading Hammerspoon pile up.) See hsEvent in utils.ts.
+hs.urlevent.bind("hud", function(_, params)
+    if params.show then
+        hudShow(params.show)
+    elseif params.hide then
+        hudHide()
+    end
+end)
+
 -- Establish a known-good baseline immediately, then again after a delay:
 -- at login Karabiner's server may not be up yet when Hammerspoon loads, so the
 -- first --set-variables call can no-op. Re-syncing a few seconds later catches

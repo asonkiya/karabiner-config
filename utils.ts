@@ -1,4 +1,4 @@
-import { To, KeyCode, Manipulator, KarabinerRules, Profile, KarabinerConfig } from "./types";
+import { To, KeyCode, Manipulator, KarabinerRules, Profile, KarabinerConfig, DeviceSetting } from "./types";
 
 export function profilesToConfig(profiles: Profile[]): string {
         const config: KarabinerConfig = {
@@ -13,6 +13,37 @@ export function profilesToConfig(profiles: Profile[]): string {
         return JSON.stringify(config, null, 2);
 }
 
+/** The Hammerspoon CLI (talks to the running instance over hs.ipc). */
+export const HS_CLI = "/opt/homebrew/bin/hs";
+
+/**
+ * A `to` event that runs a Lua snippet inside Hammerspoon over hs.ipc.
+ *
+ * This is a BLOCKING round-trip: the `hs` client waits for Hammerspoon's main
+ * thread to run the snippet and reply. Fine for one-off chords (zoom(),
+ * scratchpad centering), but never attach it to anything that fires per
+ * keystroke — if Hammerspoon is busy (it runs hs.execute synchronously during
+ * mode sync) or mid-reload, those clients pile up behind it. Use hsEvent for
+ * high-frequency signals.
+ */
+export function hsCall(lua: string): To {
+        return { shell_command: `${HS_CLI} -c "${lua}"` };
+}
+
+/**
+ * A `to` event that signals Hammerspoon through a hammerspoon:// URL, handled
+ * by `hs.urlevent.bind(name, fn)` in init.lua. Fire-and-forget: `open -g`
+ * hands the URL to the app and returns immediately, never waiting on
+ * Hammerspoon's main thread — so it's safe on per-keystroke hooks (the
+ * which-key HUD rides on Caps Lock, i.e. every Escape tap).
+ */
+export function hsEvent(name: string, params: Record<string, string> = {}): To {
+        const qs = Object.entries(params)
+                .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+                .join("&");
+        return { shell_command: `open -g "hammerspoon://${name}${qs ? "?" + qs : ""}"` };
+}
+
 /**
  * Custom way to describe a command in a layer
  */
@@ -25,7 +56,17 @@ export interface LayerCommand {
 type HyperKeySublayer = {
         // The ? is necessary, otherwise we'd have to define something for _every_ key code
         [key_code in KeyCode]?: LayerCommand;
+} & {
+        // `hud: false` opts this sublayer out of the radial which-key HUD. Use it
+        // for layers that are held and repeated (cursor movement) rather than
+        // looked up — a wheel popping up on every hold there is just noise.
+        hud?: false;
 };
+
+/** The HyperKeySublayer entries that are real key bindings (drops `hud`). */
+function sublayerCommands(commands: HyperKeySublayer): KeyCode[] {
+        return (Object.keys(commands) as string[]).filter((k) => k !== "hud") as KeyCode[];
+}
 
 /**
  * Create a Hyper Key sublayer, where every command is prefixed with a key
@@ -60,6 +101,8 @@ export function createHyperSubLayer(
                                                 value: 0,
                                         },
                                 },
+                                // Dismiss the radial which-key HUD when the sublayer key is released.
+                                hsEvent("hud", { hide: "1" }),
                         ],
                         to: [
                                 {
@@ -68,6 +111,15 @@ export function createHyperSubLayer(
                                                 value: 1,
                                         },
                                 },
+                                // Show the radial which-key HUD for this sublayer (Hammerspoon
+                                // waits ~400ms so a fast chord never flashes it). Menu contents
+                                // come from hammerspoon/sublayers.json, emitted by cheatsheet.ts.
+                                // Fire-and-forget URL event — must not block (see hsEvent).
+                                // A `hud: false` sublayer only dismisses whatever wheel is up
+                                // (the top-level one, if Hyper was held long enough).
+                                commands.hud === false
+                                        ? hsEvent("hud", { hide: "1" })
+                                        : hsEvent("hud", { show: sublayer_key }),
                         ],
                         // This enables us to press other sublayer keys in the current sublayer
                         // (e.g. Hyper + O > M even though Hyper + M is also a sublayer)
@@ -91,9 +143,9 @@ export function createHyperSubLayer(
                         ],
                 },
                 // Define the individual commands that are meant to trigger in the sublayer
-                ...(Object.keys(commands) as (keyof typeof commands)[]).map(
+                ...sublayerCommands(commands).map(
                         (command_key): Manipulator => ({
-                                ...commands[command_key],
+                                ...commands[command_key]!,
                                 type: "basic" as const,
                                 from: {
                                         key_code: command_key,
@@ -422,6 +474,79 @@ export function window(name: string): LayerCommand {
  */
 export function app(name: string): LayerCommand {
         return open(`-a '${name}.app'`);
+}
+
+/**
+ * Razer Naga thumb-grid support.
+ *
+ * The Naga's numbered thumb buttons are emitted as plain keyboard number keys
+ * (usage page 7 — key_code "1".."0"), indistinguishable from the number row
+ * except by which device they came from. Gate remaps on the Naga's HID
+ * identifiers (`device_if`) so the buttons do their own thing while the real
+ * number row is left completely alone.
+ *
+ * Matched on Razer's vendor id (1678) ALONE, deliberately: the product id
+ * differs by connection mode ("Razer Naga V2 HyperSpeed" over the 2.4GHz
+ * dongle = one id; "Naga V2 HS" over Bluetooth LE = product 181), and vendor
+ * id is stable across both. Razer is the only vendor-1678 device here.
+ *
+ * IMPORTANT: this only fires if Karabiner actually *grabs* the device. Over
+ * Bluetooth LE the Naga enumerates as a pointing device (usage 2), which
+ * Karabiner does not grab by default, so its keypad keys bypass Karabiner and
+ * these remaps never run. Either connect via the HyperSpeed USB dongle (it
+ * enumerates with a keyboard interface and is grabbed automatically) or enable
+ * "Modify events" for the Naga in Karabiner Settings -> Devices.
+ */
+export const NAGA_IDENTIFIERS: { vendor_id?: number; product_id?: number }[] = [
+        { vendor_id: 1678 },
+];
+
+/**
+ * Device settings that force Karabiner to grab the Naga so the deviceLayer
+ * above can act on its buttons. Over Bluetooth the Naga presents as a pointing
+ * device (Karabiner ignores those by default), so we must set ignore:false.
+ *
+ * Karabiner matches device settings on the full (vendor, product,
+ * is_keyboard, is_pointing_device) tuple — vendor id alone does NOT match (an
+ * earlier vendor-only attempt failed to grab; adding product_id 181 with the
+ * keyboard/pointing flags is what made Karabiner grab it). We keep every
+ * plausible product-181 combination; Karabiner applies whichever matches the
+ * real device and ignores the rest. Declared in code so `yarn build` doesn't
+ * wipe the GUI's "Modify events" toggle.
+ */
+export const NAGA_DEVICE_SETTINGS: DeviceSetting[] = [
+        { identifiers: { vendor_id: 1678, product_id: 181, is_pointing_device: true, is_keyboard: false }, ignore: false },
+        { identifiers: { vendor_id: 1678, product_id: 181, is_keyboard: true, is_pointing_device: false }, ignore: false },
+        { identifiers: { vendor_id: 1678, product_id: 181, is_keyboard: true, is_pointing_device: true }, ignore: false },
+];
+
+/**
+ * Bare-key remaps gated to a specific input device. Only fire when the key
+ * comes from a matching device, so the same physical key on other keyboards is
+ * untouched. `modifiers: optional any` so the buttons work regardless of held
+ * modifiers.
+ */
+export function deviceLayer(
+        identifiers: { vendor_id?: number; product_id?: number }[],
+        bindings: { [key_code in KeyCode]?: LayerCommand }
+): KarabinerRules {
+        return {
+                description: `Device layer (${identifiers
+                        .map((i) => `${i.vendor_id}:${i.product_id}`)
+                        .join(", ")})`,
+                manipulators: (Object.keys(bindings) as KeyCode[]).map((key) => {
+                        const cmd = bindings[key]!;
+                        return {
+                                ...cmd,
+                                type: "basic" as const,
+                                from: { key_code: key, modifiers: { optional: ["any"] } },
+                                conditions: [
+                                        { type: "device_if" as const, identifiers },
+                                        ...(cmd.conditions ?? []),
+                                ],
+                        };
+                }),
+        };
 }
 
 /**

@@ -1,5 +1,5 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, shell, doubleTap, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode } from "../utils";
+import { createHyperSubLayers, app, open, window, shell, doubleTap, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, deviceLayer, NAGA_IDENTIFIERS, NAGA_DEVICE_SETTINGS, hsEvent } from "../utils";
 import { vimMode, vimModeRules } from "./vim-mode";
 import { programmingRules } from "./programming";
 import { readingRules } from "./reading";
@@ -25,6 +25,12 @@ const rules: KarabinerRules[] = [
                                                         value: 1,
                                                 },
                                         },
+                                        // Hold Hyper alone for a beat -> radial map of the whole
+                                        // Hyper layer (sublayers on the inner ring, direct commands
+                                        // on the outer). A quick tap/chord never shows it. This
+                                        // fires on EVERY Caps Lock tap (= Escape), so it must be the
+                                        // non-blocking URL event, never a blocking `hs -c`.
+                                        hsEvent("hud", { show: "_top" }),
                                 ],
                                 to_after_key_up: [
                                         {
@@ -33,6 +39,7 @@ const rules: KarabinerRules[] = [
                                                         value: 0,
                                                 },
                                         },
+                                        hsEvent("hud", { hide: "1" }),
                                 ],
                                 to_if_alone: [
                                         {
@@ -58,6 +65,29 @@ const rules: KarabinerRules[] = [
                         //      },
                 ],
         },
+        // Razer Naga thumb-grid: the 12 buttons come in as plain number keys
+        // (1 2 3 4 5 6 7 8 9 0 - =), but device-gated to the Naga (vendor 1678 /
+        // product 181) so they drive clipboard/editing + app launching instead
+        // of typing digits. Real number row is untouched. Placed early so it
+        // wins over the number-key bindings in cmdSublayer. Physical 3x4 grid:
+        //     1  2  3   -> copy / paste / cut
+        //     4  5  6   -> undo / redo / clipboard history
+        //     7  8  9   -> Arc / iTerm / Discord
+        //     0  -  =   -> Messages / WhatsApp / Claude
+        deviceLayer(NAGA_IDENTIFIERS, {
+                "1": { description: "Naga: Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["right_command"] }] },
+                "2": { description: "Naga: Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["right_command"] }] },
+                "3": { description: "Naga: Cut (Cmd+X)", to: [{ key_code: "x", modifiers: ["right_command"] }] },
+                "4": { description: "Naga: Undo (Cmd+Z)", to: [{ key_code: "z", modifiers: ["right_command"] }] },
+                "5": { description: "Naga: Redo (Cmd+Shift+Z)", to: [{ key_code: "z", modifiers: ["right_command", "right_shift"] }] },
+                "6": open("raycast://extensions/raycast/clipboard-history/clipboard-history"),
+                "7": app("/Applications/Arc"),
+                "8": app("iTerm"),
+                "9": app("Discord"),
+                "0": app("Messages"),
+                "hyphen": open("/Applications/WhatsApp.localized/WhatsApp.app"),
+                "equal_sign": app("Claude"),
+        }),
         // iTerm2: Hyper + B -> Ctrl+B (tmux prefix)
         {
                 description: "iTerm2: Hyper + B -> Tmux Prefix (Ctrl+B)",
@@ -180,6 +210,7 @@ const rules: KarabinerRules[] = [
                 // v = "moVe" which isn't "m" because we want it to be on the left hand
                 // so that hjkl work like they do in vim
                 v: {
+                        hud: false, // held-and-repeated movement layer; no which-key wheel
                         h: {
                                 to: [{ key_code: "left_arrow" }],
                         },
@@ -435,6 +466,10 @@ export const normalProfile: Profile = {
         virtual_hid_keyboard: {
                 keyboard_type_v2: "ansi",
         },
+        // Force Karabiner to grab the Naga (a pointing-class device over
+        // Bluetooth, ignored by default) so the deviceLayer above can remap its
+        // buttons. See NAGA_DEVICE_SETTINGS.
+        devices: NAGA_DEVICE_SETTINGS,
         complex_modifications: {
                 rules,
         },

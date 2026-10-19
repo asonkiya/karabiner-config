@@ -93,6 +93,7 @@ export const programmingRules: KarabinerRules[] = createHyperSubLayers({
                 },
         },
         v: {
+                hud: false, // movement layer (same as Normal's) — no which-key wheel
                 h: { to: [{ key_code: "left_arrow" }] },
                 j: { to: [{ key_code: "down_arrow" }] },
                 k: { to: [{ key_code: "up_arrow" }] },

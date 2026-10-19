@@ -33,7 +33,18 @@ restructured.
   magnify gesture (via Hammerspoon), so it zooms apps that only respond to
   pinch (Preview, Safari, Maps, Photos). Falls back to ⌘=/⌘− for gesture-blind
   apps (Chromium/Electron).
+- **Which-key HUD** — hold any sublayer key (`Hyper+O`) or Hyper alone for a
+  beat and a GTA-style weapon wheel of its commands fills the screen centre.
+  Rendered by Hammerspoon from data generated at build time, so it can never
+  drift from the real bindings; fast chords never see it. App-specific
+  bindings only show inside their app, and held-and-repeated layers (`v` for
+  movement) opt out with `hud: false`.
 - **Vim mode** (`Hyper+Enter`) — vim-style navigation/editing anywhere.
+- **Mouse thumb grid** — the 12 side buttons of a Razer Naga (which report as
+  `1`…`0`, `-`, `=`) become copy/paste/undo/redo, clipboard history and app
+  launchers, gated to that device so the keyboard's number row is untouched.
+  Works over Bluetooth: the build also tells Karabiner to grab the mouse,
+  which it ignores by default.
 
 The full keymap lives in the source — `profiles/normal.ts` is the assembler
 and the place to look first. The tables in code are the source of truth;
@@ -49,11 +60,17 @@ binding, grouped by mode. It's auto-generated from the source by
 - [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
 - Node.js + yarn (build tooling)
 - Optional but recommended:
-  - [Hammerspoon](https://www.hammerspoon.org/) — per-app mode auto-switching,
-    scratchpad centering
+  - [Hammerspoon](https://www.hammerspoon.org/) — the which-key HUD,
+    pinch-zoom, per-app mode auto-switching, floating-window centering.
+    `setup.sh` also links its `hs` CLI into your Homebrew `bin`.
   - [iTerm2](https://iterm2.com/) + [Neovim](https://neovim.io/) — the
-    scratchpad / idea-capture floating windows
+    scratchpad / idea-capture / todo floating windows
   - [SwiftBar](https://swiftbar.app/) and/or tmux — mode indicators
+  - [cliclick](https://github.com/BlueM/cliclick) — Reading-mode screenshot
+    macros only
+
+Everything degrades gracefully: without Hammerspoon the keybindings still
+work, you just lose the HUD, zoom and auto-switching.
 
 ## Install
 
@@ -70,16 +87,25 @@ cd karabiner-config
 2. Rewrites the author's hardcoded paths (repo location, Homebrew prefix) for
    your machine
 3. Symlinks `~/.config/karabiner` → the repo and `~/.hammerspoon` →
-   `hammerspoon/`
+   `hammerspoon/`, and links Hammerspoon's `hs` CLI into your Homebrew `bin`
+   if it isn't there yet
 4. Symlinks the iTerm dynamic profiles (`iterm/*.json`) into
    `~/Library/Application Support/iTerm2/DynamicProfiles/`
 5. Installs the SwiftBar indicator if SwiftBar is present
 6. Installs a LaunchAgent that rebuilds `karabiner.json` at login (so a
    `git pull` never leaves Karabiner on a stale config)
-7. Runs the initial build
+7. Runs the initial build (`karabiner.json`, `CHEATSHEET.md` and the HUD's
+   `hammerspoon/sublayers.json`) and reloads Karabiner and Hammerspoon
 
 Then follow the printed manual steps (permission grants, optional Login
-Items). The ideas vault path is personal — edit `VAULT` in `iterm/ideas.lua`.
+Items). Two things are personal and worth checking:
+
+- The ideas/todo vault paths — `VAULT` in `iterm/ideas.lua`, `TODO` in
+  `iterm/todo.lua`.
+- The mouse thumb grid targets a Razer Naga (vendor `1678`, product `181`).
+  Any other mouse is left alone; to use yours, read its ids from
+  Karabiner-EventViewer and change `NAGA_IDENTIFIERS` /
+  `NAGA_DEVICE_SETTINGS` in `utils.ts`.
 
 ## Customizing
 
@@ -100,6 +126,12 @@ yarn watch   # rebuilds karabiner.json on every save
   and recreating the symlink makes iTerm silently drop the hotkey.
 - **Indicators**: `indicators/karabiner-profile.2s.sh` (SwiftBar),
   `indicators/tmux-status.conf` (append to `~/.tmux.conf`).
+- **Which-key HUD**: the `HUD_*` constants at the top of the HUD block in
+  `hammerspoon/init.lua` — `HUD_DELAY` (hold time before it appears, 400ms),
+  `HUD_SIZE`, ring proportions, dim, colours, font sizes. Add `hud: false` to
+  a sublayer map to keep it off the wheel.
+- **Mouse layer**: the bindings in the `deviceLayer(...)` block in
+  `profiles/normal.ts`; device ids in `utils.ts`.
 
 ## Architecture
 
@@ -118,12 +150,12 @@ files, which the indicators read.
 |---|---|
 | `rules.ts` | entry point — emits the single profile |
 | `profiles/` | `normal.ts` assembles everything; other files are mode-gated fragments |
-| `utils.ts` | sublayer generator, mode machinery, command helpers |
+| `utils.ts` | sublayer generator, mode machinery, command helpers, device-gated mouse layer + device settings |
 | `types.ts` | Karabiner JSON schema types |
-| `hammerspoon/` | per-app mode auto-switching, floating-window centering, boot resilience |
+| `hammerspoon/` | per-app mode auto-switching, floating-window centering, weapon-wheel which-key HUD, boot resilience |
 | `iterm/` | dynamic profiles + nvim overlays for the scratchpad and idea-capture windows |
 | `indicators/` | SwiftBar plugin + tmux status snippet |
-| `cheatsheet.ts` | walks the assembled profile to generate `CHEATSHEET.md` |
+| `cheatsheet.ts` | walks the assembled profile to generate `CHEATSHEET.md` and `hammerspoon/sublayers.json` (HUD data) |
 | `setup.sh` | idempotent installer |
 
 ## License

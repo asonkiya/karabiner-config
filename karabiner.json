@@ -9,6 +9,35 @@
       },
       "selected": true,
       "name": "Normal",
+      "devices": [
+        {
+          "identifiers": {
+            "vendor_id": 1678,
+            "product_id": 181,
+            "is_pointing_device": true,
+            "is_keyboard": false
+          },
+          "ignore": false
+        },
+        {
+          "identifiers": {
+            "vendor_id": 1678,
+            "product_id": 181,
+            "is_keyboard": true,
+            "is_pointing_device": false
+          },
+          "ignore": false
+        },
+        {
+          "identifiers": {
+            "vendor_id": 1678,
+            "product_id": 181,
+            "is_keyboard": true,
+            "is_pointing_device": true
+          },
+          "ignore": false
+        }
+      ],
       "complex_modifications": {
         "rules": [
           {
@@ -30,6 +59,9 @@
                       "name": "hyper",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=_top\""
                   }
                 ],
                 "to_after_key_up": [
@@ -38,6 +70,9 @@
                       "name": "hyper",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to_if_alone": [
@@ -46,6 +81,351 @@
                   }
                 ],
                 "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Device layer (1678:undefined)",
+            "manipulators": [
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'Messages.app'"
+                  }
+                ],
+                "description": "Open -a 'Messages.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "0",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "Naga: Copy (Cmd+C)",
+                "to": [
+                  {
+                    "key_code": "c",
+                    "modifiers": [
+                      "right_command"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "1",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "Naga: Paste (Cmd+V)",
+                "to": [
+                  {
+                    "key_code": "v",
+                    "modifiers": [
+                      "right_command"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "2",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "Naga: Cut (Cmd+X)",
+                "to": [
+                  {
+                    "key_code": "x",
+                    "modifiers": [
+                      "right_command"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "3",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "Naga: Undo (Cmd+Z)",
+                "to": [
+                  {
+                    "key_code": "z",
+                    "modifiers": [
+                      "right_command"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "4",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "Naga: Redo (Cmd+Shift+Z)",
+                "to": [
+                  {
+                    "key_code": "z",
+                    "modifiers": [
+                      "right_command",
+                      "right_shift"
+                    ]
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "5",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open raycast://extensions/raycast/clipboard-history/clipboard-history"
+                  }
+                ],
+                "description": "Open raycast://extensions/raycast/clipboard-history/clipboard-history",
+                "type": "basic",
+                "from": {
+                  "key_code": "6",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a '/Applications/Arc.app'"
+                  }
+                ],
+                "description": "Open -a '/Applications/Arc.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "7",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'iTerm.app'"
+                  }
+                ],
+                "description": "Open -a 'iTerm.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "8",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'Discord.app'"
+                  }
+                ],
+                "description": "Open -a 'Discord.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "9",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open /Applications/WhatsApp.localized/WhatsApp.app"
+                  }
+                ],
+                "description": "Open /Applications/WhatsApp.localized/WhatsApp.app",
+                "type": "basic",
+                "from": {
+                  "key_code": "hyphen",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'Claude.app'"
+                  }
+                ],
+                "description": "Open -a 'Claude.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "equal_sign",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 1678
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -655,6 +1035,9 @@
                       "name": "hyper_sublayer_s",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -663,6 +1046,9 @@
                       "name": "hyper_sublayer_s",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=s\""
                   }
                 ],
                 "conditions": [
@@ -1282,6 +1668,9 @@
                       "name": "hyper_sublayer_v",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -1290,6 +1679,9 @@
                       "name": "hyper_sublayer_v",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "conditions": [
@@ -2838,6 +3230,9 @@
                       "name": "hyper_sublayer_a",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -2846,6 +3241,9 @@
                       "name": "hyper_sublayer_a",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=a\""
                   }
                 ],
                 "conditions": [
@@ -3196,6 +3594,9 @@
                       "name": "hyper_sublayer_m",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -3204,6 +3605,9 @@
                       "name": "hyper_sublayer_m",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=m\""
                   }
                 ],
                 "conditions": [
@@ -3647,6 +4051,9 @@
                       "name": "hyper_sublayer_c",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -3655,6 +4062,9 @@
                       "name": "hyper_sublayer_c",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=c\""
                   }
                 ],
                 "conditions": [
@@ -6267,6 +6677,9 @@
                       "name": "hyper_sublayer_r",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -6275,6 +6688,9 @@
                       "name": "hyper_sublayer_r",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=r\""
                   }
                 ],
                 "conditions": [
@@ -11603,6 +12019,9 @@
                       "name": "hyper_sublayer_c",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -11611,6 +12030,9 @@
                       "name": "hyper_sublayer_c",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=c\""
                   }
                 ],
                 "conditions": [
@@ -13025,6 +13447,9 @@
                       "name": "hyper_sublayer_k",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -13033,6 +13458,9 @@
                       "name": "hyper_sublayer_k",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=k\""
                   }
                 ],
                 "conditions": [
@@ -13588,6 +14016,9 @@
                       "name": "hyper_sublayer_o",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -13596,6 +14027,9 @@
                       "name": "hyper_sublayer_o",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=o\""
                   }
                 ],
                 "conditions": [
@@ -13916,6 +14350,9 @@
                       "name": "hyper_sublayer_g",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -13924,6 +14361,9 @@
                       "name": "hyper_sublayer_g",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=g\""
                   }
                 ],
                 "conditions": [
@@ -14476,6 +14916,9 @@
                       "name": "hyper_sublayer_s",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -14484,6 +14927,9 @@
                       "name": "hyper_sublayer_s",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=s\""
                   }
                 ],
                 "conditions": [
@@ -15036,6 +15482,9 @@
                       "name": "hyper_sublayer_v",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -15044,6 +15493,9 @@
                       "name": "hyper_sublayer_v",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "conditions": [
@@ -17850,6 +18302,9 @@
                       "name": "hyper_sublayer_l",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -17858,6 +18313,9 @@
                       "name": "hyper_sublayer_l",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=l\""
                   }
                 ],
                 "conditions": [
@@ -18331,6 +18789,9 @@
                       "name": "hyper_sublayer_o",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -18339,6 +18800,9 @@
                       "name": "hyper_sublayer_o",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=o\""
                   }
                 ],
                 "conditions": [
@@ -18926,6 +19390,9 @@
                       "name": "hyper_sublayer_w",
                       "value": 0
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
                   }
                 ],
                 "to": [
@@ -18934,6 +19401,9 @@
                       "name": "hyper_sublayer_w",
                       "value": 1
                     }
+                  },
+                  {
+                    "shell_command": "open -g \"hammerspoon://hud?show=w\""
                   }
                 ],
                 "conditions": [

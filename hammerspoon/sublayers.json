@@ -1,0 +1,1618 @@
+{
+  "normal": {
+    "o": {
+      "title": "Open apps",
+      "items": [
+        {
+          "key": "G",
+          "label": "Open Arc"
+        },
+        {
+          "key": "E",
+          "label": "Open Microsoft Outlook"
+        },
+        {
+          "key": "D",
+          "label": "Open Discord"
+        },
+        {
+          "key": "N",
+          "label": "Open ZenNotes"
+        },
+        {
+          "key": "T",
+          "label": "Open iTerm & switch to programming mode"
+        },
+        {
+          "key": "Z",
+          "label": "Open zoom.us"
+        },
+        {
+          "key": "R",
+          "label": "Open Rstudio"
+        },
+        {
+          "key": "F",
+          "label": "Open Finder"
+        },
+        {
+          "key": "M",
+          "label": "Open Messages"
+        },
+        {
+          "key": "P",
+          "label": "Open iPhone Mirroring"
+        },
+        {
+          "key": "C",
+          "label": "Open Screenshot"
+        },
+        {
+          "key": "V",
+          "label": "Open Surfshark"
+        },
+        {
+          "key": "W",
+          "label": "Open WhatsApp"
+        }
+      ]
+    },
+    "l": {
+      "title": "Lookup",
+      "items": [
+        {
+          "key": "I",
+          "label": "Open www.instagram.com/direct/t/5082114295174947/"
+        },
+        {
+          "key": "D",
+          "label": "Open Photo Booth"
+        },
+        {
+          "key": "Y",
+          "label": "Open youtube.com"
+        },
+        {
+          "key": "M",
+          "label": "Open music.youtube.com"
+        },
+        {
+          "key": "T",
+          "label": "Open mychtransit.org/map"
+        },
+        {
+          "key": "N",
+          "label": "Open localhost:8080/"
+        },
+        {
+          "key": "S",
+          "label": "Open twitch.tv"
+        },
+        {
+          "key": "C",
+          "label": "Open canvas.unc.edu"
+        },
+        {
+          "key": "G",
+          "label": "Open github.com"
+        }
+      ]
+    },
+    "w": {
+      "title": "Window",
+      "items": [
+        {
+          "key": ";",
+          "label": "Window: Hide"
+        },
+        {
+          "key": "J",
+          "label": "Window: Ctrl + Left Arrow"
+        },
+        {
+          "key": "K",
+          "label": "Window: Ctrl + Right Arrow"
+        },
+        {
+          "key": "M",
+          "label": "Window: maximize"
+        },
+        {
+          "key": "F",
+          "label": "Window: Fullscreen"
+        },
+        {
+          "key": "I",
+          "label": "Window: Zoom In"
+        },
+        {
+          "key": "O",
+          "label": "Window: Zoom Out"
+        },
+        {
+          "key": "U",
+          "label": "Mission Control"
+        },
+        {
+          "key": "N",
+          "label": "App Exposé"
+        },
+        {
+          "key": "L",
+          "label": "App Switcher (Cmd+Tab)"
+        }
+      ]
+    },
+    "v": {
+      "title": "Movement",
+      "items": [
+        {
+          "key": "H",
+          "label": "←"
+        },
+        {
+          "key": "J",
+          "label": "↓"
+        },
+        {
+          "key": "K",
+          "label": "↑"
+        },
+        {
+          "key": "L",
+          "label": "→"
+        },
+        {
+          "key": "M",
+          "label": "⌃F"
+        },
+        {
+          "key": "S",
+          "label": "⌃J"
+        },
+        {
+          "key": "D",
+          "label": "⇧⌘D"
+        },
+        {
+          "key": "W",
+          "label": "Move word forward"
+        },
+        {
+          "key": "B",
+          "label": "Move word backward"
+        },
+        {
+          "key": "]",
+          "label": "⇟"
+        },
+        {
+          "key": "[",
+          "label": "⇞"
+        }
+      ]
+    },
+    "s": {
+      "title": "System",
+      "items": [
+        {
+          "key": "I",
+          "label": "Vol +"
+        },
+        {
+          "key": "K",
+          "label": "Vol −"
+        },
+        {
+          "key": "M",
+          "label": "Mute"
+        },
+        {
+          "key": "U",
+          "label": "Bright +"
+        },
+        {
+          "key": "J",
+          "label": "Bright −"
+        },
+        {
+          "key": "P",
+          "label": "Play/Pause"
+        },
+        {
+          "key": "C",
+          "label": "Raycast: system · open camera"
+        },
+        {
+          "key": "H",
+          "label": "Raycast: airpods noise control · index"
+        },
+        {
+          "key": "V",
+          "label": "⌥Space"
+        }
+      ]
+    },
+    "a": {
+      "title": "AI tools",
+      "items": [
+        {
+          "key": "C",
+          "label": "Open Claude"
+        },
+        {
+          "key": "G",
+          "label": "Open ChatGPT"
+        }
+      ]
+    },
+    "r": {
+      "title": "Raycast",
+      "items": [
+        {
+          "key": "E",
+          "label": "Raycast: emoji symbols · search emoji symbols"
+        },
+        {
+          "key": "P",
+          "label": "Raycast: raycast · confetti"
+        },
+        {
+          "key": "H",
+          "label": "Raycast: clipboard history · clipboard history"
+        }
+      ]
+    },
+    "c": {
+      "title": "Cmd passthrough",
+      "items": [
+        {
+          "key": "0",
+          "label": "Cmd+0"
+        },
+        {
+          "key": "1",
+          "label": "Cmd+1"
+        },
+        {
+          "key": "2",
+          "label": "Cmd+2"
+        },
+        {
+          "key": "3",
+          "label": "Cmd+3"
+        },
+        {
+          "key": "4",
+          "label": "Cmd+4"
+        },
+        {
+          "key": "5",
+          "label": "Cmd+5"
+        },
+        {
+          "key": "6",
+          "label": "Cmd+6"
+        },
+        {
+          "key": "7",
+          "label": "Cmd+7"
+        },
+        {
+          "key": "8",
+          "label": "Cmd+8"
+        },
+        {
+          "key": "9",
+          "label": "Cmd+9"
+        },
+        {
+          "key": "A",
+          "label": "Cmd+A"
+        },
+        {
+          "key": "B",
+          "label": "Cmd+B"
+        },
+        {
+          "key": "C",
+          "label": "Cmd+C"
+        },
+        {
+          "key": "D",
+          "label": "Cmd+D"
+        },
+        {
+          "key": "E",
+          "label": "Cmd+E"
+        },
+        {
+          "key": "F",
+          "label": "Cmd+F"
+        },
+        {
+          "key": "G",
+          "label": "Cmd+G"
+        },
+        {
+          "key": "H",
+          "label": "Cmd+H"
+        },
+        {
+          "key": "I",
+          "label": "Cmd+I"
+        },
+        {
+          "key": "J",
+          "label": "Cmd+J"
+        },
+        {
+          "key": "K",
+          "label": "Cmd+K"
+        },
+        {
+          "key": "L",
+          "label": "Cmd+L"
+        },
+        {
+          "key": "M",
+          "label": "Cmd+M"
+        },
+        {
+          "key": "N",
+          "label": "Cmd+N"
+        },
+        {
+          "key": "O",
+          "label": "Cmd+O"
+        },
+        {
+          "key": "P",
+          "label": "Cmd+P"
+        },
+        {
+          "key": "Q",
+          "label": "Cmd+Q"
+        },
+        {
+          "key": "R",
+          "label": "Cmd+R"
+        },
+        {
+          "key": "S",
+          "label": "Cmd+S"
+        },
+        {
+          "key": "T",
+          "label": "Cmd+T"
+        },
+        {
+          "key": "U",
+          "label": "Cmd+U"
+        },
+        {
+          "key": "V",
+          "label": "Cmd+V"
+        },
+        {
+          "key": "W",
+          "label": "Cmd+W"
+        },
+        {
+          "key": "X",
+          "label": "Cmd+X"
+        },
+        {
+          "key": "Y",
+          "label": "Cmd+Y"
+        },
+        {
+          "key": "Z",
+          "label": "Cmd+Z"
+        }
+      ]
+    },
+    "m": {
+      "title": "Modes",
+      "items": [
+        {
+          "key": "P",
+          "label": "Switch to Programming mode"
+        },
+        {
+          "key": "R",
+          "label": "Switch to Reading mode"
+        },
+        {
+          "key": "T",
+          "label": "Switch to Trivia mode"
+        }
+      ]
+    },
+    "_top": {
+      "title": "Hyper",
+      "items": [
+        {
+          "key": "O",
+          "label": "Open apps",
+          "group": true
+        },
+        {
+          "key": "L",
+          "label": "Lookup",
+          "group": true
+        },
+        {
+          "key": "W",
+          "label": "Window",
+          "group": true
+        },
+        {
+          "key": "V",
+          "label": "Movement",
+          "group": true
+        },
+        {
+          "key": "S",
+          "label": "System",
+          "group": true
+        },
+        {
+          "key": "A",
+          "label": "AI tools",
+          "group": true
+        },
+        {
+          "key": "R",
+          "label": "Raycast",
+          "group": true
+        },
+        {
+          "key": "C",
+          "label": "Cmd passthrough",
+          "group": true
+        },
+        {
+          "key": "M",
+          "label": "Modes",
+          "group": true
+        },
+        {
+          "key": "B",
+          "label": "⌃B (iTerm2)",
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ]
+        },
+        {
+          "key": ";",
+          "label": "Raycast: arc · search space tabs"
+        },
+        {
+          "key": "Space",
+          "label": "Open Raycast"
+        },
+        {
+          "key": "H",
+          "label": "⌘1 (WhatsApp)",
+          "app": [
+            "^net\\.whatsapp\\.WhatsApp$"
+          ]
+        },
+        {
+          "key": "J",
+          "label": "⌘2 (WhatsApp)",
+          "app": [
+            "^net\\.whatsapp\\.WhatsApp$"
+          ]
+        },
+        {
+          "key": "K",
+          "label": "⌘3 (WhatsApp)",
+          "app": [
+            "^net\\.whatsapp\\.WhatsApp$"
+          ]
+        },
+        {
+          "key": "Y",
+          "label": "Copy (Cmd+C)"
+        },
+        {
+          "key": "P",
+          "label": "Paste (Cmd+V)"
+        },
+        {
+          "key": "U",
+          "label": "Undo (Cmd+Z)"
+        },
+        {
+          "key": "/",
+          "label": "Find (Cmd+F)"
+        },
+        {
+          "key": "F",
+          "label": "Cmd+L"
+        },
+        {
+          "key": "Q",
+          "label": "Cmd+Q (Quit)"
+        },
+        {
+          "key": "D",
+          "label": "Cmd+W (Close)"
+        },
+        {
+          "key": "N",
+          "label": "Cmd+T (New Tab)"
+        },
+        {
+          "key": "⏎",
+          "label": "Enter Vim mode"
+        },
+        {
+          "key": "E",
+          "label": "Scratchpad (floating nvim, centered)"
+        },
+        {
+          "key": "I",
+          "label": "Idea capture (floating nvim, centered)"
+        },
+        {
+          "key": "T",
+          "label": "Todo list (floating nvim, centered)"
+        },
+        {
+          "key": "=",
+          "label": "Zoom in (pinch gesture)"
+        },
+        {
+          "key": "-",
+          "label": "Zoom out (pinch gesture)"
+        },
+        {
+          "key": "X",
+          "label": "tap → ⌘⇥, hold → ⌘"
+        }
+      ]
+    }
+  },
+  "programming": {
+    "o": {
+      "title": "Open apps",
+      "items": [
+        {
+          "key": "G",
+          "label": "Open Godot"
+        },
+        {
+          "key": "T",
+          "label": "Open iTerm"
+        },
+        {
+          "key": "E",
+          "label": "Open Microsoft Outlook"
+        },
+        {
+          "key": "D",
+          "label": "Open Discord"
+        },
+        {
+          "key": "N",
+          "label": "Open ZenNotes"
+        },
+        {
+          "key": "Z",
+          "label": "Open zoom.us"
+        },
+        {
+          "key": "R",
+          "label": "Open Rstudio"
+        },
+        {
+          "key": "F",
+          "label": "Open Finder"
+        },
+        {
+          "key": "M",
+          "label": "Open Messages"
+        },
+        {
+          "key": "P",
+          "label": "Open iPhone Mirroring"
+        },
+        {
+          "key": "C",
+          "label": "Open Screenshot"
+        },
+        {
+          "key": "V",
+          "label": "Open Surfshark"
+        },
+        {
+          "key": "W",
+          "label": "Open WhatsApp"
+        }
+      ]
+    },
+    "l": {
+      "title": "Lookup",
+      "items": [
+        {
+          "key": "I",
+          "label": "Open www.instagram.com/direct/t/5082114295174947/"
+        },
+        {
+          "key": "D",
+          "label": "Open Photo Booth"
+        },
+        {
+          "key": "Y",
+          "label": "Open youtube.com"
+        },
+        {
+          "key": "M",
+          "label": "Open music.youtube.com"
+        },
+        {
+          "key": "T",
+          "label": "Open mychtransit.org/map"
+        },
+        {
+          "key": "N",
+          "label": "Open localhost:8080/"
+        },
+        {
+          "key": "S",
+          "label": "Open twitch.tv"
+        },
+        {
+          "key": "C",
+          "label": "Open canvas.unc.edu"
+        },
+        {
+          "key": "G",
+          "label": "Open github.com"
+        }
+      ]
+    },
+    "w": {
+      "title": "Window",
+      "items": [
+        {
+          "key": ";",
+          "label": "Window: Hide"
+        },
+        {
+          "key": "J",
+          "label": "Window: Ctrl + Left Arrow"
+        },
+        {
+          "key": "K",
+          "label": "Window: Ctrl + Right Arrow"
+        },
+        {
+          "key": "M",
+          "label": "Window: maximize"
+        },
+        {
+          "key": "F",
+          "label": "Window: Fullscreen"
+        },
+        {
+          "key": "I",
+          "label": "Window: Zoom In"
+        },
+        {
+          "key": "O",
+          "label": "Window: Zoom Out"
+        },
+        {
+          "key": "U",
+          "label": "Mission Control"
+        },
+        {
+          "key": "N",
+          "label": "App Exposé"
+        },
+        {
+          "key": "L",
+          "label": "App Switcher (Cmd+Tab)"
+        }
+      ]
+    },
+    "v": {
+      "title": "Movement / Vim",
+      "items": [
+        {
+          "key": "H",
+          "label": "←"
+        },
+        {
+          "key": "J",
+          "label": "↓"
+        },
+        {
+          "key": "K",
+          "label": "↑"
+        },
+        {
+          "key": "L",
+          "label": "→"
+        },
+        {
+          "key": "M",
+          "label": "⌃F"
+        },
+        {
+          "key": "S",
+          "label": "⌃J"
+        },
+        {
+          "key": "D",
+          "label": "⇧⌘D"
+        },
+        {
+          "key": "U",
+          "label": "⇟"
+        },
+        {
+          "key": "I",
+          "label": "⇞"
+        },
+        {
+          "key": "W",
+          "label": "Move word forward"
+        },
+        {
+          "key": "B",
+          "label": "Move word backward"
+        },
+        {
+          "key": ";",
+          "label": "Vim: :w"
+        },
+        {
+          "key": "Q",
+          "label": "Vim: :q"
+        },
+        {
+          "key": "X",
+          "label": "Vim: :wq"
+        },
+        {
+          "key": "N",
+          "label": "Vim: :q!"
+        },
+        {
+          "key": "E",
+          "label": "Vim: :e!"
+        },
+        {
+          "key": "O",
+          "label": "Launch nvim ."
+        }
+      ]
+    },
+    "s": {
+      "title": "Session (tmux)",
+      "items": [
+        {
+          "key": "H",
+          "label": "Tmux: window 0"
+        },
+        {
+          "key": "J",
+          "label": "Tmux: window 1"
+        },
+        {
+          "key": "K",
+          "label": "Tmux: window 2"
+        },
+        {
+          "key": "L",
+          "label": "Tmux: window 3"
+        },
+        {
+          "key": "N",
+          "label": "Tmux: new window"
+        },
+        {
+          "key": "X",
+          "label": "Tmux: kill window"
+        },
+        {
+          "key": "-",
+          "label": "Tmux: kill session"
+        }
+      ]
+    },
+    "g": {
+      "title": "Git",
+      "items": [
+        {
+          "key": "S",
+          "label": "Git: status"
+        },
+        {
+          "key": "A",
+          "label": "Git: add all"
+        },
+        {
+          "key": "C",
+          "label": "Git: commit"
+        },
+        {
+          "key": "P",
+          "label": "Git: push"
+        },
+        {
+          "key": "L",
+          "label": "Git: log"
+        },
+        {
+          "key": "D",
+          "label": "Git: diff"
+        },
+        {
+          "key": "B",
+          "label": "Git: branch"
+        },
+        {
+          "key": "U",
+          "label": "Git: pull"
+        },
+        {
+          "key": "Z",
+          "label": "Git: stash"
+        },
+        {
+          "key": "R",
+          "label": "Git: stash pop"
+        }
+      ]
+    },
+    "k": {
+      "title": "Claude / Git",
+      "items": [
+        {
+          "key": "R",
+          "label": "Claude: /resume"
+        },
+        {
+          "key": "I",
+          "label": "Claude: /init"
+        },
+        {
+          "key": "C",
+          "label": "Claude: /clear"
+        },
+        {
+          "key": "H",
+          "label": "Claude: /help"
+        },
+        {
+          "key": "B",
+          "label": "Claude: /bug"
+        },
+        {
+          "key": "P",
+          "label": "Claude: /plan"
+        },
+        {
+          "key": "K",
+          "label": "Claude: /commit"
+        },
+        {
+          "key": "X",
+          "label": "Claude: exit"
+        },
+        {
+          "key": "O",
+          "label": "Claude: claude"
+        },
+        {
+          "key": "M",
+          "label": "Shift+Tab"
+        }
+      ]
+    },
+    "c": {
+      "title": "Cmd passthrough",
+      "items": [
+        {
+          "key": "0",
+          "label": "Cmd+0"
+        },
+        {
+          "key": "1",
+          "label": "Cmd+1"
+        },
+        {
+          "key": "2",
+          "label": "Cmd+2"
+        },
+        {
+          "key": "3",
+          "label": "Cmd+3"
+        },
+        {
+          "key": "4",
+          "label": "Cmd+4"
+        },
+        {
+          "key": "5",
+          "label": "Cmd+5"
+        },
+        {
+          "key": "6",
+          "label": "Cmd+6"
+        },
+        {
+          "key": "7",
+          "label": "Cmd+7"
+        },
+        {
+          "key": "8",
+          "label": "Cmd+8"
+        },
+        {
+          "key": "9",
+          "label": "Cmd+9"
+        },
+        {
+          "key": "A",
+          "label": "Cmd+A"
+        },
+        {
+          "key": "B",
+          "label": "Cmd+B"
+        },
+        {
+          "key": "C",
+          "label": "Cmd+C"
+        },
+        {
+          "key": "D",
+          "label": "Cmd+D"
+        },
+        {
+          "key": "E",
+          "label": "Cmd+E"
+        },
+        {
+          "key": "F",
+          "label": "Cmd+F"
+        },
+        {
+          "key": "G",
+          "label": "Cmd+G"
+        },
+        {
+          "key": "H",
+          "label": "Cmd+H"
+        },
+        {
+          "key": "I",
+          "label": "Cmd+I"
+        },
+        {
+          "key": "J",
+          "label": "Cmd+J"
+        },
+        {
+          "key": "K",
+          "label": "Cmd+K"
+        },
+        {
+          "key": "L",
+          "label": "Cmd+L"
+        },
+        {
+          "key": "M",
+          "label": "Cmd+M"
+        },
+        {
+          "key": "N",
+          "label": "Cmd+N"
+        },
+        {
+          "key": "O",
+          "label": "Cmd+O"
+        },
+        {
+          "key": "P",
+          "label": "Cmd+P"
+        },
+        {
+          "key": "Q",
+          "label": "Cmd+Q"
+        },
+        {
+          "key": "R",
+          "label": "Cmd+R"
+        },
+        {
+          "key": "S",
+          "label": "Cmd+S"
+        },
+        {
+          "key": "T",
+          "label": "Cmd+T"
+        },
+        {
+          "key": "U",
+          "label": "Cmd+U"
+        },
+        {
+          "key": "V",
+          "label": "Cmd+V"
+        },
+        {
+          "key": "W",
+          "label": "Cmd+W"
+        },
+        {
+          "key": "X",
+          "label": "Cmd+X"
+        },
+        {
+          "key": "Y",
+          "label": "Cmd+Y"
+        },
+        {
+          "key": "Z",
+          "label": "Cmd+Z"
+        }
+      ]
+    },
+    "_top": {
+      "title": "Hyper",
+      "items": [
+        {
+          "key": "O",
+          "label": "Open apps",
+          "group": true
+        },
+        {
+          "key": "L",
+          "label": "Lookup",
+          "group": true
+        },
+        {
+          "key": "W",
+          "label": "Window",
+          "group": true
+        },
+        {
+          "key": "V",
+          "label": "Movement / Vim",
+          "group": true
+        },
+        {
+          "key": "S",
+          "label": "Session (tmux)",
+          "group": true
+        },
+        {
+          "key": "G",
+          "label": "Git",
+          "group": true
+        },
+        {
+          "key": "K",
+          "label": "Claude / Git",
+          "group": true
+        },
+        {
+          "key": "C",
+          "label": "Cmd passthrough",
+          "group": true
+        },
+        {
+          "key": "B",
+          "label": "⌃B (iTerm2)",
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ]
+        },
+        {
+          "key": "B",
+          "label": "⌘R (godot)",
+          "app": [
+            "^org\\.godotengine\\.godot$"
+          ]
+        },
+        {
+          "key": "M",
+          "label": "Switch to Normal mode"
+        },
+        {
+          "key": "⏎",
+          "label": "Enter Vim mode"
+        },
+        {
+          "key": "1",
+          "label": "⌃⌘1 (godot)",
+          "app": [
+            "^org\\.godotengine\\.godot$"
+          ]
+        },
+        {
+          "key": "2",
+          "label": "⌃⌘2 (godot)",
+          "app": [
+            "^org\\.godotengine\\.godot$"
+          ]
+        },
+        {
+          "key": "3",
+          "label": "⌃⌘3 (godot)",
+          "app": [
+            "^org\\.godotengine\\.godot$"
+          ]
+        },
+        {
+          "key": "4",
+          "label": "⌃⌘4 (godot)",
+          "app": [
+            "^org\\.godotengine\\.godot$"
+          ]
+        },
+        {
+          "key": "5",
+          "label": "⌃⌘5 (godot)",
+          "app": [
+            "^org\\.godotengine\\.godot$"
+          ]
+        },
+        {
+          "key": "R",
+          "label": "⌘B (godot)",
+          "app": [
+            "^org\\.godotengine\\.godot$"
+          ]
+        },
+        {
+          "key": "Y",
+          "label": "Copy (Cmd+C)"
+        },
+        {
+          "key": "P",
+          "label": "Paste (Cmd+V)"
+        },
+        {
+          "key": "E",
+          "label": "Scratchpad (floating nvim, centered)"
+        },
+        {
+          "key": "I",
+          "label": "Idea capture (floating nvim, centered)"
+        },
+        {
+          "key": "T",
+          "label": "Todo list (floating nvim, centered)"
+        },
+        {
+          "key": "=",
+          "label": "Zoom in (pinch gesture)"
+        },
+        {
+          "key": "-",
+          "label": "Zoom out (pinch gesture)"
+        },
+        {
+          "key": "X",
+          "label": "tap → ⌘⇥, hold → ⌘"
+        }
+      ]
+    }
+  },
+  "reading": {
+    "o": {
+      "title": "Open apps",
+      "items": [
+        {
+          "key": "G",
+          "label": "Open Arc"
+        },
+        {
+          "key": "E",
+          "label": "Open Microsoft Outlook"
+        },
+        {
+          "key": "D",
+          "label": "Open Discord"
+        },
+        {
+          "key": "N",
+          "label": "Open ZenNotes"
+        },
+        {
+          "key": "T",
+          "label": "Open iTerm & switch to programming mode"
+        },
+        {
+          "key": "Z",
+          "label": "Open zoom.us"
+        },
+        {
+          "key": "R",
+          "label": "Open Rstudio"
+        },
+        {
+          "key": "F",
+          "label": "Open Finder"
+        },
+        {
+          "key": "M",
+          "label": "Open Messages"
+        },
+        {
+          "key": "P",
+          "label": "Open iPhone Mirroring"
+        },
+        {
+          "key": "C",
+          "label": "Open Screenshot"
+        },
+        {
+          "key": "V",
+          "label": "Open Surfshark"
+        },
+        {
+          "key": "W",
+          "label": "Open WhatsApp"
+        }
+      ]
+    },
+    "l": {
+      "title": "Lookup",
+      "items": [
+        {
+          "key": "I",
+          "label": "Open www.instagram.com/direct/t/5082114295174947/"
+        },
+        {
+          "key": "D",
+          "label": "Open Photo Booth"
+        },
+        {
+          "key": "Y",
+          "label": "Open youtube.com"
+        },
+        {
+          "key": "M",
+          "label": "Open music.youtube.com"
+        },
+        {
+          "key": "T",
+          "label": "Open mychtransit.org/map"
+        },
+        {
+          "key": "N",
+          "label": "Open localhost:8080/"
+        },
+        {
+          "key": "S",
+          "label": "Open twitch.tv"
+        },
+        {
+          "key": "C",
+          "label": "Open canvas.unc.edu"
+        },
+        {
+          "key": "G",
+          "label": "Open github.com"
+        }
+      ]
+    },
+    "w": {
+      "title": "Window",
+      "items": [
+        {
+          "key": ";",
+          "label": "Window: Hide"
+        },
+        {
+          "key": "J",
+          "label": "Window: Ctrl + Left Arrow"
+        },
+        {
+          "key": "K",
+          "label": "Window: Ctrl + Right Arrow"
+        },
+        {
+          "key": "M",
+          "label": "Window: maximize"
+        },
+        {
+          "key": "F",
+          "label": "Window: Fullscreen"
+        },
+        {
+          "key": "I",
+          "label": "Window: Zoom In"
+        },
+        {
+          "key": "O",
+          "label": "Window: Zoom Out"
+        },
+        {
+          "key": "U",
+          "label": "Mission Control"
+        },
+        {
+          "key": "N",
+          "label": "App Exposé"
+        },
+        {
+          "key": "L",
+          "label": "App Switcher (Cmd+Tab)"
+        }
+      ]
+    },
+    "_top": {
+      "title": "Hyper",
+      "items": [
+        {
+          "key": "O",
+          "label": "Open apps",
+          "group": true
+        },
+        {
+          "key": "L",
+          "label": "Lookup",
+          "group": true
+        },
+        {
+          "key": "W",
+          "label": "Window",
+          "group": true
+        },
+        {
+          "key": "B",
+          "label": "⌃B (iTerm2)",
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ]
+        },
+        {
+          "key": "M",
+          "label": "Switch to Normal mode"
+        },
+        {
+          "key": "⏎",
+          "label": "Enter Vim mode"
+        },
+        {
+          "key": "E",
+          "label": "Scratchpad (floating nvim, centered)"
+        },
+        {
+          "key": "I",
+          "label": "Idea capture (floating nvim, centered)"
+        },
+        {
+          "key": "T",
+          "label": "Todo list (floating nvim, centered)"
+        },
+        {
+          "key": "=",
+          "label": "Zoom in (pinch gesture)"
+        },
+        {
+          "key": "-",
+          "label": "Zoom out (pinch gesture)"
+        },
+        {
+          "key": "X",
+          "label": "tap → ⌘⇥, hold → ⌘"
+        }
+      ]
+    }
+  },
+  "trivia": {
+    "o": {
+      "title": "Open apps",
+      "items": [
+        {
+          "key": "G",
+          "label": "Open Arc"
+        },
+        {
+          "key": "E",
+          "label": "Open Microsoft Outlook"
+        },
+        {
+          "key": "D",
+          "label": "Open Discord"
+        },
+        {
+          "key": "N",
+          "label": "Open ZenNotes"
+        },
+        {
+          "key": "T",
+          "label": "Open iTerm & switch to programming mode"
+        },
+        {
+          "key": "Z",
+          "label": "Open zoom.us"
+        },
+        {
+          "key": "R",
+          "label": "Open Rstudio"
+        },
+        {
+          "key": "F",
+          "label": "Open Finder"
+        },
+        {
+          "key": "M",
+          "label": "Open Messages"
+        },
+        {
+          "key": "P",
+          "label": "Open iPhone Mirroring"
+        },
+        {
+          "key": "C",
+          "label": "Open Screenshot"
+        },
+        {
+          "key": "V",
+          "label": "Open Surfshark"
+        },
+        {
+          "key": "W",
+          "label": "Open WhatsApp"
+        }
+      ]
+    },
+    "l": {
+      "title": "Lookup",
+      "items": [
+        {
+          "key": "I",
+          "label": "Open www.instagram.com/direct/t/5082114295174947/"
+        },
+        {
+          "key": "D",
+          "label": "Open Photo Booth"
+        },
+        {
+          "key": "Y",
+          "label": "Open youtube.com"
+        },
+        {
+          "key": "M",
+          "label": "Open music.youtube.com"
+        },
+        {
+          "key": "T",
+          "label": "Open mychtransit.org/map"
+        },
+        {
+          "key": "N",
+          "label": "Open localhost:8080/"
+        },
+        {
+          "key": "S",
+          "label": "Open twitch.tv"
+        },
+        {
+          "key": "C",
+          "label": "Open canvas.unc.edu"
+        },
+        {
+          "key": "G",
+          "label": "Open github.com"
+        }
+      ]
+    },
+    "w": {
+      "title": "Window",
+      "items": [
+        {
+          "key": ";",
+          "label": "Window: Hide"
+        },
+        {
+          "key": "J",
+          "label": "Window: Ctrl + Left Arrow"
+        },
+        {
+          "key": "K",
+          "label": "Window: Ctrl + Right Arrow"
+        },
+        {
+          "key": "M",
+          "label": "Window: maximize"
+        },
+        {
+          "key": "F",
+          "label": "Window: Fullscreen"
+        },
+        {
+          "key": "I",
+          "label": "Window: Zoom In"
+        },
+        {
+          "key": "O",
+          "label": "Window: Zoom Out"
+        },
+        {
+          "key": "U",
+          "label": "Mission Control"
+        },
+        {
+          "key": "N",
+          "label": "App Exposé"
+        },
+        {
+          "key": "L",
+          "label": "App Switcher (Cmd+Tab)"
+        }
+      ]
+    },
+    "_top": {
+      "title": "Hyper",
+      "items": [
+        {
+          "key": "O",
+          "label": "Open apps",
+          "group": true
+        },
+        {
+          "key": "L",
+          "label": "Lookup",
+          "group": true
+        },
+        {
+          "key": "W",
+          "label": "Window",
+          "group": true
+        },
+        {
+          "key": "B",
+          "label": "⌃B (iTerm2)",
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ]
+        },
+        {
+          "key": "M",
+          "label": "Switch to Normal mode"
+        },
+        {
+          "key": "⏎",
+          "label": "Enter Vim mode"
+        },
+        {
+          "key": "E",
+          "label": "Scratchpad (floating nvim, centered)"
+        },
+        {
+          "key": "I",
+          "label": "Idea capture (floating nvim, centered)"
+        },
+        {
+          "key": "T",
+          "label": "Todo list (floating nvim, centered)"
+        },
+        {
+          "key": "=",
+          "label": "Zoom in (pinch gesture)"
+        },
+        {
+          "key": "-",
+          "label": "Zoom out (pinch gesture)"
+        },
+        {
+          "key": "X",
+          "label": "tap → ⌘⇥, hold → ⌘"
+        }
+      ]
+    }
+  }
+}
