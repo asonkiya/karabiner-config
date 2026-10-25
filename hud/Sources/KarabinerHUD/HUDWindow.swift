@@ -21,7 +21,9 @@ final class HUDWindow: NSPanel {
         hidesOnDeactivate = false
         isReleasedWhenClosed = false
         animationBehavior = .none
-        level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.overlayWindow)))
+        // screenSaver level: the overlay level (102) is enough on the desktop
+        // but a native full-screen space never shows the panel there.
+        level = .screenSaver
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary, .ignoresCycle]
 
         let container = NSView()
