@@ -1,6 +1,7 @@
 import fs from "fs";
 import { normalProfile } from "./profiles/normal";
 import { Manipulator, To, KarabinerRules } from "./types";
+import { HUD_ICONS, HudIcon } from "./utils";
 
 // ---------------------------------------------------------------------------
 // Cheatsheet generator
@@ -150,6 +151,8 @@ function humanizeTo(events?: To[]): string {
         const pieces: string[] = [];
         for (const e of events) {
                 if (e.set_variable) continue; // plumbing
+                if (e.send_user_command) continue; // HUD ping, plumbing
+                if (e.shell_command?.includes("hammerspoon://hud")) continue; // HUD ping (Hammerspoon renderer), plumbing
                 if (e.key_code) {
                         pieces.push(modSymbols(e.modifiers) + keyLabel(e.key_code));
                 } else if (e.shell_command) {
@@ -301,17 +304,87 @@ interface Entry {
         mode: Mode;
         sublayer: string | null; // raw sublayer key_code, or null for direct
         key: string; // humanized from-key (e.g. "G", "⇧Y", "⏎")
+        code: string; // raw from key_code, what Karabiner sends as hud?press=<code>
         label: string; // plain-text action (no markdown)
         app?: string[]; // bundle-id regexes when gated with frontmost_application_if
+        icon?: HudIcon;
 }
 const entries: Entry[] = [];
+// Sublayer group icons for the top-level wheel, keyed "<mode>:<sublayer key>"
+// (explicit `icon` on a sublayer map, carried on its toggle manipulator).
+const groupIcons = new Map<string, HudIcon>();
+
+// ---- HUD icon inference ---------------------------------------------------
+// First match wins: explicit `icon` on the LayerCommand, a known key or
+// shortcut, an app the command opens, a web URL (its favicon). Anything else
+// has none.
+const KEY_ICON: Record<string, string> = {
+        volume_increment: "speaker.wave.3.fill",
+        volume_decrement: "speaker.wave.1.fill",
+        mute: "speaker.slash.fill",
+        display_brightness_increment: "sun.max.fill",
+        display_brightness_decrement: "sun.min.fill",
+        play_or_pause: "playpause.fill",
+        mission_control: "rectangle.3.group",
+};
+const CMD_ICON: Record<string, string> = {
+        c: "doc.on.doc",
+        v: "doc.on.clipboard",
+        z: "arrow.uturn.backward",
+        f: "magnifyingglass",
+        w: "xmark",
+        q: "xmark.square",
+        t: "plus.square.on.square",
+};
+// Plain Cmd+key only: ⌃⌘F (fullscreen) or ⇧⌘= (zoom) are not these shortcuts.
+const isCmd = (mods?: string[]) => !!mods && mods.length > 0 && mods.every((m) => /command/.test(m));
+
+function iconFor(m: Manipulator): HudIcon | undefined {
+        const explicit = HUD_ICONS.get(m);
+        if (explicit) return explicit;
+        for (const e of m.to ?? []) {
+                if (e.key_code) {
+                        if (KEY_ICON[e.key_code]) return { symbol: KEY_ICON[e.key_code] };
+                        if (isCmd(e.modifiers) && CMD_ICON[e.key_code]) return { symbol: CMD_ICON[e.key_code] };
+                        return undefined; // a real keystroke with no icon of its own
+                }
+                const sh = e.shell_command;
+                if (!sh || sh.includes("hammerspoon://")) continue;
+                let r: RegExpMatchArray | null;
+                if ((r = sh.match(/open\s+-a\s+'([^']+?)\.app'/))) return { app: r[1] };
+                if ((r = sh.match(/open\s+(\/[^'"\s]+)/))) return { app: r[1] };
+                if (sh.includes("raycast://")) return { bundle: "com.raycast.macos" };
+                if ((r = sh.match(/open\s+['"]?(https?:\/\/[^'"\s]+)/))) return { url: r[1] };
+                if ((r = sh.match(/keystroke\s+"(\w)"\s+using\s+command\s+down/)) && CMD_ICON[r[1]]) {
+                        return { symbol: CMD_ICON[r[1]] };
+                }
+        }
+        return undefined;
+}
+
+// With an app or site icon on the wedge, "Open Arc" just reads "Arc" (and
+// "Open iTerm & switch to programming mode" -> "iTerm · Programming").
+function hudLabel(label: string, icon?: HudIcon): string {
+        if (!icon || "symbol" in icon) return label;
+        return label
+                .replace(/^Open /, "")
+                .replace(/ & switch to (\w+) mode$/, (_, mode: string) => ` · ${mode[0].toUpperCase()}${mode.slice(1)}`);
+}
 
 for (const rule of normalProfile.complex_modifications!.rules) {
         for (const m of rule.manipulators ?? []) {
                 const conds = m.conditions;
 
-                // Skip sublayer toggle plumbing.
-                if (m.description?.startsWith("Toggle Hyper sublayer")) continue;
+                // Sublayer toggle plumbing: only its group icon matters here.
+                if (m.description?.startsWith("Toggle Hyper sublayer")) {
+                        const icon = HUD_ICONS.get(m);
+                        const key = m.from?.key_code;
+                        if (icon && key) {
+                                const k = `${detectMode(conds)}:${key}`;
+                                if (!groupIcons.has(k)) groupIcons.set(k, icon);
+                        }
+                        continue;
+                }
 
                 // The Hyper key definition itself.
                 if (m.to?.some((t) => t.set_variable?.name === "hyper")) {
@@ -328,6 +401,7 @@ for (const rule of normalProfile.complex_modifications!.rules) {
                 const bundles = appBundles(conds);
                 const fromKey = m.from?.key_code;
                 const fromLabel = keyForManip(m);
+                const icon = iconFor(m);
 
                 if (sublayer) {
                         // Command inside a Hyper sublayer.
@@ -335,12 +409,12 @@ for (const rule of normalProfile.complex_modifications!.rules) {
                         const data = modeData(mode);
                         if (!data.sublayers.has(sublayer)) data.sublayers.set(sublayer, []);
                         data.sublayers.get(sublayer)!.push({ key: fromLabel, action });
-                        entries.push({ mode, sublayer, key: fromLabel, label, app: bundles });
+                        entries.push({ mode, sublayer, key: fromLabel, code: fromKey, label, app: bundles, icon });
                 } else if (varCond(conds, "hyper") === 1) {
                         // Direct Hyper + key.
                         if (!fromKey) continue;
                         modeData(mode).direct.push({ key: fromLabel, action });
-                        entries.push({ mode, sublayer: null, key: fromLabel, label, app: bundles });
+                        entries.push({ mode, sublayer: null, key: fromLabel, code: fromKey, label, app: bundles, icon });
                 } else if (fromKey) {
                         // Bare-key remap (mode-gated: reading, trivia, vim).
                         modeData(mode).bare.push({ key: fromLabel, action });
@@ -442,9 +516,11 @@ const MODE_OF: Record<RuntimeMode, Mode> = {
 
 interface HudItem {
         key: string;
+        code: string; // raw key_code; matched against hud?press=<code> to light the wedge
         label: string;
         group?: boolean;
         app?: string[]; // only shown while the frontmost app's bundle id matches one of these
+        icon?: HudIcon; // SF Symbol name, or an app (name/path) / bundle id whose icon to show
 }
 interface HudMenu {
         title: string;
@@ -468,7 +544,10 @@ for (const rt of RUNTIME_MODES) {
         const add = (m: Candidates, e: Entry) => {
                 const list = m.get(e.key) ?? [];
                 if (list.some((it) => !it.app)) return; // already settled
-                list.push(e.app ? { key: e.key, label: e.label, app: e.app } : { key: e.key, label: e.label });
+                const item: HudItem = { key: e.key, code: e.code, label: hudLabel(e.label, e.icon) };
+                if (e.app) item.app = e.app;
+                if (e.icon) item.icon = e.icon;
+                list.push(item);
                 m.set(e.key, list);
         };
         for (const e of entries) {
@@ -497,7 +576,12 @@ for (const rt of RUNTIME_MODES) {
         menus._top = {
                 title: "Hyper",
                 items: [
-                        ...subKeys.map((s) => ({ key: keyLabel(s), label: menus[s].title, group: true })),
+                        ...subKeys.map((s) => {
+                                const item: HudItem = { key: keyLabel(s), code: s, label: menus[s].title, group: true };
+                                const icon = groupIcons.get(`${MODE_OF[rt]}:${s}`) ?? groupIcons.get(`All modes:${s}`);
+                                if (icon) item.icon = icon;
+                                return item;
+                        }),
                         ...flat(direct),
                 ],
         };

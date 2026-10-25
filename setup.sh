@@ -23,6 +23,9 @@ HAVE_HS=false
 $HAVE_HS || warn "Hammerspoon.app not found (which-key HUD, pinch-zoom, mode auto-switching, window centering) — brew install --cask hammerspoon"
 command -v cliclick >/dev/null \
         || warn "cliclick not found (Reading-mode screenshot-drag macros) — brew install cliclick"
+HAVE_SWIFT=false
+xcode-select -p >/dev/null 2>&1 && command -v swift >/dev/null && HAVE_SWIFT=true
+$HAVE_SWIFT || warn "swift not found (xcode-select --install) — the native which-key HUD (hud/) can't be built; set HUD_RENDERER to \"hammerspoon\" in utils.ts for the Hammerspoon fallback"
 HAVE_ITERM=false
 [ -d "/Applications/iTerm.app" ] && HAVE_ITERM=true
 $HAVE_ITERM || warn "iTerm.app not found — the floating scratchpad (Hyper+E) and idea capture (Hyper+I) need it."
@@ -140,6 +143,50 @@ EOF
 launchctl bootout "gui/$(id -u)" "$PLIST" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$PLIST"
 
+# --- native which-key HUD ---------------------------------------------------
+# hud/ is a Swift package: a tiny agent that draws the Hyper weapon wheel and
+# listens on Karabiner's send_user_command socket. Built here (the first build
+# fetches one dependency from GitHub) and kept alive by a LaunchAgent, like
+# the build agent above. Re-run setup.sh after pulling changes to hud/.
+HUD_BIN="$REPO/hud/.build/release/karabiner-hud"
+HUD_PLIST="$HOME/Library/LaunchAgents/com.karabiner-config.hud.plist"
+if $HAVE_SWIFT; then
+        say "Building the native HUD (hud/)"
+        if (cd "$REPO/hud" && swift build -c release >/tmp/karabiner-hud-build.log 2>&1); then
+                say "Installing HUD LaunchAgent"
+                cat > "$HUD_PLIST" <<PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.karabiner-config.hud</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>$HUD_BIN</string>
+        <string>--data</string>
+        <string>$REPO/hammerspoon/sublayers.json</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ProcessType</key>
+    <string>Interactive</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/karabiner-hud.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/karabiner-hud.log</string>
+</dict>
+</plist>
+PLIST
+                launchctl bootout "gui/$(id -u)" "$HUD_PLIST" 2>/dev/null || true
+                launchctl bootstrap "gui/$(id -u)" "$HUD_PLIST"
+        else
+                warn "HUD build failed (see /tmp/karabiner-hud-build.log) — the wheel won't show; set HUD_RENDERER to \"hammerspoon\" in utils.ts to fall back"
+        fi
+fi
+
 # --- build ------------------------------------------------------------------
 say "Building karabiner.json"
 (cd "$REPO" && yarn --silent build)
@@ -159,14 +206,15 @@ Done. Remaining manual steps:
   1. Open Karabiner-Elements once and approve its system extension + input
      monitoring prompts (System Settings > Privacy & Security).
   2. Open Hammerspoon, grant Accessibility, and enable "Launch at login".
-     It must be running for the which-key HUD (hold Caps Lock or a sublayer
-     key ~400ms), pinch-zoom and per-app mode switching.
-  3. Optional: add iTerm to Login Items so Hyper+E / Hyper+I work right
+     It must be running for pinch-zoom and per-app mode switching.
+  3. Hold Caps Lock (or a sublayer key) for ~400ms: the which-key wheel
+     should appear. If not, check /tmp/karabiner-hud.log.
+  4. Optional: add iTerm to Login Items so Hyper+E / Hyper+I work right
      after boot (their hotkeys live in iTerm).
-  4. Ideas capture (Hyper+I) writes to "~/Documents/Obsidian Vault/Ideas"
+  5. Ideas capture (Hyper+I) writes to "~/Documents/Obsidian Vault/Ideas"
      and the todo list (Hyper+T) to "~/Documents/Obsidian Vault/todo.md" —
      edit VAULT in iterm/ideas.lua / TODO in iterm/todo.lua if yours differ.
-  5. tmux users: append indicators/tmux-status.conf to your ~/.tmux.conf
+  6. tmux users: append indicators/tmux-status.conf to your ~/.tmux.conf
      for the mode readout.
 
 Customize keybindings in profiles/*.ts, then `yarn watch` while iterating.

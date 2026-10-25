@@ -1,5 +1,5 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hsEvent } from "../utils";
+import { createHyperSubLayers, app, open, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hudEvent } from "../utils";
 import { vimMode, vimModeRules } from "./vim-mode";
 import { programmingRules } from "./programming";
 import { readingRules } from "./reading";
@@ -28,9 +28,9 @@ const rules: KarabinerRules[] = [
                                         // Hold Hyper alone for a beat -> radial map of the whole
                                         // Hyper layer (sublayers on the inner ring, direct commands
                                         // on the outer). A quick tap/chord never shows it. This
-                                        // fires on EVERY Caps Lock tap (= Escape), so it must be the
-                                        // non-blocking URL event, never a blocking `hs -c`.
-                                        hsEvent("hud", { show: "_top" }),
+                                        // fires on EVERY Caps Lock tap (= Escape), so it must be a
+                                        // non-blocking ping (hudEvent), never a blocking `hs -c`.
+                                        hudEvent({ hud: "show", layer: "_top" }),
                                 ],
                                 to_after_key_up: [
                                         {
@@ -39,7 +39,7 @@ const rules: KarabinerRules[] = [
                                                         value: 0,
                                                 },
                                         },
-                                        hsEvent("hud", { hide: "1" }),
+                                        hudEvent({ hud: "hide" }),
                                 ],
                                 to_if_alone: [
                                         {
@@ -92,6 +92,7 @@ const rules: KarabinerRules[] = [
 
                 // s = "System"
                 s: {
+                        icon: { symbol: "slider.horizontal.3" },
                         i: {
                                 to: [
                                         {
@@ -134,13 +135,14 @@ const rules: KarabinerRules[] = [
                                         },
                                 ],
                         },
-                        // "D"o not disturb toggle
-                        c: open("raycast://extensions/raycast/system/open-camera"),
+                        // "C"amera (via Raycast's system extension)
+                        c: { ...open("raycast://extensions/raycast/system/open-camera"), icon: { symbol: "video.fill" } },
                         // "H"earbuds control via Raycast's Airpods Noise Control extension
-                        h: open("raycast://extensions/chrahe/airpods-noise-control/index"),
+                        h: { ...open("raycast://extensions/chrahe/airpods-noise-control/index"), icon: { symbol: "airpodspro" } },
 
                         // 'v'oice
                         v: {
+                                icon: { symbol: "mic.fill" },
                                 to: [
                                         {
                                                 key_code: "spacebar",
@@ -197,6 +199,7 @@ const rules: KarabinerRules[] = [
 
                 // a = "AI" tools
                 a: {
+                        icon: { symbol: "sparkles" },
                         c: app("Claude"),
                         g: app("ChatGPT"),
                 },
@@ -204,13 +207,14 @@ const rules: KarabinerRules[] = [
                 // m = "Modes" — enter a mode from Normal. (From within a mode,
                 // bare Hyper+M jumps back to Normal; see the escape hatches below.)
                 m: {
+                        icon: { symbol: "switch.2" },
                         p: switchMode("programming"),
                         r: switchMode("reading"),
                         t: switchMode("trivia"),
                 },
 
                 // c = Cmd + key passthrough
-                c: cmdSublayer(),
+                c: { icon: { symbol: "command" }, ...cmdSublayer() },
 
                 // y/p/u = copy/paste/undo (vim-style)
                 y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["right_command"] }] },
@@ -219,6 +223,7 @@ const rules: KarabinerRules[] = [
 
                 // r = "Raycast"
                 r: {
+                        icon: { app: "Raycast" },
                         e: open(
                                 "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
                         ),
@@ -267,6 +272,7 @@ const rules: KarabinerRules[] = [
                 // on the mouse's screen. Same key toggles it away.
                 e: {
                         description: "Scratchpad (floating nvim, centered)",
+                        icon: { symbol: "square.and.pencil" },
                         to: [
                                 { key_code: "f18" },
                                 { shell_command: `/opt/homebrew/bin/hs -c "scratchCenter()"` },
@@ -278,6 +284,7 @@ const rules: KarabinerRules[] = [
                 // when the window loses focus. See iterm/ideas.lua.
                 i: {
                         description: "Idea capture (floating nvim, centered)",
+                        icon: { symbol: "lightbulb" },
                         to: [
                                 { key_code: "f19" },
                                 { shell_command: `/opt/homebrew/bin/hs -c "hotkeyCenter('Ideas')"` },
@@ -288,6 +295,7 @@ const rules: KarabinerRules[] = [
                 // the Obsidian vault, autosaved on focus loss. See iterm/todo.lua.
                 t: {
                         description: "Todo list (floating nvim, centered)",
+                        icon: { symbol: "checklist" },
                         to: [
                                 { key_code: "f20" },
                                 { shell_command: `/opt/homebrew/bin/hs -c "hotkeyCenter('Todo')"` },
@@ -299,14 +307,17 @@ const rules: KarabinerRules[] = [
                 // (Chromium/Electron). See hammerspoon/init.lua.
                 equal_sign: {
                         description: "Zoom in (pinch gesture)",
+                        icon: { symbol: "plus.magnifyingglass" },
                         to: [{ shell_command: `/opt/homebrew/bin/hs -c "zoom('in')"` }],
                 },
                 hyphen: {
                         description: "Zoom out (pinch gesture)",
+                        icon: { symbol: "minus.magnifyingglass" },
                         to: [{ shell_command: `/opt/homebrew/bin/hs -c "zoom('out')"` }],
                 },
                 // l = "L"ookup
                 l: {
+                        icon: { symbol: "globe" },
                         i: open("https://www.instagram.com/direct/t/5082114295174947/"),
                         d: app("Photo Booth"),
                         y: open("https://youtube.com"),
@@ -319,6 +330,7 @@ const rules: KarabinerRules[] = [
                 },
                 // o = "Open" applications
                 o: {
+                        icon: { symbol: "square.grid.2x2" },
                         g: app("/Applications/Arc"),
                         e: app("Microsoft Outlook"),
                         d: app("Discord"),
@@ -336,6 +348,7 @@ const rules: KarabinerRules[] = [
                 },
                 // w = "Window"
                 w: {
+                        icon: { symbol: "macwindow" },
                         semicolon: { description: "Window: Hide", to: [{ key_code: "h", modifiers: ["right_command"] }] },
                         j: { description: "Window: Ctrl + Left Arrow", to: [{ key_code: "left_arrow", modifiers: ["control"] }] },
                         k: { description: "Window: Ctrl + Right Arrow", to: [{ key_code: "right_arrow", modifiers: ["control"] }] },

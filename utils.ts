@@ -45,12 +45,54 @@ export function hsEvent(name: string, params: Record<string, string> = {}): To {
 }
 
 /**
+ * Which program draws the which-key HUD.
+ *   "native"      — hud/ (Swift, Core Animation), reached over Karabiner's
+ *                   send_user_command socket. Installed by setup.sh. Default.
+ *   "hammerspoon" — the original hs.canvas wheel in hammerspoon/init.lua,
+ *                   reached over hammerspoon:// URL events. Still complete;
+ *                   flip this to fall back (then `yarn build`).
+ */
+export type HudRenderer = "native" | "hammerspoon";
+export const HUD_RENDERER: HudRenderer = "native";
+
+export type HudMessage =
+        | { hud: "show"; layer: string } // sublayer key / Hyper down ("_top" = Hyper alone)
+        | { hud: "press"; code: string } // a command fired
+        | { hud: "hide" }; // key released
+
+/**
+ * A `to` event that tells the HUD what just happened, through whichever
+ * channel HUD_RENDERER needs. Fire-and-forget either way: Karabiner never
+ * waits on the renderer, so it's safe on every sublayer toggle and command.
+ */
+export function hudEvent(message: HudMessage): To {
+        if (HUD_RENDERER === "hammerspoon") {
+                const params =
+                        message.hud === "show" ? { show: message.layer }
+                        : message.hud === "press" ? { press: message.code }
+                        : { hide: "1" };
+                return hsEvent("hud", params);
+        }
+        return { send_user_command: { payload: message } };
+}
+
+/**
+ * Icon for a which-key HUD wedge. `symbol` is an SF Symbols name, `app` an
+ * app name or path (resolved by the renderer, see hud/), `bundle` a bundle id,
+ * `url` a web page whose favicon the renderer fetches and caches.
+ * Most commands get one automatically (cheatsheet.ts infers it from the
+ * events: volume keys, `open -a`, URLs); set it explicitly to override.
+ */
+export type HudIcon = { symbol: string } | { app: string } | { bundle: string } | { url: string };
+
+/**
  * Custom way to describe a command in a layer
  */
 export interface LayerCommand {
         to: To[];
         description?: string;
         conditions?: Manipulator["conditions"];
+        icon?: HudIcon;
 }
 
 type HyperKeySublayer = {
@@ -61,11 +103,41 @@ type HyperKeySublayer = {
         // for layers that are held and repeated (cursor movement) rather than
         // looked up — a wheel popping up on every hold there is just noise.
         hud?: false;
+        // Icon for this sublayer's wedge on the top-level (Hyper) wheel.
+        icon?: HudIcon;
 };
 
-/** The HyperKeySublayer entries that are real key bindings (drops `hud`). */
+/** HyperKeySublayer keys that aren't key bindings. */
+const SUBLAYER_META_KEYS = new Set(["hud", "icon"]);
+
+/** The HyperKeySublayer entries that are real key bindings (drops the meta keys). */
 function sublayerCommands(commands: HyperKeySublayer): KeyCode[] {
-        return (Object.keys(commands) as string[]).filter((k) => k !== "hud") as KeyCode[];
+        return (Object.keys(commands) as string[]).filter((k) => !SUBLAYER_META_KEYS.has(k)) as KeyCode[];
+}
+
+/**
+ * Explicit HUD icons, keyed by the generated manipulator (a command's, or a
+ * sublayer's "Toggle Hyper sublayer" one for its group wedge). Kept out of the
+ * manipulator itself so karabiner.json stays schema-clean; cheatsheet.ts
+ * reads this while walking the assembled profile.
+ */
+export const HUD_ICONS = new WeakMap<Manipulator, HudIcon>();
+
+/** Drop the HUD-only `icon` field so it never lands in karabiner.json. */
+function stripIcon(cmd: LayerCommand): Omit<LayerCommand, "icon"> {
+        const { icon: _icon, ...rest } = cmd;
+        return rest;
+}
+
+/**
+ * Prefix a command's `to` events with a HUD "press" ping so the which-key
+ * wheel can light up the wedge that was just triggered (a no-op when no
+ * wheel is showing). It goes FIRST: Karabiner only auto-repeats the last
+ * event of a `to` list, so appending it would stop held commands (volume,
+ * window nudges) from repeating.
+ */
+function withHudPress(key: KeyCode, to: To[], enabled = true): To[] {
+        return enabled ? [hudEvent({ hud: "press", code: key }), ...to] : to;
 }
 
 /**
@@ -81,9 +153,7 @@ export function createHyperSubLayer(
 ): Manipulator[] {
         const subLayerVariableName = generateSubLayerVariableName(sublayer_key);
 
-        return [
-                // When Hyper + sublayer_key is pressed, set the variable to 1; on key_up, set it to 0 again
-                {
+        const toggle: Manipulator = {
                         description: `Toggle Hyper sublayer ${sublayer_key}`,
                         type: "basic",
                         from: {
@@ -102,7 +172,7 @@ export function createHyperSubLayer(
                                         },
                                 },
                                 // Dismiss the radial which-key HUD when the sublayer key is released.
-                                hsEvent("hud", { hide: "1" }),
+                                hudEvent({ hud: "hide" }),
                         ],
                         to: [
                                 {
@@ -111,15 +181,15 @@ export function createHyperSubLayer(
                                                 value: 1,
                                         },
                                 },
-                                // Show the radial which-key HUD for this sublayer (Hammerspoon
+                                // Show the radial which-key HUD for this sublayer (the renderer
                                 // waits ~400ms so a fast chord never flashes it). Menu contents
                                 // come from hammerspoon/sublayers.json, emitted by cheatsheet.ts.
-                                // Fire-and-forget URL event — must not block (see hsEvent).
+                                // Fire-and-forget — must not block (see hudEvent).
                                 // A `hud: false` sublayer only dismisses whatever wheel is up
                                 // (the top-level one, if Hyper was held long enough).
                                 commands.hud === false
-                                        ? hsEvent("hud", { hide: "1" })
-                                        : hsEvent("hud", { show: sublayer_key }),
+                                        ? hudEvent({ hud: "hide" })
+                                        : hudEvent({ hud: "show", layer: sublayer_key }),
                         ],
                         // This enables us to press other sublayer keys in the current sublayer
                         // (e.g. Hyper + O > M even though Hyper + M is also a sublayer)
@@ -141,11 +211,16 @@ export function createHyperSubLayer(
                                 },
                                 ...extraConditions,
                         ],
-                },
+        };
+        if (commands.icon) HUD_ICONS.set(toggle, commands.icon);
+
+        return [
+                toggle,
                 // Define the individual commands that are meant to trigger in the sublayer
-                ...sublayerCommands(commands).map(
-                        (command_key): Manipulator => ({
-                                ...commands[command_key]!,
+                ...sublayerCommands(commands).map((command_key): Manipulator => {
+                        const cmd = commands[command_key]!;
+                        const manipulator: Manipulator = {
+                                ...stripIcon(cmd),
                                 type: "basic" as const,
                                 from: {
                                         key_code: command_key,
@@ -153,6 +228,7 @@ export function createHyperSubLayer(
                                                 optional: ["any"],
                                         },
                                 },
+                                to: withHudPress(command_key, cmd.to, commands.hud !== false),
                                 // Only trigger this command if the variable is 1 (i.e., if Hyper + sublayer is held)
                                 conditions: [
                                         {
@@ -162,8 +238,10 @@ export function createHyperSubLayer(
                                         },
                                         ...extraConditions,
                                 ],
-                        })
-                ),
+                        };
+                        if (cmd.icon) HUD_ICONS.set(manipulator, cmd.icon);
+                        return manipulator;
+                }),
         ];
 }
 
@@ -188,36 +266,42 @@ export function createHyperSubLayers(
                 generateSubLayerVariableName
         );
 
+        const direct = (key: KeyCode, value: LayerCommand): Manipulator => {
+                const manipulator: Manipulator = {
+                        ...stripIcon(value),
+                        type: "basic" as const,
+                        from: {
+                                key_code: key,
+                                modifiers: {
+                                        optional: ["any"],
+                                },
+                        },
+                        // Lights the wedge on the top-level (Hyper) wheel.
+                        to: withHudPress(key, value.to),
+                        conditions: [
+                                {
+                                        type: "variable_if",
+                                        name: "hyper",
+                                        value: 1,
+                                },
+                                ...allSubLayerVariables.map((subLayerVariable) => ({
+                                        type: "variable_if" as const,
+                                        name: subLayerVariable,
+                                        value: 0,
+                                })),
+                                ...(value.conditions ?? []),
+                                ...extraConditions,
+                        ],
+                };
+                if (value.icon) HUD_ICONS.set(manipulator, value.icon);
+                return manipulator;
+        };
+
         return Object.entries(subLayers).map(([key, value]) =>
                 "to" in value
                         ? {
                                 description: `Hyper Key + ${key}`,
-                                manipulators: [
-                                        {
-                                                ...value,
-                                                type: "basic" as const,
-                                                from: {
-                                                        key_code: key as KeyCode,
-                                                        modifiers: {
-                                                                optional: ["any"],
-                                                        },
-                                                },
-                                                conditions: [
-                                                        {
-                                                                type: "variable_if",
-                                                                name: "hyper",
-                                                                value: 1,
-                                                        },
-                                                        ...allSubLayerVariables.map((subLayerVariable) => ({
-                                                                type: "variable_if" as const,
-                                                                name: subLayerVariable,
-                                                                value: 0,
-                                                        })),
-                                                        ...(value.conditions ?? []),
-                                                        ...extraConditions,
-                                                ],
-                                        },
-                                ],
+                                manipulators: [direct(key as KeyCode, value)],
                         }
                         : {
                                 description: `Hyper Key sublayer "${key}"`,

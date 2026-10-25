@@ -18,11 +18,12 @@ export const programmingRules: KarabinerRules[] = createHyperSubLayers({
         p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["right_command"] }] },
 
         // c = Cmd + key passthrough
-        c: cmdSublayer(),
+        c: { icon: { symbol: "command" }, ...cmdSublayer() },
 
         // k = Claude commands (moved off l so the global lookup sublayer works
         // in Programming mode too)
         k: {
+                icon: { symbol: "sparkles" },
                 r: {
                         description: "Claude: /resume",
                         to: [
@@ -50,6 +51,7 @@ export const programmingRules: KarabinerRules[] = createHyperSubLayers({
 
         // g = "Git" commands
         g: {
+                icon: { symbol: "arrow.triangle.branch" },
                 s: { description: "Git: status", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git status" & return'` }] },
                 a: { description: "Git: add all", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git add ." & return'` }] },
                 c: { description: "Git: commit", to: [{ shell_command: `osascript -e 'tell application "System Events" to keystroke "git commit -m \\\"\\\"" ' && osascript -e 'tell application "System Events" to key code 123'` }] },
@@ -65,6 +67,7 @@ export const programmingRules: KarabinerRules[] = createHyperSubLayers({
         // s = "Session" tmux window switching (hjkl -> windows 1-4)
         // Sends Ctrl+B (prefix) then the window number
         s: {
+                icon: { symbol: "terminal" },
                 h: { description: "Tmux: window 0", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "0" }] },
                 j: { description: "Tmux: window 1", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "1" }] },
                 k: { description: "Tmux: window 2", to: [{ key_code: "b", modifiers: ["left_control"] }, { key_code: "2" }] },

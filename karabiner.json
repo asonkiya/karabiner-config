@@ -32,7 +32,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=_top\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "_top"
+                      }
+                    }
                   }
                 ],
                 "to_after_key_up": [
@@ -43,7 +48,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to_if_alone": [
@@ -98,6 +107,14 @@
             "manipulators": [
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "semicolon"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open raycast://extensions/the-browser-company/arc/search-space-tabs"
                   }
@@ -372,6 +389,14 @@
             "manipulators": [
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "spacebar"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'Raycast.app'"
                   }
@@ -663,7 +688,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -674,7 +703,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=s\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "s"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -928,6 +962,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "i"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "volume_increment"
                   }
                 ],
@@ -965,6 +1007,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "k"
+                      }
+                    }
+                  },
                   {
                     "key_code": "volume_decrement"
                   }
@@ -1004,6 +1054,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "mute"
                   }
                 ],
@@ -1041,6 +1099,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "u"
+                      }
+                    }
+                  },
                   {
                     "key_code": "display_brightness_increment"
                   }
@@ -1080,6 +1146,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "j"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "display_brightness_decrement"
                   }
                 ],
@@ -1118,6 +1192,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "play_or_pause"
                   }
                 ],
@@ -1155,6 +1237,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "c"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open raycast://extensions/raycast/system/open-camera"
                   }
@@ -1195,6 +1285,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "h"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open raycast://extensions/chrahe/airpods-noise-control/index"
                   }
                 ],
@@ -1233,6 +1331,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "v"
+                      }
+                    }
+                  },
                   {
                     "key_code": "spacebar",
                     "modifiers": [
@@ -1296,7 +1402,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -1307,7 +1417,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -1996,6 +2110,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "h"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "1",
                     "modifiers": [
                       "right_command"
@@ -2278,6 +2400,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "j"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "2",
                     "modifiers": [
                       "right_command"
@@ -2559,6 +2689,14 @@
             "manipulators": [
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "k"
+                      }
+                    }
+                  },
                   {
                     "key_code": "3",
                     "modifiers": [
@@ -2858,7 +2996,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -2869,7 +3011,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=a\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "a"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -3123,6 +3270,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "c"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a 'Claude.app'"
                   }
                 ],
@@ -3161,6 +3316,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "g"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'ChatGPT.app'"
                   }
@@ -3222,7 +3385,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -3233,7 +3400,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=m\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "m"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -3487,6 +3659,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
+                  {
                     "set_variable": {
                       "name": "programming",
                       "value": 1
@@ -3544,6 +3724,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
+                  {
                     "set_variable": {
                       "name": "programming",
                       "value": 0
@@ -3600,6 +3788,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "t"
+                      }
+                    }
+                  },
                   {
                     "set_variable": {
                       "name": "programming",
@@ -3679,7 +3875,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -3690,7 +3890,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=c\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "c"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -3945,6 +4150,14 @@
                 "description": "Cmd+0",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "0"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "0",
                     "modifiers": [
                       "right_command"
@@ -3986,6 +4199,14 @@
               {
                 "description": "Cmd+1",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "1"
+                      }
+                    }
+                  },
                   {
                     "key_code": "1",
                     "modifiers": [
@@ -4029,6 +4250,14 @@
                 "description": "Cmd+2",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "2"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "2",
                     "modifiers": [
                       "right_command"
@@ -4070,6 +4299,14 @@
               {
                 "description": "Cmd+3",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "3"
+                      }
+                    }
+                  },
                   {
                     "key_code": "3",
                     "modifiers": [
@@ -4113,6 +4350,14 @@
                 "description": "Cmd+4",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "4"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "4",
                     "modifiers": [
                       "right_command"
@@ -4154,6 +4399,14 @@
               {
                 "description": "Cmd+5",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "5"
+                      }
+                    }
+                  },
                   {
                     "key_code": "5",
                     "modifiers": [
@@ -4197,6 +4450,14 @@
                 "description": "Cmd+6",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "6"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "6",
                     "modifiers": [
                       "right_command"
@@ -4238,6 +4499,14 @@
               {
                 "description": "Cmd+7",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "7"
+                      }
+                    }
+                  },
                   {
                     "key_code": "7",
                     "modifiers": [
@@ -4281,6 +4550,14 @@
                 "description": "Cmd+8",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "8"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "8",
                     "modifiers": [
                       "right_command"
@@ -4322,6 +4599,14 @@
               {
                 "description": "Cmd+9",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "9"
+                      }
+                    }
+                  },
                   {
                     "key_code": "9",
                     "modifiers": [
@@ -4365,6 +4650,14 @@
                 "description": "Cmd+A",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "a"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "a",
                     "modifiers": [
                       "right_command"
@@ -4406,6 +4699,14 @@
               {
                 "description": "Cmd+B",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "b"
+                      }
+                    }
+                  },
                   {
                     "key_code": "b",
                     "modifiers": [
@@ -4449,6 +4750,14 @@
                 "description": "Cmd+C",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "c"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "c",
                     "modifiers": [
                       "right_command"
@@ -4490,6 +4799,14 @@
               {
                 "description": "Cmd+D",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "d"
+                      }
+                    }
+                  },
                   {
                     "key_code": "d",
                     "modifiers": [
@@ -4533,6 +4850,14 @@
                 "description": "Cmd+E",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "e"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "e",
                     "modifiers": [
                       "right_command"
@@ -4574,6 +4899,14 @@
               {
                 "description": "Cmd+F",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "f"
+                      }
+                    }
+                  },
                   {
                     "key_code": "f",
                     "modifiers": [
@@ -4617,6 +4950,14 @@
                 "description": "Cmd+G",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "g"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "g",
                     "modifiers": [
                       "right_command"
@@ -4658,6 +4999,14 @@
               {
                 "description": "Cmd+H",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "h"
+                      }
+                    }
+                  },
                   {
                     "key_code": "h",
                     "modifiers": [
@@ -4701,6 +5050,14 @@
                 "description": "Cmd+I",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "i"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "i",
                     "modifiers": [
                       "right_command"
@@ -4742,6 +5099,14 @@
               {
                 "description": "Cmd+J",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "j"
+                      }
+                    }
+                  },
                   {
                     "key_code": "j",
                     "modifiers": [
@@ -4785,6 +5150,14 @@
                 "description": "Cmd+K",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "k"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "k",
                     "modifiers": [
                       "right_command"
@@ -4826,6 +5199,14 @@
               {
                 "description": "Cmd+L",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "l"
+                      }
+                    }
+                  },
                   {
                     "key_code": "l",
                     "modifiers": [
@@ -4869,6 +5250,14 @@
                 "description": "Cmd+M",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "m",
                     "modifiers": [
                       "right_command"
@@ -4910,6 +5299,14 @@
               {
                 "description": "Cmd+N",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "n"
+                      }
+                    }
+                  },
                   {
                     "key_code": "n",
                     "modifiers": [
@@ -4953,6 +5350,14 @@
                 "description": "Cmd+O",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "o"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "o",
                     "modifiers": [
                       "right_command"
@@ -4994,6 +5399,14 @@
               {
                 "description": "Cmd+P",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
                   {
                     "key_code": "p",
                     "modifiers": [
@@ -5037,6 +5450,14 @@
                 "description": "Cmd+Q",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "q"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "q",
                     "modifiers": [
                       "right_command"
@@ -5078,6 +5499,14 @@
               {
                 "description": "Cmd+R",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
                   {
                     "key_code": "r",
                     "modifiers": [
@@ -5121,6 +5550,14 @@
                 "description": "Cmd+S",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "s"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "s",
                     "modifiers": [
                       "right_command"
@@ -5162,6 +5599,14 @@
               {
                 "description": "Cmd+T",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "t"
+                      }
+                    }
+                  },
                   {
                     "key_code": "t",
                     "modifiers": [
@@ -5205,6 +5650,14 @@
                 "description": "Cmd+U",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "u"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "u",
                     "modifiers": [
                       "right_command"
@@ -5246,6 +5699,14 @@
               {
                 "description": "Cmd+V",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "v"
+                      }
+                    }
+                  },
                   {
                     "key_code": "v",
                     "modifiers": [
@@ -5289,6 +5750,14 @@
                 "description": "Cmd+W",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "w"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "w",
                     "modifiers": [
                       "right_command"
@@ -5330,6 +5799,14 @@
               {
                 "description": "Cmd+X",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "x"
+                      }
+                    }
+                  },
                   {
                     "key_code": "x",
                     "modifiers": [
@@ -5373,6 +5850,14 @@
                 "description": "Cmd+Y",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "y"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "y",
                     "modifiers": [
                       "right_command"
@@ -5414,6 +5899,14 @@
               {
                 "description": "Cmd+Z",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "z"
+                      }
+                    }
+                  },
                   {
                     "key_code": "z",
                     "modifiers": [
@@ -5461,6 +5954,14 @@
               {
                 "description": "Copy (Cmd+C)",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "y"
+                      }
+                    }
+                  },
                   {
                     "key_code": "c",
                     "modifiers": [
@@ -5739,6 +6240,14 @@
                 "description": "Paste (Cmd+V)",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "v",
                     "modifiers": [
                       "right_command"
@@ -6015,6 +6524,14 @@
               {
                 "description": "Undo (Cmd+Z)",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "u"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"z\" using command down'"
                   }
@@ -6305,7 +6822,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -6316,7 +6837,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=r\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "r"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -6570,6 +7096,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "e"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
                   }
                 ],
@@ -6609,6 +7143,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open raycast://extensions/raycast/raycast/confetti"
                   }
                 ],
@@ -6647,6 +7189,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "h"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open raycast://extensions/raycast/clipboard-history/clipboard-history"
                   }
@@ -6692,6 +7242,14 @@
               {
                 "description": "Find (Cmd+F)",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "slash"
+                      }
+                    }
+                  },
                   {
                     "key_code": "f",
                     "modifiers": [
@@ -6970,6 +7528,14 @@
                 "description": "Cmd+L",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "f"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "l",
                     "modifiers": [
                       "left_command"
@@ -7246,6 +7812,14 @@
               {
                 "description": "Cmd+Q (Quit)",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "q"
+                      }
+                    }
+                  },
                   {
                     "key_code": "q",
                     "modifiers": [
@@ -7524,6 +8098,14 @@
                 "description": "Cmd+W (Close)",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "d"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "w",
                     "modifiers": [
                       "right_command"
@@ -7801,6 +8383,14 @@
                 "description": "Cmd+T (New Tab)",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "n"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "t",
                     "modifiers": [
                       "right_command"
@@ -8077,6 +8667,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
+                  {
                     "set_variable": {
                       "name": "programming",
                       "value": 0
@@ -8359,6 +8957,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
+                  {
                     "set_variable": {
                       "name": "programming",
                       "value": 0
@@ -8640,6 +9246,14 @@
             "manipulators": [
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
                   {
                     "set_variable": {
                       "name": "programming",
@@ -8923,6 +9537,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "return_or_enter"
+                      }
+                    }
+                  },
+                  {
                     "set_variable": {
                       "name": "vim_mode",
                       "value": 1
@@ -9187,6 +9809,14 @@
             "manipulators": [
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "1"
+                      }
+                    }
+                  },
                   {
                     "key_code": "1",
                     "modifiers": [
@@ -9461,6 +10091,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "2"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "2",
                     "modifiers": [
                       "left_control",
@@ -9733,6 +10371,14 @@
             "manipulators": [
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "3"
+                      }
+                    }
+                  },
                   {
                     "key_code": "3",
                     "modifiers": [
@@ -10007,6 +10653,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "4"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "4",
                     "modifiers": [
                       "left_control",
@@ -10279,6 +10933,14 @@
             "manipulators": [
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "5"
+                      }
+                    }
+                  },
                   {
                     "key_code": "5",
                     "modifiers": [
@@ -10553,6 +11215,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "b",
                     "modifiers": [
                       "right_command"
@@ -10824,6 +11494,14 @@
             "manipulators": [
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "b"
+                      }
+                    }
+                  },
                   {
                     "key_code": "r",
                     "modifiers": [
@@ -11098,6 +11776,14 @@
                 "description": "Copy (Cmd+C)",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "y"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "c",
                     "modifiers": [
                       "right_command"
@@ -11364,6 +12050,14 @@
               {
                 "description": "Paste (Cmd+V)",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
                   {
                     "key_code": "v",
                     "modifiers": [
@@ -11647,7 +12341,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -11658,7 +12356,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=c\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "c"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -11903,6 +12606,14 @@
                 "description": "Cmd+0",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "0"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "0",
                     "modifiers": [
                       "right_command"
@@ -11934,6 +12645,14 @@
               {
                 "description": "Cmd+1",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "1"
+                      }
+                    }
+                  },
                   {
                     "key_code": "1",
                     "modifiers": [
@@ -11967,6 +12686,14 @@
                 "description": "Cmd+2",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "2"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "2",
                     "modifiers": [
                       "right_command"
@@ -11998,6 +12725,14 @@
               {
                 "description": "Cmd+3",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "3"
+                      }
+                    }
+                  },
                   {
                     "key_code": "3",
                     "modifiers": [
@@ -12031,6 +12766,14 @@
                 "description": "Cmd+4",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "4"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "4",
                     "modifiers": [
                       "right_command"
@@ -12062,6 +12805,14 @@
               {
                 "description": "Cmd+5",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "5"
+                      }
+                    }
+                  },
                   {
                     "key_code": "5",
                     "modifiers": [
@@ -12095,6 +12846,14 @@
                 "description": "Cmd+6",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "6"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "6",
                     "modifiers": [
                       "right_command"
@@ -12126,6 +12885,14 @@
               {
                 "description": "Cmd+7",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "7"
+                      }
+                    }
+                  },
                   {
                     "key_code": "7",
                     "modifiers": [
@@ -12159,6 +12926,14 @@
                 "description": "Cmd+8",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "8"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "8",
                     "modifiers": [
                       "right_command"
@@ -12190,6 +12965,14 @@
               {
                 "description": "Cmd+9",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "9"
+                      }
+                    }
+                  },
                   {
                     "key_code": "9",
                     "modifiers": [
@@ -12223,6 +13006,14 @@
                 "description": "Cmd+A",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "a"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "a",
                     "modifiers": [
                       "right_command"
@@ -12254,6 +13045,14 @@
               {
                 "description": "Cmd+B",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "b"
+                      }
+                    }
+                  },
                   {
                     "key_code": "b",
                     "modifiers": [
@@ -12287,6 +13086,14 @@
                 "description": "Cmd+C",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "c"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "c",
                     "modifiers": [
                       "right_command"
@@ -12318,6 +13125,14 @@
               {
                 "description": "Cmd+D",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "d"
+                      }
+                    }
+                  },
                   {
                     "key_code": "d",
                     "modifiers": [
@@ -12351,6 +13166,14 @@
                 "description": "Cmd+E",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "e"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "e",
                     "modifiers": [
                       "right_command"
@@ -12382,6 +13205,14 @@
               {
                 "description": "Cmd+F",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "f"
+                      }
+                    }
+                  },
                   {
                     "key_code": "f",
                     "modifiers": [
@@ -12415,6 +13246,14 @@
                 "description": "Cmd+G",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "g"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "g",
                     "modifiers": [
                       "right_command"
@@ -12446,6 +13285,14 @@
               {
                 "description": "Cmd+H",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "h"
+                      }
+                    }
+                  },
                   {
                     "key_code": "h",
                     "modifiers": [
@@ -12479,6 +13326,14 @@
                 "description": "Cmd+I",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "i"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "i",
                     "modifiers": [
                       "right_command"
@@ -12510,6 +13365,14 @@
               {
                 "description": "Cmd+J",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "j"
+                      }
+                    }
+                  },
                   {
                     "key_code": "j",
                     "modifiers": [
@@ -12543,6 +13406,14 @@
                 "description": "Cmd+K",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "k"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "k",
                     "modifiers": [
                       "right_command"
@@ -12574,6 +13445,14 @@
               {
                 "description": "Cmd+L",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "l"
+                      }
+                    }
+                  },
                   {
                     "key_code": "l",
                     "modifiers": [
@@ -12607,6 +13486,14 @@
                 "description": "Cmd+M",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "m",
                     "modifiers": [
                       "right_command"
@@ -12638,6 +13525,14 @@
               {
                 "description": "Cmd+N",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "n"
+                      }
+                    }
+                  },
                   {
                     "key_code": "n",
                     "modifiers": [
@@ -12671,6 +13566,14 @@
                 "description": "Cmd+O",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "o"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "o",
                     "modifiers": [
                       "right_command"
@@ -12702,6 +13605,14 @@
               {
                 "description": "Cmd+P",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
                   {
                     "key_code": "p",
                     "modifiers": [
@@ -12735,6 +13646,14 @@
                 "description": "Cmd+Q",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "q"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "q",
                     "modifiers": [
                       "right_command"
@@ -12766,6 +13685,14 @@
               {
                 "description": "Cmd+R",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
                   {
                     "key_code": "r",
                     "modifiers": [
@@ -12799,6 +13726,14 @@
                 "description": "Cmd+S",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "s"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "s",
                     "modifiers": [
                       "right_command"
@@ -12830,6 +13765,14 @@
               {
                 "description": "Cmd+T",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "t"
+                      }
+                    }
+                  },
                   {
                     "key_code": "t",
                     "modifiers": [
@@ -12863,6 +13806,14 @@
                 "description": "Cmd+U",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "u"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "u",
                     "modifiers": [
                       "right_command"
@@ -12894,6 +13845,14 @@
               {
                 "description": "Cmd+V",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "v"
+                      }
+                    }
+                  },
                   {
                     "key_code": "v",
                     "modifiers": [
@@ -12927,6 +13886,14 @@
                 "description": "Cmd+W",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "w"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "w",
                     "modifiers": [
                       "right_command"
@@ -12958,6 +13925,14 @@
               {
                 "description": "Cmd+X",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "x"
+                      }
+                    }
+                  },
                   {
                     "key_code": "x",
                     "modifiers": [
@@ -12991,6 +13966,14 @@
                 "description": "Cmd+Y",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "y"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "y",
                     "modifiers": [
                       "right_command"
@@ -13022,6 +14005,14 @@
               {
                 "description": "Cmd+Z",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "z"
+                      }
+                    }
+                  },
                   {
                     "key_code": "z",
                     "modifiers": [
@@ -13075,7 +14066,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -13086,7 +14081,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=k\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "k"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -13331,6 +14331,14 @@
                 "description": "Claude: /resume",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"/resume\"' && osascript -e 'tell application \"System Events\" to key code 36' && osascript -e 'tell application \"System Events\" to key code 36'"
                   }
                 ],
@@ -13358,6 +14366,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "i"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"/init\" & return'"
                   }
@@ -13388,6 +14404,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "c"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"/clear\" & return'"
                   }
                 ],
@@ -13416,6 +14440,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "h"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"/help\" & return'"
                   }
@@ -13446,6 +14478,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "b"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"/bug\" & return'"
                   }
                 ],
@@ -13474,6 +14514,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"/plan\" & return'"
                   }
@@ -13504,6 +14552,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "k"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"/commit\" & return'"
                   }
                 ],
@@ -13532,6 +14588,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "x"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"exit\" & return'"
                   }
@@ -13562,6 +14626,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "o"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"claude\" & return'"
                   }
                 ],
@@ -13591,6 +14663,14 @@
               {
                 "description": "Shift+Tab",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
                   {
                     "key_code": "tab",
                     "modifiers": [
@@ -13644,7 +14724,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -13655,7 +14739,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=o\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "o"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -13899,6 +14988,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "g"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a 'Godot.app'"
                   }
                 ],
@@ -13927,6 +15024,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "t"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'iTerm.app'"
                   }
@@ -13978,7 +15083,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -13989,7 +15098,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=g\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "g"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -14234,6 +15348,14 @@
                 "description": "Git: status",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "s"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git status\" & return'"
                   }
                 ],
@@ -14262,6 +15384,14 @@
               {
                 "description": "Git: add all",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "a"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git add .\" & return'"
                   }
@@ -14292,6 +15422,14 @@
                 "description": "Git: commit",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "c"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git commit -m \\\"\\\"\" ' && osascript -e 'tell application \"System Events\" to key code 123'"
                   }
                 ],
@@ -14320,6 +15458,14 @@
               {
                 "description": "Git: push",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git push\" & return'"
                   }
@@ -14350,6 +15496,14 @@
                 "description": "Git: log",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "l"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git log --oneline\" & return'"
                   }
                 ],
@@ -14378,6 +15532,14 @@
               {
                 "description": "Git: diff",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "d"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git diff\" & return'"
                   }
@@ -14408,6 +15570,14 @@
                 "description": "Git: branch",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "b"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git branch\" & return'"
                   }
                 ],
@@ -14436,6 +15606,14 @@
               {
                 "description": "Git: pull",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "u"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git pull\" & return'"
                   }
@@ -14466,6 +15644,14 @@
                 "description": "Git: stash",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "z"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git stash\" & return'"
                   }
                 ],
@@ -14494,6 +15680,14 @@
               {
                 "description": "Git: stash pop",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "osascript -e 'tell application \"System Events\" to keystroke \"git stash pop\" & return'"
                   }
@@ -14544,7 +15738,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -14555,7 +15753,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=s\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "s"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -14800,6 +16003,14 @@
                 "description": "Tmux: window 0",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "h"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "b",
                     "modifiers": [
                       "left_control"
@@ -14834,6 +16045,14 @@
               {
                 "description": "Tmux: window 1",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "j"
+                      }
+                    }
+                  },
                   {
                     "key_code": "b",
                     "modifiers": [
@@ -14870,6 +16089,14 @@
                 "description": "Tmux: window 2",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "k"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "b",
                     "modifiers": [
                       "left_control"
@@ -14904,6 +16131,14 @@
               {
                 "description": "Tmux: window 3",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "l"
+                      }
+                    }
+                  },
                   {
                     "key_code": "b",
                     "modifiers": [
@@ -14940,6 +16175,14 @@
                 "description": "Tmux: new window",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "n"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "b",
                     "modifiers": [
                       "left_control"
@@ -14974,6 +16217,14 @@
               {
                 "description": "Tmux: kill window",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "x"
+                      }
+                    }
+                  },
                   {
                     "key_code": "b",
                     "modifiers": [
@@ -15012,6 +16263,14 @@
               {
                 "description": "Tmux: kill session",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "hyphen"
+                      }
+                    }
+                  },
                   {
                     "key_code": "b",
                     "modifiers": [
@@ -15110,7 +16369,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -15121,7 +16384,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -16611,6 +17878,14 @@
                 "description": "Scratchpad (floating nvim, centered)",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "e"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "f18"
                   },
                   {
@@ -16872,6 +18147,14 @@
               {
                 "description": "Idea capture (floating nvim, centered)",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "i"
+                      }
+                    }
+                  },
                   {
                     "key_code": "f19"
                   },
@@ -17135,6 +18418,14 @@
                 "description": "Todo list (floating nvim, centered)",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "t"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "f20"
                   },
                   {
@@ -17397,6 +18688,14 @@
                 "description": "Zoom in (pinch gesture)",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "equal_sign"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "/opt/homebrew/bin/hs -c \"zoom('in')\""
                   }
                 ],
@@ -17655,6 +18954,14 @@
               {
                 "description": "Zoom out (pinch gesture)",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "hyphen"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "/opt/homebrew/bin/hs -c \"zoom('out')\""
                   }
@@ -17930,7 +19237,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -17941,7 +19252,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=l\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "l"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -18180,6 +19496,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "i"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://www.instagram.com/direct/t/5082114295174947/"
                   }
                 ],
@@ -18203,6 +19527,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "d"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'Photo Booth.app'"
                   }
@@ -18228,6 +19560,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "y"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://youtube.com"
                   }
                 ],
@@ -18251,6 +19591,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://music.youtube.com"
                   }
@@ -18276,6 +19624,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "t"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://mychtransit.org/map"
                   }
                 ],
@@ -18299,6 +19655,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "n"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open http://localhost:8080/"
                   }
@@ -18324,6 +19688,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "s"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://twitch.tv"
                   }
                 ],
@@ -18348,6 +19720,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "c"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://canvas.unc.edu"
                   }
                 ],
@@ -18371,6 +19751,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "g"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://github.com"
                   }
@@ -18417,7 +19805,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -18428,7 +19820,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=o\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "o"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -18667,6 +20064,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "g"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a '/Applications/Arc.app'"
                   }
                 ],
@@ -18690,6 +20095,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "e"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'Microsoft Outlook.app'"
                   }
@@ -18715,6 +20128,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "d"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a 'Discord.app'"
                   }
                 ],
@@ -18739,6 +20160,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "n"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a 'ZenNotes.app'"
                   }
                 ],
@@ -18762,6 +20191,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "t"
+                      }
+                    }
+                  },
                   {
                     "set_variable": {
                       "name": "programming",
@@ -18805,6 +20242,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "z"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a 'zoom.us.app'"
                   }
                 ],
@@ -18828,6 +20273,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'Rstudio.app'"
                   }
@@ -18853,6 +20306,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "f"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a 'Finder.app'"
                   }
                 ],
@@ -18876,6 +20337,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'Messages.app'"
                   }
@@ -18901,6 +20370,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "p"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a 'iPhone Mirroring.app'"
                   }
                 ],
@@ -18924,6 +20401,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "c"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'Screenshot.app'"
                   }
@@ -18949,6 +20434,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "v"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -a 'Surfshark.app'"
                   }
                 ],
@@ -18972,6 +20465,14 @@
               },
               {
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "w"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open /Applications/WhatsApp.localized/WhatsApp.app"
                   }
@@ -19018,7 +20519,11 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?hide=1\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
                   }
                 ],
                 "to": [
@@ -19029,7 +20534,12 @@
                     }
                   },
                   {
-                    "shell_command": "open -g \"hammerspoon://hud?show=w\""
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "w"
+                      }
+                    }
                   }
                 ],
                 "conditions": [
@@ -19269,6 +20779,14 @@
                 "description": "Window: Hide",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "semicolon"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "h",
                     "modifiers": [
                       "right_command"
@@ -19295,6 +20813,14 @@
               {
                 "description": "Window: Ctrl + Left Arrow",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "j"
+                      }
+                    }
+                  },
                   {
                     "key_code": "left_arrow",
                     "modifiers": [
@@ -19323,6 +20849,14 @@
                 "description": "Window: Ctrl + Right Arrow",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "k"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "right_arrow",
                     "modifiers": [
                       "control"
@@ -19349,6 +20883,14 @@
               {
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "m"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open -g raycast://extensions/raycast/window-management/maximize"
                   }
                 ],
@@ -19373,6 +20915,14 @@
               {
                 "description": "Window: Fullscreen",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "f"
+                      }
+                    }
+                  },
                   {
                     "key_code": "f",
                     "modifiers": [
@@ -19402,6 +20952,14 @@
                 "description": "Window: Zoom In",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "i"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "equal_sign",
                     "modifiers": [
                       "right_shift",
@@ -19429,6 +20987,14 @@
               {
                 "description": "Window: Zoom Out",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "o"
+                      }
+                    }
+                  },
                   {
                     "key_code": "hyphen",
                     "modifiers": [
@@ -19458,6 +21024,14 @@
                 "description": "Mission Control",
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "u"
+                      }
+                    }
+                  },
+                  {
                     "key_code": "mission_control"
                   }
                 ],
@@ -19481,6 +21055,14 @@
               {
                 "description": "App Exposé",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "n"
+                      }
+                    }
+                  },
                   {
                     "key_code": "down_arrow",
                     "modifiers": [
@@ -19508,6 +21090,14 @@
               {
                 "description": "App Switcher (Cmd+Tab)",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "l"
+                      }
+                    }
+                  },
                   {
                     "key_code": "tab",
                     "modifiers": [

@@ -166,7 +166,11 @@ function zoom(dir)
 end
 
 -- ---------------------------------------------------------------------------
--- Radial "which-key" HUD for the Hyper layer.
+-- Radial "which-key" HUD for the Hyper layer — the FALLBACK renderer.
+--
+-- The default wheel is the native hud/ agent (HUD_RENDERER = "native" in
+-- utils.ts); Karabiner only sends events here when that's flipped to
+-- "hammerspoon". Kept complete so falling back is a one-line change.
 --
 -- Hold a sublayer key (Hyper+O) and a weapon-wheel of its commands appears
 -- around the screen centre: a thick ring cut into one wedge per command, key
@@ -184,8 +188,12 @@ end
 --
 -- Feel: a HUD_DELAY hold before anything appears, so fast chords never flash
 -- it; but if a wheel is already up, switching to a sublayer is instant.
+-- Every command also pings `?press=<key>` as it fires, and the matching
+-- wedge lights up white for HUD_FLASH seconds (the wheel waits for the
+-- flash to finish before hiding, so you always see what you hit).
 -- ---------------------------------------------------------------------------
 local HUD_DELAY = 0.40
+local HUD_FLASH = 0.10
 local HUD_FILE = hs.configdir .. "/sublayers.json"
 
 _G.karabinerMode.hud = _G.karabinerMode.hud or {}
@@ -213,6 +221,13 @@ local function hudClear()
         hud.timer:stop()
         hud.timer = nil
     end
+    if hud.flashTimer then
+        hud.flashTimer:stop()
+        hud.flashTimer = nil
+    end
+    hud.hidePending = false
+    hud.lit = nil
+    hud.wedges = nil
     if hud.canvas then
         hud.canvas:delete()
         hud.canvas = nil
@@ -231,6 +246,7 @@ local HUD_DIM = 0.35           -- full-screen darkening behind the wheel
 local HUD_FILL = { white = 0.12, alpha = 0.86 }
 local HUD_GROUP_FILL = { red = 0.30, green = 0.22, blue = 0.14, alpha = 0.88 } -- sublayer wedges, warm tint
 local HUD_EDGE = { white = 1, alpha = 0.22 }
+local HUD_LIT_FILL = { white = 1, alpha = 0.96 } -- wedge of the command just pressed
 local HUD_KEY_SIZE = 28
 local HUD_LABEL_SIZE = 14
 
@@ -275,8 +291,27 @@ local function wedge(cx, cy, r0, r1, a1, a2)
     return pts
 end
 
+-- Key letter (big) over the label, centred. `lit` swaps to dark-on-white for
+-- a wedge that's flashing.
+local function wedgeText(it, lit)
+    local label = it.label or ""
+    if utf8.len(label) > 30 then
+        label = label:sub(1, utf8.offset(label, 31) - 1) .. "…"
+    end
+    return hs.styledtext.new(it.key .. "\n" .. label, {
+        font = { name = HUD_FONT, size = HUD_LABEL_SIZE },
+        color = lit and withAlpha(HUD_INK, 0.85) or { white = 1, alpha = 0.92 },
+        paragraphStyle = { alignment = "center", lineBreak = "wordWrap" },
+    }):setStyle({
+        font = { name = HUD_FONT_BOLD, size = HUD_KEY_SIZE },
+        color = lit and HUD_INK or HUD_ACCENT,
+    }, 1, utf8.len(it.key))
+end
+
 -- One ring of wedges between radii r0..r1, first wedge centred at 12 o'clock,
 -- then clockwise. Each wedge gets its key letter (big, accent) over its label.
+-- Records every wedge's canvas elements in hud.wedges[code] so hudPress can
+-- restyle it in place.
 local function drawRing(c, cx, cy, r0, r1, items)
     local n = #items
     local step = 2 * math.pi / n
@@ -299,22 +334,13 @@ local function drawRing(c, cx, cy, r0, r1, items)
         local x, y = cx + rm * math.cos(a), cy + rm * math.sin(a)
         local w = 0.9 * (math.abs(math.sin(a)) * arc + math.abs(math.cos(a)) * thick)
         w = math.max(90, math.min(260, w))
-        local label = it.label or ""
-        if utf8.len(label) > 30 then
-            label = label:sub(1, utf8.offset(label, 31) - 1) .. "…"
-        end
-        local st = hs.styledtext.new(it.key .. "\n" .. label, {
-            font = { name = HUD_FONT, size = HUD_LABEL_SIZE },
-            color = { white = 1, alpha = 0.92 },
-            paragraphStyle = { alignment = "center", lineBreak = "wordWrap" },
-        }):setStyle({
-            font = { name = HUD_FONT_BOLD, size = HUD_KEY_SIZE },
-            color = HUD_ACCENT,
-        }, 1, utf8.len(it.key))
         c[#c + 1] = {
-            type = "text", text = st,
+            type = "text", text = wedgeText(it, false),
             frame = { x = x - w / 2, y = y - 38, w = w, h = 80 },
         }
+        if it.code and not hud.wedges[it.code] then
+            hud.wedges[it.code] = { fill = #c - 1, text = #c, item = it }
+        end
     end
 end
 
@@ -367,6 +393,7 @@ local function draw(key)
     c:level(hs.canvas.windowLevels.overlay)
     c:behaviorAsLabels({ "canJoinAllSpaces", "stationary" })
     c:clickActivating(false)
+    hud.wedges = {}
 
     local R = math.min(cx, cy) * HUD_SIZE
 
@@ -430,14 +457,58 @@ function hudShow(key)
     end
 end
 
+-- Restyle one wedge (by raw key_code) lit or unlit, in place.
+local function setLit(code, lit)
+    local w = hud.canvas and hud.wedges and hud.wedges[code]
+    if not w then return end
+    hud.canvas[w.fill].fillColor = lit and HUD_LIT_FILL
+        or (w.item.group and HUD_GROUP_FILL or HUD_FILL)
+    hud.canvas[w.text].text = wedgeText(w.item, lit)
+end
+
+-- Called from Karabiner as a command fires (`?press=<key_code>`). If that
+-- key has a wedge on the wheel that's up, flash it white for HUD_FLASH;
+-- nothing showing (fast chord) means nothing to do.
+function hudPress(code)
+    if not hud.canvas then return end
+    if hud.flashTimer then
+        hud.flashTimer:stop()
+        hud.flashTimer = nil
+    end
+    if hud.lit then setLit(hud.lit, false) end
+    if not (hud.wedges and hud.wedges[code]) then
+        hud.lit = nil
+        if hud.hidePending then hudClear() end
+        return
+    end
+    setLit(code, true)
+    hud.lit = code
+    hud.flashTimer = hs.timer.doAfter(HUD_FLASH, function()
+        hud.flashTimer = nil
+        if hud.hidePending then
+            hudClear()
+        else
+            setLit(code, false)
+            hud.lit = nil
+        end
+    end)
+end
+
 -- Called from Karabiner on release. Safe to call when nothing is showing.
+-- If a wedge is mid-flash the wheel lingers until the flash ends, so a
+-- quick chord-and-release still shows what was hit.
 function hudHide()
+    if hud.flashTimer then
+        hud.hidePending = true
+        return
+    end
     hudClear()
 end
 
 -- Karabiner reaches the HUD through URL events, not `hs -c`:
 --   open -g "hammerspoon://hud?show=<key>"   (sublayer / Hyper press)
 --   open -g "hammerspoon://hud?hide=1"       (release)
+--   open -g "hammerspoon://hud?press=<key>"  (a command fired; light its wedge)
 -- `open -g` is fire-and-forget, so a keystroke never waits on this process.
 -- (`hs -c` is a blocking IPC round-trip — fine for one-off chords like
 -- zoom(), but the Hyper hook fires on every Escape tap, and clients stuck
@@ -445,6 +516,8 @@ end
 hs.urlevent.bind("hud", function(_, params)
     if params.show then
         hudShow(params.show)
+    elseif params.press then
+        hudPress(params.press)
     elseif params.hide then
         hudHide()
     end

@@ -13,8 +13,8 @@ restructured.
 ![Which-key HUD: hold Caps Lock and the whole Hyper layer appears as a weapon wheel](docs/hud.jpg)
 
 *Hold Caps Lock for 400ms and the Hyper layer appears as a wheel: sublayers on
-the inner ring, direct commands on the outer. Hold a sublayer key and you get
-that sublayer's wheel instead.*
+the inner ring, direct commands on the outer, each with its icon. Hold a
+sublayer key and you get that sublayer's wheel instead.*
 
 ## Highlights
 
@@ -40,9 +40,13 @@ that sublayer's wheel instead.*
   pinch (Preview, Safari, Maps, Photos). Falls back to ⌘=/⌘− for gesture-blind
   apps (Chromium/Electron).
 - **Which-key HUD** — hold any sublayer key (`Hyper+O`) or Hyper alone for a
-  beat and a GTA-style weapon wheel of its commands fills the screen centre.
-  Rendered by Hammerspoon from data generated at build time, so it can never
-  drift from the real bindings; fast chords never see it. App-specific
+  beat and a GTA-style weapon wheel of its commands appears, every wedge
+  with an SF Symbol or the app's icon. Drawn by a small native Swift agent
+  (`hud/`) that Karabiner reaches over its `send_user_command` socket, from
+  data generated at build time, so it can never drift from the real bindings;
+  fast chords never see it. The wedge you hit lights up, and after the first
+  command the wheel steps back to a quiet, letters-only state so repeated
+  presses (volume, brightness) don't fight Apple's own bezel. App-specific
   bindings only show inside their app, and held-and-repeated layers (`v` for
   movement) opt out with `hud: false`.
 - **Vim mode** (`Hyper+Enter`) — vim-style navigation/editing anywhere.
@@ -60,9 +64,11 @@ binding, grouped by mode. It's auto-generated from the source by
 - macOS
 - [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
 - Node.js + yarn (build tooling)
+- Xcode Command Line Tools (`xcode-select --install`) — `swift` builds the
+  native which-key HUD in `hud/`
 - Optional but recommended:
-  - [Hammerspoon](https://www.hammerspoon.org/) — the which-key HUD,
-    pinch-zoom, per-app mode auto-switching, floating-window centering.
+  - [Hammerspoon](https://www.hammerspoon.org/) — pinch-zoom, per-app mode
+    auto-switching, floating-window centering, and the fallback HUD renderer.
     `setup.sh` also links its `hs` CLI into your Homebrew `bin`.
   - [iTerm2](https://iterm2.com/) + [Neovim](https://neovim.io/) — the
     scratchpad / idea-capture / todo floating windows
@@ -71,7 +77,9 @@ binding, grouped by mode. It's auto-generated from the source by
     macros only
 
 Everything degrades gracefully: without Hammerspoon the keybindings still
-work, you just lose the HUD, zoom and auto-switching.
+work, you just lose zoom and auto-switching; without `swift` you lose the
+wheel (or flip `HUD_RENDERER` in `utils.ts` to `"hammerspoon"` for the
+original Hammerspoon-drawn one).
 
 ## Install
 
@@ -95,7 +103,11 @@ cd karabiner-config
 5. Installs the SwiftBar indicator if SwiftBar is present
 6. Installs a LaunchAgent that rebuilds `karabiner.json` at login (so a
    `git pull` never leaves Karabiner on a stale config)
-7. Runs the initial build (`karabiner.json`, `CHEATSHEET.md` and the HUD's
+7. Builds the native HUD (`hud/`, `swift build`) and installs the LaunchAgent
+   that keeps it running (`com.karabiner-config.hud`, logs to
+   `/tmp/karabiner-hud.log`). Re-run `setup.sh` after pulling changes to
+   `hud/`.
+8. Runs the initial build (`karabiner.json`, `CHEATSHEET.md` and the HUD's
    `hammerspoon/sublayers.json`) and reloads Karabiner and Hammerspoon
 
 Then follow the printed manual steps (permission grants, optional Login
@@ -121,10 +133,15 @@ yarn watch   # rebuilds karabiner.json on every save
   and recreating the symlink makes iTerm silently drop the hotkey.
 - **Indicators**: `indicators/karabiner-profile.2s.sh` (SwiftBar),
   `indicators/tmux-status.conf` (append to `~/.tmux.conf`).
-- **Which-key HUD**: the `HUD_*` constants at the top of the HUD block in
-  `hammerspoon/init.lua` — `HUD_DELAY` (hold time before it appears, 400ms),
-  `HUD_SIZE`, ring proportions, dim, colours, font sizes. Add `hud: false` to
-  a sublayer map to keep it off the wheel.
+- **Which-key HUD**: `hud/Sources/KarabinerHUD/Theme.swift` holds every
+  number — size, ring proportions, colours, type, the 400ms hold, the 100ms
+  lit flash, the 140ms step-back into the quiet state. Icons are inferred
+  from what a command does (volume keys, `open -a`, URLs get their site's
+  favicon, fetched once and cached under `~/Library/Caches/karabiner-hud`); add
+  `icon: { symbol: "..." }` or `icon: { app: "..." }` to a command or a
+  sublayer map to override, and `hud: false` to a sublayer map to keep it
+  off the wheel. `HUD_RENDERER` in `utils.ts` switches back to the
+  Hammerspoon wheel (`HUD_*` constants in `hammerspoon/init.lua`).
 
 ## Architecture
 
@@ -145,7 +162,8 @@ files, which the indicators read.
 | `profiles/` | `normal.ts` assembles everything; other files are mode-gated fragments |
 | `utils.ts` | sublayer generator, mode machinery, command helpers |
 | `types.ts` | Karabiner JSON schema types |
-| `hammerspoon/` | per-app mode auto-switching, floating-window centering, weapon-wheel which-key HUD, boot resilience |
+| `hud/` | native which-key HUD: a Swift agent drawing the weapon wheel from Karabiner's `send_user_command` pings |
+| `hammerspoon/` | per-app mode auto-switching, floating-window centering, pinch-zoom, fallback which-key HUD, boot resilience |
 | `iterm/` | dynamic profiles + nvim overlays for the scratchpad and idea-capture windows |
 | `indicators/` | SwiftBar plugin + tmux status snippet |
 | `cheatsheet.ts` | walks the assembled profile to generate `CHEATSHEET.md` and `hammerspoon/sublayers.json` (HUD data) |

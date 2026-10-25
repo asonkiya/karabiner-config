@@ -170,6 +170,12 @@ export interface To {
         mouse_key?: MouseKey;
         pointing_button?: string;
         /**
+         * Karabiner-Elements ≥ 16: one JSON datagram to a user-command receiver
+         * (UNIX socket). Lower latency than shell_command; the native HUD listens.
+         * @see https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/send-user-command/
+         */
+        send_user_command?: { payload: unknown; endpoint?: string };
+        /**
          * Power Management plugin
          * @example: sleep system
          * @see: {@link https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/software_function/iokit_power_management_sleep_system/}
