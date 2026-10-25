@@ -2,8 +2,7 @@ import AppKit
 
 // Every number the wheel is drawn from. Geometry is a fraction of R, the
 // outer radius (R = size × min(half-width, half-height) of the screen's
-// visible frame); times are milliseconds. See "Visual spec" in
-// ../../../Claude outputs/hud-redesign-handoff.md.
+// visible frame); times are milliseconds.
 enum Theme {
     // Geometry
     static let size: CGFloat = 0.70            // R as a fraction of min(cx, cy)
