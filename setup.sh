@@ -143,11 +143,12 @@ EOF
 launchctl bootout "gui/$(id -u)" "$PLIST" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$PLIST"
 
-# --- native which-key HUD ---------------------------------------------------
-# hud/ is a Swift package: a tiny agent that draws the Hyper weapon wheel and
-# listens on Karabiner's send_user_command socket. Built here (the first build
-# fetches one dependency from GitHub) and kept alive by a LaunchAgent, like
-# the build agent above. Re-run setup.sh after pulling changes to hud/.
+# --- overlay agent (native which-key HUD) ----------------------------------
+# hud/ is a Swift package: a tiny agent that listens on Karabiner's
+# send_user_command socket and draws overlays — the Hyper weapon wheel today.
+# Built here (the first build fetches one dependency from GitHub) and kept
+# alive by a LaunchAgent, like the build agent above. Re-run setup.sh after
+# pulling changes to hud/.
 HUD_BIN="$REPO/hud/.build/release/karabiner-hud"
 HUD_PLIST="$HOME/Library/LaunchAgents/com.karabiner-config.hud.plist"
 if $HAVE_SWIFT; then

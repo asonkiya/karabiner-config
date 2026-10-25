@@ -11,8 +11,8 @@ import AppKit
 //                       +--press: remember--+-- (a press during the hold means
 //                                               the wheel appears already quiet)
 //
-// All calls happen on the main thread.
-final class HUDController {
+// All calls happen on the main thread. Registered under "hud" in main.swift.
+final class HUDController: Overlay {
     enum State { case hidden, pending, full, quiet }
 
     private(set) var state: State = .hidden
@@ -29,9 +29,9 @@ final class HUDController {
         self.dataPath = dataPath
     }
 
-    func handle(_ json: Any) {
-        guard let d = json as? [String: Any], let cmd = d["hud"] as? String else {
-            log("ignored payload: \(json)")
+    func handle(command: Any, message d: [String: Any]) {
+        guard let cmd = command as? String else {
+            log("hud: ignored payload \(d)")
             return
         }
         switch cmd {

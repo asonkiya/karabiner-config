@@ -61,6 +61,17 @@ export type HudMessage =
         | { hud: "hide" }; // key released
 
 /**
+ * A `to` event that sends one JSON datagram to the overlay agent (hud/) over
+ * Karabiner's send_user_command socket. The payload's top-level key names
+ * the overlay (`{ hud: ... }` is the which-key wheel; see hud/Overlay.swift
+ * for adding another). Fire-and-forget and about a millisecond: safe on
+ * every keystroke. Wrap it in a typed helper per overlay, like hudEvent.
+ */
+export function userCommand(payload: Record<string, unknown>): To {
+        return { send_user_command: { payload } };
+}
+
+/**
  * A `to` event that tells the HUD what just happened, through whichever
  * channel HUD_RENDERER needs. Fire-and-forget either way: Karabiner never
  * waits on the renderer, so it's safe on every sublayer toggle and command.
@@ -73,7 +84,7 @@ export function hudEvent(message: HudMessage): To {
                         : { hide: "1" };
                 return hsEvent("hud", params);
         }
-        return { send_user_command: { payload: message } };
+        return userCommand(message);
 }
 
 /**

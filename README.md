@@ -162,7 +162,7 @@ files, which the indicators read.
 | `profiles/` | `normal.ts` assembles everything; other files are mode-gated fragments |
 | `utils.ts` | sublayer generator, mode machinery, command helpers |
 | `types.ts` | Karabiner JSON schema types |
-| `hud/` | native which-key HUD: a Swift agent drawing the weapon wheel from Karabiner's `send_user_command` pings |
+| `hud/` | overlay agent: a Swift app fed by Karabiner's `send_user_command` pings; draws the which-key wheel, extensible to other overlays |
 | `hammerspoon/` | per-app mode auto-switching, floating-window centering, pinch-zoom, fallback which-key HUD, boot resilience |
 | `iterm/` | dynamic profiles + nvim overlays for the scratchpad and idea-capture windows |
 | `indicators/` | SwiftBar plugin + tmux status snippet |

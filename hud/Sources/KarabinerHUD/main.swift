@@ -1,11 +1,14 @@
 import AppKit
 import KarabinerElementsUserCommandReceiver
 
-// karabiner-hud — the which-key weapon wheel, drawn natively.
+// karabiner-hud — the overlay agent: the which-key weapon wheel today, and
+// the home for any other keyboard-triggered overlay (see Overlay.swift).
 //
-// Listens on Karabiner's user-command socket (UNIX datagram) for the HUD
-// messages that `hudEvent` in utils.ts emits, and renders the wheel from
-// hammerspoon/sublayers.json. No Dock icon, no menu bar item, no focus.
+// Listens on Karabiner's user-command socket (UNIX datagram) for the JSON
+// payloads `userCommand` in utils.ts emits and routes each to the overlay
+// named by its top-level key ({"hud": ...} -> HUDController, which renders
+// the wheel from hammerspoon/sublayers.json). No Dock icon, no menu bar
+// item, no focus.
 //
 //   karabiner-hud [--data <sublayers.json>] [--socket <path>]
 //
@@ -45,10 +48,12 @@ while let a = args.next() {
 let app = NSApplication.shared
 app.setActivationPolicy(.accessory)
 
-let controller = HUDController(dataPath: dataPath)
+let router = Router()
+router.register("hud", HUDController(dataPath: dataPath))
+
 let receiver = KEUserCommandReceiver(
     path: socketPath,
-    onJSON: { json in DispatchQueue.main.async { controller.handle(json) } },
+    onJSON: { json in DispatchQueue.main.async { router.dispatch(json) } },
     onError: { error in log("receiver: \(error)") }
 )
 Task {
