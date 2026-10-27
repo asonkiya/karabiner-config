@@ -1,10 +1,12 @@
-import { KarabinerRules } from "../types";
-import { whenMode, hyperNotHeld } from "../utils";
+import { KarabinerRules, KeyCode } from "../types";
+import { bareKey, HudIcon, whenMode, hyperNotHeld } from "../utils";
 
 // Trivia mode: active while the `trivia` variable is 1.
 // Bare keys open a daily game; x closes the tab. Gated so they only remap
 // while in trivia mode and Hyper isn't held. Assembled into the single unified
-// profile in normal.ts.
+// profile in normal.ts. The HUD shows them as the mode's `_keys` wheel the
+// moment Trivia is entered (digits inner ring, letters outer, favicons) —
+// nothing to hold; cheatsheet.ts builds it from these rules.
 const triviaConds = [...whenMode("trivia"), hyperNotHeld];
 
 const games: [string, string, string][] = [
@@ -31,27 +33,24 @@ const games: [string, string, string][] = [
         ["r", "Worldle",        "https://worldle.teuteuf.fr"],
 ];
 
-const gameRules: KarabinerRules[] = games.map(([key, name, url]) => ({
-        description: `Trivia: ${key} = ${name}`,
-        manipulators: [{
-                type: "basic" as const,
-                from: { key_code: key as any },
-                conditions: triviaConds,
-                to: [{ shell_command: `open ${url}` }],
-        }],
-}));
+// Sites with no favicon on Google's service get a symbol instead of the globe.
+const gameIcons: Partial<Record<KeyCode, HudIcon>> = {
+        f: { symbol: "music.note" },      // Heardle
+        e: { symbol: "text.redaction" },  // Redactle
+};
 
 export const triviaRules: KarabinerRules[] = [
+        // Direct key bindings for each game
+        ...games.map(([key, name, url]): KarabinerRules => ({
+                description: `Trivia: ${key} = ${name}`,
+                manipulators: [bareKey(key as KeyCode, {
+                        to: [{ shell_command: `open ${url}` }],
+                        icon: gameIcons[key as KeyCode],
+                }, triviaConds)],
+        })),
         // x = close tab (Cmd+W)
         {
                 description: "Trivia: x = Close tab",
-                manipulators: [{
-                        type: "basic",
-                        from: { key_code: "x" },
-                        conditions: triviaConds,
-                        to: [{ key_code: "w", modifiers: ["right_command"] }],
-                }],
+                manipulators: [bareKey("x", { to: [{ key_code: "w", modifiers: ["right_command"] }] }, triviaConds)],
         },
-        // Direct key bindings for each game
-        ...gameRules,
 ];

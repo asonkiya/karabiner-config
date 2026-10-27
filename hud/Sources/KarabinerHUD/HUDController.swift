@@ -11,12 +11,18 @@ import AppKit
 //                       +--press: remember--+-- (a press during the hold means
 //                                               the wheel appears already quiet)
 //
+// Plus one unprompted path: ModeWatcher reports a mode change, and a mode
+// with a `_keys` menu (its bare keys) gets that wheel drawn at once — no
+// hold, lingering keysMs, gone on the first bare key (lit first) or the next
+// mode change. The hide that follows the switch chord's release is ignored
+// while it is up; a real show replaces it.
+//
 // All calls happen on the main thread. Registered under "hud" in main.swift.
 final class HUDController: Overlay {
     enum State { case hidden, pending, full, quiet }
 
     private(set) var state: State = .hidden
-    private let window = HUDWindow()
+    private var window = HUDWindow()
     private let dataPath: String
     private var wheel: Wheel?
     private var lit: WedgeLayer?        // wedge currently lit in quiet
@@ -24,6 +30,8 @@ final class HUDController: Overlay {
     private var flash: DispatchWorkItem?
     private var pendingQuiet = false    // a press arrived during the hold
     private var hidePending = false     // hide arrived mid-flash
+    private var auto = false            // the wheel up is a mode's `_keys`, shown unprompted
+    private var autoTimer: DispatchWorkItem?
 
     init(dataPath: String) {
         self.dataPath = dataPath
@@ -51,6 +59,8 @@ final class HUDController: Overlay {
     func show(_ layer: String) {
         cancel(&hold)
         cancel(&flash)
+        cancel(&autoTimer)
+        auto = false
         hidePending = false
         lit = nil
         if state == .full || state == .quiet {
@@ -70,6 +80,13 @@ final class HUDController: Overlay {
     // wedge and step back. In quiet, a short lit flash. During the hold,
     // remember it so the wheel appears already quiet.
     func press(_ code: String) {
+        if auto {
+            // A bare key fired while the mode's keys wheel is up: light it, then go.
+            cancel(&autoTimer)
+            wheel?.byCode[code]?.setLit(true, quiet: false)
+            autoTimer = after(Theme.litMs) { [self] in fadeOut() }
+            return
+        }
         switch state {
         case .hidden:
             break
@@ -99,6 +116,7 @@ final class HUDController: Overlay {
     // Key released: everything goes, except that a running lit flash gets
     // to finish first (a running step-back does not).
     func hide() {
+        if auto { return }   // the switch chord's release; the keys wheel outlives it
         if flash != nil {
             hidePending = true
             return
@@ -113,7 +131,27 @@ final class HUDController: Overlay {
         state = .hidden
     }
 
-    private func draw(_ layer: String, quiet: Bool, appear: Bool) {
+    // The mode flag flipped (switchMode, or Hammerspoon's app auto-switching).
+    func modeChanged(_ mode: String) {
+        if auto { hideNow() }
+        guard mode != "normal", let data = Model.load(dataPath),
+              let menu = data[mode]?["_keys"], !menu.items.isEmpty else { return }
+        cancel(&hold)
+        cancel(&flash)
+        hidePending = false
+        draw("_keys", quiet: false, appear: true)
+        guard state == .full else { return }
+        auto = true
+        autoTimer = after(Theme.keysMs) { [self] in fadeOut() }
+    }
+
+    private func fadeOut() {
+        guard let wheel else { hideNow(); return }
+        animate(wheel.root, "opacity", from: 1.0, to: 0.0, ms: Theme.keysFadeMs)
+        autoTimer = after(Theme.keysFadeMs) { [self] in hideNow() }
+    }
+
+    private func draw(_ layer: String, quiet: Bool, appear: Bool, retried: Bool = false) {
         guard let data = Model.load(dataPath) else { hideNow(); return }
         let mode = Model.currentMode()
         guard let menu = data[mode]?[layer] else {
@@ -134,7 +172,21 @@ final class HUDController: Overlay {
         window.setMaterialMask(center: center, inner: wheel.innerRadius, outer: wheel.R)
         self.wheel = wheel
         lit = nil
+        if NSApp.isHidden {   // see OverlayApp in main.swift
+            log("app was hidden; unhiding")
+            NSApp.unhideWithoutActivation()
+        }
         window.orderFrontRegardless()
+        if !window.isOnActiveSpace {
+            // Stuck on another Space (see HUDWindow): a fresh panel is on this one.
+            log("window off the active space; \(retried ? "still stuck" : "recreating")")
+            if !retried {
+                window.close()
+                window = HUDWindow()
+                draw(layer, quiet: quiet, appear: appear, retried: true)
+                return
+            }
+        }
         if quiet {
             wheel.enterQuiet(animated: false, lit: nil)
             window.effect?.alphaValue = 0
@@ -149,6 +201,8 @@ final class HUDController: Overlay {
         lit = nil
         hidePending = false
         pendingQuiet = false
+        cancel(&autoTimer)
+        auto = false
         window.orderOut(nil)
     }
 

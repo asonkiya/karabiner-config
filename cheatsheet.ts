@@ -310,6 +310,10 @@ interface Entry {
         icon?: HudIcon;
 }
 const entries: Entry[] = [];
+// Pseudo-sublayer for a runtime mode's bare keys: its `_keys` wheel, which the
+// HUD shows unprompted when the mode is entered.
+const KEYS = "_keys";
+const KEYS_MODES: Mode[] = ["Programming", "Reading", "Trivia"];
 // Sublayer group icons for the top-level wheel, keyed "<mode>:<sublayer key>"
 // (explicit `icon` on a sublayer map, carried on its toggle manipulator).
 const groupIcons = new Map<string, HudIcon>();
@@ -418,6 +422,8 @@ for (const rule of normalProfile.complex_modifications!.rules) {
                 } else if (fromKey) {
                         // Bare-key remap (mode-gated: reading, trivia, vim).
                         modeData(mode).bare.push({ key: fromLabel, action });
+                        if (KEYS_MODES.includes(mode))
+                                entries.push({ mode, sublayer: KEYS, key: fromLabel, code: fromKey, label, app: bundles, icon });
                 }
         }
 }
@@ -569,14 +575,14 @@ for (const rt of RUNTIME_MODES) {
         const subKeys = sortSublayers([...subs.keys()]);
         for (const s of subKeys) {
                 menus[s] = {
-                        title: sublayerLabel(MODE_OF[rt], s) || keyLabel(s),
+                        title: s === KEYS ? "Keys" : sublayerLabel(MODE_OF[rt], s) || keyLabel(s),
                         items: flat(subs.get(s)!),
                 };
         }
         menus._top = {
                 title: "Hyper",
                 items: [
-                        ...subKeys.map((s) => {
+                        ...subKeys.filter((s) => s !== KEYS).map((s) => {
                                 const item: HudItem = { key: keyLabel(s), code: s, label: menus[s].title, group: true };
                                 const icon = groupIcons.get(`${MODE_OF[rt]}:${s}`) ?? groupIcons.get(`All modes:${s}`);
                                 if (icon) item.icon = icon;

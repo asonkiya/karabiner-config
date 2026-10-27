@@ -24,7 +24,13 @@ final class HUDWindow: NSPanel {
         // screenSaver level: the overlay level (102) is enough on the desktop
         // but a native full-screen space never shows the panel there.
         level = .screenSaver
-        collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary, .ignoresCycle]
+        // moveToActiveSpace, not canJoinAllSpaces: a join-all panel that has
+        // once been shown over a native full-screen app stays attached to
+        // that app's Space, and every later draw lands on a Space nobody is
+        // looking at. Moving on each order-front is what a transient overlay
+        // wants anyway (HUDController recreates the panel if it still ends
+        // up off the active Space).
+        collectionBehavior = [.moveToActiveSpace, .fullScreenAuxiliary, .stationary, .ignoresCycle]
 
         let container = NSView()
         container.autoresizesSubviews = true

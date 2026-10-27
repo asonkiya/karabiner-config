@@ -101,6 +101,7 @@ export type HudIcon = { symbol: string } | { app: string } | { bundle: string } 
  */
 export interface LayerCommand {
         to: To[];
+        to_after_key_up?: To[];
         description?: string;
         conditions?: Manipulator["conditions"];
         icon?: HudIcon;
@@ -149,6 +150,45 @@ function stripIcon(cmd: LayerCommand): Omit<LayerCommand, "icon"> {
  */
 function withHudPress(key: KeyCode, to: To[], enabled = true): To[] {
         return enabled ? [hudEvent({ hud: "press", code: key }), ...to] : to;
+}
+
+/**
+ * Hyper + key held shows the current mode's keys wheel — its bare-key bindings,
+ * the same wheel that appears on entering the mode — and release hides it.
+ * Bind it per mode that has bare keys (`whenMode(...)`); the agent just gets
+ * show/hide for the `_keys` menu, so the usual 400 ms hold applies.
+ */
+export function keysWheelHold(): LayerCommand {
+        return {
+                description: "Keys wheel (hold)",
+                icon: { symbol: "keyboard" },
+                to: [hudEvent({ hud: "show", layer: "_keys" })],
+                to_after_key_up: [hudEvent({ hud: "hide" })],
+        };
+}
+
+/**
+ * A bare-key remap (no Hyper), gated by `conditions` — a mode's, usually.
+ * It gets the same leading HUD press ping as every Hyper binding: cheatsheet.ts
+ * collects a mode's bare keys into its `_keys` wheel, which the HUD shows on
+ * its own when the mode is entered, and the ping lights the wedge that fired.
+ * `icon` overrides the inferred wedge icon (kept in HUD_ICONS, never emitted).
+ */
+export function bareKey(
+        key: KeyCode,
+        command: LayerCommand,
+        conditions: NonNullable<Manipulator["conditions"]>
+): Manipulator {
+        const { icon, conditions: own, to, ...rest } = command;
+        const m: Manipulator = {
+                type: "basic",
+                from: { key_code: key },
+                conditions: [...conditions, ...(own ?? [])],
+                ...rest,
+                to: withHudPress(key, to),
+        };
+        if (icon) HUD_ICONS.set(m, icon);
+        return m;
 }
 
 /**

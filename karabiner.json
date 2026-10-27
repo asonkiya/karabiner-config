@@ -9532,6 +9532,578 @@
             ]
           },
           {
+            "description": "Hyper Key + spacebar",
+            "manipulators": [
+              {
+                "description": "Keys wheel (hold)",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "spacebar"
+                      }
+                    }
+                  },
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "_keys"
+                      }
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "spacebar",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_a",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_b",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_d",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_e",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_h",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_j",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_k",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_l",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_p",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_q",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_r",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_s",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_t",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_u",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_v",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_w",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_x",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_y",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_z",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_0",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_1",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_2",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_3",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_4",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_5",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_6",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_7",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_8",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_9",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_semicolon",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_spacebar",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_return_or_enter",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_hyphen",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_open_bracket",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_close_bracket",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_comma",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_period",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_quote",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "reading",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyper Key + spacebar",
+            "manipulators": [
+              {
+                "description": "Keys wheel (hold)",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "spacebar"
+                      }
+                    }
+                  },
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "_keys"
+                      }
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "spacebar",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_a",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_b",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_d",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_e",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_h",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_j",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_k",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_l",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_p",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_q",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_r",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_s",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_t",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_u",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_v",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_w",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_x",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_y",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_z",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_0",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_1",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_2",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_3",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_4",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_5",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_6",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_7",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_8",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_9",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_semicolon",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_spacebar",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_return_or_enter",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_hyphen",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_open_bracket",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_close_bracket",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_comma",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_period",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_quote",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "Hyper Key + return_or_enter",
             "manipulators": [
               {
@@ -17205,7 +17777,16 @@
                     "value": 0
                   }
                 ],
+                "description": "Screenshot + Enter",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "1"
+                      }
+                    }
+                  },
                   {
                     "key_code": "5",
                     "modifiers": [
@@ -17216,8 +17797,7 @@
                   {
                     "shell_command": "sleep 0.5 && osascript -e 'tell application \"System Events\" to key code 36'"
                   }
-                ],
-                "description": "Screenshot + Enter"
+                ]
               }
             ]
           },
@@ -17241,12 +17821,20 @@
                     "value": 0
                   }
                 ],
+                "description": "Open Arc",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "2"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open -a 'Arc.app'"
                   }
-                ],
-                "description": "Open Arc"
+                ]
               }
             ]
           },
@@ -17270,12 +17858,20 @@
                     "value": 0
                   }
                 ],
+                "description": "Drag screenshot to translate",
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "3"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "/opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
                   }
-                ],
-                "description": "Drag screenshot to translate"
+                ]
               }
             ]
           },
@@ -17299,41 +17895,18 @@
                     "value": 0
                   }
                 ],
+                "description": "Full translate cycle",
                 "to": [
                   {
-                    "shell_command": "/opt/homebrew/bin/cliclick c:974,681 && sleep 0.1 && /opt/homebrew/bin/cliclick c:1547,77 && sleep 0.05 && osascript -e 'tell application \"System Events\" to key code 126 using {command down}' && sleep 0.2 && osascript -e 'tell application \"System Events\" to keystroke \"f\"' && sleep 0.1 && osascript -e 'tell application \"System Events\" to keystroke \"w\"' && /opt/homebrew/bin/cliclick kd:cmd,shift t:5 ku:cmd,shift && sleep 0.1 && osascript -e 'tell application \"System Events\" to key code 36' && sleep 0.7 && /opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
-                  }
-                ],
-                "description": "Full translate cycle"
-              }
-            ]
-          },
-          {
-            "description": "Trivia: x = Close tab",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "x"
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "trivia",
-                    "value": 1
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "right_arrow"
+                      }
+                    }
                   },
                   {
-                    "type": "variable_if",
-                    "name": "hyper",
-                    "value": 0
-                  }
-                ],
-                "to": [
-                  {
-                    "key_code": "w",
-                    "modifiers": [
-                      "right_command"
-                    ]
+                    "shell_command": "/opt/homebrew/bin/cliclick c:974,681 && sleep 0.1 && /opt/homebrew/bin/cliclick c:1547,77 && sleep 0.05 && osascript -e 'tell application \"System Events\" to key code 126 using {command down}' && sleep 0.2 && osascript -e 'tell application \"System Events\" to keystroke \"f\"' && sleep 0.1 && osascript -e 'tell application \"System Events\" to keystroke \"w\"' && /opt/homebrew/bin/cliclick kd:cmd,shift t:5 ku:cmd,shift && sleep 0.1 && osascript -e 'tell application \"System Events\" to key code 36' && sleep 0.7 && /opt/homebrew/bin/cliclick dd:1970,1248 dm:1496,327 w:100 du:1496,327"
                   }
                 ]
               }
@@ -17360,6 +17933,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "1"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://catfishing.net"
                   }
@@ -17389,6 +17970,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "2"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://thrice.geekswhodrink.com"
                   }
                 ]
@@ -17416,6 +18005,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "3"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://www.nytimes.com/games/wordle"
                   }
@@ -17445,6 +18042,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "4"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://www.nytimes.com/games/connections"
                   }
                 ]
@@ -17472,6 +18077,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "5"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://www.nytimes.com/games/strands"
                   }
@@ -17501,6 +18114,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "6"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://www.foodguessr.com"
                   }
                 ]
@@ -17528,6 +18149,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "7"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://timeguessr.com"
                   }
@@ -17557,6 +18186,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "8"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://www.nytimes.com/crosswords/game/mini"
                   }
                 ]
@@ -17584,6 +18221,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "9"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://www.nytimes.com/puzzles/spelling-bee"
                   }
@@ -17613,6 +18258,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "0"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://www.geoguessr.com/daily-challenge"
                   }
                 ]
@@ -17640,6 +18293,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "a"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://bandle.app"
                   }
@@ -17669,6 +18330,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "s"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://costcodle.com"
                   }
                 ]
@@ -17696,6 +18365,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "d"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://oec.world/en/tradle"
                   }
@@ -17725,6 +18402,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "f"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://www.heardle.app"
                   }
                 ]
@@ -17752,6 +18437,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "g"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://framed.wtf"
                   }
@@ -17781,6 +18474,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "q"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://pokedoku.com"
                   }
                 ]
@@ -17808,6 +18509,14 @@
                   }
                 ],
                 "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "w"
+                      }
+                    }
+                  },
                   {
                     "shell_command": "open https://contexto.me"
                   }
@@ -17837,6 +18546,14 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "e"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://www.redactle.com"
                   }
                 ]
@@ -17865,7 +18582,54 @@
                 ],
                 "to": [
                   {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
+                  {
                     "shell_command": "open https://worldle.teuteuf.fr"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Trivia: x = Close tab",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "x"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "trivia",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 0
+                  }
+                ],
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "x"
+                      }
+                    }
+                  },
+                  {
+                    "key_code": "w",
+                    "modifiers": [
+                      "right_command"
+                    ]
                   }
                 ]
               }

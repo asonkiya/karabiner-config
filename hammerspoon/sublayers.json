@@ -2055,6 +2055,34 @@
         }
       ]
     },
+    "_keys": {
+      "title": "Keys",
+      "items": [
+        {
+          "key": "1",
+          "code": "1",
+          "label": "Screenshot + Enter"
+        },
+        {
+          "key": "2",
+          "code": "2",
+          "label": "Arc",
+          "icon": {
+            "app": "Arc"
+          }
+        },
+        {
+          "key": "3",
+          "code": "3",
+          "label": "Drag screenshot to translate"
+        },
+        {
+          "key": "→",
+          "code": "right_arrow",
+          "label": "Full translate cycle"
+        }
+      ]
+    },
     "_top": {
       "title": "Hyper",
       "items": [
@@ -2097,6 +2125,14 @@
           "key": "M",
           "code": "m",
           "label": "Switch to Normal mode"
+        },
+        {
+          "key": "Space",
+          "code": "spacebar",
+          "label": "Keys wheel (hold)",
+          "icon": {
+            "symbol": "keyboard"
+          }
         },
         {
           "key": "⏎",
@@ -2399,6 +2435,171 @@
         }
       ]
     },
+    "_keys": {
+      "title": "Keys",
+      "items": [
+        {
+          "key": "1",
+          "code": "1",
+          "label": "Catfishing",
+          "icon": {
+            "url": "https://catfishing.net"
+          }
+        },
+        {
+          "key": "2",
+          "code": "2",
+          "label": "Thrice",
+          "icon": {
+            "url": "https://thrice.geekswhodrink.com"
+          }
+        },
+        {
+          "key": "3",
+          "code": "3",
+          "label": "Wordle",
+          "icon": {
+            "url": "https://www.nytimes.com/games/wordle"
+          }
+        },
+        {
+          "key": "4",
+          "code": "4",
+          "label": "Connections",
+          "icon": {
+            "url": "https://www.nytimes.com/games/connections"
+          }
+        },
+        {
+          "key": "5",
+          "code": "5",
+          "label": "Strands",
+          "icon": {
+            "url": "https://www.nytimes.com/games/strands"
+          }
+        },
+        {
+          "key": "6",
+          "code": "6",
+          "label": "FoodGuessr",
+          "icon": {
+            "url": "https://www.foodguessr.com"
+          }
+        },
+        {
+          "key": "7",
+          "code": "7",
+          "label": "TimeGuessr",
+          "icon": {
+            "url": "https://timeguessr.com"
+          }
+        },
+        {
+          "key": "8",
+          "code": "8",
+          "label": "Mini Crossword",
+          "icon": {
+            "url": "https://www.nytimes.com/crosswords/game/mini"
+          }
+        },
+        {
+          "key": "9",
+          "code": "9",
+          "label": "Spelling Bee",
+          "icon": {
+            "url": "https://www.nytimes.com/puzzles/spelling-bee"
+          }
+        },
+        {
+          "key": "0",
+          "code": "0",
+          "label": "GeoGuessr",
+          "icon": {
+            "url": "https://www.geoguessr.com/daily-challenge"
+          }
+        },
+        {
+          "key": "A",
+          "code": "a",
+          "label": "Bandle",
+          "icon": {
+            "url": "https://bandle.app"
+          }
+        },
+        {
+          "key": "S",
+          "code": "s",
+          "label": "Costcodle",
+          "icon": {
+            "url": "https://costcodle.com"
+          }
+        },
+        {
+          "key": "D",
+          "code": "d",
+          "label": "Tradle",
+          "icon": {
+            "url": "https://oec.world/en/tradle"
+          }
+        },
+        {
+          "key": "F",
+          "code": "f",
+          "label": "Heardle",
+          "icon": {
+            "symbol": "music.note"
+          }
+        },
+        {
+          "key": "G",
+          "code": "g",
+          "label": "Framed",
+          "icon": {
+            "url": "https://framed.wtf"
+          }
+        },
+        {
+          "key": "Q",
+          "code": "q",
+          "label": "Pokedoku",
+          "icon": {
+            "url": "https://pokedoku.com"
+          }
+        },
+        {
+          "key": "W",
+          "code": "w",
+          "label": "Contexto",
+          "icon": {
+            "url": "https://contexto.me"
+          }
+        },
+        {
+          "key": "E",
+          "code": "e",
+          "label": "Redactle",
+          "icon": {
+            "symbol": "text.redaction"
+          }
+        },
+        {
+          "key": "R",
+          "code": "r",
+          "label": "Worldle",
+          "icon": {
+            "url": "https://worldle.teuteuf.fr"
+          }
+        },
+        {
+          "key": "X",
+          "code": "x",
+          "label": "Close tab",
+          "icon": {
+            "symbol": "xmark"
+          }
+        }
+      ]
+    },
     "_top": {
       "title": "Hyper",
       "items": [
@@ -2441,6 +2642,14 @@
           "key": "M",
           "code": "m",
           "label": "Switch to Normal mode"
+        },
+        {
+          "key": "Space",
+          "code": "spacebar",
+          "label": "Keys wheel (hold)",
+          "icon": {
+            "symbol": "keyboard"
+          }
         },
         {
           "key": "⏎",

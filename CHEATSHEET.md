@@ -325,6 +325,7 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | Key | Action |
 | --- | --- |
 | `Hyper M` | Switch to Normal mode |
+| `Hyper Space` | Keys wheel (hold) |
 
 ## Trivia
 
@@ -332,7 +333,6 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 
 | Key | Action |
 | --- | --- |
-| `X` | Close tab |
 | `1` | Catfishing |
 | `2` | Thrice |
 | `3` | Wordle |
@@ -352,12 +352,14 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `W` | Contexto |
 | `E` | Redactle |
 | `R` | Worldle |
+| `X` | Close tab |
 
 ### Direct (`Hyper` + key)
 
 | Key | Action |
 | --- | --- |
 | `Hyper M` | Switch to Normal mode |
+| `Hyper Space` | Keys wheel (hold) |
 
 ## Vim Mode
 

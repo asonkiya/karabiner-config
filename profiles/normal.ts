@@ -1,5 +1,5 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hudEvent } from "../utils";
+import { createHyperSubLayers, app, open, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hudEvent, keysWheelHold } from "../utils";
 import { vimMode, vimModeRules } from "./vim-mode";
 import { programmingRules } from "./programming";
 import { readingRules } from "./reading";
@@ -250,6 +250,12 @@ const rules: KarabinerRules[] = [
         ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("programming")),
         ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("reading")),
         ...createHyperSubLayers({ m: switchMode("normal") }, whenMode("trivia")),
+
+        // Hyper+Space held brings back the mode's keys wheel (the one shown on
+        // entering the mode) — one per mode with bare keys. In Normal,
+        // Hyper+Space is Raycast.
+        ...createHyperSubLayers({ spacebar: keysWheelHold() }, whenMode("reading")),
+        ...createHyperSubLayers({ spacebar: keysWheelHold() }, whenMode("trivia")),
 
         // Vim mode toggle — available in every mode (Hyper+Enter to enter,
         // i or Escape to exit; see vimModeRules).

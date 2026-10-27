@@ -45,11 +45,21 @@ while let a = args.next() {
     }
 }
 
-let app = NSApplication.shared
+// An overlay has nothing to hide: "Hide Others" (⌥⌘H) in any app would
+// otherwise hide this one too, after which every wheel draws into a hidden
+// app and nothing reaches the screen.
+final class OverlayApp: NSApplication {
+    override func hide(_ sender: Any?) {}
+}
+
+let app = OverlayApp.shared
 app.setActivationPolicy(.accessory)
 
 let router = Router()
-router.register("hud", HUDController(dataPath: dataPath))
+let hud = HUDController(dataPath: dataPath)
+router.register("hud", hud)
+// Mode flags: a mode with bare keys gets its `_keys` wheel on entry.
+let modes = ModeWatcher { mode in hud.modeChanged(mode) }
 
 let receiver = KEUserCommandReceiver(
     path: socketPath,

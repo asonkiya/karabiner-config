@@ -48,6 +48,10 @@ enum Theme {
     static let appearMs = 120
     static let appearScale: CGFloat = 0.96
 
+    // Mode keys wheel (a mode's bare keys, shown unprompted on entering it)
+    static let keysMs = 2500                   // linger before fading out
+    static let keysFadeMs = 200
+
     // Quiet state (after the first command fires)
     static let quietScale: CGFloat = 0.60
     static let quietFillAlpha: CGFloat = 0.70

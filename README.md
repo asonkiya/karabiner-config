@@ -48,7 +48,9 @@ sublayer key and you get that sublayer's wheel instead.*
   command the wheel steps back to a quiet, letters-only state so repeated
   presses (volume, brightness) don't fight Apple's own bezel. App-specific
   bindings only show inside their app, and held-and-repeated layers (`v` for
-  movement) opt out with `hud: false`.
+  movement) opt out with `hud: false`. Entering a mode with bare-key bindings
+  (Trivia's daily games) shows them as a wheel on its own, no hold needed;
+  `Hyper+Space` brings it back.
 - **Vim mode** (`Hyper+Enter`) — vim-style navigation/editing anywhere.
 
 The full keymap lives in the source — `profiles/normal.ts` is the assembler
