@@ -6,9 +6,9 @@
         {
           "key": "G",
           "code": "g",
-          "label": "Arc",
+          "label": "Default browser",
           "icon": {
-            "app": "/Applications/Arc"
+            "browser": true
           }
         },
         {
@@ -38,7 +38,7 @@
         {
           "key": "T",
           "code": "t",
-          "label": "iTerm · Programming",
+          "label": "ITerm · Programming",
           "icon": {
             "app": "iTerm"
           }
@@ -46,7 +46,7 @@
         {
           "key": "Z",
           "code": "z",
-          "label": "zoom.us",
+          "label": "Zoom.us",
           "icon": {
             "app": "zoom.us"
           }
@@ -78,7 +78,7 @@
         {
           "key": "P",
           "code": "p",
-          "label": "iPhone Mirroring",
+          "label": "IPhone Mirroring",
           "icon": {
             "app": "iPhone Mirroring"
           }
@@ -115,7 +115,7 @@
         {
           "key": "I",
           "code": "i",
-          "label": "www.instagram.com/direct/t/5082114295174947/",
+          "label": "Www.instagram.com/direct/t/5082114295174947/",
           "icon": {
             "url": "https://www.instagram.com/direct/t/5082114295174947/"
           }
@@ -131,7 +131,7 @@
         {
           "key": "Y",
           "code": "y",
-          "label": "youtube.com",
+          "label": "Youtube.com",
           "icon": {
             "url": "https://youtube.com"
           }
@@ -139,7 +139,7 @@
         {
           "key": "M",
           "code": "m",
-          "label": "music.youtube.com",
+          "label": "Music.youtube.com",
           "icon": {
             "url": "https://music.youtube.com"
           }
@@ -147,7 +147,7 @@
         {
           "key": "T",
           "code": "t",
-          "label": "mychtransit.org/map",
+          "label": "Mychtransit.org/map",
           "icon": {
             "url": "https://mychtransit.org/map"
           }
@@ -155,7 +155,7 @@
         {
           "key": "N",
           "code": "n",
-          "label": "localhost:8080/",
+          "label": "Localhost:8080/",
           "icon": {
             "url": "http://localhost:8080/"
           }
@@ -163,7 +163,7 @@
         {
           "key": "S",
           "code": "s",
-          "label": "twitch.tv",
+          "label": "Twitch.tv",
           "icon": {
             "url": "https://twitch.tv"
           }
@@ -171,7 +171,7 @@
         {
           "key": "C",
           "code": "c",
-          "label": "canvas.unc.edu",
+          "label": "Canvas.unc.edu",
           "icon": {
             "url": "https://canvas.unc.edu"
           }
@@ -179,7 +179,7 @@
         {
           "key": "G",
           "code": "g",
-          "label": "github.com",
+          "label": "Github.com",
           "icon": {
             "url": "https://github.com"
           }
@@ -401,6 +401,179 @@
           "label": "ChatGPT",
           "icon": {
             "app": "ChatGPT"
+          }
+        }
+      ]
+    },
+    "g": {
+      "title": "Games",
+      "items": [
+        {
+          "key": "1",
+          "code": "1",
+          "label": "Catfishing",
+          "icon": {
+            "url": "https://catfishing.net"
+          }
+        },
+        {
+          "key": "2",
+          "code": "2",
+          "label": "Thrice",
+          "icon": {
+            "url": "https://thrice.geekswhodrink.com"
+          }
+        },
+        {
+          "key": "3",
+          "code": "3",
+          "label": "Wordle",
+          "icon": {
+            "url": "https://www.nytimes.com/games/wordle"
+          }
+        },
+        {
+          "key": "4",
+          "code": "4",
+          "label": "Connections",
+          "icon": {
+            "url": "https://www.nytimes.com/games/connections"
+          }
+        },
+        {
+          "key": "5",
+          "code": "5",
+          "label": "Strands",
+          "icon": {
+            "url": "https://www.nytimes.com/games/strands"
+          }
+        },
+        {
+          "key": "6",
+          "code": "6",
+          "label": "FoodGuessr",
+          "icon": {
+            "url": "https://www.foodguessr.com"
+          }
+        },
+        {
+          "key": "7",
+          "code": "7",
+          "label": "TimeGuessr",
+          "icon": {
+            "url": "https://timeguessr.com"
+          }
+        },
+        {
+          "key": "8",
+          "code": "8",
+          "label": "Mini Crossword",
+          "icon": {
+            "url": "https://www.nytimes.com/crosswords/game/mini"
+          }
+        },
+        {
+          "key": "9",
+          "code": "9",
+          "label": "Spelling Bee",
+          "icon": {
+            "url": "https://www.nytimes.com/puzzles/spelling-bee"
+          }
+        },
+        {
+          "key": "0",
+          "code": "0",
+          "label": "GeoGuessr",
+          "icon": {
+            "url": "https://www.geoguessr.com/daily-challenge"
+          }
+        },
+        {
+          "key": "A",
+          "code": "a",
+          "label": "Bandle",
+          "icon": {
+            "url": "https://bandle.app"
+          }
+        },
+        {
+          "key": "S",
+          "code": "s",
+          "label": "Costcodle",
+          "icon": {
+            "url": "https://costcodle.com"
+          }
+        },
+        {
+          "key": "D",
+          "code": "d",
+          "label": "Tradle",
+          "icon": {
+            "url": "https://oec.world/en/tradle"
+          }
+        },
+        {
+          "key": "F",
+          "code": "f",
+          "label": "Heardle",
+          "icon": {
+            "symbol": "music.note"
+          }
+        },
+        {
+          "key": "G",
+          "code": "g",
+          "label": "Framed",
+          "icon": {
+            "url": "https://framed.wtf"
+          }
+        },
+        {
+          "key": "Q",
+          "code": "q",
+          "label": "Pokedoku",
+          "icon": {
+            "url": "https://pokedoku.com"
+          }
+        },
+        {
+          "key": "W",
+          "code": "w",
+          "label": "Contexto",
+          "icon": {
+            "url": "https://contexto.me"
+          }
+        },
+        {
+          "key": "E",
+          "code": "e",
+          "label": "Redactle",
+          "icon": {
+            "symbol": "text.redaction"
+          }
+        },
+        {
+          "key": "R",
+          "code": "r",
+          "label": "Worldle",
+          "icon": {
+            "url": "https://worldle.teuteuf.fr"
+          }
+        },
+        {
+          "key": "=",
+          "code": "equal_sign",
+          "label": "Add current tab as a game",
+          "icon": {
+            "symbol": "plus.circle"
+          }
+        },
+        {
+          "key": "-",
+          "code": "hyphen",
+          "label": "Remove games…",
+          "icon": {
+            "symbol": "minus.circle"
           }
         }
       ]
@@ -715,6 +888,15 @@
           }
         },
         {
+          "key": "G",
+          "code": "g",
+          "label": "Games",
+          "group": true,
+          "icon": {
+            "symbol": "gamecontroller.fill"
+          }
+        },
+        {
           "key": "R",
           "code": "r",
           "label": "Raycast",
@@ -752,7 +934,7 @@
         {
           "key": ";",
           "code": "semicolon",
-          "label": "Raycast: arc · search space tabs",
+          "label": "Raycast: zen browser · open workspace",
           "icon": {
             "bundle": "com.raycast.macos"
           }
@@ -918,7 +1100,7 @@
         {
           "key": "T",
           "code": "t",
-          "label": "iTerm",
+          "label": "ITerm",
           "icon": {
             "app": "iTerm"
           }
@@ -950,7 +1132,7 @@
         {
           "key": "Z",
           "code": "z",
-          "label": "zoom.us",
+          "label": "Zoom.us",
           "icon": {
             "app": "zoom.us"
           }
@@ -982,7 +1164,7 @@
         {
           "key": "P",
           "code": "p",
-          "label": "iPhone Mirroring",
+          "label": "IPhone Mirroring",
           "icon": {
             "app": "iPhone Mirroring"
           }
@@ -1019,7 +1201,7 @@
         {
           "key": "I",
           "code": "i",
-          "label": "www.instagram.com/direct/t/5082114295174947/",
+          "label": "Www.instagram.com/direct/t/5082114295174947/",
           "icon": {
             "url": "https://www.instagram.com/direct/t/5082114295174947/"
           }
@@ -1035,7 +1217,7 @@
         {
           "key": "Y",
           "code": "y",
-          "label": "youtube.com",
+          "label": "Youtube.com",
           "icon": {
             "url": "https://youtube.com"
           }
@@ -1043,7 +1225,7 @@
         {
           "key": "M",
           "code": "m",
-          "label": "music.youtube.com",
+          "label": "Music.youtube.com",
           "icon": {
             "url": "https://music.youtube.com"
           }
@@ -1051,7 +1233,7 @@
         {
           "key": "T",
           "code": "t",
-          "label": "mychtransit.org/map",
+          "label": "Mychtransit.org/map",
           "icon": {
             "url": "https://mychtransit.org/map"
           }
@@ -1059,7 +1241,7 @@
         {
           "key": "N",
           "code": "n",
-          "label": "localhost:8080/",
+          "label": "Localhost:8080/",
           "icon": {
             "url": "http://localhost:8080/"
           }
@@ -1067,7 +1249,7 @@
         {
           "key": "S",
           "code": "s",
-          "label": "twitch.tv",
+          "label": "Twitch.tv",
           "icon": {
             "url": "https://twitch.tv"
           }
@@ -1075,7 +1257,7 @@
         {
           "key": "C",
           "code": "c",
-          "label": "canvas.unc.edu",
+          "label": "Canvas.unc.edu",
           "icon": {
             "url": "https://canvas.unc.edu"
           }
@@ -1083,7 +1265,7 @@
         {
           "key": "G",
           "code": "g",
-          "label": "github.com",
+          "label": "Github.com",
           "icon": {
             "url": "https://github.com"
           }
@@ -1814,9 +1996,9 @@
         {
           "key": "G",
           "code": "g",
-          "label": "Arc",
+          "label": "Default browser",
           "icon": {
-            "app": "/Applications/Arc"
+            "browser": true
           }
         },
         {
@@ -1846,7 +2028,7 @@
         {
           "key": "T",
           "code": "t",
-          "label": "iTerm · Programming",
+          "label": "ITerm · Programming",
           "icon": {
             "app": "iTerm"
           }
@@ -1854,7 +2036,7 @@
         {
           "key": "Z",
           "code": "z",
-          "label": "zoom.us",
+          "label": "Zoom.us",
           "icon": {
             "app": "zoom.us"
           }
@@ -1886,7 +2068,7 @@
         {
           "key": "P",
           "code": "p",
-          "label": "iPhone Mirroring",
+          "label": "IPhone Mirroring",
           "icon": {
             "app": "iPhone Mirroring"
           }
@@ -1923,7 +2105,7 @@
         {
           "key": "I",
           "code": "i",
-          "label": "www.instagram.com/direct/t/5082114295174947/",
+          "label": "Www.instagram.com/direct/t/5082114295174947/",
           "icon": {
             "url": "https://www.instagram.com/direct/t/5082114295174947/"
           }
@@ -1939,7 +2121,7 @@
         {
           "key": "Y",
           "code": "y",
-          "label": "youtube.com",
+          "label": "Youtube.com",
           "icon": {
             "url": "https://youtube.com"
           }
@@ -1947,7 +2129,7 @@
         {
           "key": "M",
           "code": "m",
-          "label": "music.youtube.com",
+          "label": "Music.youtube.com",
           "icon": {
             "url": "https://music.youtube.com"
           }
@@ -1955,7 +2137,7 @@
         {
           "key": "T",
           "code": "t",
-          "label": "mychtransit.org/map",
+          "label": "Mychtransit.org/map",
           "icon": {
             "url": "https://mychtransit.org/map"
           }
@@ -1963,7 +2145,7 @@
         {
           "key": "N",
           "code": "n",
-          "label": "localhost:8080/",
+          "label": "Localhost:8080/",
           "icon": {
             "url": "http://localhost:8080/"
           }
@@ -1971,7 +2153,7 @@
         {
           "key": "S",
           "code": "s",
-          "label": "twitch.tv",
+          "label": "Twitch.tv",
           "icon": {
             "url": "https://twitch.tv"
           }
@@ -1979,7 +2161,7 @@
         {
           "key": "C",
           "code": "c",
-          "label": "canvas.unc.edu",
+          "label": "Canvas.unc.edu",
           "icon": {
             "url": "https://canvas.unc.edu"
           }
@@ -1987,7 +2169,7 @@
         {
           "key": "G",
           "code": "g",
-          "label": "github.com",
+          "label": "Github.com",
           "icon": {
             "url": "https://github.com"
           }
@@ -2055,6 +2237,179 @@
         }
       ]
     },
+    "g": {
+      "title": "Games",
+      "items": [
+        {
+          "key": "1",
+          "code": "1",
+          "label": "Catfishing",
+          "icon": {
+            "url": "https://catfishing.net"
+          }
+        },
+        {
+          "key": "2",
+          "code": "2",
+          "label": "Thrice",
+          "icon": {
+            "url": "https://thrice.geekswhodrink.com"
+          }
+        },
+        {
+          "key": "3",
+          "code": "3",
+          "label": "Wordle",
+          "icon": {
+            "url": "https://www.nytimes.com/games/wordle"
+          }
+        },
+        {
+          "key": "4",
+          "code": "4",
+          "label": "Connections",
+          "icon": {
+            "url": "https://www.nytimes.com/games/connections"
+          }
+        },
+        {
+          "key": "5",
+          "code": "5",
+          "label": "Strands",
+          "icon": {
+            "url": "https://www.nytimes.com/games/strands"
+          }
+        },
+        {
+          "key": "6",
+          "code": "6",
+          "label": "FoodGuessr",
+          "icon": {
+            "url": "https://www.foodguessr.com"
+          }
+        },
+        {
+          "key": "7",
+          "code": "7",
+          "label": "TimeGuessr",
+          "icon": {
+            "url": "https://timeguessr.com"
+          }
+        },
+        {
+          "key": "8",
+          "code": "8",
+          "label": "Mini Crossword",
+          "icon": {
+            "url": "https://www.nytimes.com/crosswords/game/mini"
+          }
+        },
+        {
+          "key": "9",
+          "code": "9",
+          "label": "Spelling Bee",
+          "icon": {
+            "url": "https://www.nytimes.com/puzzles/spelling-bee"
+          }
+        },
+        {
+          "key": "0",
+          "code": "0",
+          "label": "GeoGuessr",
+          "icon": {
+            "url": "https://www.geoguessr.com/daily-challenge"
+          }
+        },
+        {
+          "key": "A",
+          "code": "a",
+          "label": "Bandle",
+          "icon": {
+            "url": "https://bandle.app"
+          }
+        },
+        {
+          "key": "S",
+          "code": "s",
+          "label": "Costcodle",
+          "icon": {
+            "url": "https://costcodle.com"
+          }
+        },
+        {
+          "key": "D",
+          "code": "d",
+          "label": "Tradle",
+          "icon": {
+            "url": "https://oec.world/en/tradle"
+          }
+        },
+        {
+          "key": "F",
+          "code": "f",
+          "label": "Heardle",
+          "icon": {
+            "symbol": "music.note"
+          }
+        },
+        {
+          "key": "G",
+          "code": "g",
+          "label": "Framed",
+          "icon": {
+            "url": "https://framed.wtf"
+          }
+        },
+        {
+          "key": "Q",
+          "code": "q",
+          "label": "Pokedoku",
+          "icon": {
+            "url": "https://pokedoku.com"
+          }
+        },
+        {
+          "key": "W",
+          "code": "w",
+          "label": "Contexto",
+          "icon": {
+            "url": "https://contexto.me"
+          }
+        },
+        {
+          "key": "E",
+          "code": "e",
+          "label": "Redactle",
+          "icon": {
+            "symbol": "text.redaction"
+          }
+        },
+        {
+          "key": "R",
+          "code": "r",
+          "label": "Worldle",
+          "icon": {
+            "url": "https://worldle.teuteuf.fr"
+          }
+        },
+        {
+          "key": "=",
+          "code": "equal_sign",
+          "label": "Add current tab as a game",
+          "icon": {
+            "symbol": "plus.circle"
+          }
+        },
+        {
+          "key": "-",
+          "code": "hyphen",
+          "label": "Remove games…",
+          "icon": {
+            "symbol": "minus.circle"
+          }
+        }
+      ]
+    },
     "_keys": {
       "title": "Keys",
       "items": [
@@ -2066,9 +2421,9 @@
         {
           "key": "2",
           "code": "2",
-          "label": "Arc",
+          "label": "Default browser",
           "icon": {
-            "app": "Arc"
+            "browser": true
           }
         },
         {
@@ -2111,6 +2466,15 @@
           "group": true,
           "icon": {
             "symbol": "macwindow"
+          }
+        },
+        {
+          "key": "G",
+          "code": "g",
+          "label": "Games",
+          "group": true,
+          "icon": {
+            "symbol": "gamecontroller.fill"
           }
         },
         {
@@ -2194,9 +2558,9 @@
         {
           "key": "G",
           "code": "g",
-          "label": "Arc",
+          "label": "Default browser",
           "icon": {
-            "app": "/Applications/Arc"
+            "browser": true
           }
         },
         {
@@ -2226,7 +2590,7 @@
         {
           "key": "T",
           "code": "t",
-          "label": "iTerm · Programming",
+          "label": "ITerm · Programming",
           "icon": {
             "app": "iTerm"
           }
@@ -2234,7 +2598,7 @@
         {
           "key": "Z",
           "code": "z",
-          "label": "zoom.us",
+          "label": "Zoom.us",
           "icon": {
             "app": "zoom.us"
           }
@@ -2266,7 +2630,7 @@
         {
           "key": "P",
           "code": "p",
-          "label": "iPhone Mirroring",
+          "label": "IPhone Mirroring",
           "icon": {
             "app": "iPhone Mirroring"
           }
@@ -2303,7 +2667,7 @@
         {
           "key": "I",
           "code": "i",
-          "label": "www.instagram.com/direct/t/5082114295174947/",
+          "label": "Www.instagram.com/direct/t/5082114295174947/",
           "icon": {
             "url": "https://www.instagram.com/direct/t/5082114295174947/"
           }
@@ -2319,7 +2683,7 @@
         {
           "key": "Y",
           "code": "y",
-          "label": "youtube.com",
+          "label": "Youtube.com",
           "icon": {
             "url": "https://youtube.com"
           }
@@ -2327,7 +2691,7 @@
         {
           "key": "M",
           "code": "m",
-          "label": "music.youtube.com",
+          "label": "Music.youtube.com",
           "icon": {
             "url": "https://music.youtube.com"
           }
@@ -2335,7 +2699,7 @@
         {
           "key": "T",
           "code": "t",
-          "label": "mychtransit.org/map",
+          "label": "Mychtransit.org/map",
           "icon": {
             "url": "https://mychtransit.org/map"
           }
@@ -2343,7 +2707,7 @@
         {
           "key": "N",
           "code": "n",
-          "label": "localhost:8080/",
+          "label": "Localhost:8080/",
           "icon": {
             "url": "http://localhost:8080/"
           }
@@ -2351,7 +2715,7 @@
         {
           "key": "S",
           "code": "s",
-          "label": "twitch.tv",
+          "label": "Twitch.tv",
           "icon": {
             "url": "https://twitch.tv"
           }
@@ -2359,7 +2723,7 @@
         {
           "key": "C",
           "code": "c",
-          "label": "canvas.unc.edu",
+          "label": "Canvas.unc.edu",
           "icon": {
             "url": "https://canvas.unc.edu"
           }
@@ -2367,7 +2731,7 @@
         {
           "key": "G",
           "code": "g",
-          "label": "github.com",
+          "label": "Github.com",
           "icon": {
             "url": "https://github.com"
           }
@@ -2432,6 +2796,179 @@
           "key": "L",
           "code": "l",
           "label": "App Switcher (Cmd+Tab)"
+        }
+      ]
+    },
+    "g": {
+      "title": "Games",
+      "items": [
+        {
+          "key": "1",
+          "code": "1",
+          "label": "Catfishing",
+          "icon": {
+            "url": "https://catfishing.net"
+          }
+        },
+        {
+          "key": "2",
+          "code": "2",
+          "label": "Thrice",
+          "icon": {
+            "url": "https://thrice.geekswhodrink.com"
+          }
+        },
+        {
+          "key": "3",
+          "code": "3",
+          "label": "Wordle",
+          "icon": {
+            "url": "https://www.nytimes.com/games/wordle"
+          }
+        },
+        {
+          "key": "4",
+          "code": "4",
+          "label": "Connections",
+          "icon": {
+            "url": "https://www.nytimes.com/games/connections"
+          }
+        },
+        {
+          "key": "5",
+          "code": "5",
+          "label": "Strands",
+          "icon": {
+            "url": "https://www.nytimes.com/games/strands"
+          }
+        },
+        {
+          "key": "6",
+          "code": "6",
+          "label": "FoodGuessr",
+          "icon": {
+            "url": "https://www.foodguessr.com"
+          }
+        },
+        {
+          "key": "7",
+          "code": "7",
+          "label": "TimeGuessr",
+          "icon": {
+            "url": "https://timeguessr.com"
+          }
+        },
+        {
+          "key": "8",
+          "code": "8",
+          "label": "Mini Crossword",
+          "icon": {
+            "url": "https://www.nytimes.com/crosswords/game/mini"
+          }
+        },
+        {
+          "key": "9",
+          "code": "9",
+          "label": "Spelling Bee",
+          "icon": {
+            "url": "https://www.nytimes.com/puzzles/spelling-bee"
+          }
+        },
+        {
+          "key": "0",
+          "code": "0",
+          "label": "GeoGuessr",
+          "icon": {
+            "url": "https://www.geoguessr.com/daily-challenge"
+          }
+        },
+        {
+          "key": "A",
+          "code": "a",
+          "label": "Bandle",
+          "icon": {
+            "url": "https://bandle.app"
+          }
+        },
+        {
+          "key": "S",
+          "code": "s",
+          "label": "Costcodle",
+          "icon": {
+            "url": "https://costcodle.com"
+          }
+        },
+        {
+          "key": "D",
+          "code": "d",
+          "label": "Tradle",
+          "icon": {
+            "url": "https://oec.world/en/tradle"
+          }
+        },
+        {
+          "key": "F",
+          "code": "f",
+          "label": "Heardle",
+          "icon": {
+            "symbol": "music.note"
+          }
+        },
+        {
+          "key": "G",
+          "code": "g",
+          "label": "Framed",
+          "icon": {
+            "url": "https://framed.wtf"
+          }
+        },
+        {
+          "key": "Q",
+          "code": "q",
+          "label": "Pokedoku",
+          "icon": {
+            "url": "https://pokedoku.com"
+          }
+        },
+        {
+          "key": "W",
+          "code": "w",
+          "label": "Contexto",
+          "icon": {
+            "url": "https://contexto.me"
+          }
+        },
+        {
+          "key": "E",
+          "code": "e",
+          "label": "Redactle",
+          "icon": {
+            "symbol": "text.redaction"
+          }
+        },
+        {
+          "key": "R",
+          "code": "r",
+          "label": "Worldle",
+          "icon": {
+            "url": "https://worldle.teuteuf.fr"
+          }
+        },
+        {
+          "key": "=",
+          "code": "equal_sign",
+          "label": "Add current tab as a game",
+          "icon": {
+            "symbol": "plus.circle"
+          }
+        },
+        {
+          "key": "-",
+          "code": "hyphen",
+          "label": "Remove games…",
+          "icon": {
+            "symbol": "minus.circle"
+          }
         }
       ]
     },
@@ -2628,6 +3165,15 @@
           "group": true,
           "icon": {
             "symbol": "macwindow"
+          }
+        },
+        {
+          "key": "G",
+          "code": "g",
+          "label": "Games",
+          "group": true,
+          "icon": {
+            "symbol": "gamecontroller.fill"
           }
         },
         {

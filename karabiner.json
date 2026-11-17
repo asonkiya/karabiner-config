@@ -116,10 +116,10 @@
                     }
                   },
                   {
-                    "shell_command": "open raycast://extensions/the-browser-company/arc/search-space-tabs"
+                    "shell_command": "open raycast://extensions/Keyruu/zen-browser/open-workspace"
                   }
                 ],
-                "description": "Open raycast://extensions/the-browser-company/arc/search-space-tabs",
+                "description": "Open raycast://extensions/Keyruu/zen-browser/open-workspace",
                 "type": "basic",
                 "from": {
                   "key_code": "semicolon",
@@ -10104,6 +10104,1068 @@
             ]
           },
           {
+            "description": "Hyper Key sublayer \"g\"",
+            "manipulators": [
+              {
+                "description": "Toggle Hyper sublayer g",
+                "type": "basic",
+                "from": {
+                  "key_code": "g",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "hyper_sublayer_g",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "hide"
+                      }
+                    }
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "hyper_sublayer_g",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "show",
+                        "layer": "g"
+                      }
+                    }
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_a",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_b",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_c",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_d",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_e",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_f",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_h",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_i",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_j",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_k",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_l",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_m",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_n",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_p",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_q",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_r",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_s",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_t",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_u",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_v",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_w",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_x",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_y",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_z",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_0",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_1",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_2",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_3",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_4",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_5",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_6",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_7",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_8",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_9",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_semicolon",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_spacebar",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_slash",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_return_or_enter",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_hyphen",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_open_bracket",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_close_bracket",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_comma",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_period",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_quote",
+                    "value": 0
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "hyper",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Catfishing",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "1"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://catfishing.net"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "1",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Thrice",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "2"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://thrice.geekswhodrink.com"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "2",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Wordle",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "3"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.nytimes.com/games/wordle"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "3",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Connections",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "4"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.nytimes.com/games/connections"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "4",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Strands",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "5"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.nytimes.com/games/strands"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "5",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "FoodGuessr",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "6"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.foodguessr.com"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "6",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "TimeGuessr",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "7"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://timeguessr.com"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "7",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Mini Crossword",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "8"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.nytimes.com/crosswords/game/mini"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "8",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Spelling Bee",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "9"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.nytimes.com/puzzles/spelling-bee"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "9",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "GeoGuessr",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "0"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.geoguessr.com/daily-challenge"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "0",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Bandle",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "a"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://bandle.app"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "a",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Costcodle",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "s"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://costcodle.com"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Tradle",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "d"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://oec.world/en/tradle"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Heardle",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "f"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.heardle.app"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Framed",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "g"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://framed.wtf"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "g",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Pokedoku",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "q"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://pokedoku.com"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "q",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Contexto",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "w"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://contexto.me"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "w",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Redactle",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "e"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://www.redactle.com"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "e",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Worldle",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "r"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "open https://worldle.teuteuf.fr"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "r",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Add current tab as a game",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "equal_sign"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "/Users/aryaman/github/karabiner-config/trivia/games.py add"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "equal_sign",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "description": "Remove games…",
+                "to": [
+                  {
+                    "send_user_command": {
+                      "payload": {
+                        "hud": "press",
+                        "code": "hyphen"
+                      }
+                    }
+                  },
+                  {
+                    "shell_command": "/Users/aryaman/github/karabiner-config/trivia/games.py remove"
+                  }
+                ],
+                "type": "basic",
+                "from": {
+                  "key_code": "hyphen",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_g",
+                    "value": 1
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "programming",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "Hyper Key + return_or_enter",
             "manipulators": [
               {
@@ -17802,7 +18864,7 @@
             ]
           },
           {
-            "description": "Reading: 2 = Open Arc",
+            "description": "Reading: 2 = Open default browser",
             "manipulators": [
               {
                 "type": "basic",
@@ -17821,7 +18883,7 @@
                     "value": 0
                   }
                 ],
-                "description": "Open Arc",
+                "description": "Open default browser",
                 "to": [
                   {
                     "send_user_command": {
@@ -17832,7 +18894,7 @@
                     }
                   },
                   {
-                    "shell_command": "open -a 'Arc.app'"
+                    "shell_command": "open \"$(osascript -l JavaScript -e 'ObjC.import(\"AppKit\"); $.NSWorkspace.sharedWorkspace.URLForApplicationToOpenURL($.NSURL.URLWithString(\"https://\")).path.js')\""
                   }
                 ]
               }
@@ -17932,6 +18994,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Catfishing",
                 "to": [
                   {
                     "send_user_command": {
@@ -17968,6 +19031,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Thrice",
                 "to": [
                   {
                     "send_user_command": {
@@ -18004,6 +19068,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Wordle",
                 "to": [
                   {
                     "send_user_command": {
@@ -18040,6 +19105,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Connections",
                 "to": [
                   {
                     "send_user_command": {
@@ -18076,6 +19142,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Strands",
                 "to": [
                   {
                     "send_user_command": {
@@ -18112,6 +19179,7 @@
                     "value": 0
                   }
                 ],
+                "description": "FoodGuessr",
                 "to": [
                   {
                     "send_user_command": {
@@ -18148,6 +19216,7 @@
                     "value": 0
                   }
                 ],
+                "description": "TimeGuessr",
                 "to": [
                   {
                     "send_user_command": {
@@ -18184,6 +19253,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Mini Crossword",
                 "to": [
                   {
                     "send_user_command": {
@@ -18220,6 +19290,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Spelling Bee",
                 "to": [
                   {
                     "send_user_command": {
@@ -18256,6 +19327,7 @@
                     "value": 0
                   }
                 ],
+                "description": "GeoGuessr",
                 "to": [
                   {
                     "send_user_command": {
@@ -18292,6 +19364,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Bandle",
                 "to": [
                   {
                     "send_user_command": {
@@ -18328,6 +19401,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Costcodle",
                 "to": [
                   {
                     "send_user_command": {
@@ -18364,6 +19438,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Tradle",
                 "to": [
                   {
                     "send_user_command": {
@@ -18400,6 +19475,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Heardle",
                 "to": [
                   {
                     "send_user_command": {
@@ -18436,6 +19512,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Framed",
                 "to": [
                   {
                     "send_user_command": {
@@ -18472,6 +19549,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Pokedoku",
                 "to": [
                   {
                     "send_user_command": {
@@ -18508,6 +19586,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Contexto",
                 "to": [
                   {
                     "send_user_command": {
@@ -18544,6 +19623,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Redactle",
                 "to": [
                   {
                     "send_user_command": {
@@ -18580,6 +19660,7 @@
                     "value": 0
                   }
                 ],
+                "description": "Worldle",
                 "to": [
                   {
                     "send_user_command": {
@@ -20826,6 +21907,7 @@
                 ]
               },
               {
+                "description": "Open default browser",
                 "to": [
                   {
                     "send_user_command": {
@@ -20836,10 +21918,9 @@
                     }
                   },
                   {
-                    "shell_command": "open -a '/Applications/Arc.app'"
+                    "shell_command": "open \"$(osascript -l JavaScript -e 'ObjC.import(\"AppKit\"); $.NSWorkspace.sharedWorkspace.URLForApplicationToOpenURL($.NSURL.URLWithString(\"https://\")).path.js')\""
                   }
                 ],
-                "description": "Open -a '/Applications/Arc.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "g",

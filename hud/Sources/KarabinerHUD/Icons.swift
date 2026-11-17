@@ -27,6 +27,11 @@ enum Icons {
         if let app = spec.app, let img = appIcon(app) {
             return Icon(normal: img, lit: img, size: Theme.appIconPt)
         }
+        if spec.browser == true,
+           let url = NSWorkspace.shared.urlForApplication(toOpen: URL(string: "https://")!),
+           let img = appIcon(url.path) {
+            return Icon(normal: img, lit: img, size: Theme.appIconPt)
+        }
         if let id = spec.bundle,
            let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: id),
            let img = appIcon(url.path) {

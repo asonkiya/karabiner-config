@@ -142,7 +142,7 @@ local ZOOM_STEP = 0.3
 -- is far more reliable than gesture or scroll synthesis. Extend as needed.
 local GESTURE_BLIND = {
     ["Google Chrome"] = true, ["Brave Browser"] = true, ["Microsoft Edge"] = true,
-    ["Arc"] = true, ["Code"] = true, ["Visual Studio Code"] = true,
+    ["Code"] = true, ["Visual Studio Code"] = true,
     ["Slack"] = true, ["Discord"] = true, ["Spotify"] = true,
     ["Obsidian"] = true, ["Notion"] = true, ["Figma"] = true,
 }

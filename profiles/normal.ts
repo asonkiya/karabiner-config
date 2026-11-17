@@ -1,9 +1,9 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hudEvent, keysWheelHold } from "../utils";
+import { createHyperSubLayers, app, open, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hudEvent, keysWheelHold, browser, whenNotMode } from "../utils";
 import { vimMode, vimModeRules } from "./vim-mode";
 import { programmingRules } from "./programming";
 import { readingRules } from "./reading";
-import { triviaRules } from "./trivia";
+import { triviaRules, gamesSublayer } from "./trivia";
 
 const rules: KarabinerRules[] = [
         // Define the Hyper key itself
@@ -84,7 +84,7 @@ const rules: KarabinerRules[] = [
                 ],
         },
         ...createHyperSubLayers({
-                semicolon: open("raycast://extensions/the-browser-company/arc/search-space-tabs"),
+                semicolon: open("raycast://extensions/Keyruu/zen-browser/open-workspace"),
                 spacebar: app("Raycast"),
                 // l (lookup), o (open apps) and w (window) are GLOBAL — see the
                 // block below, spread after the mode fragments so they work in
@@ -256,6 +256,9 @@ const rules: KarabinerRules[] = [
         // Hyper+Space is Raycast.
         ...createHyperSubLayers({ spacebar: keysWheelHold() }, whenMode("reading")),
         ...createHyperSubLayers({ spacebar: keysWheelHold() }, whenMode("trivia")),
+        // Hyper+G = the trivia games wheel (profiles/trivia.ts), everywhere
+        // except Programming, whose Hyper+G is Git.
+        ...createHyperSubLayers({ g: gamesSublayer }, whenNotMode("programming")),
 
         // Vim mode toggle — available in every mode (Hyper+Enter to enter,
         // i or Escape to exit; see vimModeRules).
@@ -337,7 +340,7 @@ const rules: KarabinerRules[] = [
                 // o = "Open" applications
                 o: {
                         icon: { symbol: "square.grid.2x2" },
-                        g: app("/Applications/Arc"),
+                        g: browser(),
                         e: app("Microsoft Outlook"),
                         d: app("Discord"),
                         n: app("ZenNotes"),

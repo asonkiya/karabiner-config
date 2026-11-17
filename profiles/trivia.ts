@@ -1,54 +1,51 @@
+import { readFileSync } from "fs";
 import { KarabinerRules, KeyCode } from "../types";
-import { bareKey, HudIcon, whenMode, hyperNotHeld } from "../utils";
+import { bareKey, HudIcon, HyperKeySublayer, LayerCommand, whenMode, hyperNotHeld } from "../utils";
 
-// Trivia mode: active while the `trivia` variable is 1.
-// Bare keys open a daily game; x closes the tab. Gated so they only remap
-// while in trivia mode and Hyper isn't held. Assembled into the single unified
-// profile in normal.ts. The HUD shows them as the mode's `_keys` wheel the
-// moment Trivia is entered (digits inner ring, letters outer, favicons) —
-// nothing to hold; cheatsheet.ts builds it from these rules.
-const triviaConds = [...whenMode("trivia"), hyperNotHeld];
+// The daily games. They live in trivia/games.json rather than here so that
+// trivia/games.py can add one (the frontmost browser tab, next free key) or
+// remove some without anyone touching code; it rebuilds afterwards. An
+// optional `icon` covers sites with no favicon on Google's service.
+type Game = { key: KeyCode; name: string; url: string; icon?: HudIcon };
+export const games: Game[] = JSON.parse(readFileSync(new URL("../trivia/games.json", import.meta.url), "utf8"));
 
-const games: [string, string, string][] = [
-        // Number keys
-        ["1", "Catfishing",     "https://catfishing.net"],
-        ["2", "Thrice",         "https://thrice.geekswhodrink.com"],
-        ["3", "Wordle",         "https://www.nytimes.com/games/wordle"],
-        ["4", "Connections",    "https://www.nytimes.com/games/connections"],
-        ["5", "Strands",        "https://www.nytimes.com/games/strands"],
-        ["6", "FoodGuessr",     "https://www.foodguessr.com"],
-        ["7", "TimeGuessr",     "https://timeguessr.com"],
-        ["8", "Mini Crossword", "https://www.nytimes.com/crosswords/game/mini"],
-        ["9", "Spelling Bee",   "https://www.nytimes.com/puzzles/spelling-bee"],
-        ["0", "GeoGuessr",      "https://www.geoguessr.com/daily-challenge"],
-        // Letter keys
-        ["a", "Bandle",         "https://bandle.app"],
-        ["s", "Costcodle",      "https://costcodle.com"],
-        ["d", "Tradle",         "https://oec.world/en/tradle"],
-        ["f", "Heardle",        "https://www.heardle.app"],
-        ["g", "Framed",         "https://framed.wtf"],
-        ["q", "Pokedoku",       "https://pokedoku.com"],
-        ["w", "Contexto",       "https://contexto.me"],
-        ["e", "Redactle",       "https://www.redactle.com"],
-        ["r", "Worldle",        "https://worldle.teuteuf.fr"],
-];
+const GAMES_PY = "/Users/aryaman/github/karabiner-config/trivia/games.py";
 
-// Sites with no favicon on Google's service get a symbol instead of the globe.
-const gameIcons: Partial<Record<KeyCode, HudIcon>> = {
-        f: { symbol: "music.note" },      // Heardle
-        e: { symbol: "text.redaction" },  // Redactle
+function play(g: Game): LayerCommand {
+        return { description: g.name, icon: g.icon, to: [{ shell_command: `open ${g.url}` }] };
+}
+
+// Hyper+G: the games wheel, in every mode but Programming (where G is Git —
+// normal.ts gates it). Digits inner ring, letters outer; = adds the current
+// tab, - removes games.
+export const gamesSublayer: HyperKeySublayer = {
+        icon: { symbol: "gamecontroller.fill" },
+        order: games.map((g) => g.key),
+        ...Object.fromEntries(games.map((g) => [g.key, play(g)])),
+        equal_sign: {
+                description: "Add current tab as a game",
+                icon: { symbol: "plus.circle" },
+                to: [{ shell_command: `${GAMES_PY} add` }],
+        },
+        hyphen: {
+                description: "Remove games…",
+                icon: { symbol: "minus.circle" },
+                to: [{ shell_command: `${GAMES_PY} remove` }],
+        },
 };
 
+// Trivia mode: active while the `trivia` variable is 1. The same games on
+// bare keys (no Hyper), x closes the tab. Gated so they only remap while in
+// trivia mode and Hyper isn't held. Assembled into the single unified profile
+// in normal.ts. The HUD shows them as the mode's `_keys` wheel the moment
+// Trivia is entered — nothing to hold; cheatsheet.ts builds it from these rules.
+const triviaConds = [...whenMode("trivia"), hyperNotHeld];
+
 export const triviaRules: KarabinerRules[] = [
-        // Direct key bindings for each game
-        ...games.map(([key, name, url]): KarabinerRules => ({
-                description: `Trivia: ${key} = ${name}`,
-                manipulators: [bareKey(key as KeyCode, {
-                        to: [{ shell_command: `open ${url}` }],
-                        icon: gameIcons[key as KeyCode],
-                }, triviaConds)],
+        ...games.map((g): KarabinerRules => ({
+                description: `Trivia: ${g.key} = ${g.name}`,
+                manipulators: [bareKey(g.key, play(g), triviaConds)],
         })),
-        // x = close tab (Cmd+W)
         {
                 description: "Trivia: x = Close tab",
                 manipulators: [bareKey("x", { to: [{ key_code: "w", modifiers: ["right_command"] }] }, triviaConds)],

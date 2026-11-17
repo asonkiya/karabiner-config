@@ -23,7 +23,7 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 
 | Key | Action |
 | --- | --- |
-| `O G` | Open Arc |
+| `O G` | Open default browser |
 | `O E` | Open Microsoft Outlook |
 | `O D` | Open Discord |
 | `O N` | Open ZenNotes |
@@ -66,13 +66,41 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `W N` | App Exposé |
 | `W L` | App Switcher (Cmd+Tab) |
 
+## All modes but Programming
+
+### `Hyper G` — Games
+
+| Key | Action |
+| --- | --- |
+| `G 1` | Catfishing |
+| `G 2` | Thrice |
+| `G 3` | Wordle |
+| `G 4` | Connections |
+| `G 5` | Strands |
+| `G 6` | FoodGuessr |
+| `G 7` | TimeGuessr |
+| `G 8` | Mini Crossword |
+| `G 9` | Spelling Bee |
+| `G 0` | GeoGuessr |
+| `G A` | Bandle |
+| `G S` | Costcodle |
+| `G D` | Tradle |
+| `G F` | Heardle |
+| `G G` | Framed |
+| `G Q` | Pokedoku |
+| `G W` | Contexto |
+| `G E` | Redactle |
+| `G R` | Worldle |
+| `G =` | Add current tab as a game |
+| `G -` | Remove games… |
+
 ## Normal
 
 ### Direct (`Hyper` + key)
 
 | Key | Action |
 | --- | --- |
-| `Hyper ;` | Raycast: arc · search space tabs |
+| `Hyper ;` | Raycast: zen browser · open workspace |
 | `Hyper Space` | Open Raycast |
 | `Hyper H` | ⌘1 _(WhatsApp only)_ |
 | `Hyper J` | ⌘2 _(WhatsApp only)_ |
@@ -316,7 +344,7 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | Key | Action |
 | --- | --- |
 | `1` | Screenshot + Enter |
-| `2` | Open Arc |
+| `2` | Open default browser |
 | `3` | Drag screenshot to translate |
 | `→` | Full translate cycle |
 

@@ -18,9 +18,15 @@ import { HUD_ICONS, HudIcon } from "./utils";
 // can never drift from the real bindings.
 // ---------------------------------------------------------------------------
 
-type Mode = "All modes" | "Normal" | "Programming" | "Reading" | "Trivia" | "Vim Mode";
+type ModeName = "Programming" | "Reading" | "Trivia";
+// "All modes but X": gated with X's variable at 0 only (whenNotMode), so it
+// holds in Normal and the other two modes.
+type Mode = "All modes" | `All modes but ${ModeName}` | "Normal" | ModeName | "Vim Mode";
 
-const MODE_ORDER: Mode[] = ["All modes", "Normal", "Programming", "Reading", "Trivia", "Vim Mode"];
+const MODE_ORDER: Mode[] = [
+        "All modes", "All modes but Programming", "All modes but Reading", "All modes but Trivia",
+        "Normal", "Programming", "Reading", "Trivia", "Vim Mode",
+];
 
 // Best-effort human labels for sublayer keys. Some keys mean different things
 // in different modes (s = System in Normal, Session/tmux in Programming), so
@@ -34,7 +40,8 @@ const SUBLAYER_LABELS: Record<string, string> = {
         r: "Raycast",
         a: "AI tools",
         m: "Modes",
-        g: "Git",
+        g: "Games",
+        "Programming:g": "Git",
         k: "Claude",
         s: "System",
         "Programming:s": "Session (tmux)",
@@ -178,7 +185,7 @@ function isUglyDesc(d: string): boolean {
 }
 
 function stripModePrefix(d: string): string {
-        // "Trivia: 1 = Catfishing" -> "Catfishing"; "Reading: 2 = Open Arc" -> "Open Arc"
+        // "Trivia: 1 = Catfishing" -> "Catfishing"; "Reading: 2 = Open default browser" -> "Open default browser"
         const m = d.match(/^[A-Za-z ]+:\s*\S+\s*=\s*(.+)$/);
         return m ? m[1] : d;
 }
@@ -246,6 +253,8 @@ function detectMode(conds: Cond[] | undefined): Mode {
                 varCond(conds, "trivia") === 0
         )
                 return "Normal";
+        for (const m of ["Programming", "Reading", "Trivia"] as const)
+                if (varCond(conds, m.toLowerCase()) === 0) return `All modes but ${m}`;
         return "All modes";
 }
 
@@ -366,12 +375,12 @@ function iconFor(m: Manipulator): HudIcon | undefined {
         return undefined;
 }
 
-// With an app or site icon on the wedge, "Open Arc" just reads "Arc" (and
-// "Open iTerm & switch to programming mode" -> "iTerm · Programming").
+// With an app or site icon on the wedge, "Open Discord" just reads "Discord"
+// (and "Open iTerm & switch to programming mode" -> "iTerm · Programming").
 function hudLabel(label: string, icon?: HudIcon): string {
         if (!icon || "symbol" in icon) return label;
         return label
-                .replace(/^Open /, "")
+                .replace(/^Open (.)/, (_, c: string) => c.toUpperCase())
                 .replace(/ & switch to (\w+) mode$/, (_, mode: string) => ` · ${mode[0].toUpperCase()}${mode.slice(1)}`);
 }
 
@@ -526,7 +535,7 @@ interface HudItem {
         label: string;
         group?: boolean;
         app?: string[]; // only shown while the frontmost app's bundle id matches one of these
-        icon?: HudIcon; // SF Symbol name, or an app (name/path) / bundle id whose icon to show
+        icon?: HudIcon; // SF Symbol name, an app (name/path) / bundle id, a site, or the default browser
 }
 interface HudMenu {
         title: string;
@@ -534,7 +543,8 @@ interface HudMenu {
 }
 
 function appliesTo(entryMode: Mode, rt: RuntimeMode): boolean {
-        return entryMode === "All modes" || entryMode === MODE_OF[rt];
+        if (entryMode === "All modes" || entryMode === MODE_OF[rt]) return true;
+        return entryMode.startsWith("All modes but ") && entryMode !== `All modes but ${MODE_OF[rt]}`;
 }
 
 const hud: Record<RuntimeMode, Record<string, HudMenu>> = {} as any;
@@ -584,7 +594,7 @@ for (const rt of RUNTIME_MODES) {
                 items: [
                         ...subKeys.filter((s) => s !== KEYS).map((s) => {
                                 const item: HudItem = { key: keyLabel(s), code: s, label: menus[s].title, group: true };
-                                const icon = groupIcons.get(`${MODE_OF[rt]}:${s}`) ?? groupIcons.get(`All modes:${s}`);
+                                const icon = MODE_ORDER.filter((m) => appliesTo(m, rt)).map((m) => groupIcons.get(`${m}:${s}`)).find(Boolean);
                                 if (icon) item.icon = icon;
                                 return item;
                         }),

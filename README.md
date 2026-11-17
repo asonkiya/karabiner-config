@@ -50,7 +50,9 @@ sublayer key and you get that sublayer's wheel instead.*
   bindings only show inside their app, and held-and-repeated layers (`v` for
   movement) opt out with `hud: false`. Entering a mode with bare-key bindings
   (Trivia's daily games) shows them as a wheel on its own, no hold needed;
-  `Hyper+Space` brings it back.
+  `Hyper+Space` brings it back. The games are also `Hyper+G` in any mode,
+  where `=` adds the current browser tab as a game and `-` removes games
+  (`trivia/games.json` + `games.py`, no code edits).
 - **Vim mode** (`Hyper+Enter`) — vim-style navigation/editing anywhere.
 
 The full keymap lives in the source — `profiles/normal.ts` is the assembler

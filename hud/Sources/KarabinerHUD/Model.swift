@@ -8,6 +8,7 @@ struct IconSpec: Decodable {
     let app: String?      // app name or path; resolved by Icons
     let bundle: String?   // bundle id
     let url: String?      // a web page; its favicon, fetched and cached by Icons
+    let browser: Bool?    // the current default browser's icon
 }
 
 struct Item: Decodable {
@@ -77,6 +78,12 @@ enum Model {
         if items.count <= 10 { return [items] }
         if items.contains(where: { $0.isGroup }) {
             return [items.filter { $0.isGroup }, items.filter { !$0.isGroup }]
+        }
+        // Digit keys inside, the rest outside, when that reads better than
+        // halving (the games wheel: 1…0 inner, letters and =/- outer).
+        let digits = items.filter { $0.key.count == 1 && $0.key.first!.isNumber }
+        if !digits.isEmpty && digits.count != items.count && max(digits.count, items.count - digits.count) <= 14 {
+            return [digits, items.filter { !($0.key.count == 1 && $0.key.first!.isNumber) }]
         }
         let half = (items.count + 1) / 2
         return [Array(items[..<half]), Array(items[half...])]

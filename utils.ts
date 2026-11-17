@@ -94,7 +94,12 @@ export function hudEvent(message: HudMessage): To {
  * Most commands get one automatically (cheatsheet.ts infers it from the
  * events: volume keys, `open -a`, URLs); set it explicitly to override.
  */
-export type HudIcon = { symbol: string } | { app: string } | { bundle: string } | { url: string };
+export type HudIcon =
+	| { symbol: string }
+	| { app: string }
+	| { bundle: string }
+	| { url: string }
+	| { browser: true }; // whatever the default browser is right now (resolved by the agent)
 
 /**
  * Custom way to describe a command in a layer
@@ -107,7 +112,7 @@ export interface LayerCommand {
         icon?: HudIcon;
 }
 
-type HyperKeySublayer = {
+export type HyperKeySublayer = {
         // The ? is necessary, otherwise we'd have to define something for _every_ key code
         [key_code in KeyCode]?: LayerCommand;
 } & {
@@ -117,14 +122,20 @@ type HyperKeySublayer = {
         hud?: false;
         // Icon for this sublayer's wedge on the top-level (Hyper) wheel.
         icon?: HudIcon;
+        // Keys to emit first, in this order; the rest follow in object order.
+        // Object key order puts digits first ascending ("0" before "1"), which
+        // is not how a wheel should read — the games layer wants 1…9, 0.
+        order?: KeyCode[];
 };
 
 /** HyperKeySublayer keys that aren't key bindings. */
-const SUBLAYER_META_KEYS = new Set(["hud", "icon"]);
+const SUBLAYER_META_KEYS = new Set(["hud", "icon", "order"]);
 
 /** The HyperKeySublayer entries that are real key bindings (drops the meta keys). */
 function sublayerCommands(commands: HyperKeySublayer): KeyCode[] {
-        return (Object.keys(commands) as string[]).filter((k) => !SUBLAYER_META_KEYS.has(k)) as KeyCode[];
+        const keys = (Object.keys(commands) as string[]).filter((k) => !SUBLAYER_META_KEYS.has(k)) as KeyCode[];
+        const first = (commands.order ?? []).filter((k) => keys.includes(k));
+        return [...first, ...keys.filter((k) => !first.includes(k))];
 }
 
 /**
@@ -529,6 +540,11 @@ export function whenMode(mode: ModeName): NonNullable<Manipulator["conditions"]>
         return [{ type: "variable_if" as const, name: mode, value: 1 }];
 }
 
+/** Conditions that hold in every mode except `mode` (Normal included). */
+export function whenNotMode(mode: ModeName): NonNullable<Manipulator["conditions"]> {
+        return [{ type: "variable_if" as const, name: mode, value: 0 }];
+}
+
 /** Condition: the Hyper key is not held. Gates bare-key mode remaps so they
  *  don't fire while a Hyper sublayer chord is in progress. */
 export const hyperNotHeld = {
@@ -598,6 +614,20 @@ export function window(name: string): LayerCommand {
  */
 export function app(name: string): LayerCommand {
         return open(`-a '${name}.app'`);
+}
+
+// Resolved at keypress: LaunchServices' handler for https:// is asked for its
+// app and that app is activated (no new tab). Nothing here names a browser, so
+// switching the system default is the whole migration.
+export const DEFAULT_BROWSER_SH =
+        `open "$(osascript -l JavaScript -e 'ObjC.import("AppKit"); $.NSWorkspace.sharedWorkspace.URLForApplicationToOpenURL($.NSURL.URLWithString("https://")).path.js')"`;
+
+export function browser(): LayerCommand {
+        return {
+                description: "Open default browser",
+                icon: { browser: true },
+                to: [{ shell_command: DEFAULT_BROWSER_SH }],
+        };
 }
 
 /**
@@ -693,7 +723,7 @@ export function cmdSublayer(): { [key_code in KeyCode]?: LayerCommand } {
  *     keyCode(36),
  *     delay(1500),
  *     drag(1970, 1248, 1449, 617),
- *     run("open -a 'Arc.app'"),
+ *     run("open -a 'Preview.app'"),
  *   ])
  */
 const CLICLICK = "/opt/homebrew/bin/cliclick";

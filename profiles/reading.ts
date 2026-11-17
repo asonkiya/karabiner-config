@@ -1,5 +1,5 @@
 import { KarabinerRules } from "../types";
-import { bareKey, chain, key, keyCode, click, delay, run, nativeKey, whenMode, hyperNotHeld } from "../utils";
+import { bareKey, browser, chain, key, keyCode, click, delay, run, nativeKey, whenMode, hyperNotHeld } from "../utils";
 
 // Reading mode: active while the `reading` variable is 1.
 // Bare keys (no Hyper) drive a screenshot-translate workflow. Gated so they
@@ -18,10 +18,8 @@ export const readingRules: KarabinerRules[] = [
                         ]), readingConds)],
         },
         {
-                description: "Reading: 2 = Open Arc",
-                manipulators: [bareKey("2", chain("Open Arc", [
-                                run("open -a 'Arc.app'"),
-                        ]), readingConds)],
+                description: "Reading: 2 = Open default browser",
+                manipulators: [bareKey("2", browser(), readingConds)],
         },
         {
                 description: "Reading: 3 = Drag preview to translate",
