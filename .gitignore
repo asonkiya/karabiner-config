@@ -5,3 +5,4 @@ automatic_backups/
 memory/
 .DS_Store
 Claude outputs/
+__pycache__/
