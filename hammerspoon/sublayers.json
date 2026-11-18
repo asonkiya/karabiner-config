@@ -183,6 +183,22 @@
           "icon": {
             "url": "https://github.com"
           }
+        },
+        {
+          "key": "X",
+          "code": "x",
+          "label": "Close the web card",
+          "icon": {
+            "symbol": "xmark.circle"
+          }
+        },
+        {
+          "key": "O",
+          "code": "o",
+          "label": "Open the web card's page in the browser",
+          "icon": {
+            "symbol": "arrow.up.forward.app"
+          }
         }
       ]
     },
@@ -465,35 +481,11 @@
           }
         },
         {
-          "key": "8",
-          "code": "8",
-          "label": "Mini Crossword",
-          "icon": {
-            "url": "https://www.nytimes.com/crosswords/game/mini"
-          }
-        },
-        {
-          "key": "9",
-          "code": "9",
-          "label": "Spelling Bee",
-          "icon": {
-            "url": "https://www.nytimes.com/puzzles/spelling-bee"
-          }
-        },
-        {
           "key": "0",
           "code": "0",
           "label": "GeoGuessr",
           "icon": {
             "url": "https://www.geoguessr.com/daily-challenge"
-          }
-        },
-        {
-          "key": "A",
-          "code": "a",
-          "label": "Bandle",
-          "icon": {
-            "url": "https://bandle.app"
           }
         },
         {
@@ -513,22 +505,6 @@
           }
         },
         {
-          "key": "F",
-          "code": "f",
-          "label": "Heardle",
-          "icon": {
-            "symbol": "music.note"
-          }
-        },
-        {
-          "key": "G",
-          "code": "g",
-          "label": "Framed",
-          "icon": {
-            "url": "https://framed.wtf"
-          }
-        },
-        {
           "key": "Q",
           "code": "q",
           "label": "Pokedoku",
@@ -542,14 +518,6 @@
           "label": "Contexto",
           "icon": {
             "url": "https://contexto.me"
-          }
-        },
-        {
-          "key": "E",
-          "code": "e",
-          "label": "Redactle",
-          "icon": {
-            "symbol": "text.redaction"
           }
         },
         {
@@ -571,7 +539,7 @@
         {
           "key": "-",
           "code": "hyphen",
-          "label": "Remove games…",
+          "label": "Remove a game…",
           "icon": {
             "symbol": "minus.circle"
           }
@@ -669,14 +637,6 @@
           "key": "B",
           "code": "b",
           "label": "Cmd+B"
-        },
-        {
-          "key": "C",
-          "code": "c",
-          "label": "Cmd+C",
-          "icon": {
-            "symbol": "doc.on.doc"
-          }
         },
         {
           "key": "D",
@@ -833,6 +793,137 @@
         }
       ]
     },
+    "g.hyphen": {
+      "title": "Remove a game",
+      "items": [
+        {
+          "key": "1",
+          "code": "1",
+          "label": "Remove Catfishing",
+          "icon": {
+            "url": "https://catfishing.net"
+          }
+        },
+        {
+          "key": "2",
+          "code": "2",
+          "label": "Remove Thrice",
+          "icon": {
+            "url": "https://thrice.geekswhodrink.com"
+          }
+        },
+        {
+          "key": "3",
+          "code": "3",
+          "label": "Remove Wordle",
+          "icon": {
+            "url": "https://www.nytimes.com/games/wordle"
+          }
+        },
+        {
+          "key": "4",
+          "code": "4",
+          "label": "Remove Connections",
+          "icon": {
+            "url": "https://www.nytimes.com/games/connections"
+          }
+        },
+        {
+          "key": "5",
+          "code": "5",
+          "label": "Remove Strands",
+          "icon": {
+            "url": "https://www.nytimes.com/games/strands"
+          }
+        },
+        {
+          "key": "6",
+          "code": "6",
+          "label": "Remove FoodGuessr",
+          "icon": {
+            "url": "https://www.foodguessr.com"
+          }
+        },
+        {
+          "key": "7",
+          "code": "7",
+          "label": "Remove TimeGuessr",
+          "icon": {
+            "url": "https://timeguessr.com"
+          }
+        },
+        {
+          "key": "0",
+          "code": "0",
+          "label": "Remove GeoGuessr",
+          "icon": {
+            "url": "https://www.geoguessr.com/daily-challenge"
+          }
+        },
+        {
+          "key": "S",
+          "code": "s",
+          "label": "Remove Costcodle",
+          "icon": {
+            "url": "https://costcodle.com"
+          }
+        },
+        {
+          "key": "D",
+          "code": "d",
+          "label": "Remove Tradle",
+          "icon": {
+            "url": "https://oec.world/en/tradle"
+          }
+        },
+        {
+          "key": "Q",
+          "code": "q",
+          "label": "Remove Pokedoku",
+          "icon": {
+            "url": "https://pokedoku.com"
+          }
+        },
+        {
+          "key": "W",
+          "code": "w",
+          "label": "Remove Contexto",
+          "icon": {
+            "url": "https://contexto.me"
+          }
+        },
+        {
+          "key": "R",
+          "code": "r",
+          "label": "Remove Worldle",
+          "icon": {
+            "url": "https://worldle.teuteuf.fr"
+          }
+        }
+      ]
+    },
+    "j": {
+      "title": "Sessions (tmux)",
+      "items": [
+        {
+          "key": "N",
+          "code": "n",
+          "label": "New session… (iTerm2)",
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ],
+          "icon": {
+            "symbol": "plus.rectangle.on.folder"
+          }
+        }
+      ],
+      "provider": "/Users/aryaman/github/karabiner-config/tmux/sessions.py list"
+    },
+    "j.n": {
+      "title": "New session",
+      "items": [],
+      "provider": "/Users/aryaman/github/karabiner-config/tmux/sessions.py projects"
+    },
     "_top": {
       "title": "Hyper",
       "items": [
@@ -921,6 +1012,18 @@
           "group": true,
           "icon": {
             "symbol": "switch.2"
+          }
+        },
+        {
+          "key": "J",
+          "code": "j",
+          "label": "Sessions (tmux)",
+          "group": true,
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ],
+          "icon": {
+            "symbol": "rectangle.split.3x1"
           }
         },
         {
@@ -1269,6 +1372,22 @@
           "icon": {
             "url": "https://github.com"
           }
+        },
+        {
+          "key": "X",
+          "code": "x",
+          "label": "Close the web card",
+          "icon": {
+            "symbol": "xmark.circle"
+          }
+        },
+        {
+          "key": "O",
+          "code": "o",
+          "label": "Open the web card's page in the browser",
+          "icon": {
+            "symbol": "arrow.up.forward.app"
+          }
         }
       ]
     },
@@ -1552,11 +1671,6 @@
           "label": "Claude: /plan"
         },
         {
-          "key": "K",
-          "code": "k",
-          "label": "Claude: /commit"
-        },
-        {
           "key": "X",
           "code": "x",
           "label": "Claude: exit"
@@ -1635,14 +1749,6 @@
           "key": "B",
           "code": "b",
           "label": "Cmd+B"
-        },
-        {
-          "key": "C",
-          "code": "c",
-          "label": "Cmd+C",
-          "icon": {
-            "symbol": "doc.on.doc"
-          }
         },
         {
           "key": "D",
@@ -1779,6 +1885,25 @@
         }
       ]
     },
+    "j": {
+      "title": "Sessions (tmux)",
+      "items": [
+        {
+          "key": "N",
+          "code": "n",
+          "label": "New session…",
+          "icon": {
+            "symbol": "plus.rectangle.on.folder"
+          }
+        }
+      ],
+      "provider": "/Users/aryaman/github/karabiner-config/tmux/sessions.py list"
+    },
+    "j.n": {
+      "title": "New session",
+      "items": [],
+      "provider": "/Users/aryaman/github/karabiner-config/tmux/sessions.py projects"
+    },
     "_top": {
       "title": "Hyper",
       "items": [
@@ -1849,6 +1974,15 @@
           "group": true,
           "icon": {
             "symbol": "command"
+          }
+        },
+        {
+          "key": "J",
+          "code": "j",
+          "label": "Sessions (tmux)",
+          "group": true,
+          "icon": {
+            "symbol": "rectangle.split.3x1"
           }
         },
         {
@@ -2173,6 +2307,22 @@
           "icon": {
             "url": "https://github.com"
           }
+        },
+        {
+          "key": "X",
+          "code": "x",
+          "label": "Close the web card",
+          "icon": {
+            "symbol": "xmark.circle"
+          }
+        },
+        {
+          "key": "O",
+          "code": "o",
+          "label": "Open the web card's page in the browser",
+          "icon": {
+            "symbol": "arrow.up.forward.app"
+          }
         }
       ]
     },
@@ -2297,35 +2447,11 @@
           }
         },
         {
-          "key": "8",
-          "code": "8",
-          "label": "Mini Crossword",
-          "icon": {
-            "url": "https://www.nytimes.com/crosswords/game/mini"
-          }
-        },
-        {
-          "key": "9",
-          "code": "9",
-          "label": "Spelling Bee",
-          "icon": {
-            "url": "https://www.nytimes.com/puzzles/spelling-bee"
-          }
-        },
-        {
           "key": "0",
           "code": "0",
           "label": "GeoGuessr",
           "icon": {
             "url": "https://www.geoguessr.com/daily-challenge"
-          }
-        },
-        {
-          "key": "A",
-          "code": "a",
-          "label": "Bandle",
-          "icon": {
-            "url": "https://bandle.app"
           }
         },
         {
@@ -2345,22 +2471,6 @@
           }
         },
         {
-          "key": "F",
-          "code": "f",
-          "label": "Heardle",
-          "icon": {
-            "symbol": "music.note"
-          }
-        },
-        {
-          "key": "G",
-          "code": "g",
-          "label": "Framed",
-          "icon": {
-            "url": "https://framed.wtf"
-          }
-        },
-        {
           "key": "Q",
           "code": "q",
           "label": "Pokedoku",
@@ -2374,14 +2484,6 @@
           "label": "Contexto",
           "icon": {
             "url": "https://contexto.me"
-          }
-        },
-        {
-          "key": "E",
-          "code": "e",
-          "label": "Redactle",
-          "icon": {
-            "symbol": "text.redaction"
           }
         },
         {
@@ -2403,7 +2505,7 @@
         {
           "key": "-",
           "code": "hyphen",
-          "label": "Remove games…",
+          "label": "Remove a game…",
           "icon": {
             "symbol": "minus.circle"
           }
@@ -2437,6 +2539,137 @@
           "label": "Full translate cycle"
         }
       ]
+    },
+    "g.hyphen": {
+      "title": "Remove a game",
+      "items": [
+        {
+          "key": "1",
+          "code": "1",
+          "label": "Remove Catfishing",
+          "icon": {
+            "url": "https://catfishing.net"
+          }
+        },
+        {
+          "key": "2",
+          "code": "2",
+          "label": "Remove Thrice",
+          "icon": {
+            "url": "https://thrice.geekswhodrink.com"
+          }
+        },
+        {
+          "key": "3",
+          "code": "3",
+          "label": "Remove Wordle",
+          "icon": {
+            "url": "https://www.nytimes.com/games/wordle"
+          }
+        },
+        {
+          "key": "4",
+          "code": "4",
+          "label": "Remove Connections",
+          "icon": {
+            "url": "https://www.nytimes.com/games/connections"
+          }
+        },
+        {
+          "key": "5",
+          "code": "5",
+          "label": "Remove Strands",
+          "icon": {
+            "url": "https://www.nytimes.com/games/strands"
+          }
+        },
+        {
+          "key": "6",
+          "code": "6",
+          "label": "Remove FoodGuessr",
+          "icon": {
+            "url": "https://www.foodguessr.com"
+          }
+        },
+        {
+          "key": "7",
+          "code": "7",
+          "label": "Remove TimeGuessr",
+          "icon": {
+            "url": "https://timeguessr.com"
+          }
+        },
+        {
+          "key": "0",
+          "code": "0",
+          "label": "Remove GeoGuessr",
+          "icon": {
+            "url": "https://www.geoguessr.com/daily-challenge"
+          }
+        },
+        {
+          "key": "S",
+          "code": "s",
+          "label": "Remove Costcodle",
+          "icon": {
+            "url": "https://costcodle.com"
+          }
+        },
+        {
+          "key": "D",
+          "code": "d",
+          "label": "Remove Tradle",
+          "icon": {
+            "url": "https://oec.world/en/tradle"
+          }
+        },
+        {
+          "key": "Q",
+          "code": "q",
+          "label": "Remove Pokedoku",
+          "icon": {
+            "url": "https://pokedoku.com"
+          }
+        },
+        {
+          "key": "W",
+          "code": "w",
+          "label": "Remove Contexto",
+          "icon": {
+            "url": "https://contexto.me"
+          }
+        },
+        {
+          "key": "R",
+          "code": "r",
+          "label": "Remove Worldle",
+          "icon": {
+            "url": "https://worldle.teuteuf.fr"
+          }
+        }
+      ]
+    },
+    "j": {
+      "title": "Sessions (tmux)",
+      "items": [
+        {
+          "key": "N",
+          "code": "n",
+          "label": "New session… (iTerm2)",
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ],
+          "icon": {
+            "symbol": "plus.rectangle.on.folder"
+          }
+        }
+      ],
+      "provider": "/Users/aryaman/github/karabiner-config/tmux/sessions.py list"
+    },
+    "j.n": {
+      "title": "New session",
+      "items": [],
+      "provider": "/Users/aryaman/github/karabiner-config/tmux/sessions.py projects"
     },
     "_top": {
       "title": "Hyper",
@@ -2475,6 +2708,18 @@
           "group": true,
           "icon": {
             "symbol": "gamecontroller.fill"
+          }
+        },
+        {
+          "key": "J",
+          "code": "j",
+          "label": "Sessions (tmux)",
+          "group": true,
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ],
+          "icon": {
+            "symbol": "rectangle.split.3x1"
           }
         },
         {
@@ -2735,6 +2980,22 @@
           "icon": {
             "url": "https://github.com"
           }
+        },
+        {
+          "key": "X",
+          "code": "x",
+          "label": "Close the web card",
+          "icon": {
+            "symbol": "xmark.circle"
+          }
+        },
+        {
+          "key": "O",
+          "code": "o",
+          "label": "Open the web card's page in the browser",
+          "icon": {
+            "symbol": "arrow.up.forward.app"
+          }
         }
       ]
     },
@@ -2859,35 +3120,11 @@
           }
         },
         {
-          "key": "8",
-          "code": "8",
-          "label": "Mini Crossword",
-          "icon": {
-            "url": "https://www.nytimes.com/crosswords/game/mini"
-          }
-        },
-        {
-          "key": "9",
-          "code": "9",
-          "label": "Spelling Bee",
-          "icon": {
-            "url": "https://www.nytimes.com/puzzles/spelling-bee"
-          }
-        },
-        {
           "key": "0",
           "code": "0",
           "label": "GeoGuessr",
           "icon": {
             "url": "https://www.geoguessr.com/daily-challenge"
-          }
-        },
-        {
-          "key": "A",
-          "code": "a",
-          "label": "Bandle",
-          "icon": {
-            "url": "https://bandle.app"
           }
         },
         {
@@ -2907,22 +3144,6 @@
           }
         },
         {
-          "key": "F",
-          "code": "f",
-          "label": "Heardle",
-          "icon": {
-            "symbol": "music.note"
-          }
-        },
-        {
-          "key": "G",
-          "code": "g",
-          "label": "Framed",
-          "icon": {
-            "url": "https://framed.wtf"
-          }
-        },
-        {
           "key": "Q",
           "code": "q",
           "label": "Pokedoku",
@@ -2936,14 +3157,6 @@
           "label": "Contexto",
           "icon": {
             "url": "https://contexto.me"
-          }
-        },
-        {
-          "key": "E",
-          "code": "e",
-          "label": "Redactle",
-          "icon": {
-            "symbol": "text.redaction"
           }
         },
         {
@@ -2965,7 +3178,7 @@
         {
           "key": "-",
           "code": "hyphen",
-          "label": "Remove games…",
+          "label": "Remove a game…",
           "icon": {
             "symbol": "minus.circle"
           }
@@ -3032,35 +3245,11 @@
           }
         },
         {
-          "key": "8",
-          "code": "8",
-          "label": "Mini Crossword",
-          "icon": {
-            "url": "https://www.nytimes.com/crosswords/game/mini"
-          }
-        },
-        {
-          "key": "9",
-          "code": "9",
-          "label": "Spelling Bee",
-          "icon": {
-            "url": "https://www.nytimes.com/puzzles/spelling-bee"
-          }
-        },
-        {
           "key": "0",
           "code": "0",
           "label": "GeoGuessr",
           "icon": {
             "url": "https://www.geoguessr.com/daily-challenge"
-          }
-        },
-        {
-          "key": "A",
-          "code": "a",
-          "label": "Bandle",
-          "icon": {
-            "url": "https://bandle.app"
           }
         },
         {
@@ -3080,22 +3269,6 @@
           }
         },
         {
-          "key": "F",
-          "code": "f",
-          "label": "Heardle",
-          "icon": {
-            "symbol": "music.note"
-          }
-        },
-        {
-          "key": "G",
-          "code": "g",
-          "label": "Framed",
-          "icon": {
-            "url": "https://framed.wtf"
-          }
-        },
-        {
           "key": "Q",
           "code": "q",
           "label": "Pokedoku",
@@ -3109,14 +3282,6 @@
           "label": "Contexto",
           "icon": {
             "url": "https://contexto.me"
-          }
-        },
-        {
-          "key": "E",
-          "code": "e",
-          "label": "Redactle",
-          "icon": {
-            "symbol": "text.redaction"
           }
         },
         {
@@ -3136,6 +3301,137 @@
           }
         }
       ]
+    },
+    "g.hyphen": {
+      "title": "Remove a game",
+      "items": [
+        {
+          "key": "1",
+          "code": "1",
+          "label": "Remove Catfishing",
+          "icon": {
+            "url": "https://catfishing.net"
+          }
+        },
+        {
+          "key": "2",
+          "code": "2",
+          "label": "Remove Thrice",
+          "icon": {
+            "url": "https://thrice.geekswhodrink.com"
+          }
+        },
+        {
+          "key": "3",
+          "code": "3",
+          "label": "Remove Wordle",
+          "icon": {
+            "url": "https://www.nytimes.com/games/wordle"
+          }
+        },
+        {
+          "key": "4",
+          "code": "4",
+          "label": "Remove Connections",
+          "icon": {
+            "url": "https://www.nytimes.com/games/connections"
+          }
+        },
+        {
+          "key": "5",
+          "code": "5",
+          "label": "Remove Strands",
+          "icon": {
+            "url": "https://www.nytimes.com/games/strands"
+          }
+        },
+        {
+          "key": "6",
+          "code": "6",
+          "label": "Remove FoodGuessr",
+          "icon": {
+            "url": "https://www.foodguessr.com"
+          }
+        },
+        {
+          "key": "7",
+          "code": "7",
+          "label": "Remove TimeGuessr",
+          "icon": {
+            "url": "https://timeguessr.com"
+          }
+        },
+        {
+          "key": "0",
+          "code": "0",
+          "label": "Remove GeoGuessr",
+          "icon": {
+            "url": "https://www.geoguessr.com/daily-challenge"
+          }
+        },
+        {
+          "key": "S",
+          "code": "s",
+          "label": "Remove Costcodle",
+          "icon": {
+            "url": "https://costcodle.com"
+          }
+        },
+        {
+          "key": "D",
+          "code": "d",
+          "label": "Remove Tradle",
+          "icon": {
+            "url": "https://oec.world/en/tradle"
+          }
+        },
+        {
+          "key": "Q",
+          "code": "q",
+          "label": "Remove Pokedoku",
+          "icon": {
+            "url": "https://pokedoku.com"
+          }
+        },
+        {
+          "key": "W",
+          "code": "w",
+          "label": "Remove Contexto",
+          "icon": {
+            "url": "https://contexto.me"
+          }
+        },
+        {
+          "key": "R",
+          "code": "r",
+          "label": "Remove Worldle",
+          "icon": {
+            "url": "https://worldle.teuteuf.fr"
+          }
+        }
+      ]
+    },
+    "j": {
+      "title": "Sessions (tmux)",
+      "items": [
+        {
+          "key": "N",
+          "code": "n",
+          "label": "New session… (iTerm2)",
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ],
+          "icon": {
+            "symbol": "plus.rectangle.on.folder"
+          }
+        }
+      ],
+      "provider": "/Users/aryaman/github/karabiner-config/tmux/sessions.py list"
+    },
+    "j.n": {
+      "title": "New session",
+      "items": [],
+      "provider": "/Users/aryaman/github/karabiner-config/tmux/sessions.py projects"
     },
     "_top": {
       "title": "Hyper",
@@ -3174,6 +3470,18 @@
           "group": true,
           "icon": {
             "symbol": "gamecontroller.fill"
+          }
+        },
+        {
+          "key": "J",
+          "code": "j",
+          "label": "Sessions (tmux)",
+          "group": true,
+          "app": [
+            "^com\\.googlecode\\.iterm2$"
+          ],
+          "icon": {
+            "symbol": "rectangle.split.3x1"
           }
         },
         {

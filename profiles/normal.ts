@@ -1,9 +1,11 @@
 import { KarabinerRules, Profile } from "../types";
-import { createHyperSubLayers, app, open, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hudEvent, keysWheelHold, browser, whenNotMode } from "../utils";
+import { createHyperSubLayers, app, open,
+        little, littleClose, littlePromote, window, cmdSublayer, switchMode, appAndSwitchMode, whenNormal, whenMode, hudEvent, keysWheelHold, browser, whenNotMode } from "../utils";
 import { vimMode, vimModeRules } from "./vim-mode";
 import { programmingRules } from "./programming";
 import { readingRules } from "./reading";
 import { triviaRules, gamesSublayer } from "./trivia";
+import { sessionsSublayer } from "./sessions";
 
 const rules: KarabinerRules[] = [
         // Define the Hyper key itself
@@ -214,7 +216,7 @@ const rules: KarabinerRules[] = [
                 },
 
                 // c = Cmd + key passthrough
-                c: { icon: { symbol: "command" }, ...cmdSublayer() },
+                c: { icon: { symbol: "command" }, ...cmdSublayer("c") },
 
                 // y/p/u = copy/paste/undo (vim-style)
                 y: { description: "Copy (Cmd+C)", to: [{ key_code: "c", modifiers: ["right_command"] }] },
@@ -259,6 +261,12 @@ const rules: KarabinerRules[] = [
         // Hyper+G = the trivia games wheel (profiles/trivia.ts), everywhere
         // except Programming, whose Hyper+G is Git.
         ...createHyperSubLayers({ g: gamesSublayer }, whenNotMode("programming")),
+        // Hyper+J = tmux sessions (profiles/sessions.ts): anywhere in
+        // Programming, and inside iTerm2 whatever the mode.
+        ...createHyperSubLayers({ j: sessionsSublayer }, whenMode("programming")),
+        ...createHyperSubLayers({ j: sessionsSublayer }, [
+                { type: "frontmost_application_if", bundle_identifiers: ["^com\\.googlecode\\.iterm2$"], description: "iTerm2" },
+        ]),
 
         // Vim mode toggle — available in every mode (Hyper+Enter to enter,
         // i or Escape to exit; see vimModeRules).
@@ -327,15 +335,17 @@ const rules: KarabinerRules[] = [
                 // l = "L"ookup
                 l: {
                         icon: { symbol: "globe" },
-                        i: open("https://www.instagram.com/direct/t/5082114295174947/"),
+                        i: little("https://www.instagram.com/direct/t/5082114295174947/"),
                         d: app("Photo Booth"),
-                        y: open("https://youtube.com"),
-                        m: open("https://music.youtube.com"),
-                        t: open("https://mychtransit.org/map"),
-                        n: open("http://localhost:8080/"),
-                        s: open("https://twitch.tv"),
-                        c: open("https://canvas.unc.edu"),
-                        g: open("https://github.com"),
+                        y: little("https://youtube.com"),
+                        m: little("https://music.youtube.com"),
+                        t: little("https://mychtransit.org/map"),
+                        n: little("http://localhost:8080/"),
+                        s: little("https://twitch.tv"),
+                        c: little("https://canvas.unc.edu"),
+                        g: little("https://github.com"),
+                        x: littleClose(),
+                        o: littlePromote(),
                 },
                 // o = "Open" applications
                 o: {

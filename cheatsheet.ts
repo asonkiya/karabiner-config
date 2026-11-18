@@ -1,7 +1,7 @@
 import fs from "fs";
 import { normalProfile } from "./profiles/normal";
 import { Manipulator, To, KarabinerRules } from "./types";
-import { HUD_ICONS, HudIcon } from "./utils";
+import { HUD_DYNAMIC, HUD_ICONS, HudIcon } from "./utils";
 
 // ---------------------------------------------------------------------------
 // Cheatsheet generator
@@ -43,6 +43,7 @@ const SUBLAYER_LABELS: Record<string, string> = {
         g: "Games",
         "Programming:g": "Git",
         k: "Claude",
+        j: "Sessions (tmux)",
         s: "System",
         "Programming:s": "Session (tmux)",
         "Programming:v": "Movement / Vim",
@@ -50,7 +51,7 @@ const SUBLAYER_LABELS: Record<string, string> = {
 };
 
 function sublayerLabel(mode: Mode, key: string): string {
-        return SUBLAYER_LABELS[`${mode}:${key}`] ?? SUBLAYER_LABELS[key] ?? "";
+        return SUBLAYER_LABELS[`${mode}:${key}`] ?? SUBLAYER_LABELS[key] ?? stepLabels.get(key) ?? "";
 }
 
 // ---- key / action humanization -------------------------------------------
@@ -134,6 +135,11 @@ function humanizeShell(cmd: string): string | null {
         }
         m = cmd.match(/raycast:\/\/([^'"?\s]+)/);
         if (m) return `Raycast: ${m[1].replace(/-/g, " ")}`;
+        // hammerspoon://little?url=<encoded> — utils.ts littleZen(): a URL in a Little Zen window
+        m = cmd.match(/hammerspoon:\/\/little\?url=([^'"\s&]+)/);
+        if (m) return `Open ${decodeURIComponent(m[1]).replace(/^https?:\/\//, "")}`;
+        if (/hammerspoon:\/\/littleclose\b/.test(cmd)) return "Close Little Zen";
+        if (/hammerspoon:\/\/littlepromote\b/.test(cmd)) return "Open Little Zen page in main Zen";
         // open <url>
         m = cmd.match(/open\s+(?:-g\s+)?['"]?(https?:\/\/[^'"\s]+)/);
         if (m) return `Open ${m[1].replace(/^https?:\/\//, "")}`;
@@ -158,7 +164,14 @@ function humanizeTo(events?: To[]): string {
         const pieces: string[] = [];
         for (const e of events) {
                 if (e.set_variable) continue; // plumbing
-                if (e.send_user_command) continue; // HUD ping, plumbing
+                if (e.send_user_command) {
+                        // utils.ts little*(): the floating web card. Anything else is a HUD ping, plumbing.
+                        const card = (e.send_user_command.payload as any)?.little;
+                        if (typeof card?.open === "string") pieces.push(`Open ${card.open.replace(/^https?:\/\//, "")}`);
+                        else if (card === "close") pieces.push("Close the web card");
+                        else if (card === "promote") pieces.push("Open the web card's page in the browser");
+                        continue;
+                }
                 if (e.shell_command?.includes("hammerspoon://hud")) continue; // HUD ping (Hammerspoon renderer), plumbing
                 if (e.key_code) {
                         pieces.push(modSymbols(e.modifiers) + keyLabel(e.key_code));
@@ -235,12 +248,24 @@ function varCond(conds: Cond[] | undefined, name: string): number | undefined {
         return c ? c.value : undefined;
 }
 
+// The sublayer a manipulator belongs to: "g", or "g.hyphen" for a command of
+// the step entered with Hyper+G - (its conditions name both variables; the
+// longer one wins).
 function hasSublayer(conds: Cond[] | undefined): string | null {
-        const c = conds?.find(
-                (c) => (c as any).type === "variable_if" && String((c as any).name).startsWith("hyper_sublayer_") && (c as any).value === 1
-        ) as any;
-        return c ? String(c.name).replace("hyper_sublayer_", "") : null;
+        const names = (conds ?? [])
+                .filter((c) => (c as any).type === "variable_if" && String((c as any).name).startsWith("hyper_sublayer_") && (c as any).value === 1)
+                .map((c) => String((c as any).name).replace("hyper_sublayer_", ""));
+        return names.sort((a, b) => b.length - a.length)[0] ?? null;
 }
+
+// "g.hyphen" -> "G -": the keys pressed to get there.
+function sublayerKeys(sub: string): string {
+        return sub.split(".").map(keyLabel).join(" ");
+}
+
+// Step menus are titled after the command that enters them ("Remove a game…"),
+// found while walking the manipulators.
+const stepLabels = new Map<string, string>();
 
 function detectMode(conds: Cond[] | undefined): Mode {
         if (varCond(conds, "vim_mode") === 1) return "Vim Mode";
@@ -317,8 +342,10 @@ interface Entry {
         label: string; // plain-text action (no markdown)
         app?: string[]; // bundle-id regexes when gated with frontmost_application_if
         icon?: HudIcon;
+        provider?: string; // a DynamicMenu key: the menu's wedges come from this command at show time
 }
 const entries: Entry[] = [];
+const dynamicRows = new Set<string>(); // one cheatsheet row per dynamic menu
 // Pseudo-sublayer for a runtime mode's bare keys: its `_keys` wheel, which the
 // HUD shows unprompted when the mode is entered.
 const KEYS = "_keys";
@@ -419,8 +446,24 @@ for (const rule of normalProfile.complex_modifications!.rules) {
                 if (sublayer) {
                         // Command inside a Hyper sublayer.
                         if (!fromKey) continue;
+                        for (const t of m.to ?? []) {
+                                const v = t.set_variable;
+                                if (v && String(v.name).startsWith("hyper_sublayer_") && v.value === 1)
+                                        stepLabels.set(String(v.name).replace("hyper_sublayer_", ""), plainAction.replace(/…$/, ""));
+                        }
                         const data = modeData(mode);
                         if (!data.sublayers.has(sublayer)) data.sublayers.set(sublayer, []);
+                        const provider = HUD_DYNAMIC.get(m);
+                        if (provider) {
+                                // One of a dynamic menu's keys: the wheel lists what they do.
+                                const k = `${mode}:${sublayer}:${action}`;
+                                if (!dynamicRows.has(k)) {
+                                        dynamicRows.add(k);
+                                        data.sublayers.get(sublayer)!.push({ key: "<key on the wheel>", action });
+                                }
+                                entries.push({ mode, sublayer, key: "", code: "", label, app: bundles, provider });
+                                continue;
+                        }
                         data.sublayers.get(sublayer)!.push({ key: fromLabel, action });
                         entries.push({ mode, sublayer, key: fromLabel, code: fromKey, label, app: bundles, icon });
                 } else if (varCond(conds, "hyper") === 1) {
@@ -493,11 +536,11 @@ for (const mode of MODE_ORDER) {
                 const rows = data.sublayers.get(sub)!;
                 const label = sublayerLabel(mode, sub);
                 const heading = label
-                        ? `### \`Hyper ${keyLabel(sub)}\` — ${label}`
-                        : `### \`Hyper ${keyLabel(sub)}\``;
+                        ? `### \`Hyper ${sublayerKeys(sub)}\` — ${label}`
+                        : `### \`Hyper ${sublayerKeys(sub)}\``;
                 lines.push(heading);
                 lines.push("");
-                lines.push(table(rows.map((r) => ({ key: `${keyLabel(sub)} ${r.key}`, action: r.action }))));
+                lines.push(table(rows.map((r) => ({ key: `${sublayerKeys(sub)} ${r.key}`, action: r.action }))));
                 lines.push("");
         }
 }
@@ -540,6 +583,7 @@ interface HudItem {
 interface HudMenu {
         title: string;
         items: HudItem[];
+        provider?: string; // shell command whose JSON output replaces `items` at show time
 }
 
 function appliesTo(entryMode: Mode, rt: RuntimeMode): boolean {
@@ -566,6 +610,9 @@ for (const rt of RUNTIME_MODES) {
                 list.push(item);
                 m.set(e.key, list);
         };
+        const providers = new Map<string, string>();
+        // Per sublayer, the app gates shared by every one of its items (null: some item is un-gated).
+        const gate = new Map<string, Set<string> | null>();
         for (const e of entries) {
                 if (!appliesTo(e.mode, rt)) continue;
                 if (e.sublayer) {
@@ -573,6 +620,14 @@ for (const rt of RUNTIME_MODES) {
                         if (!m) {
                                 m = new Map();
                                 subs.set(e.sublayer, m);
+                        }
+                        if (gate.get(e.sublayer) !== null) {
+                                if (!e.app) gate.set(e.sublayer, null);
+                                else gate.set(e.sublayer, new Set([...(gate.get(e.sublayer) ?? []), ...e.app]));
+                        }
+                        if (e.provider) {
+                                providers.set(e.sublayer, e.provider);
+                                continue;
                         }
                         add(m, e);
                 } else {
@@ -585,15 +640,18 @@ for (const rt of RUNTIME_MODES) {
         const subKeys = sortSublayers([...subs.keys()]);
         for (const s of subKeys) {
                 menus[s] = {
-                        title: s === KEYS ? "Keys" : sublayerLabel(MODE_OF[rt], s) || keyLabel(s),
+                        title: s === KEYS ? "Keys" : sublayerLabel(MODE_OF[rt], s) || sublayerKeys(s),
                         items: flat(subs.get(s)!),
                 };
+                if (providers.has(s)) menus[s].provider = providers.get(s);
         }
         menus._top = {
                 title: "Hyper",
                 items: [
-                        ...subKeys.filter((s) => s !== KEYS).map((s) => {
+                        ...subKeys.filter((s) => s !== KEYS && !s.includes(".")).map((s) => {   // steps are reached from inside their sublayer
                                 const item: HudItem = { key: keyLabel(s), code: s, label: menus[s].title, group: true };
+                                const g = gate.get(s);
+                                if (g && g.size) item.app = [...g];   // the whole sublayer is app-gated: hide its wedge elsewhere
                                 const icon = MODE_ORDER.filter((m) => appliesTo(m, rt)).map((m) => groupIcons.get(`${m}:${s}`)).find(Boolean);
                                 if (icon) item.icon = icon;
                                 return item;

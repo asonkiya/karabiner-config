@@ -4,12 +4,13 @@
     games.py add      the frontmost browser tab becomes a game on the next
                       free key (or, if that site is already a game, offers to
                       remove it)
-    games.py remove   pick games to drop from a list
+    games.py remove K its game on key K goes
 
 games.json is what profiles/trivia.ts builds the Hyper+G wheel and Trivia
 mode's bare keys from, so after a change this rebuilds the config
 (karabiner.json, CHEATSHEET.md, hammerspoon/sublayers.json); Karabiner and
-the HUD pick the new files up on their own. Bound to Hyper+G = / Hyper+G -.
+the HUD pick the new files up on their own. Bound to Hyper+G = and, for
+remove, Hyper+G - followed by the game's key.
 """
 import json
 import os
@@ -22,8 +23,10 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GAMES = os.path.join(REPO, "trivia", "games.json")
 LOG = "/tmp/karabiner-build.log"
 # Keys handed out in this order: digits make the inner ring, letters the outer.
-# x stays free (Trivia mode's close-tab key) and so do Hyper+G's own = and -.
-KEY_ORDER = list("1234567890asdfgqwertyuiophjklzcvbnm")
+# No g: the wheel is Hyper+G and that key is already held, so Hyper+G G cannot
+# be pressed (the build refuses it too). x stays free (Trivia mode's close-tab
+# key) and so do Hyper+G's own = and -.
+KEY_ORDER = list("1234567890asdfqwertyuiophjklzcvbnm")
 os.environ["PATH"] = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 
@@ -139,7 +142,7 @@ def add():
     used = {g["key"] for g in games}
     key = next((k for k in KEY_ORDER if k not in used), None)
     if key is None:
-        notify("wheel full", "remove a game first (Hyper+G -)")
+        notify("wheel full", "remove a game first (Hyper+G - then its key)")
         return
     name = jxa('out = app.displayDialog(argv[0], {defaultAnswer: argv[1], buttons: ["Cancel", "Add"],'
                ' defaultButton: "Add", withTitle: "Trivia games"}).textReturned',
@@ -152,20 +155,22 @@ def add():
     notify("added", f"{name.strip()} is on {key.upper()}")
 
 
-def remove():
+def remove(key):
     games = load()
-    labels = [f'{g["key"].upper()}  {g["name"]}' for g in games]
-    picked = jxa('out = app.chooseFromList(JSON.parse(argv[0]), {withPrompt: "Remove which games?",'
-                 ' withTitle: "Trivia games", multipleSelectionsAllowed: true, okButtonName: "Remove"});'
-                 ' if (out === false) out = null;', json.dumps(labels))
-    if not picked:
+    hit = next((g for g in games if g["key"] == key), None)
+    if not hit:
+        notify("nothing removed", f"no game on {key.upper()}")
         return
-    keep = [g for g, l in zip(games, labels) if l not in picked]
-    gone = [g["name"] for g, l in zip(games, labels) if l in picked]
-    save(keep)
+    save([g for g in games if g is not hit])
     rebuild()
-    notify("removed", ", ".join(gone))
+    notify("removed", f'{hit["name"]} ({key.upper()})')
 
 
 if __name__ == "__main__":
-    {"add": add, "remove": remove}.get(sys.argv[1] if len(sys.argv) > 1 else "", lambda: print(__doc__))()
+    args = sys.argv[1:]
+    if args[:1] == ["add"]:
+        add()
+    elif len(args) == 2 and args[0] == "remove":
+        remove(args[1])
+    else:
+        print(__doc__)

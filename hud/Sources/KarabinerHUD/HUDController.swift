@@ -159,7 +159,9 @@ final class HUDController: Overlay {
             hideNow()
             return
         }
-        let items = Model.visible(menu.items)
+        // A dynamic menu: the provider's items, then whatever the menu binds
+        // itself (the step into "new session" after the sessions).
+        let items = menu.provider.map { Model.provided($0) + Model.visible(menu.items) } ?? Model.visible(menu.items)
         guard !items.isEmpty else { hideNow(); return }
 
         let screen = screenUnderMouse()

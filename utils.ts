@@ -126,15 +126,47 @@ export type HyperKeySublayer = {
         // Object key order puts digits first ascending ("0" before "1"), which
         // is not how a wheel should read — the games layer wants 1…9, 0.
         order?: KeyCode[];
+        // Second steps: tapping one of these keys inside the sublayer switches
+        // its keys to the step's commands until the sublayer is released (one
+        // step command fired also ends it). Hyper+G - = "remove a game", then a
+        // game key. All keyboard: the wheel re-draws as the step's menu.
+        steps?: { [key_code in KeyCode]?: SublayerStep };
+        // Wedges computed at show time (tmux sessions); see DynamicMenu.
+        dynamic?: DynamicMenu;
 };
 
+export type SublayerStep = {
+        description: string;
+        icon?: HudIcon;
+        commands?: { [key_code in KeyCode]?: LayerCommand };
+        dynamic?: DynamicMenu;
+};
+
+/**
+ * A menu whose wedges are computed when the wheel is shown. `list` is a shell
+ * command printing the items as JSON (`[{key, code, label, icon?}]`, `code`
+ * being the key_code the item answers to); the HUD runs it on every show
+ * (`provider` in sublayers.json). Karabiner binds each of `keys` to
+ * `<run> <key>`, so the two sides must hand out keys the same way — keep that
+ * in one script (tmux/sessions.py). `description` is the cheatsheet's one line
+ * for the whole set.
+ */
+export type DynamicMenu = { list: string; run: string; keys: KeyCode[]; description: string };
+
+/** Manipulators generated for a DynamicMenu → its `list` command (read by cheatsheet.ts). */
+export const HUD_DYNAMIC = new WeakMap<Manipulator, string>();
+
 /** HyperKeySublayer keys that aren't key bindings. */
-const SUBLAYER_META_KEYS = new Set(["hud", "icon", "order"]);
+const SUBLAYER_META_KEYS = new Set(["hud", "icon", "order", "steps", "dynamic"]);
 
 /** The HyperKeySublayer entries that are real key bindings (drops the meta keys). */
 function sublayerCommands(commands: HyperKeySublayer): KeyCode[] {
-        const keys = (Object.keys(commands) as string[]).filter((k) => !SUBLAYER_META_KEYS.has(k)) as KeyCode[];
-        const first = (commands.order ?? []).filter((k) => keys.includes(k));
+        return ordered((Object.keys(commands) as string[]).filter((k) => !SUBLAYER_META_KEYS.has(k)) as KeyCode[], commands.order);
+}
+
+/** `keys` with those named in `order` first, in that order (steps share their sublayer's). */
+function ordered(keys: KeyCode[], order: KeyCode[] = []): KeyCode[] {
+        const first = order.filter((k) => keys.includes(k));
         return [...first, ...keys.filter((k) => !first.includes(k))];
 }
 
@@ -214,6 +246,18 @@ export function createHyperSubLayer(
         extraConditions: NonNullable<Manipulator["conditions"]> = []
 ): Manipulator[] {
         const subLayerVariableName = generateSubLayerVariableName(sublayer_key);
+        // Step state variables: hyper_sublayer_<key>.<step key>; the menu the
+        // HUD shows for a step is named "<key>.<step key>" (cheatsheet.ts).
+        const steps = Object.entries(commands.steps ?? {}) as [KeyCode, SublayerStep][];
+        // The sublayer key is held while its commands are typed, so a command on
+        // that same key could never fire. Refuse it rather than ship a dead binding
+        // (trivia/games.json once had a game on g).
+        const dynKeys = (d?: DynamicMenu) => d?.keys ?? [];
+        if (sublayer_key in commands || dynKeys(commands.dynamic).includes(sublayer_key)
+                || steps.some(([, s]) => sublayer_key in (s.commands ?? {}) || dynKeys(s.dynamic).includes(sublayer_key))) {
+                throw new Error(`Hyper+${sublayer_key} sublayer binds a command to ${sublayer_key} itself, which is held — pick another key`);
+        }
+        const stepVar = (k: KeyCode) => `${subLayerVariableName}.${k}`;
 
         const toggle: Manipulator = {
                         description: `Toggle Hyper sublayer ${sublayer_key}`,
@@ -233,6 +277,8 @@ export function createHyperSubLayer(
                                                 value: 0,
                                         },
                                 },
+                                // A step never outlives the chord that started it.
+                                ...steps.map(([k]) => ({ set_variable: { name: stepVar(k), value: 0 } })),
                                 // Dismiss the radial which-key HUD when the sublayer key is released.
                                 hudEvent({ hud: "hide" }),
                         ],
@@ -276,34 +322,63 @@ export function createHyperSubLayer(
         };
         if (commands.icon) HUD_ICONS.set(toggle, commands.icon);
 
+        const inLayer = (extra: NonNullable<Manipulator["conditions"]>): NonNullable<Manipulator["conditions"]> => [
+                { type: "variable_if", name: subLayerVariableName, value: 1 },
+                ...extra,
+                ...extraConditions,
+        ];
+        // A DynamicMenu's keys, minus any the map binds itself: each runs `<run> <key>`.
+        const dynamicCommands = (d: DynamicMenu | undefined, taken: object, conditions: NonNullable<Manipulator["conditions"]>, after: To[] = []): Manipulator[] =>
+                dynKeys(d).filter((k) => !(k in taken)).map((k) => {
+                        const m = command(k, { description: d!.description, to: [{ shell_command: `${d!.run} ${k}` }, ...after] }, conditions);
+                        HUD_DYNAMIC.set(m, d!.list);
+                        return m;
+                });
+        const command = (command_key: KeyCode, cmd: LayerCommand, conditions: NonNullable<Manipulator["conditions"]>): Manipulator => {
+                const m: Manipulator = {
+                        ...stripIcon(cmd),
+                        type: "basic",
+                        from: { key_code: command_key, modifiers: { optional: ["any"] } },
+                        to: withHudPress(command_key, cmd.to, commands.hud !== false),
+                        conditions,
+                };
+                if (cmd.icon) HUD_ICONS.set(m, cmd.icon);
+                return m;
+        };
+
         return [
                 toggle,
+                // Step commands first: while a step is on they shadow the plain ones.
+                ...steps.flatMap(([stepKey, step]) => {
+                        const on = inLayer([{ type: "variable_if", name: stepVar(stepKey), value: 1 }]);
+                        const cmds = step.commands ?? {};
+                        return [
+                                ...ordered(Object.keys(cmds) as KeyCode[], commands.order).map((k) =>
+                                        command(k, {
+                                                ...cmds[k]!,
+                                                to: [...cmds[k]!.to, { set_variable: { name: stepVar(stepKey), value: 0 } }],
+                                        }, on)
+                                ),
+                                ...dynamicCommands(step.dynamic, cmds, on, [{ set_variable: { name: stepVar(stepKey), value: 0 } }]),
+                        ];
+                }),
                 // Define the individual commands that are meant to trigger in the sublayer
                 ...sublayerCommands(commands).map((command_key): Manipulator => {
-                        const cmd = commands[command_key]!;
-                        const manipulator: Manipulator = {
-                                ...stripIcon(cmd),
-                                type: "basic" as const,
-                                from: {
-                                        key_code: command_key,
-                                        modifiers: {
-                                                optional: ["any"],
-                                        },
-                                },
-                                to: withHudPress(command_key, cmd.to, commands.hud !== false),
-                                // Only trigger this command if the variable is 1 (i.e., if Hyper + sublayer is held)
-                                conditions: [
-                                        {
-                                                type: "variable_if",
-                                                name: subLayerVariableName,
-                                                value: 1,
-                                        },
-                                        ...extraConditions,
-                                ],
-                        };
-                        if (cmd.icon) HUD_ICONS.set(manipulator, cmd.icon);
-                        return manipulator;
+                        // Only triggers while the sublayer variable is 1 (Hyper + sublayer held).
+                        return command(command_key, commands[command_key]!, inLayer([]));
                 }),
+                ...dynamicCommands(commands.dynamic, commands, inLayer([])),
+                // Last, the keys that enter a step (so they end the wheel): flip its variable, redraw the wheel as the step's menu.
+                ...steps.map(([stepKey, step]) =>
+                        command(stepKey, {
+                                description: step.description,
+                                icon: step.icon,
+                                to: [
+                                        { set_variable: { name: stepVar(stepKey), value: 1 } },
+                                        hudEvent({ hud: "show", layer: `${sublayer_key}.${stepKey}` }),
+                                ],
+                        }, inLayer([]))
+                ),
         ];
 }
 
@@ -431,6 +506,76 @@ export function open(...what: string[]): LayerCommand {
                         shell_command: `open ${w}`,
                 })),
                 description: `Open ${what.join(" & ")}`,
+        };
+}
+
+/**
+ * Open a URL in the floating web card (Arc's Little Arc): the overlay agent's
+ * "little" overlay (hud/ LittleOverlay.swift) shows the page in a small
+ * centered panel over whatever is in front, a full-screen app included.
+ * Pressed again for the page the focused card is showing, it closes the card.
+ * Cmd+W closes it, Cmd+O moves the page to the default browser. Label and
+ * favicon match open() so the HUD looks the same.
+ */
+export function little(url: string): LayerCommand {
+        return {
+                to: [userCommand({ little: { open: url } })],
+                description: `Open ${url}`,
+                icon: { url },
+        };
+}
+
+/** Close the floating web card (also Cmd+W in the card). */
+export function littleClose(): LayerCommand {
+        return {
+                to: [userCommand({ little: "close" })],
+                description: "Close the web card",
+                icon: { symbol: "xmark.circle" },
+        };
+}
+
+/** Move the web card's page to the default browser and close the card (also Cmd+O in the card). */
+export function littlePromote(): LayerCommand {
+        return {
+                to: [userCommand({ little: "promote" })],
+                description: "Open the web card's page in the browser",
+                icon: { symbol: "arrow.up.forward.app" },
+        };
+}
+
+/**
+ * Toggle a URL in "Little Zen", the Zen-based alternative to little(): a second
+ * Zen profile run as its own instance (no sidebar, one thin top bar), config in
+ * ~/Documents/Programming/librewolf-config/little/. Hammerspoon's
+ * littleToggle() (init.lua): that URL's window focused -> close it; open
+ * elsewhere -> focus it; else open it in a new small centered window. The last
+ * Little window closing quits the instance. Not bound: a Zen window cannot
+ * float over a full-screen app, the card can. Swap little*() <-> littleZen*()
+ * in the Hyper+L layer to choose between the WebKit card and Zen.
+ */
+export function littleZen(url: string): LayerCommand {
+        return {
+                to: [hsEvent("little", { url })],
+                description: `Open ${url}`,
+                icon: { url },
+        };
+}
+
+/** Move the front Little Zen window's page into the main Zen as a tab (also Cmd+O in Little). */
+export function littleZenPromote(): LayerCommand {
+        return {
+                to: [hsEvent("littlepromote")],
+                description: "Open Little Zen page in main Zen",
+                icon: { symbol: "arrow.up.forward.app" },
+        };
+}
+
+/** Quit the whole Little Zen instance (every Little Zen window). */
+export function littleZenClose(): LayerCommand {
+        return {
+                to: [hsEvent("littleclose")],
+                description: "Close Little Zen",
+                icon: { symbol: "xmark.circle" },
         };
 }
 
@@ -686,13 +831,14 @@ export function doubleTap(
  */
 /**
  * Generates a sublayer where every key fires Cmd + that key.
- * Use as: c: cmdSublayer() to make Hyper + C + key = Cmd + key.
+ * Use as: c: cmdSublayer("c") to make Hyper + C + key = Cmd + key. `own` is
+ * the sublayer's key, left out: it is held, so Hyper + C + C could never fire.
  */
-export function cmdSublayer(): { [key_code in KeyCode]?: LayerCommand } {
-        const keys = [
+export function cmdSublayer(own: KeyCode): { [key_code in KeyCode]?: LayerCommand } {
+        const keys = ([
                 ..."abcdefghijklmnopqrstuvwxyz",
                 ..."1234567890",
-        ] as KeyCode[];
+        ] as KeyCode[]).filter((k) => k !== own);
         return Object.fromEntries(
                 keys.map((k) => [
                         k,

@@ -17,7 +17,7 @@ function play(g: Game): LayerCommand {
 
 // Hyper+G: the games wheel, in every mode but Programming (where G is Git —
 // normal.ts gates it). Digits inner ring, letters outer; = adds the current
-// tab, - removes games.
+// tab, - then a game key removes it.
 export const gamesSublayer: HyperKeySublayer = {
         icon: { symbol: "gamecontroller.fill" },
         order: games.map((g) => g.key),
@@ -27,10 +27,18 @@ export const gamesSublayer: HyperKeySublayer = {
                 icon: { symbol: "plus.circle" },
                 to: [{ shell_command: `${GAMES_PY} add` }],
         },
-        hyphen: {
-                description: "Remove games…",
-                icon: { symbol: "minus.circle" },
-                to: [{ shell_command: `${GAMES_PY} remove` }],
+        // - then a game key removes that game: the wheel re-draws as "Remove a
+        // game" with the same wedges, no dialog, still inside the chord.
+        steps: {
+                hyphen: {
+                        description: "Remove a game…",
+                        icon: { symbol: "minus.circle" },
+                        commands: Object.fromEntries(games.map((g) => [g.key, {
+                                description: `Remove ${g.name}`,
+                                icon: g.icon ?? { url: g.url },
+                                to: [{ shell_command: `${GAMES_PY} remove ${g.key}` }],
+                        }])),
+                },
         },
 };
 

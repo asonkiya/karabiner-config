@@ -58,6 +58,9 @@ app.setActivationPolicy(.accessory)
 let router = Router()
 let hud = HUDController(dataPath: dataPath)
 router.register("hud", hud)
+// The floating web card (utils.ts little()).
+let little = LittleOverlay()
+router.register("little", little)
 // Mode flags: a mode with bare keys gets its `_keys` wheel on entry.
 let modes = ModeWatcher { mode in hud.modeChanged(mode) }
 

@@ -50,6 +50,8 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `L S` | Open twitch.tv |
 | `L C` | Open canvas.unc.edu |
 | `L G` | Open github.com |
+| `L X` | Close the web card |
+| `L O` | Open the web card's page in the browser |
 
 ### `Hyper W` — Window
 
@@ -66,6 +68,19 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `W N` | App Exposé |
 | `W L` | App Switcher (Cmd+Tab) |
 
+### `Hyper J` — Sessions (tmux)
+
+| Key | Action |
+| --- | --- |
+| `J <key on the wheel>` | Switch to that tmux session (its iTerm2 window, or a new one) _(iTerm2 only)_ |
+| `J N` | New session… _(iTerm2 only)_ |
+
+### `Hyper J N` — New session
+
+| Key | Action |
+| --- | --- |
+| `J N <key on the wheel>` | Open that project in a new iTerm2 window (its .envrc starts the session) _(iTerm2 only)_ |
+
 ## All modes but Programming
 
 ### `Hyper G` — Games
@@ -79,20 +94,32 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `G 5` | Strands |
 | `G 6` | FoodGuessr |
 | `G 7` | TimeGuessr |
-| `G 8` | Mini Crossword |
-| `G 9` | Spelling Bee |
 | `G 0` | GeoGuessr |
-| `G A` | Bandle |
 | `G S` | Costcodle |
 | `G D` | Tradle |
-| `G F` | Heardle |
-| `G G` | Framed |
 | `G Q` | Pokedoku |
 | `G W` | Contexto |
-| `G E` | Redactle |
 | `G R` | Worldle |
 | `G =` | Add current tab as a game |
-| `G -` | Remove games… |
+| `G -` | Remove a game… |
+
+### `Hyper G -` — Remove a game
+
+| Key | Action |
+| --- | --- |
+| `G - 1` | Remove Catfishing |
+| `G - 2` | Remove Thrice |
+| `G - 3` | Remove Wordle |
+| `G - 4` | Remove Connections |
+| `G - 5` | Remove Strands |
+| `G - 6` | Remove FoodGuessr |
+| `G - 7` | Remove TimeGuessr |
+| `G - 0` | Remove GeoGuessr |
+| `G - S` | Remove Costcodle |
+| `G - D` | Remove Tradle |
+| `G - Q` | Remove Pokedoku |
+| `G - W` | Remove Contexto |
+| `G - R` | Remove Worldle |
 
 ## Normal
 
@@ -175,7 +202,6 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `C 9` | Cmd+9 |
 | `C A` | Cmd+A |
 | `C B` | Cmd+B |
-| `C C` | Cmd+C |
 | `C D` | Cmd+D |
 | `C E` | Cmd+E |
 | `C F` | Cmd+F |
@@ -291,7 +317,6 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `K H` | Claude: /help |
 | `K B` | Claude: /bug |
 | `K P` | Claude: /plan |
-| `K K` | Claude: /commit |
 | `K X` | Claude: exit |
 | `K O` | Claude: claude |
 | `K M` | Shift+Tab |
@@ -312,7 +337,6 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `C 9` | Cmd+9 |
 | `C A` | Cmd+A |
 | `C B` | Cmd+B |
-| `C C` | Cmd+C |
 | `C D` | Cmd+D |
 | `C E` | Cmd+E |
 | `C F` | Cmd+F |
@@ -336,6 +360,19 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `C X` | Cmd+X |
 | `C Y` | Cmd+Y |
 | `C Z` | Cmd+Z |
+
+### `Hyper J` — Sessions (tmux)
+
+| Key | Action |
+| --- | --- |
+| `J <key on the wheel>` | Switch to that tmux session (its iTerm2 window, or a new one) |
+| `J N` | New session… |
+
+### `Hyper J N` — New session
+
+| Key | Action |
+| --- | --- |
+| `J N <key on the wheel>` | Open that project in a new iTerm2 window (its .envrc starts the session) |
 
 ## Reading
 
@@ -368,17 +405,11 @@ Caps Lock is the **Hyper** key (⌃⌥⇧⌘). Hold Hyper, tap a sublayer key, t
 | `5` | Strands |
 | `6` | FoodGuessr |
 | `7` | TimeGuessr |
-| `8` | Mini Crossword |
-| `9` | Spelling Bee |
 | `0` | GeoGuessr |
-| `A` | Bandle |
 | `S` | Costcodle |
 | `D` | Tradle |
-| `F` | Heardle |
-| `G` | Framed |
 | `Q` | Pokedoku |
 | `W` | Contexto |
-| `E` | Redactle |
 | `R` | Worldle |
 | `X` | Close tab |
 

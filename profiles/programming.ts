@@ -18,7 +18,7 @@ export const programmingRules: KarabinerRules[] = createHyperSubLayers({
         p: { description: "Paste (Cmd+V)", to: [{ key_code: "v", modifiers: ["right_command"] }] },
 
         // c = Cmd + key passthrough
-        c: { icon: { symbol: "command" }, ...cmdSublayer() },
+        c: { icon: { symbol: "command" }, ...cmdSublayer("c") },
 
         // k = Claude commands (moved off l so the global lookup sublayer works
         // in Programming mode too)
@@ -37,7 +37,6 @@ export const programmingRules: KarabinerRules[] = createHyperSubLayers({
                 h: claudeCmd("/help"),
                 b: claudeCmd("/bug"),
                 p: claudeCmd("/plan"),
-                k: claudeCmd("/commit"),
                 x: claudeCmd("exit"),
                 o: claudeCmd("claude"),
                 m: { description: "Shift+Tab", to: [{ key_code: "tab", modifiers: ["left_shift"] }] },

@@ -126,6 +126,199 @@ function scratchCenter()
 end
 
 -- ---------------------------------------------------------------------------
+-- "Little Zen": Arc's Little Arc on Zen. A second Zen profile ("little",
+-- config in ~/Documents/Programming/librewolf-config/little/) runs as its own
+-- instance: no sidebar, one thin top bar, one page per small centered window.
+--
+-- Karabiner's little(url) (Hyper+L lookups) fires hammerspoon://little?url=…
+-- -> littleToggle(url): that URL's window is focused -> close it; open but not
+-- focused -> focus it; otherwise open a new Little window for it.
+-- Hyper+L X -> hammerspoon://littleclose quits the whole instance.
+-- Cmd+W on the last Little window also quits the instance (watcher below), so
+-- it never lingers in the Dock catching links from other apps.
+-- ---------------------------------------------------------------------------
+local ZEN_BUNDLE = "app.zen-browser.zen"
+local LITTLE_PROFILE = os.getenv("HOME") .. "/Library/Application Support/zen/Profiles/little"
+local LITTLE_W, LITTLE_H = 0.55, 0.75 -- fraction of the screen
+local LITTLE_TIMEOUT = 8               -- seconds to wait for the window (cold start is slow)
+
+_G.little = _G.little or { byUrl = {} } -- url -> window id; survives reloads
+
+-- pid of the Little instance's main process. "[M]acOS" so the pattern can't
+-- match the sh -c running pgrep; plugin-containers use "-profile", not "--profile".
+local function littlePid()
+    local out = hs.execute("/usr/bin/pgrep -f '[M]acOS/zen --profile .*/Profiles/little'")
+    return tonumber((out or ""):match("%d+"))
+end
+
+local function littleApp()
+    local pid = littlePid()
+    return pid and hs.application.applicationForPID(pid) or nil
+end
+
+local function littleWindows()
+    local app = littleApp()
+    local wins = {}
+    for _, w in ipairs(app and app:allWindows() or {}) do
+        if w:isStandard() then table.insert(wins, w) end
+    end
+    return wins
+end
+
+local function littleOpen(url)
+    if not hs.fs.attributes(LITTLE_PROFILE .. "/user.js") then
+        hs.alert.show("Little Zen profile not set up: cd ~/Documents/Programming/librewolf-config && direnv allow")
+        return
+    end
+    local before = {}
+    for _, w in ipairs(littleWindows()) do before[w:id()] = true end
+    local screen = hs.mouse.getCurrentScreen():frame()
+
+    -- open -n: always a new process. If the Little instance is already running,
+    -- that process hands "--new-window <url>" to it and exits; otherwise it
+    -- becomes the instance. Launched by LaunchServices, not as a child of
+    -- Hammerspoon, so a Hammerspoon reload can't take it down.
+    hs.task.new("/usr/bin/open", nil, {
+        "-n", "-b", ZEN_BUNDLE, "--args",
+        "--profile", LITTLE_PROFILE, "--new-window", url,
+    }):start()
+
+    local started = hs.timer.secondsSinceEpoch()
+    if _G.little.timer then _G.little.timer:stop() end
+    _G.little.timer = hs.timer.doEvery(0.1, function()
+        for _, w in ipairs(littleWindows()) do
+            if not before[w:id()] then
+                _G.little.timer:stop()
+                w:setFrame({
+                    x = screen.x + screen.w * (1 - LITTLE_W) / 2,
+                    y = screen.y + screen.h * (1 - LITTLE_H) / 2,
+                    w = screen.w * LITTLE_W,
+                    h = screen.h * LITTLE_H,
+                }, 0)
+                w:focus()
+                _G.little.byUrl[url] = w:id()
+                return
+            end
+        end
+        if hs.timer.secondsSinceEpoch() - started > LITTLE_TIMEOUT then _G.little.timer:stop() end
+    end)
+end
+
+function littleToggle(url)
+    local id = _G.little.byUrl[url]
+    local w = id and hs.window.get(id)
+    if w and littlePid() == w:application():pid() then
+        local focused = hs.window.focusedWindow()
+        if focused and focused:id() == id then
+            w:close() -- the watcher quits the instance if this was the last one
+        else
+            w:focus()
+        end
+        return
+    end
+    _G.little.byUrl[url] = nil
+    littleOpen(url)
+end
+
+function littleClose()
+    local app = littleApp()
+    if app then app:kill() end
+    _G.little.byUrl = {}
+end
+
+-- Quit the Little instance once its last window is gone (Cmd+W, toggle, or
+-- the red button), so `open <url>` from other apps goes to the main Zen again.
+_G.little.watcher = hs.window.filter.new(false):setAppFilter("Zen", {})
+_G.little.watcher:subscribe(hs.window.filter.windowDestroyed, function()
+    hs.timer.doAfter(0.5, function()
+        local app = littleApp()
+        if app and #littleWindows() == 0 then littleClose() end
+    end)
+end)
+
+-- Promote: move the front Little window's page into the main Zen as a tab
+-- (Arc's "Open in Arc"). Cmd+O while a Little window is focused, or Hyper+L O.
+-- Both Zen instances share one bundle id, so `open <url>` could land in either.
+-- Usual case (one Little window): quit the Little instance first, then a plain
+-- `open -b` can only reach the main Zen. Several Little windows: close just
+-- this one and address the main profile by name over Firefox remoting.
+local MAIN_PROFILE_NAME = "Default (release)" -- [Profile0] Name= in zen/profiles.ini
+
+local function isLittleWindow(w)
+    local pid = littlePid()
+    return w and pid and w:application() and w:application():pid() == pid
+end
+
+local function openInMain(url)
+    hs.task.new("/usr/bin/open", nil, { "-b", ZEN_BUNDLE, url }):start()
+end
+
+function littlePromote()
+    local w = hs.window.focusedWindow()
+    if not isLittleWindow(w) then
+        hs.alert.show("No Little Zen window in front")
+        return
+    end
+    -- Read the address the way a person would: Cmd+L, Cmd+C (Firefox copies
+    -- the full URL even when the bar shows a trimmed one). Clipboard restored.
+    local saved = hs.pasteboard.readAllData()
+    hs.pasteboard.clearContents()
+    hs.eventtap.keyStroke({ "cmd" }, "l", 0)
+    hs.eventtap.keyStroke({ "cmd" }, "c", 0)
+    hs.timer.doAfter(0.2, function()
+        local url = hs.pasteboard.getContents()
+        hs.eventtap.keyStroke({}, "escape", 0)
+        if saved then hs.pasteboard.writeAllData(saved) end
+        if not url or not url:match("^%a[%w+.-]*:") then
+            hs.alert.show("Couldn't read the Little Zen address")
+            return
+        end
+        for k, id in pairs(_G.little.byUrl) do
+            if id == w:id() then _G.little.byUrl[k] = nil end
+        end
+
+        if #littleWindows() > 1 then
+            w:close()
+            hs.task.new("/usr/bin/open", nil, {
+                "-n", "-b", ZEN_BUNDLE, "--args", "-P", MAIN_PROFILE_NAME, "--new-tab", url,
+            }):start()
+            return
+        end
+
+        littleClose()
+        local started = hs.timer.secondsSinceEpoch()
+        if _G.little.promoteTimer then _G.little.promoteTimer:stop() end
+        _G.little.promoteTimer = hs.timer.doEvery(0.1, function()
+            if not littlePid() then
+                _G.little.promoteTimer:stop()
+                openInMain(url)
+            elseif hs.timer.secondsSinceEpoch() - started > 5 then
+                _G.little.promoteTimer:stop()
+                hs.alert.show("Little Zen didn't quit; promote cancelled")
+            end
+        end)
+    end)
+end
+
+-- Cmd+O is live only while a Little window has focus; everywhere else it
+-- stays the app's own Cmd+O.
+if _G.little.promoteKey then _G.little.promoteKey:delete() end
+_G.little.promoteKey = hs.hotkey.new({ "cmd" }, "o", function() littlePromote() end)
+_G.little.focusWatcher = hs.window.filter.new(false):setAppFilter("Zen", {})
+_G.little.focusWatcher:subscribe(hs.window.filter.windowFocused, function(w)
+    if isLittleWindow(w) then _G.little.promoteKey:enable() else _G.little.promoteKey:disable() end
+end)
+_G.little.focusWatcher:subscribe(hs.window.filter.windowUnfocused, function()
+    _G.little.promoteKey:disable()
+end)
+
+hs.urlevent.bind("littlepromote", function() littlePromote() end)
+hs.urlevent.bind("little", function(_, params)
+    if params.url and params.url ~= "" then littleToggle(params.url) end
+end)
+hs.urlevent.bind("littleclose", function() littleClose() end)
+
+-- ---------------------------------------------------------------------------
 -- Pinch-to-zoom via synthetic magnify gestures.
 --
 -- macOS has no public API to inject trackpad gestures, but Hammerspoon's

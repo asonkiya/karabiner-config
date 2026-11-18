@@ -1,21 +1,67 @@
 [
-  { "key": "1", "name": "Catfishing",     "url": "https://catfishing.net" },
-  { "key": "2", "name": "Thrice",         "url": "https://thrice.geekswhodrink.com" },
-  { "key": "3", "name": "Wordle",         "url": "https://www.nytimes.com/games/wordle" },
-  { "key": "4", "name": "Connections",    "url": "https://www.nytimes.com/games/connections" },
-  { "key": "5", "name": "Strands",        "url": "https://www.nytimes.com/games/strands" },
-  { "key": "6", "name": "FoodGuessr",     "url": "https://www.foodguessr.com" },
-  { "key": "7", "name": "TimeGuessr",     "url": "https://timeguessr.com" },
-  { "key": "8", "name": "Mini Crossword", "url": "https://www.nytimes.com/crosswords/game/mini" },
-  { "key": "9", "name": "Spelling Bee",   "url": "https://www.nytimes.com/puzzles/spelling-bee" },
-  { "key": "0", "name": "GeoGuessr",      "url": "https://www.geoguessr.com/daily-challenge" },
-  { "key": "a", "name": "Bandle",         "url": "https://bandle.app" },
-  { "key": "s", "name": "Costcodle",      "url": "https://costcodle.com" },
-  { "key": "d", "name": "Tradle",         "url": "https://oec.world/en/tradle" },
-  { "key": "f", "name": "Heardle",        "url": "https://www.heardle.app", "icon": { "symbol": "music.note" } },
-  { "key": "g", "name": "Framed",         "url": "https://framed.wtf" },
-  { "key": "q", "name": "Pokedoku",       "url": "https://pokedoku.com" },
-  { "key": "w", "name": "Contexto",       "url": "https://contexto.me" },
-  { "key": "e", "name": "Redactle",       "url": "https://www.redactle.com", "icon": { "symbol": "text.redaction" } },
-  { "key": "r", "name": "Worldle",        "url": "https://worldle.teuteuf.fr" }
+  {
+    "key": "1",
+    "name": "Catfishing",
+    "url": "https://catfishing.net"
+  },
+  {
+    "key": "2",
+    "name": "Thrice",
+    "url": "https://thrice.geekswhodrink.com"
+  },
+  {
+    "key": "3",
+    "name": "Wordle",
+    "url": "https://www.nytimes.com/games/wordle"
+  },
+  {
+    "key": "4",
+    "name": "Connections",
+    "url": "https://www.nytimes.com/games/connections"
+  },
+  {
+    "key": "5",
+    "name": "Strands",
+    "url": "https://www.nytimes.com/games/strands"
+  },
+  {
+    "key": "6",
+    "name": "FoodGuessr",
+    "url": "https://www.foodguessr.com"
+  },
+  {
+    "key": "7",
+    "name": "TimeGuessr",
+    "url": "https://timeguessr.com"
+  },
+  {
+    "key": "0",
+    "name": "GeoGuessr",
+    "url": "https://www.geoguessr.com/daily-challenge"
+  },
+  {
+    "key": "s",
+    "name": "Costcodle",
+    "url": "https://costcodle.com"
+  },
+  {
+    "key": "d",
+    "name": "Tradle",
+    "url": "https://oec.world/en/tradle"
+  },
+  {
+    "key": "q",
+    "name": "Pokedoku",
+    "url": "https://pokedoku.com"
+  },
+  {
+    "key": "w",
+    "name": "Contexto",
+    "url": "https://contexto.me"
+  },
+  {
+    "key": "r",
+    "name": "Worldle",
+    "url": "https://worldle.teuteuf.fr"
+  }
 ]

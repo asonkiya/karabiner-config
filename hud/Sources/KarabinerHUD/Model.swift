@@ -24,6 +24,7 @@ struct Item: Decodable {
 struct Menu: Decodable {
     let title: String
     let items: [Item]
+    let provider: String?   // shell command whose JSON output is the items, run on every show
 }
 
 typealias HudData = [String: [String: Menu]]
@@ -39,6 +40,31 @@ enum Model {
         } catch {
             log("cannot parse \(path): \(error)")
             return nil
+        }
+    }
+
+    // A dynamic menu's items: run its provider (tmux/sessions.py list, a few
+    // ms) and decode what it prints. Failures log and show nothing.
+    static func provided(_ command: String) -> [Item] {
+        let p = Process()
+        p.executableURL = URL(fileURLWithPath: "/bin/sh")
+        p.arguments = ["-c", command]
+        let out = Pipe()
+        p.standardOutput = out
+        p.standardError = FileHandle.standardError
+        do {
+            try p.run()
+        } catch {
+            log("provider failed to start: \(command): \(error)")
+            return []
+        }
+        let data = out.fileHandleForReading.readDataToEndOfFile()
+        p.waitUntilExit()
+        do {
+            return try JSONDecoder().decode([Item].self, from: data)
+        } catch {
+            log("provider output unreadable: \(command): \(error)")
+            return []
         }
     }
 
